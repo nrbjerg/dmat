@@ -1,0 +1,26 @@
+#+title: Todo
+
+Hello Matteo
+
+I noticed that
+Now since our exam period has concluded, i have begun my research into algebraic curves.
+
+
+
+* Bachellor
+** Book (Algebraic Geometric Codes: Basic Notions)
+*** Chapter 1
++ [ ] 1.1.1 - 1.1.2 (1 - 3)
++ [ ] 1.2.1 (33)
+*** Chapter 2
++ [ ] 2.1.1 - 2.1.3 (69 - 77)
++ [ ] 2.2.1 - 2.2.2 (91 - 95)
+*** Chapter 3
++ [ ] 3.1 (133)
++ [ ] 3.4 (165)
+
+** Notes (Introduction to Algebraic Geometry)
+
+
+* Spare time
+** Groebner bases
