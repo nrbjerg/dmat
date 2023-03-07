@@ -1,49 +1,102 @@
-% cmds.tex : brugerdefinerede makroer og blokke
+% cmds.tex : custom commands and environments
 % ------------------------------------------------------------------------------
-% Denne fil indeholder definitioner for egne makroer og blokke, der bruges som
-% genvejsfunktioner for ofte brugte kommandoer og tekst i rapporten.
+% This file contains definitions for custom commands and environments, used for
+% shorthand notation for macros used often in the project
 
-% Matematiske symboler ---------------------------------------------------------
-
-\newcommand{\N}{\mathbb{N}}
-\newcommand{\Z}{\mathbb{Z}}
-\newcommand{\Q}{\mathbb{Q}}
+% Mathematical symbols ---------------------------------------------------------
+\newcommand{\N}{\mathbb{N}}          % natural numbers
+\newcommand{\A}{\mathbb{A}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\Z}{\mathbb{Z}}          % integers
+\newcommand{\Q}{\mathbb{Q}}          % rational numbers
+\newcommand{\R}{\mathbb{R}}          % real numbers
+\newcommand{\C}{\pazocal{C}}          % complex numbers
+\newcommand{\K}{\mathbbm{k}}
 \newcommand{\F}{\mathbb{F}}
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\C}{\mathbb{C}}
-\newcommand{\ind}{\mathbbm{1}}
-\newcommand{\bigO}{\mathcal{O}}
-\newcommand{\mb}[1]{\mathbf{#1}}
-\newcommand{\e}{\mathrm{e}}
-\newcommand{\range}{\text{range}}
-\newcommand{\Span}{\text{span}}
-\newcommand{\Null}{\text{null}}
+\newcommand{\cF}{\overline{\F}}
+\newcommand{\pols}{\K[\underline{X}_n]}
+\newcommand{\fPols}{\F[\underline{x}_n]}
+\newcommand{\Zar}{\mathcal{T}_Z}
+\newcommand{\cZar}{\mathcal{F}_Z}
+\renewcommand{\d}{\mathrm{d}}
+\newcommand{\wt}{\mathrm{wt}}
+\newcommand{\comp}{\mathbb{C}}
+\newcommand{\ind}{\mathbbm{1}}       % indicator function
+\newcommand{\bigO}{\mathcal{O}}      % big O
+\newcommand{\ev}{\textnormal{Ev}_\mathcal{P}}
 
-% Sætninger o.lign. ------------------------------------------------------------
+\newcommand{\bs}[1]{\boldsymbol{#1}}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert}
+\newcommand{\gen}[1]{\langle#1\rangle}
+\newcommand{\floor}[1]{\lfloor#1\rfloor}
+\newcommand{\ceil}[1]{\lceil#1\rceil}
+\renewcommand{\bar}{\overline}
+\renewcommand{\vec}[1]{\bm{#1}}      % bold vector style
+
+\newcommand{\rank}{\textnormal{rank}}
+\newcommand{\Null}{\textnormal{null}}
+\newcommand{\row}{\textnormal{row}}
+\newcommand{\Span}{\textnormal{span}}
+\newcommand{\col}{\textnormal{col}}
+\newcommand{\image}{\textnormal{image}}
+
+% Theorem enviroments ----------------------------------------------------------
 % http://www.ctex.org/documents/packages/math/amsthdoc.pdf
-\theoremstyle{plain}                 % Titel med fed, tekst med skråskrift
-\newtheorem{thm}{Sætning}[chapter]   % Sætninger, nummereret efter kapitel
-\newtheorem{lem}[thm]{Lemma}         % Lemmaer, nummereret ligesom sætninger
-\newtheorem{prop}[thm]{Proposition}  % Propositioner, nummereret ligesom sætninger
-\newtheorem{cor}[thm]{Korollar}         % Korollarer, unnumbered
 
-\theoremstyle{definition}            % Title med fed, opretstående tekst
-\newtheorem{DEFN}[thm]{Definition}   % Definitioner, nummereret ligesom sætninger
-\newtheorem{EXMP}[thm]{Eksempel}      % Eksempler, nummereret ligesom sætninger
+%BOKS:
+% for adjustwidth environment
+\usepackage[strict]{changepage}
+
+% now constructions of the frames for theorems and such
+\usepackage{framed}
+
+\newenvironment{formal}{%
+  \def\FrameCommand{%
+    \hspace{4pt}%
+    {\color{Black}\vrule width 2pt}%
+    {\color{White}\vrule width 4pt}%
+    %\colorbox{AAUblue2}%
+  }%
+   \MakeFramed{\advance\hsize-\width\FrameRestore}%
+   \noindent\hspace{-4.55pt}% disable indenting first paragraph
+   \begin{adjustwidth}{}{7pt}%
+   \vspace{-18pt}%
+}
+{%
+  \vspace{0pt}\end{adjustwidth}\endMakeFramed%
+}
+
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[chapter]   % Theorems, numbered by chapter
+\newtheorem{lemma}[theorem]{Lemma}         % Lemmas, numbered like theorems
+\newtheorem{proposition}[theorem]{Proposition}  % Propositions, numbered like theorems
+\newtheorem{corollary}[theorem]{Corollary}         % Corollaries, unnumbered
+
+\theoremstyle{definition}            % Bold title, upright body text
+\newtheorem{DEFN}[theorem]{Definition}   % Definitions, numbered like theorems
+\newtheorem{EXMP}[theorem]{Example}      % Examples, numbered like theorems
 
 \theoremstyle{remark}
-\newtheorem*{rem}{Bemærk}
-% Figur-makroer ----------------------------------------------------------------
+\newtheorem{remark}[theorem]{Remark}      % Remarks, numbered like theorems
+
+% Now framed environments
+\newenvironment{definition}{\begin{formal}\begin{DEFN}}{\end{DEFN}\end{formal}}
+\newenvironment{example}{\begin{EXMP}\pushQED{\qed}\renewcommand{\qedsymbol}{$\square$}}{\popQED\end{EXMP}}
+\renewcommand{\qedsymbol}{$\blacksquare$}
+
+% Figure commands --------------------------------------------------------------
 
 % imgfig ("image figure")
-% Makro til at indsætte et billede fra fig/img-mappen
-% Argumenter:
-%   * (valgfri) figurbredde; procent af sidebredde (standard: 0.75)
-%   * filnavn (uden fig/img/ eller filendelse); også brugt til label
-%   * figurteksten
-% Eksempler:
-%   \imgfig{filnavn}{Figurteksten skrives her}
-%   \imgfig[0.5]{filnavn}{Figurteksten skrives her}
+% Shortcut command for inserting an image from the fig/img folder
+% Arguments:
+%   * (optional) figure width; percentage of text width (default: 0.75)
+%   * file name (without fig/img/ and file extension); also used for label
+%   * the figure caption
+% Examples:
+%   \imgfig{image-name}{Caption goes here}
+%   \imgfig[0.5]{image-name}{Caption goes here}
 \newcommand{\imgfig}[3][0.75]{
   \begin{figure}[htbp]
     \centering
@@ -54,17 +107,17 @@
 }
 
 % dimgfig ("double image figure")
-% Makro til at indsætte to billeder ved siden af hinanden
-% Argumenter:
-%   * (valgfri) breddefordeling (standard: 0.5, dvs. lige fordeling)
-%   * filnavn for den venstre figur, uden fig/img/ eller filendelse
-%   * billedtekst for den venstre figur
-%   * filnavn for den højre figur, uden fig/img/ eller filendelse
-%   * billedtekst for den højre figur
-% Eksempler:
-%   \dimgfig{billede1}{Første billedtekst}{billede2}{Anden billedtekst}
-%   \dimgfig[0.3]{billede1}{Første billedtekst}{billede2}{Anden billedtekst}
-% Alterativt, se
+% Shortcut command for inserting two images side by side
+% Arguments:
+%   * (optional) width split ratio (default: 0.5, i.e. even split)
+%   * file name for the left figure, without fig/img/ and file extension
+%   * caption for the left figure
+%   * file name for the right figure, without fig/img/ and file extension
+%   * caption for the right figure
+% Examples:
+%   \dimgfig{img1}{First caption}{img2}{Second caption}
+%   \dimgfig[0.3]{img1}{First caption}{img2}{Second caption}
+% Alteratively, see
 % https://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions#Subfloats
 \newcommand{\dimgfig}[5][0.5]{
   \ifx\dimgleftwidth\undefined
@@ -90,18 +143,3 @@
     \end{minipage}
   \end{figure}
 }
-
-% Mængdebygger notation
-% ANVENDELSE: \Set*{a} eller \Set*{a \given b} (Stjernen sørger for resizing af brackets osv.)
-\newcommand{\given}{\nonscript\,\delimsize\vert\nonscript\,\mathopen{}}
-\DeclarePairedDelimiterX{\Set}[1]{\{}{\}}{#1}
-
-%Replace emptyset
-\renewcommand{\emptyset}{\text{Ø}}
-\newcommand{\Var}{\textnormal{Var}}
-\newcommand{\unif}{\textnormal{unif}}
-\newcommand{\geom}{\textnormal{geom}}
-\newcommand{\Poi}{\textnormal{Poi}}
-\newcommand{\bs}[1]{\boldsymbol{#1}}
-
-\renewcommand{\qedsymbol}{$\blacksquare$}

@@ -1,6 +1,6 @@
-% aautitlepage.sty : makroer til at generere titelbladet
+% aautitlepage.sty : macros for generating the title page
 % ------------------------------------------------------------------------------
-% Lettere modificeret udgave af filen macros.tex fra
+% Slightly modified version of the file aautitlepage macros from
 % https://github.com/jkjaer/aauLatexTemplates
 
 
@@ -41,7 +41,7 @@
 \usepackage{calc}
 \usepackage{lastpage}
 
-% Genererer et AAU-tematiseret titelblad
+% Creates the AAU titlepage
 \newcommand{\aautitlepage}[3]{
   {
     \ifx\titlepageleftcolumnwidth\undefined
@@ -55,7 +55,7 @@
     \noindent
     \begin{tabular}{@{}ll@{}}
       \parbox{\titlepageleftcolumnwidth}{
-        \includegraphics[width=\titlepageleftcolumnwidth]{fig/img/aau/logo-report.pdf}
+      %\colorbox{black}{\includegraphics[width=\titlepageleftcolumnwidth]{fig/img/aau/student_report_white.png}}
       }
       &
         \parbox{\titlepagerightcolumnwidth}{\raggedleft\sf\small#2}
@@ -70,21 +70,22 @@
       }
     \end{tabular}
     \vfill
-    \noindent{\footnotesize\emph{Rapportens indhold er frit tilgængeligt, men offentliggørelse (med kildeangivelse) må kun ske efter aftale med forfatterne.}}
+    \noindent{\footnotesize\emph{The content of this project is freely available, but publication (with reference) may only be pursued due to agreement with the authors.}}
     \clearpage
   }
 }
 
-% Indsæt projektinfo
+% Create project info
 \newcommand{\projectinfo}[7]{
   \parbox[t]{\titlepageleftcolumnwidth}{
-    \textbf{Titel}\\\-\ #1\bigskip\par
-    \textbf{Projektperiode}\\\-\ #3\bigskip\par
-    \textbf{Projektgruppe}\\\-\ #4\bigskip\par
-    \textbf{Deltagere}\\\-\ #5\bigskip\par
-    \textbf{Vejleder}\\\-\ #6\bigskip\par
-    \textbf{Sidetal}\\\-\ \pageref{LastPage}\bigskip\par
-    \textbf{Afleveringsdato}\\\-\ #7
+    \textbf{Title}\\\-\ #1\bigskip\par
+    \textbf{Theme}\\\-\ #2\bigskip\par
+    \textbf{Project Period}\\\-\ #3\bigskip\par
+    \textbf{Project Group}\\\-\ #4\bigskip\par
+    \textbf{Participants}\\\-\ #5\bigskip\par
+    \textbf{Supervisor}\\\-\ #6\bigskip\par
+    \textbf{Page Numbers}\\\-\ \pageref{LastPage}\bigskip\par
+    \textbf{Date of Completion}\\\-\ #7
   }
 }
 

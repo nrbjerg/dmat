@@ -1,0 +1,34 @@
+\section{Transmission and Nearest Neighbour Decoding}\label{sec:transmission_and_nearest_neighbour_decoding}
+We can now explain how one can use the $[n,k,d]_{q}$ code $\mathcal{C}$ when transmit data through a noisy communication channel.
+Given some data $x \in \mathbb{F}_{q}^{k}$, which we shall refer to as the \textit{message}, we \textit{encode} said message by computing the corresponding codeword $c := x^{T}G$, please note the linear transformation $T: \F^k_q \to \mathcal{C}$, defined as $x \mapsto x^{T}G$, is injective since the rows of $G$ forms a basis of $\mathcal{C}$.
+Since $c \in \mathbb{F}_q^{n}$, with $n \geq k$, more data has to be transmitted, however we have added redundant information, which will hopefully help correct any errors induced by the noise in the channel.
+Since $c \in \mathcal{C}$ is subjected to random noise\footnote{There are many different assumptions one can impose on the distribution this noise, this will however not be considered in this report.} during transmission we receive some $y \in \mathbb{F}_q^n$, not necessarily equal to $c$.
+The main question is now, how to get back the original $c$ or at least an estimate of $c$ say $\hat{c}$.
+Multiple of such estimates exists, we will however only consider the perhaps most intuitive, named \textit{nearest neighbour decoding}, where we pick the estimate:
+\begin{equation*}
+   \hat{c}_{\d} = \underset{\displaystyle c \in \mathcal{C}}{\arg\min} \; \d(c, y)
+\end{equation*}
+note that this estimate may not be unique. Finally we can obtain an estimate $\hat{x}$ of $x$, by decoding $\hat{c}$. The decoding of $\hat{c}$ is however highly dependent on the specific code, and will not be discussed in this general setting.
+
+We will now look further at nearest neighbour decoding, we start with the following theorem:
+\begin{theorem}\label{thm:disjoint_closed_balls}
+  Let $\mathcal{C}$ be a $[n, k, d]_{q}$ code, $r = \floor{\frac{d-1}{2}}$, and $c, c' \in \mathcal{C}$ such that $c \neq c'$ then
+  \begin{equation*}
+     \overline{B_{r}}(c) \cap \overline{B_r}(c') = \emptyset
+  \end{equation*}
+  where $\overline{B_{r}}(x) = \left\{y \in \mathbb{F}_q^n \middle| d(x, y) \leq r\right\}$.
+\end{theorem}
+\begin{proof}
+  Assume for the sake of contradiction that $\overline{B_{r}}(c) \cap \overline{B_r}(c') \neq \emptyset$, pick $x \in \overline{B_{r}}(c) \cap \overline{B_r}(c')$. Now since $\d$ complies with the triangle inequality confer Proposition \ref{prop:hamming_metric}\ref{prop:hamming_metric_triangle_inequality}, we have:
+  \begin{equation*}
+    \d(c, c') \leq \d(c, x) + \d(x,c') \leq 2r
+  \end{equation*}
+  but $2r = 2 \floor{\frac{d-1}{2}} \leq d - 1$, this contradicts the fact that $d$ is the minimum distance of $\mathcal{C}$.
+\end{proof}
+
+\begin{remark}\label{rem:maximum_number_of_correctable_errors}
+A natural implication of Theorem \ref{thm:disjoint_closed_balls} is that if a maximum of $r = \floor{\frac{d-1}{2}}$ errors occur during transmission, and we receive $y \in \mathbb{F}^k_q$ then $\d(y, c) \leq r$, where $c$ is the correct $c$, and thus $\hat{c}_{\d} = c$. Since $\overline{B_{r}}(c) \cap \overline{B_r}(c') = \emptyset$ for all $c' \in \mathcal{C} \setminus \left\{c\right\}$. Thus a $[n, k, d]_{q}$ code $\mathcal{C}$ can correct $\floor{\frac{d - 1}{2}}$ errors, and detect $d-1$ errors, as the received vector, will not be a codeword of $\mathcal{C}$, in this case.
+\end{remark}
+
+The contents of Remark \ref{rem:maximum_number_of_correctable_errors} indicate that when we are interested in finding a $[n, k]_{q}$ code $\mathcal{C}$, with the best error correcting capabilities then we need to find one with a high minimum distance.
+However upper bounds on the minimum distance given $n$ and $k$ do exist, a few of which will be presented in the following section.

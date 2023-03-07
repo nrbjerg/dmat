@@ -1,12 +1,12 @@
-# LaTeX Projektskabelon
+# LaTeX Project Template
 
-Dette repository indeholder en LaTeX-skabelon lavet specielt til studerende på AAUs Institut for Matematiske Fag.
+This repository contains a LaTeX template made specially for AAU students in the Dept. of Mathematical Sciences.
 
-For at komme i gang:
+To get started:
 
-  1. Opret en GitHub-konto og log ind
-  2. Gå til dette repository på GitHub (https://github.com/janusvm/aau-project-template-danish)
-  3. Klik på den grønne **Use this template**-knap nær toppen af siden
-  4. Udfyld detaljerne, og sæt det nye repository til **Private**
-  5. Gå til **Settings → Collaborators** og tilføj dine gruppemedlemmer
-  6. Klon repository'et til din computer og begynd at skrive!
+  1. Make a GitHub account and sign in
+  2. Browse to this repository on GitHub (https://github.com/janusvm/aau-project-template-english)
+  3. Click the green **Use this template** button near the top of the page
+  4. Fill in the details on the page, setting the new repository to **Private**
+  5. Go to **Settings → Collaborators** and add your group members
+  6. Clone the repository and start writing!

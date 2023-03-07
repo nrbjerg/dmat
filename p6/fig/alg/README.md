@@ -1,29 +1,29 @@
 ## fig/alg
 
-Mappen `fig/alg` er til `.tex`-filer med beskrivelser af **alg**oritmer, som laves med `algpseudocode`-pakken.
+The `fig/alg` folder is for `.tex` files with **alg**orithm descriptions, which are typeset with the `algpseudocode` package.
 
-For eksempel, hvis man har en fil kaldet `fig/alg/bubblesort.tex` med indholdet:
+For example, if you have a file named `fig/alg/bubblesort.tex` with the contents:
 
 ```latex
 \begin{algorithm}[htbp]
   \begin{algorithmic}
-    \Procedure{bubblesort}{\,\(a_{1}, \dotsc, a_{n}\) : reelle tal med \(n \geq 2\)\,}
+    \Procedure{bubblesort}{\,\(a_{1}, \dotsc, a_{n}\) : real numbers with \(n \geq 2\)\,}
     \For{\(i \coloneqq 1\) to \(n - 1\)}
     \For{\(j \coloneqq 1\) to \(n - i\)}
     \If{\(a_{j} > a_{j+1}\)}
-    ombyt \(a_{j}\) og \(a_{j+1}\)
+    swap \(a_{j}\) and \(a_{j+1}\)
     \EndIf
     \EndFor
     \EndFor
     \EndProcedure
-    \Comment{\(a_{1}, \dotsc, a_{n}\) er nu i voksende orden}
+    \Comment{\(a_{1}, \dotsc, a_{n}\) are now in increasing order}
   \end{algorithmic}
-  \caption{Bubblesort-algoritmen}
+  \caption{The bubble sort algorithm}
   \label{alg:bubblesort}
 \end{algorithm}
 ```
 
-så kan algoritmen indsættes i dokumentet med kommandoen:
+then the algorithm can be included in the document with the simple line:
 
 ```latex
 \input{fig/alg/bubblesort}

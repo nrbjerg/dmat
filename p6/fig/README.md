@@ -1,19 +1,19 @@
 ## fig
 
-Mappen `fig` er for indhold til **fig**urer og andre blokke:
-billeder, tabeller, pseudokode for algoritmer, TiKZ-kode, osv.
+The `fig` folder is for stuff to put in **fig**ures and other floating environments:
+images, tables, pseudocode for algorithms, TiKZ code, etc.
 
-Hver type af indhold har sin egen undermappe:
+Each type of object is put into its own folder:
 
-  - `alg` for pseudokode for algoritmer
-  - `img` for billedfiler
-  - `tab` for tabelindhold
-  - `tikz` for TiKZ-kode
+  - `alg` for algorithm pseudocode
+  - `img` for image files
+  - `tab` for table contents
+  - `tikz` for TiKZ code
 
 
-### Hvorfor have separate filer til dette?
+### Why have seperate files for this?
 
-Selvom man sagtens kan skrive alle makroerne for at lave f.eks. en tabel direkte i hovedfilerne, så gør det dokumentet lettere at holde styr på ved at opdele det.
+While you can certainly just put the code for creating e.g. a table directly in the main files, putting that kind of content in its own file makes the document more modular and easier to maintain and edit.
 
-Ved at have al LaTeX-koden til at generere en float i sin egen fil, kan man let flytte den til et andet sted i dokumentet eller kommentere den ud ifm. fejldiagnosticering.
-Det gør det også nemmere at holde styr på ændringer til en bestemt float gennem git-historikken.
+Having all the LaTeX code for generating a floating object in its own file makes it easy to move it around the document or commented out for debugging.
+It also makes it easier to keep track of changes made to a particular figure through the git commit history.

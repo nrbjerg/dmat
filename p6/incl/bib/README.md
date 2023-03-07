@@ -1,9 +1,9 @@
 ## incl/bib
 
-Mappen `incl/bib` er til `.bib`-filer, som bruges af BibTeX til at generere litteraturlisten.
-Hver element har et ID, som bruges til at indsætte referencer i dokumentet med kommandoen `\citep`.
+The `incl/bib` folder is for `.bib` files, which are used by BibTeX to generate citations.
+Each entry is given a key which can be used to insert citations in the document using the command `\citep`.
 
-Et afsnit med litteraturlisten bliver automatisk genereret med alle de _brugte_ referencer.
-Elementer i `.bib`-filerne, som ikke er blevet refereret til i dokumentet, bliver således ikke inkluderet i listen.
+A section with the bibliography is automatically generated with all the _cited_ references.
+Entries in the `.bib` files that are not cited in the document do not get included in the bibliography list.
 
-Se <https://en.wikibooks.org/wiki/LaTeX/Bibliography_Management#BibTeX> for flere detaljer.
+See <https://en.wikibooks.org/wiki/LaTeX/Bibliography_Management#BibTeX> for details.

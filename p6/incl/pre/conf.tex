@@ -1,140 +1,109 @@
-% incl/pre/conf.tex : generelle indstillinger
+% incl/pre/conf.tex : package configurations
 % ------------------------------------------------------------------------------
-% Denne fil indeholder indstillinger for opsætningen af rapporten
+% This file includes customisations for setting up the document
 
-\setlength{\parindent}{0mm}
-\setlength{\parskip}{0mm}
-\setlength{\textfloatsep}{0mm}
-\setlength{\intextsep}{0mm}
-\linespread{1.2}
-\titlespacing{\chapter}{10pt}{10mm}{10mm}
-\titlespacing{\section}{5pt}{5mm}{5mm}
-\titlespacing{\subsection}{0pt}{\parskip}{-\parskip}
-\titlespacing{\subsubsection}{0pt}{\parskip}{-\parskip}
 
-% Brugerdefinerede farver ------------------------------------------------------
-% Officielle AAU-farver
+% Custom colors ----------------------------------------------------------------
+% Official AAU color palette
 % https://www.design.aau.dk/om-aau-design/Farver/
 \definecolor{AAUblue1}{RGB}{ 33, 26, 82}
-\definecolor{AAUblue2}{RGB}{ 89, 79,191}
-\definecolor{AAUgrey1}{RGB}{ 84, 97,110}
+\definecolor{AAUblue2}{RGB}{ 89, 79, 181}
+\definecolor{AAUgrey1}{RGB}{ 84, 97, 110}
 \definecolor{AAUgrey2}{RGB}{104,119,132}
 \definecolor{AAUgrey3}{RGB}{162,172,182}
 \definecolor{AAUgrey4}{RGB}{222,223,226}
 \definecolor{AAUgreen}{RGB}{157,187, 29}
 \definecolor{AAUteal} {RGB}{ 94,150,149}
 \definecolor{AAUred}  {RGB}{223,103, 82}
-\definecolor{white}{RGB}{255,255,255}
 
-% Sidehoved og sidefod ---------------------------------------------------------
+% Headers and footers ----------------------------------------------------------
 % http://mirrors.dotsrc.org/ctan/macros/latex/contrib/fancyhdr/fancyhdr.pdf
-\fancyhead{}                            % ryd standardindhold
-\fancyhead[LE,RO]{Group \projectgroup}  % venstre på lige sider, højre på ulige
-\fancyhead[RE]{\leftmark}               % højre på ulige sider
-\fancyhead[LO]{\rightmark}              % venstre på ulige sider
-\fancyfoot{}                            % ryd standardindhold
-\fancyfoot[CE,CO]{\thepage}             % centrerede sidetal
-\pagestyle{fancy}                       % aktiver fancy stil
+\fancyhf{}
+\fancyhead{}                            % clear default header fields
+\fancyhead[L]{Group \projectgroup}  % left on even and right on odd
+\fancyhead[R]{\leftmark}               % right on even
+%\fancyhead[L]{\rightmark}              % left on odd
+\fancyfoot[C]{\thepage}             % centered page numbers
+\pagestyle{fancy}                       % activate fancy style
 
-% Overskrifter -----------------------------------------------------------------
+\setlist[enumerate,1]{label={\normalfont (\roman*)}}
+% Section titles ---------------------------------------------------------------
 % http://mirrors.dotsrc.org/ctan/macros/latex/contrib/titlesec/titlesec.pdf
 
-% Kapitler 
-\usepackage[T1]{fontenc}
-\usepackage{titlesec, blindtext, color}
-\newcommand{\hsp}{\hspace{20pt}}
-\titleformat{\chapter}[hang]{\Huge\bfseries}{\thechapter\hsp\textcolor{white}{|}\hsp}{0pt}{\Huge\bfseries}
+% Format chapter title style with a boxed number
+\titleformat
+{\chapter}
+[hang]
+{\Huge\bfseries\color{white}}
+{\colorbox{Black}{\makebox[30pt]{\strut\thechapter}}}
+{0.5em}
+{\Huge\bfseries\color{Black}}
 
-
-% Dele skrives på to linjer
+% Format part title styles to be on two lines
 \titleformat
 {\part}
 [display]
-{\Huge\bfseries\color{AAUblue1}\filcenter}
+{\Huge\bfseries\color{Black}\filcenter}
 {\huge\partname{} \thepart}
 {0em}
 {}
 
-% Juster titel og indholdsfortegnelsen mht. appendiks-siden
+% Adjust title and TOC settings of the appendix page
 \renewcommand{\appendixname}{Appendix}
-\renewcommand{\appendixtocname}{Appendicer}
-\renewcommand{\appendixpagename}{\textcolor{AAUblue1}{Appendicer}}
+\renewcommand{\appendixtocname}{Appendices}
+\renewcommand{\appendixpagename}{\textcolor{Black}{Appendices}}
 \xpatchcmd{\addappheadtotoc}{{chapter}}{{part}}{}{}
 
-% Figurindstillinger -----------------------------------------------------------
-% Indstillinger for figurtekst
+% Figure settings --------------------------------------------------------------
+% Format captions
 % http://mirrors.dotsrc.org/ctan/macros/latex/contrib/caption/caption-eng.pdf
 \captionsetup{font=it,labelfont=bf}
 
-% Nyttige TiKZ-udvidelser
+% Useful TiKZ libraries
 % https://tex.stackexchange.com/q/42611
-\usetikzlibrary{arrows.meta}  % forskellige pilespidser
-\usetikzlibrary{calc}         % udvidede beregninger med koordinater
+\usetikzlibrary{arrows.meta}  % customisable arrow tips
+\usetikzlibrary{calc}         % extended coordinate calculations
 
-% Prædefinerede styles til punkter og kanter i en graf
+% Predefined TiKZ styles for drawing nodes and edge labels in a graph
 \tikzstyle{point} = [fill,shape=circle,minimum size=3pt,inner sep=0pt]
 \tikzstyle{edge}  = [fill=white,midway,inner sep=1pt]
 
-% Algoritmer -------------------------------------------------------------------
-% Indstillinger for algorithm-blokke
-\floatname{algorithm}{Algoritme}
-\renewcommand{\listalgorithmname}{Algoritmer}
+% Algorithms -------------------------------------------------------------------
+% Settings for displaying algorithm floats
+\floatname{algorithm}{Algorithm}
+\renewcommand{\listalgorithmname}{List of Algorithms}
 
-%Kildekode --------------------------------------------------------------------
-%Syntax highlighting for Python-kode
+% Sections -----------------------------------------------------------------------
+% Settings for indents for sections
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{2mm}
+
+% Source code style ------------------------------------------------------------
+% Simple styling for Python source code
 % https://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings
 \lstdefinestyle{custompy}{
-   belowcaptionskip=\baselineskip,
-   breaklines=true,
-   language=Python,
-   showstringspaces=false,
-   basicstyle=\footnotesize\ttfamily,
-   keywordstyle=\bfseries\color{AAUblue1},
-   commentstyle=\itshape\color{AAUgrey3},
-   identifierstyle=\color{AAUblue2},
-   stringstyle=\color{AAUteal},
- }
- \lstset{language=Python,style=custompy,captionpos=b}
- \renewcommand{\lstlistingname}{Kildekode}
- \renewcommand{\lstlistlistingname}{Kildekode}
+  belowcaptionskip=\baselineskip,
+  breaklines=true,
+  language=Python,
+  showstringspaces=false,
+  basicstyle=\footnotesize\ttfamily,
+  keywordstyle=\bfseries\color{AAUblue1},
+  commentstyle=\itshape\color{AAUgrey3},
+  identifierstyle=\color{AAUblue2},
+  stringstyle=\color{AAUteal},
+}
+\lstset{language=Python,style=custompy,captionpos=b}
+\renewcommand{\lstlistingname}{Listing}
+\renewcommand{\lstlistlistingname}{List of Listings}
 
-% Indstillinger for autoref ----------------------------------------------------
+% Autoref settings -------------------------------------------------------------
 % https://en.wikibooks.org/wiki/LaTeX/Labels_and_Cross-referencing#autoref
-\def\partautorefname{Del}
-\def\chapterautorefname{Kapitel}
-\def\sectionautorefname{Afsnit}
-\def\subsectionautorefname{Underafsnit}
-\def\figureautorefname{Figur}
-\def\tableautorefname{Tabel}
-\def\algorithmautorefname{Algoritme}
-\def\lstinputlistingautorefname{Kildekode}
-
-%BOKS:
-% for adjustwidth environment
-\usepackage[strict]{changepage}
-
-% for formal definitions
-\usepackage{framed}
-
-% environment derived from framed.sty: see leftbar environment definition
-\definecolor{formalshade}{rgb}{0.97, 0.97,1}
-
-\newenvironment{formal}{%
-  \def\FrameCommand{%
-    \hspace{2pt}%
-    {\color{black}\vrule width 2pt}%
-    {\color{formalshade}\vrule width 4pt}%
-    \colorbox{formalshade}%
-  }%
-   \MakeFramed{\advance\hsize-\width\FrameRestore}%
-   \noindent\hspace{-4.55pt}% disable indenting first paragraph
-   \begin{adjustwidth}{}{7pt}%
-   \vspace{2pt}\vspace{2pt}%
-}
-{%
-  \vspace{2pt}\end{adjustwidth}\endMakeFramed%
-}
-
-\newenvironment{defn}{\begin{formal}\begin{DEFN}}{\end{DEFN}\end{formal}}
-\newenvironment{exmp}{\begin{EXMP}}{\hfill$\square$\end{EXMP}}
+\def\partautorefname{Part}
+\def\chapterautorefname{Chapter}
+\def\sectionautorefname{Section}
+\def\subsectionautorefname{Subsection}
+\def\figureautorefname{Figure}
+\def\tableautorefname{Table}
+\def\algorithmautorefname{Algorithm}
+\def\lstinputlistingautorefname{Listing}
 

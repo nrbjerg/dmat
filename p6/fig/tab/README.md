@@ -1,32 +1,32 @@
 ## fig/tab
 
-Mappen `fig/tab` er til `.tex`-filer med kode til at lavel **tab**eller.
+The `fig/tab` folder is for `.tex` files with code for typesetting **tab**les.
 
-For eksempel, hvis man har en fil kaldet `fig/tab/envirs.tex` med indholdet:
+For example, if you have a file named `fig/tab/envirs.tex` with the contents:
 
 ```latex
 \begin{table}[htbp]
   \centering
   \begin{tabular}{ll}
     \toprule
-    \textbf{Blok}        & \textbf{Funktion} \\
+    \textbf{Environment} & \textbf{Function} \\
     \midrule
-    \texttt{document}    & Dokumentindhold \\
-    \texttt{table}       & Tabeller såsom denne \\
-    \texttt{figure}      & Figurer \\
-    \texttt{equation}    & Nummererede ligninger \\
-    \texttt{align}       & Flere ligninger sammen \\
-    \texttt{itemize}     & Punktliste \\
-    \texttt{enumerate}   & Nummereret liste \\
-    \texttt{description} & Beskrivelsesliste \\
+    \texttt{document}    & Document contents \\
+    \texttt{table}       & Floating table such as this one \\
+    \texttt{figure}      & Floating figure \\
+    \texttt{equation}    & Numbered equation \\
+    \texttt{align}       & Aligned, multiple equations \\
+    \texttt{itemize}     & Bulleted list \\
+    \texttt{enumerate}   & Numbered list \\
+    \texttt{description} & Descriptive list \\
     \bottomrule
   \end{tabular}
-  \caption{Almindelige \LaTeX{}-blokke og deres funktion}
-  \label{tab:tabel}
+  \caption{Common \LaTeX{} environments and their function}
+  \label{tab:table}
 \end{table}
 ```
 
-så kan tabellen indsættes i dokumentet ved at skrive:
+then the table can be included in the document with the simple line:
 
 ```latex
 \input{fig/tab/envirs}

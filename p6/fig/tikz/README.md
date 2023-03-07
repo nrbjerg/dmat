@@ -1,8 +1,8 @@
 ## fig/tikz
 
-Mappen `fig/tikz` er til `.tex`-filer (eller `.tikz`-filer, hvis man foretrækker det) med kode til at lave TiKZ-figurer.
+The `fig/tikz` folder is for `.tex` files (or `.tikz` files, if you prefer) with code for creating TiKZ figures.
 
-For eksempel, hvis man har en fil kaldet `fig/tikz/graph.tex` med indholdet:
+For example, if you have a file named `fig/tikz/graph.tex` with the contents:
 
 ```latex
 \begin{figure}[htbp]
@@ -26,16 +26,16 @@ For eksempel, hvis man har en fil kaldet `fig/tikz/graph.tex` med indholdet:
     \draw (d) -- (z) node[edge] {6};
     \draw (e) -- (z) node[edge] {3};
   \end{tikzpicture}
-  \caption{Eksempel på graf fra \citep{dmat}.}
-  \label{fig:graf}
+  \caption{Example graph from \citep{dmat}.}
+  \label{fig:graph}
 \end{figure}
 ```
 
-så kan figuren indsættes i dokumentet ved at skrive
+then the figure can be included in the document with the simple line:
 
 ```latex
 \input{fig/tikz/graph}
 ```
 
-Alternativt, hvis man skal bruge en TiKZ-figur et sted, hvor en floating `figure` blok ikke er passende, can man blot inkludere `\begin{tikzpicture} ... \end{tikzpicture}`-delen, og indsætte der, hvor det skal bruges.
-For eksempel er det sådan AAU-logoet er tegnet på forsiden, med TiKZ-kode fra `fig/tikz/aau-badge.tex`
+Alternatively, if you need to use the TiKZ drawing in a setting where using a `figure` environment is not appropriate, you can just include the `\begin{tikzpicture} ... \end{tikzpicture}` part of the code and input where needed.
+For example, this is how the AAU logo is drawn on the front page, with TiKZ code from `fig/tikz/aau-badge.tex`.

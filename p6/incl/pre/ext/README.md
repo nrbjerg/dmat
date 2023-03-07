@@ -1,5 +1,5 @@
 ## incl/pre/ext
 
-Mappen `incl/pre/ext` er til preamble-filer af tredjeparter, som ikke er tilgængelige som pakker i almindelige LaTeX-distributioner som TeXLive, MiKTeX og MacTeX:
+The `incl/pre/ext` folder is for preamble files by third parties that are not available as packages in standard LaTeX distributions such as TeXLive, MiKTeX, and MacTeX:
 
-- `aautitlepage.sty` til at generere titelbladet (`incl/misc/titlepage.tex`); indeholder makroer, som oprindeligt er skrevet af Jesper Kjær Nielsen (<https://github.com/jkjaer>) og som er blevet tilpasset til denne skabelon
+- `aautitlepage.sty` for generating the title page (`incl/misc/titlepage.tex`) includes code authored by Jesper Kjær Nielsen (<https://github.com/jkjaer>) and modified for this template by myself

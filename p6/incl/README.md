@@ -1,9 +1,9 @@
 ## incl
 
-Mappen `incl` er til de tekstfiler, som inkluderes i dokumentet, sorteret i undermapperne:
+The `incl` folder is for text files that are **incl**uded in the project, sorted into the subfolders:
 
-- `main` til hovedindholdet
-- `app` til appendicer
-- `misc` til formalia
-- `bib` til litteraturdatabasefiler
-- `pre` til preamble-filer
+- `main` for the main content
+- `app` for appendices
+- `misc` for formalities
+- `bib` for bibliography files
+- `pre` for preamble files

@@ -1,74 +1,75 @@
-% master.tex : master-fil for projektet
+% master.tex : master file for the project
 % ------------------------------------------------------------------------------
-% Dette er hovedfilen for projektet, hvori indhold fra alle input-filer (tekst,
-% billeder, litteraturdatabaser, osv.) samles 
+% This is the main file in the project, which collects the contents from all the
+% input files (text, images, literature databases, etc.).
 
-% Dokumenttypen 'book' er valgt pga. dens mange fleksible indstillinger
-% Se https://tex.stackexchange.com/a/36989/118167
-\documentclass[11pt,a4paper,oneside,openany,danish]{book}
+% The 'book' class is a document class with many flexible options.
+% See https://tex.stackexchange.com/a/36989/118167
+\documentclass[11pt,a4paper,oneside,openright,english]{book}
 
-% Variabler, som bruges til automatisk at indsætte titel, forfattere, osv. på
-% forsiden og titelbladet.
-\def \projecttitle       {Galton-Watson Processer}
-\def \projectsubtitle    {}
-\def \projectdegree      {Matematik}  % eller Matematik-Økonomi/Teknologi
-\def \projectperiod      {Forårssemesteret 2022}
-\def \projectnumber      {P4}
-\def \projectgroup       {4.207}
+% Some top level variables that are used to automatically input title, authors,
+% etc. in the title page and front page.
+\def \projecttitle       {Algebraic Curves}
+\def \projectsubtitle    {and their applications in coding theory}
+\def \projecttheme       {Algebraic Geometry Codes}
+\def \projectdegree      {Mathematics}  % or Mathematics-Economics/Technology
+\def \projectperiod      {Spring Semester 2022}
+\def \projectnumber      {P6}
+\def \projectgroup       {4.105b}
 \def \projectauthors     {
-  %Anne-Mette Iversen\\
-  Christoffer Hartvig Pinderup\\
   Martin Sig Nørbjerg\\
-  Markus Frederik Palmelund\\
-  Thomas Frandsen% ...
+  % ...
 }
 \def \projectsupervisors {
-    Jakob G. Rasmussen
+  Matteo Bonini
+  % ...
 }
 
-% Preamblet indeholder alle de indstillinger og makroer, som skal indsættes for
-% hovedindholdet, og i denne skabelon samles det i filen aaumath.sty, som
-% definerer en pakke, der kan indlæses med \usepackage.
+% The preamble, i.e. all the settings and commands that go before actual
+% document contents, in this template is handled in the single file aaumath.sty,
+% which defines a package that can be loaded here with \usepackage.
 \usepackage{aaumath}
-\usepackage{amssymb}
-% Dokumentets indhold indsættes mellem \begin- og \end-makroerne for
-% 'document'-blokken
+
+% All contents of the document go between the \begin and \end commands for the
+% 'document' environment.
 \begin{document}
 
-% Dokumentets 'front matter' tælles ikke med ifm. antal sider og nummereres med
-% romerske tal. Herunder hører f.eks. forsiden, titelbladet, forordet og
-% indholdsfortegnelsen.
+% The front matter is not counted in the numbered pages and are instead numbered
+% with roman numerals. This consists of, for example, the front page, title
+% page, preface, and table of contents.
 \frontmatter
 \include{incl/misc/frontpage}
 \include{incl/misc/titlepage}
+\include{incl/misc/preface}
 \include{incl/misc/contents}
+\include{incl/misc/notation}
 
-
-% Dokumentets 'main matter' (hovedindhold) er der, hvor det meste indhold skal
-% sættes ind. Sider og overskrifter er nummererede med arabiske tal.
+% The main matter is were the bulk of your work goes. Pages and headings have
+% arabic numbers.
 \mainmatter
-\input{main/index}
-% Input-filer bør opdeles således, at hver fil svarer til et kapitel. Makroen
-% \include indsætter et sideskift og indholdet fra den givne stil.
+\include{main/codes/index}
+\include{main/geom/index}
+% Input files should be partitioned such that each file corresponds to one
+% chapter. The \include command forces a page break and inserts the contents of
+% the input file.
 
-% \include{incl/main/example1}
-% \include{incl/main/example2}
-% ...
 
-% Appendicer indsættes inde i en appendices-blok og bliver nummereret med
-% bogstaver i stedet for tal
+% Appendices are included inside an appendices block, which enumerates chapters
+% with letters, starting from A, instead of numbers.
 \begin{appendices}
-\include{main/appendix/index}
+\label{Appendices}
+\include{app/fields_and_multivariate_polynomials}
+\include{app/toc}
+
 \end{appendices}
 
-
-% Dokumentets 'back matter' er til ekstra ting som f.eks. litteraturlisten.
-% Overskrifter bliver ikke nummereret her.
+% The backmatter is for extra stuff. Headings are not numbered.
 \backmatter
 
-% Automatisk litteraturliste baseret på, hvilke kilder, der er blevet refereret
-% til i løbet af rapporten.
-\bibliographystyle{apalike}
+% Automatic list of references, based on which references in the literaturery
+% database files were referenced throughout the document.
+
+\bibliographystyle{apalike_new}
 \bibliography{
   incl/bib/books,
   incl/bib/articles,

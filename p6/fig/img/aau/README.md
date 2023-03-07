@@ -1,5 +1,5 @@
 ## fig/img/aau
 
-Mappen `fig/img/aau` er til officiel AAU-grafik, som er brugt i skabelonen.
+The `fig/img/aau` folder is for official AAU graphics bundled with the template.
 
-Mere officiel grafik kan findes på <https://www.design.aau.dk>.
+More graphics can be found on <https://www.design.aau.dk>.

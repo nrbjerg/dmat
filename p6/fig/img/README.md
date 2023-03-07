@@ -1,44 +1,44 @@
 ## fig/img
 
-Mappen `fig/img` er til billedfiler som PDF, PNG, JPG, osv.
-Disse kan indsættes i dokumentet via kommandoen `\includegraphics`, f.eks.
+The `fig/img` folder is for image files like PDFs, PNGs, JPGs, etc.
+These can be included in the document via the command `\includegraphics`, e.g.
 
 ```latex
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=\textwidth]{fig/img/billedfil}
-  \caption{Figurtekst}
+  \includegraphics[width=\textwidth]{fig/img/imagefile}
+  \caption{Figure caption}
   \label{fig:label}
 \end{figure}
 ```
 
-hvor `billedfil` ikke behøver at inkludere filendelsen.
+where `imagefile` doesn't need to include the file extension.
 
 
-### Makroer for at indsætte billeder
+### Custom commands for inputting images
 
-To nyttige makroer til figurer er defineret i `incl/pre/cmds.tex`:
+Two handy shortcut commands are defined in `incl/pre/cmds.tex`:
 
-  * `imgfig`: for at indsætte et enkelt billede som figur
-  * `dimgfig`: for at indsætte to billeder ved siden af hinanden
+  * `imgfig`: for inserting a single image as a figure
+  * `dimgfig`: for inserting two images as side-by-side figures
 
-Eksempler:
+Examples:
 
 ```latex
-% Indsæt en figur med en bredde på 75% af siden (inden for margener)
-% Figurens label er `fig:billedfil`
-\imgfig{billedfil}{Billedteksten}
-% Det valgfrie argument (i kantede parenteser) sætter denne procentdel
-\imgfig[0.5]{billedfil}{Billedteksten}
+% Insert a figure with a width of 75% of the page (within margins)
+% The label of this figure is `fig:imagefile`
+\imgfig{imagefile}{The image caption}
+% The optional argument (in square brackets) controls this percentage
+\imgfig[0.5]{imagefile}{The image caption}
 
-% Indsæt to lige brede figurer side om side
-% Deres labels er `fig:billedfil1` og `fig:billedfil2`
-\dimgfig{billedfil1}{Første figurtekst}{billedfil2}{Anden figurtekst}
-% Det valgfrie argument styrer opdelingen af sidebredden
-% Her vil den ventre figur fylde 30% af siden, og den højre vil fylde 70%
-\dimgfig[0.3]{billedfil1}{Første figurtekst}{billedfil2}{Anden figurtekst}
+% Insert two images as two side-by-side figures, with an even split
+% Their labels are `fig:imagefile1` and `fig:imagefile2`
+\dimgfig{imagefile1}{Caption of first image}{imagefile2}{Caption of second image}
+% The optional argument controls the split percentage
+% Here, the left image will take up 30% of the page, and the right will take up 70%
+\dimgfig[0.3]{imagefile1}{Caption of first image}{imagefile2}{Caption of second image}
 ```
 
-NB: disse makroer virker kun med billedfiler.
-For figurer med f.eks. TiKZ-kode, skal man bruge `figure`-blokken manuelt.
-Se `fig/tikz/README.md` for eksempler på dette.
+NB: these commands only work with image files.
+For figures using e.g. TiKZ code, you need to use the `figure` environment manually.
+See `fig/tikz/README.md` for examples of this.

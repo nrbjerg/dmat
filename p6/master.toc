@@ -1,0 +1,13 @@
+\babel@toc {english}{}\relax 
+\contentsline {chapter}{Preface}{ii}{chapter*.1}%
+\contentsline {chapter}{Notation and Shorthands}{iv}{chapter*.3}%
+\contentsline {chapter}{\numberline {1}Error Correcting Codes}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Transmission and Nearest Neighbour Decoding}{3}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Bounds on Linear Codes}{4}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}Assymptotic Gilbert-Varshamov Bound}{5}{subsection.1.2.1}%
+\contentsline {chapter}{\numberline {2}Algebraic Geoemetry}{8}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Hilbert Basis Theorem}{10}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Affine varities}{10}{section.2.2}%
+\contentsline {part}{Appendices}{11}{section*.7}%
+\contentsline {chapter}{\numberline {A}Fields and Polynomials}{12}{appendix.1.A}%
+\contentsline {section}{\numberline {A.1}Algebraicly Closed Fields}{13}{section.1.A.1}%

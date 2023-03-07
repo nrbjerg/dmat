@@ -1,0 +1,33 @@
+\section{Bounds on Linear Codes}\label{sec:bounds}
+In this section we will introduce a few select bounds for the parameters of codes, namely the Singleton and assymptotic Gilbert-Varshamov bound. We will start by stating and proving the following Lemma, it's proof will be based upon the ideas presented in the proof of Theorem 2 found in \cite{the_singleton_bound_and_rs_code}.
+
+\begin{proposition}\label{prop:d-1_distinct_columns_are_linearly_independent}
+  let $\mathcal{C}$ be a $[n, k, d]_q$ code, with parity check matrix $H$ then any $d-1$ columns of $H$ are $\mathbb{F}_{q}$-linearly independent.
+\end{proposition}
+
+\begin{proof}
+  Let $h_1, \ldots, h_n$ be the columns of $H$, assume for the sake of contradiction that there exists distinct indices $i_1, i_2, \ldots i_{d-1}$ such that $h_{i_{1}}, h_{i_{2}}, \ldots, h_{i_{d-1}}$ are $\mathbb{F}_{q}$-linearly dependent.
+  Then we may pick $c \in \mathcal{C} \setminus \left\{0\right\}$ with $\wt(c) \leq d - 1$, by setting $c_{k} = 0$ for all $k \not \in \left\{i_1, i_2 \ldots, i_{d-1}\right\}$, but as $h_{i_{1}}, h_{i_{2}}, \ldots, h_{i_{d-1}}$ are $\mathbb{F}_{q}$-linearly dependent, we can find at least one $k \in \left\{i_1, i_2 \ldots, i_{d-1}\right\}$ such that we can pick $c_k \neq 0$.
+  Thus we have $\wt(c) \leq d - 1$, which contradict the assumption that $d$ is the minimum distance of $\mathcal{C}$.
+\end{proof}
+
+The Singleton bound now naturally follows.
+
+\begin{corollary}[Singleton Bound]\label{cor:singleton_bound}
+  Let $\mathcal{C}$ be a $[n, k, d]_q$ code then $d-1 \leq n - k$.
+\end{corollary}
+
+\begin{proof}
+  Let $H$ be a parity check matrix of $\mathcal{C}$, then $d - 1 \leq \rank(H)$ as any collection of $d-1$ columns of $H$ are $\mathbb{F}_{q}$-linearly independent, confer Proposition \ref{prop:d-1_distinct_columns_are_linearly_independent}. The rest follows from the fact that $\rank(H) = n -k $ confer Lemma \ref{lem:H_has_rank_n-k}.
+\end{proof}
+
+\begin{remark}
+  Rearranging the Singleton bound to obtain $d + k \leq n + 1$ makes the trade-of between minimum distance and dimension, even more obvious, as such we can either wish to find a code with a high minimum distance $d$ or a high dimension $k$, relative to it's length $n$, but not both!
+\end{remark}
+
+\begin{definition}\label{def:MDS_code}
+  If a $[n, k, d]_{q}$ code $\mathcal{C}$ meets the singleton bound, that is $d - 1 = n - k$, then $\mathcal{C}$ is called a \textbf{maximum distance seperable (MDS)} code.
+\end{definition}
+We have actually already seen a MDS code, mainly the repetition code of length $n$, as seen in example \ref{exmp:repetition_code}
+\input{main/codes/RS}
+\input{main/codes/gilbert_varshamov}

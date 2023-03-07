@@ -1,64 +1,60 @@
-% incl/pre/pkgs.tex : pakker, som bruges i rapporten
+% incl/pre/pkgs.tex : packages used in the project
 % ------------------------------------------------------------------------------
-% Makroer distribueres i pakker, som kan indlæses med \usepackage
+% Macros are bundled together in packages, which can be loaded with \usepackage
 
 
-% Basis-pakker -----------------------------------------------------------------
-\usepackage[T1]{fontenc}           % for at kunne vise visse tegn og bogstaver
-\usepackage[utf8]{inputenc}        % for at kunne læse visse tegn og bogstaver
-\usepackage{babel}                 % sprogindstillinger
-\usepackage[square]{natbib}        % litteraturhenvisninger
-\usepackage{hyperref}              % diverse funktioner for links og referencer
-\usepackage{xpatch}                % til patching af makroer
+% Base packages ----------------------------------------------------------------
+\usepackage[T1]{fontenc}           % support for printing accented characters
+\usepackage[utf8]{inputenc}        % support for inputting accented characters
+\usepackage{babel}                 % language specific settings
+\usepackage[square,numbers]{natbib}        % set citation style to use square brackets
+\usepackage{hyperref}              % insert clickable hyperlinks
+\usepackage{xpatch}                % macro patching commands
 
-% Matematik-pakker -------------------------------------------------------------
-\usepackage{mathtools}             % matematik-makroer og blokke
-\usepackage{amssymb}               % yderligere matematiske symbolder
-\usepackage{amsthm}                % blokke til sætninger osv.
-\usepackage{bbm}                   % udvidet 'blackboard bold' skriftstil
-\usepackage{bm}                    % bedre fed skrift for matematiske symboler
-\usepackage{amsmath}
-\DeclareMathOperator{\Tr}{tr}
-% Figur-pakker -----------------------------------------------------------------
-\usepackage[dvipsnames]{xcolor}    % til farvet skrift
-\usepackage{graphicx}              % billedhåndtering
-\usepackage{booktabs}              % bedre tabeller
-\usepackage{caption}               % indstillinger for billedtekst
-\usepackage{subcaption}            % gruppering af flere billeder sammen
-\usepackage{tikz}                  % generer vektorgrafik med LaTeX-kode
-% \usepackage[chapter]{algorithm}    % algoritme-figurer
-% \usepackage{algpseudocode}  % pseudokode
-%\usepackage[ruled,vlined]{algorithm2e}
-\usepackage{listings}              % visning af kildekode
-%\usepackage{algpseudocode}
-\usepackage{algpascal}
-\usepackage{algorithm} 
-\usepackage{algpseudocode}
-\usepackage{blkarray}
-\usepackage{pgfplots}
-\pgfplotsset{compat=1.10}
-\usepgfplotslibrary{fillbetween}
-\usetikzlibrary{patterns}
-\DeclareMathOperator*{\argmin}{arg\,min}
+% Math packages ----------------------------------------------------------------
+\usepackage{mathtools}             % math commands and environments
+\usepackage{amssymb}               % additional math symbols
+\usepackage{amsthm}                % theorem environments
+\usepackage{bbm}                   % improved 'blackboard bold' styling
+\usepackage{bm}                    % improved bold faces for math symbol
+\DeclareMathAlphabet{\pazocal}{OMS}{zplm}{m}{n}     % normal mathcal
+\DeclareMathAlphabet{\mathbbb}{U}{msb}{m}{n}        % normal mathbb
 
-% Styling-pakker ---------------------------------------------------------------
-\usepackage{microtype}             % forbedret justering af tekst
-\usepackage{emptypage}             % fjern sidetal på tomme sider
-\usepackage{fancyhdr}              % indstillinger for sidehoved/-fod
-\usepackage{titlesec}              % indstillinger for overskrifter
-\usepackage[margin=3cm]{geometry}  % indstillinger for sidemargen
-\usepackage[toc,page]{appendix}    % bedre appendicer
-\usepackage[some]{background}      % til at indsætte baggrundsbilleder
-\usepackage{bigints}
-\usepackage{enumerate}
+% Figure packages --------------------------------------------------------------
+\usepackage[dvipsnames]{xcolor}    % font colouring functionality
+\usepackage{graphicx}              % handling of images
+\usepackage{pagecolor}
+\usepackage{booktabs}              % improved tables
+\usepackage{caption}               % customisation of captions
+\usepackage{subcaption}            % for grouping figures together
+\usepackage{tikz}                  % drawing vector graphics
+\usepackage[chapter]{algorithm}    % algorithm floats
+\usepackage[noend]{algpseudocode}  % pseudocode listings
+\usepackage{listings}              % source code listings
 
-% Skrifttyper ------------------------------------------------------------------
+% Styling packages -------------------------------------------------------------
+\usepackage{microtype}             % improve full justification and font kerning
+\usepackage{emptypage}             % suppress page numbering on empty pages
+\usepackage{fancyhdr}              % easy customisation of headers and footers
+\usepackage{titlesec}              % easy customisation of section titles
+\usepackage[margin=3cm]{geometry}  % adjust page margins
+\usepackage[toc,page]{appendix}    % improved appendix control
+\usepackage[some]{background}      % use background image on front page
+\usepackage{enumerate}             % numbering
+\usepackage{enumitem}
+\usepackage{multirow}
+
+% Font packages ----------------------------------------------------------------
 % http://www.tug.org/pracjourn/2006-1/hartke/hartke.pdf
 % http://www.tug.dk/FontCatalogue/
-\usepackage{fourier}               % Adobe Utopia som primær skrifttype
-\usepackage{DejaVuSansMono}        % DejaVu Sans Mono til bl.a. kildekode
+%\usepackage{fourier}               % Adobe Utopia base font
+\usepackage{DejaVuSansMono}        % DejaVu Sans Mono for monospace text
+\usepackage[normalem]{ulem}        % Lets us strike out words
 
-% Inkluderede tredjepartspakker ------------------------------------------------
-% Pakken aautitlepage indholder modificerede makroer fra en tredjepart.
-% Se incl/pre/ext/aautitlepage.sty for detaljer
+% Bundled 3rd party package ----------------------------------------------------
+% The aautitlepage package consists of modified code from a third party.
+% See incl/pre/ext/aautitlepage.sty for details
 \usepackage{incl/pre/ext/aautitlepage}
+
+\usepackage{lastpage}
+\usepackage{fancyhdr}

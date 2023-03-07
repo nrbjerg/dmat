@@ -1,17 +1,25 @@
 % incl/misc/contents.tex :
 % ------------------------------------------------------------------------------
 
-\pdfbookmark[0]{Indhold}{indhold}
+\pdfbookmark[0]{Contents}{contents}
 
-% Indstillingerne i denne fil er grupperet, så de ikke påvirker andre dele
+% The settings in this file are grouped so they only apply here
 \begingroup
 
-% Slå twoside fra midlertidigt for at undgår sideskift
+% Temporarily disable twoside layout to avoid blank pages in this section
 \makeatletter
 \@twosidefalse
 \makeatother
 
-% Placer indholdsfortegnelsen på sin egen side (bedst når den kun fylder en side)
+% Put table of contents on its own page (best for a TOC that fits on one page)
 \tableofcontents
+\clearpage
+
+% Put the lists on subsequent pages without page breaks
+%\let\clearpage\relax
+%\listoffigures
+%\listoftables
+%\listofalgorithms
+%\lstlistoflistings
 
 \endgroup

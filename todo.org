@@ -1,11 +1,10 @@
 #+title: Todo
 
-Hello Matteo
-
-I noticed that
-Now since our exam period has concluded, i have begun my research into algebraic curves.
-
-
+* Questions
++ Difference between k-isomorphic and a "normal" isomorphism between finite fields. This might be a stupid question, but aren't these definitions equivalent, since an isomorphism phi takes 1 to 1, and thus if we must have phi(a) = a for all a in k?, since a can be written as a sum of ones (at least if k is a finite field.)
++ How impotaint are things like the zariski topology, for the  purposes of defining AG codes? Or should I stick to the elements presented in "Codes, Cryptology and Curves with Computer Algebra" / The notes by Massimo Giulietti and look the missing proofs in fultons book?
++ Is (1) of lemma 1.12 in Massimo Giulietti's notes really "if and only if", i'm stugelling to see the <== implication, as $w$ $F_q$-dependent columns doesn't mean that we can pick $w$ non zero weights in our linear combination
++ In regards to the Assymptotic Gilbert-Varshamov bound, I'm considering leaving out the proof, for the sake  of time & resources, what are your thoughs about this?
 
 * Bachellor
 ** Book (Algebraic Geometric Codes: Basic Notions)
@@ -20,7 +19,3 @@ Now since our exam period has concluded, i have begun my research into algebraic
 + [ ] 3.4 (165)
 
 ** Notes (Introduction to Algebraic Geometry)
-
-
-* Spare time
-** Groebner bases

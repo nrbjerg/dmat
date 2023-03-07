@@ -1,8 +1,8 @@
 ## incl/pre
 
-Mappen `incl/pre` indeholder det opdelte preamble;
+The `incl/pre` folder contains the modularised preamble;
 
-  * `incl/pre/pkgs.tex` indlæser alle de brugte pakker
-  * `incl/pre/cmds.tex` definerer egne makroer og blokke
-  * `incl/pre/conf.tex` indeholder diverse indstillinger
-  * `incl/pre/ext/` en mappe med tredjepartskode (dvs. LaTeX-makroer, som er skrevet af andre, og som ikke er tilgængelig i en pakke i almindelige LaTeX-distributioner)
+  * `incl/pre/pkgs.tex` loads all the packages used
+  * `incl/pre/cmds.tex` defines custom commands and environments
+  * `incl/pre/conf.tex` holds various configurations
+  * `incl/pre/ext/` a folder for bundled, external code (i.e. LaTeX macros authored by someone else which isn't available as a package in the usual TeX distributions)

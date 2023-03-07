@@ -1,0 +1,127 @@
+Algebraic geometry is the study of zero sets of polynomials, over an arbitrary but closed field $\K$, please confer definition \ref{def:alg_closed}.
+The ring of multivariate polynomials with coefficients in $\K$ is denoted as $\K[X_{1}, \ldots, X_{n}]$ or $\pols$.
+First we introduce some basic definitions and ground work, before moving onto some more interesting results.
+\begin{definition}
+  The $n$-dimensional \textbf{affine space} over $\K$ is defined as $\A^{n} := \{(a_{1}, \ldots, a_{n}) \;\vert\; a_{i} \in \K\}$.
+\end{definition}
+Suppose $P = (a_{1}, \ldots, a_{n}) \in \A^{n}$ and $f \in \pols$, then $P$ is called a \textit{point} and we may write $f(P)$ instead of $f(a_{1}, \ldots, a_{n})$.
+\begin{definition}\label{def:alg_set}
+  Let $S \subseteq \pols$, then we define the \textbf{zero set} of $S$ as
+  \begin{equation*}
+    Z(S) = \{P \in \A^{n} | f(P) = 0 \text{ for all }  f \in S\}.
+  \end{equation*}
+  and $Z(S)$ is said to be an \textbf{affine algebraic set} in $\A^{n}$.
+\end{definition}
+\begin{remark}\label{rem:bigger_sets_lead_to_smaller_zero_sets}
+  It's easy to see that if $S \subseteq \pols$ and $T \subseteq S$, then $Z(S) \subseteq Z(T)$, since $P \in Z(S)$ implies $f(P) = 0$ for all $f \in S$ and in particular for all $f \in T$.
+\end{remark}
+
+When $S = \{f_{1}, \ldots, f_{m}\} \subseteq \pols$, we may write $Z(S)$ as $Z(f_{1}, \ldots, f_{m})$. If $f \in \pols \backslash \K$ we call $Z(f)$ a \textit{hypersurface}. We will now show that every affine algebraic set, is the zero set of some ideal in $\pols$
+
+\begin{lemma}\label{lem:algebraic_set_of_ideal}
+  Let $S \subseteq \pols$, then $Z(S) = Z(\gen{S})$.
+\end{lemma}
+\begin{proof}
+  Since $S \subseteq \gen{S}$, it follows from remark \ref{rem:bigger_sets_lead_to_smaller_zero_sets} that $Z(\gen{S}) \subseteq Z(S)$. Now suppose $p \in Z(S)$, then $f(p) = 0$ for all $f \in S$, now let $g \in \gen{S}$, thus $g$ can be written as
+  \begin{equation*}
+    g = \sum^{n}_{i = 1} h_{i} f_{i}
+  \end{equation*}
+  for some $n \in \N, h_{i} \in \F[\underline{x}_{n}], f_{i} \in S$, now evaluating $g$ at the point $p$ gives:
+  \begin{equation*}
+    g(p)=\sum^{n}_{i = 1} h_{i}(p) f_{i}(p) = 0
+  \end{equation*}
+  since $f_{i}(p) = 0$ for all $i = 1, \ldots, n$.
+\end{proof}
+We will now define a topology on $\A^{n}$, where the affine algebraic sets form the closed sets.
+\begin{definition}
+  The set $\mathcal{T}_{Z} = \{Z(S)^{c} \;\vert\; S \subseteq \pols\}$ is called the \textbf{Zariski topology}. We will denote the set of closed sets, in the topology $\mathcal{T}_{Z}$, with $\mathcal{F}_{Z} = \{Z(S) \;\vert\; S \subseteq \pols\}$.
+\end{definition}
+We shall now prove that the Zariski topology is indeed actually a topology over $\A^{n}$. We do however first require the following proposition.
+\begin{proposition}\label{prop:closed_sets_zariski}
+  Let $S, T \subseteq \pols$ and $\{S_{i}\}_{i \in \mathcal{I}}$ be a family of sets of polynomials in $\pols$ then:
+  \begin{enumerate}
+    \item $\A^{n} \in \mathcal{F}_{Z}$ and $\emptyset \in \mathcal{F}_{Z}$
+    \item $Z(S) \cup Z(T) \in \mathcal{F}_{Z}$.
+    \item $\bigcap_{i \in \mathcal{I}} Z(S_{i}) \in \mathcal{F}_{Z}$.
+  \end{enumerate}
+\end{proposition}
+\begin{proof} We will prove each claim individually.
+  \begin{enumerate}
+      \item We have $\A^{n} = Z(\emptyset)$ and $\emptyset = Z(\K^{*})$.
+      \item It is the case that $Z(S) \cup Z(T) = Z(S \cdot T)$, where $S \cdot T = \{f \cdot g \;\vert\; f \in S, g \in T\}$.
+        If $p \in Z(S) \cap Z(T)$, then $h(p) = f(p) \cdot g(p) = 0$ for all $f \in S$ and $g \in T$. Thus $Z(S) \cap Z(T) \subseteq Z(S \cdot T)$.
+        On the otherhand if $p \in Z(S \cdot T)$, then $h(p) = f(p) \cdot g(p) = 0$ for all $f \in S, g \in T$, assuming $p \not \in Z(S)$, then there exists $f \in S$ such that $f(p) \neq 0$ however this implies that $g(p) = 0$ for all $g \in T$, since $\K$ is a domain, and it therefore follows $Z(S \cdot T) \subseteq Z(S) \cap Z(T)$.
+      \item Finally we have $\bigcap_{i \in \mathcal{I}} Z(S_{i}) = Z \left(\bigcup_{i \in \mathcal{I}} S_i\right)$, which follows directly from definition \ref{def:alg_set}. \qedhere
+  \end{enumerate}
+\end{proof}
+
+\begin{corollary}
+  $(\A^{n}, \Zar)$ is a topological space.
+\end{corollary}
+\begin{proof}
+  Let $X, Y \in \Zar$, then there exists $S, T \subseteq \pols$ such that $X = \A^{n} \backslash Z(S), Y = \A^n \backslash Z(T)$, thus it follows that
+  \begin{equation*}
+    X \cap Y = \A^{n} \backslash (Z(S) \cap Z(T)) = \A^{n} \backslash Z(S \cdot T) = Z(S \cdot T)^{c} \in \Zar.
+  \end{equation*}
+  confer proposition \ref{prop:closed_sets_zariski}. Let $\{X_{i}\}_{i \in \mathcal{I}}$ be a family of sets in $\Zar$, then there exists a family $\{S_{i}\}_{i \in \mathcal{I}}$, such that $X_{i} = \A^{n} \backslash Z(S_{i})$ for all $i \in \mathcal{I}$. It therefore follows that
+  \begin{equation*}
+    \bigcup_{i \in \mathcal{I}} X_{i} = \bigcup_{i \in \mathcal{I}} \A^{n} \backslash Z(S_{i}) = \A^{n} \backslash \bigcap_{i \in \mathcal{I}} Z(S_{i}) = \A^{n} \backslash Z\left(\bigcup_{i \in \mathcal{I}} S_{i}\right) \in \Zar
+  \end{equation*}
+  which follows from De Morgan Law for set differences and proposition \ref{prop:closed_sets_zariski}. Finally \\ $\emptyset, \A^{n} \in \mathcal{F}_{Z}$, implies that $\emptyset^{c} = \A^{n} \in \Zar$ as well as $(\A^{n})^{c} = \emptyset \in \Zar$.
+\end{proof}
+\begin{example}
+  \textbf{TODO}
+\end{example}
+
+
+
+\begin{definition}
+  Let $X \subseteq \A^n$, then the \textbf{ideal of $X$} is defined as
+  \begin{equation*}
+    I(X) := \{f \in \pols \;\vert\; f(p)^{} = 0 \text{ for all } p \in X\}
+  \end{equation*}
+\end{definition}
+
+\section{Hilbert Basis Theorem}%
+
+
+\begin{definition}
+  Let $R$ be a ring, and supposse all ideals of $R$ are finitely generated, then $R$ is said to be \textbf{Noetherian}.
+\end{definition}
+
+\begin{remark}\label{rem:noetherian_examples}
+  Every field $\F$ is Noetherian, since $\emptyset = \gen{\emptyset}$ and $\F = \gen{1}$ are the only ideals. Another even more obvious example are principal ideal domains.
+\end{remark}
+
+We will now state and prove the main result of this section,
+\begin{theorem}[Hilbert basis theorem]\label{thm:hbt}
+  Let $R$ be Noetherian, then $R[\underline{x}_{n}]$ is Noetherian.
+\end{theorem}
+\begin{proof}
+\textbf{TODO}
+\end{proof}
+
+\begin{corollary}\label{cor:pols_noetherian}
+  Let $\F$ be an arbitrary field, then $\fPols$ is Noetherian.
+\end{corollary}
+\begin{proof}
+  Follows directly from remark \ref{rem:noetherian_examples} and theorem \ref{thm:hbt}.
+\end{proof}
+
+\begin{theorem}
+  Suppose $S \subseteq \pols$, then there exists $n \in \N$ and $f_{1}, \ldots, f_{n} \in \pols \backslash \K$ such that
+  \begin{equation*}
+    Z(S) = \bigcap_{i = 1}^{n} Z(f_{i})
+  \end{equation*}
+\end{theorem}
+\begin{proof}
+  The ring $\pols$ is noetherian, confer corollary \ref{cor:pols_noetherian}, and since $Z(S) = Z(\gen{S})$ confer lemma \ref{lem:algebraic_set_of_ideal}, it follows that there exists $f_{1}, \ldots, f_{n} \in \pols$, such that
+  \begin{equation*}
+    Z(S) = Z(\gen{f_{1}, \ldots, f_{n}}) = Z(f_{1}, \ldots, f_{n}) = \bigcap_{i = 1}^{n} Z(f_{i}). \qedhere
+  \end{equation*}
+\end{proof}
+
+\section{Affine varities}
+\begin{definition}[Affine and quasi-affine varieties]
+  Let $X \in \cZar$, $X$ is called an affine variety if there exists no
+\end{definition}
