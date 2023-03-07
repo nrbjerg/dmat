@@ -21,12 +21,13 @@ Moving forward we will use the notation $B_{q}(n, d)$ be the maximum number of c
   \end{equation*}
 \end{proposition}
 \begin{proof}\textcolor{red}{det her bevis skal du se bort fra.}
-  Assume for the sake of contradiction that there exists at least one $y \in \mathbb{F}_q^{n}$, such that $y \not \in \bigcup_{c \in \mathcal{C}} \overline{B_{d-1}}(c)$. Now pick
+  If there exists at least one $x \in \mathbb{F}_q^{n}$, such that $x \not \in \bigcup_{c \in \mathcal{C}} \overline{B_{d-1}}(c)$.
+  Then 
   \begin{equation*}
-    x = \underset{y \in \mathbb{F}_q^{n} \setminus \bigcup_{c \in \mathcal{C}} \overline{B_{d-1}(c)}}{\arg \min} \left( d(y, \mathcal{C})\right)
+	  \mathcal{C}' := \mathcal{C} + \Span\{x\}
   \end{equation*}
-
-
+	is another linear code, and $\abs{\mathcal{C}'} > \abs{\mathcal{C}}$, we will now prove that $\mathcal{C}'$ has minimum distance $d$ which in turn contradicts that $\mathcal{C}$ had the maximum number of codewords. Assume for the sake of contradiction, that $\mathcal{C}'$ has minimum distance less than $d$, this in turn imply the existence of $c' \in \mathcal{C}'$ such that $\wt(c') \leq d - 1$.
+$.
   then $k x \not \in \bigcup_{c \in \mathcal{C}} \overline{B_{d-1}}(c)$ for all $k \in \mathbb{F}_{q}$ \textcolor{red}{\textbf{TODO}}. This in turn imply that $\mathcal{C}' = \mathcal{C} \cup \Span \left\{x\right\}$ is another linear code, with minimun distance $d$ and length $n$, however $\abs{\mathcal{C}'} > \abs{\mathcal{C}}$, which contradicts the fact that $\mathcal{C}$ had the maximum number of codewords.
 \end{proof}
 
