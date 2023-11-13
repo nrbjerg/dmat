@@ -1,0 +1,109 @@
+\section{Syndrome Decoding} \label{sec:syndrome_decoding}
+Before we get to the syndrome we introduce a way to partition a linear code, which will the syndrome decoding algorithm will be built upon.
+\begin{definition}
+  Let $\mathcal{C}$ be a $[n, k]_q$ code and let $y \in \mathbb{F}_q^n$, then the \textit{coset} of $\mathcal{C}$ determined by $y$ is defined as:
+  \begin{equation*}
+    \mathcal{C} + y := \left\{c + y : c \in \mathcal{C}\right\} =: y + \mathcal{C}
+  \end{equation*}
+\end{definition}
+We note that these cosets are nothing more, than the cosets found in group theory as $(\mathcal{C}, +)$ forms a subgroup of the abelian group $(\mathbb{F}_q^n, +)$, hence the results of the following proposition should come as no suprice, never the less, we will provide a proof.
+\begin{proposition}\label{prop:basic_properties_of_cosets}
+  Let $\mathcal{C}$ be a $[n, k]_q$ code, then the following holds for all $y, y' \in \mathbb{F}_q^{n}$:
+  \begin{enumerate}
+    \item If $y' \in \mathcal{C} + y$ then $\mathcal{C} + y = \mathcal{C} + y'$.\label{prop:basic_properties_of_coset1}
+    \item If $\mathcal{C} + y \neq \mathcal{C} + y'$ then $(\mathcal{C} + y) \cap (\mathcal{C} + y') = \emptyset$. \label{prop:basic_properties_of_coset2}
+    \item There are $q^{n - k}$ disjoint cosets of $\mathcal{C}$. \label{prop:basic_properties_of_coset3}
+  \end{enumerate}
+\end{proposition}
+\begin{proof}
+  We start with Assertion \ref{prop:basic_properties_of_coset1}:
+  If $y' \in \mathcal{C} + y$, then $y' = c + y$ for some $c \in \mathcal{C}$,
+  If $y' \in \mathcal{C} + y$, then $y' = c + y$ for some $c \in \mathcal{C}$, hence $y' + (-c) = y$, now since $y' + (-c)$ and $\mathcal{C}$ is a vector space we see that
+  \begin{equation*}
+   \underset{=y}{\underbrace{y' + (-c)}} + c' \in \mathcal{C} + y \text{ for all } c' \in \mathcal{C}
+  \end{equation*}
+  so $y' + \mathcal{C} \subseteq y + \mathcal{C}$. A similar argument can be made in the other direction, hence $\mathcal{C} + y = \mathcal{C} + y'$.
+
+  Continuing with Assertion \ref{prop:basic_properties_of_coset2}: Assume for the sake of contradiction that $\mathcal{C} + y \neq \mathcal{C} + y'$ and $(\mathcal{C} + y) \cap (\mathcal{C} + y') \neq \emptyset$, then pick $x \in (\mathcal{C} + y) \cap (\mathcal{C} + y')$, now by Assertion \ref{prop:basic_properties_of_coset1} we have $\mathcal{C} + y) = x + \mathcal{C} = (\mathcal{C} + y')$ which is clearly a contradiction.
+
+  Finally Assertion \ref{prop:basic_properties_of_coset3} follows by the Lagrange index theorem as:
+  \begin{equation*}
+    q^{n} = \abs{\mathbb{F}_q^n} = \abs{\mathbb{F}_q^{n} / \mathcal{C}}\abs{\mathcal{C}} = \abs{\mathbb{F}_q^n / \mathcal{C}} q^{k}
+  \end{equation*}
+  implies that $\abs{\mathbb{F}_q^n / \mathcal{C}} = q^{n - k}$. The fact that the cosets are disjoint follows directly from Assertion \ref{prop:basic_properties_of_coset2}.
+\end{proof}
+
+\begin{definition}
+  Let $\mathcal{C}$ be a $[n, k]$ code with parity check matrix $H \in \mathbb{F}_q^{(n - k) \times n}$, then for any  $y \in \mathbb{F}_q^n$ we define its \textit{syndrome}, with respect to $H$, to be $S_H(y) = H y$.
+\end{definition}
+
+\begin{remark}\label{rem:basic_properties}
+  Clearly $S_H(y) = 0$ if and only if $y \in \mathcal{C}$, this is exactly the definition of a parity check matrix. In addition we have $S_H(y + y') = S_H(y) + S_H(y')$ since matrix vector multiplication is distributive.
+\end{remark}
+
+\begin{lemma}\label{lem:syndrome_is_the_same_iff_they_are_in_the_same_coset}
+  Let $\mathcal{C}$ be a $[n, k]_{q}$ code with parity check matrix $H$ and $y, y' \in \mathbb{F}_q^{n}$, then $S_H(y)=S_H(y')$ if and only if $y$ and $y'$ are in the same coset of $\mathcal{C}$.
+\end{lemma}
+
+\begin{proof}
+  Firstly we note that for all $y, y' \in \mathbb{F}_q^n$ there exists a $x \in \mathbb{F}_q^n$ such that $y = y' + x$ and hence $S_H(y) = S_H(y') + S_H(x)$ per Remark \ref{rem:basic_properties}. Now if $S_H(y) = S_H(y')$ we must have $S_H(x) = 0$ meaning $x \in \mathcal{C}$, again by Remark \ref{rem:basic_properties}. On the other hand if $y$ and $y'$ are in the same coset, then there exists a codeword $c \in \mathcal{C}$ such that $y = y' + c$ and hence $S_H(y) = S_H(y') + S_H(c) = S_H(y')$ by Remark \ref{rem:basic_properties}.
+  %First we note that we may write $y = c + e$ and $y' = c' + e'$ with $c, c' \in \mathbb{F}_q$ and $e, e' \in \mathbb{F}_q^{n}$. We see that $S_H(y) = S_H(c) + S_H(e) = S_H(e)$ by Remark \ref{rem:basic_properties_of_syndromes}, and similarly that $S_H(y') = S_H(e')$. Hence $S_H(y) = S_H(y')$ if and only if $S_H(e) = S_H(e')$, however this happends if and only if $e = e' + c^{*}$ for some $c^{*} \in \mathcal{C}$, by Remark \ref{rem:basic_properties_of_syndromes}.
+\end{proof}
+
+\begin{definition}\label{def:syndrome_lookup_table}
+  If $\mathcal{C}$ is a $[n, k]_q$ code, with parity check matrix $H \in \mathbb{F}_q^{(n - k) \times k}$, then we define the \textit{syndrome lookup table} (SLT) $S^{*}_H: \mathbb{F}_q^n \to \mathbb{F}_q^n$ as
+  \begin{equation*}
+    S_{H}^{*}(y) = \underset{e \in y + \mathcal{C}}{\arg \min} \; \wt(e)
+  \end{equation*}
+  Furthermore the vector $S_H^{*}(y)$ is called the \textit{coset leader} of $y + \mathcal{C}$.
+\end{definition}
+
+We are now finally able to describe the algorithm used for decoding recived words with syndrome decoding. Syndrome decoding will require such a lookup table, alternatively we could when decoding a received word $y$ go through the elements of $y + \mathcal{C}$ to find the coset leader, however this is impractical and we instead use a syndrome lookup table to avoid excess computation. Hence we will first introduce an algorithm for constructing such a lookup table.
+
+\begin{algorithm}[H]
+\caption{Syndrome Lookup Table Construction and Syndrome Decoding}\label{alg:syndrome_decoding}
+\begin{algorithmic}
+  \Procedure{SLT Construction} {$\mathcal{C}$: a $[n,k]_q$ code, $H$: parity check matrix of $\mathcal{C}$}
+  \State $S_H^{*} \gets \emptyset$
+  \For{$(y  + \mathcal{C}) \in \mathbb{F}_q^n / \mathcal{C}$}
+     \State $\hat{e} \gets \underset{e \in y + \mathcal{C}}{\arg \min} \; \wt(e)$
+     \State $S_H^{*} \gets S_H^{*} \cup \{(S_H(\hat{e}), \hat{e})\}$
+  \EndFor
+  \State \Return $S_H^{*}$ \Comment{Vied as a mapping.}
+  \EndProcedure
+  \newline
+
+  \Procedure{Syndrome Decoding} {$y$: received word, $S_{H}^{*}$: syndrome lookup table}
+    \State $\hat{e} \gets S_H^{*}(Hy)$
+    \State \Return $y - \hat{e}$
+  \EndProcedure
+\end{algorithmic}
+\end{algorithm}
+\begin{remark}
+The $S^*_H$ constructed in Algorithm \ref{alg:syndrome_decoding}, differs from the $S_H^{*}$ defined in Definition \ref{def:syndrome_lookup_table}, in that in the fact that it takes the syndrome of $y$ and returns the coset leader. However the function $S_H^{*} \circ S_H$ do confine to Definition \ref{def:syndrome_lookup_table}.
+\end{remark}
+\begin{remark}
+  Since $\hat{e}$ is the coset leader of $y + \mathcal{C}$, we know that $y - \hat{e}$ is our nearest neighbor estimate for $c$, since $\wt(\hat{e})$ is minimal.
+\end{remark}
+We also note that since every coset contains a finite number of words, we may simply iterate through them to find the one which minimizes the hamming weight. By now the diligent reader, might start to question how does all this relate to solving the McEliece problem, since we simply know a generator matrix? This might seem like a problem, however it is pretty trivial to solve, we start by proving the following theorem:
+
+\begin{theorem}\label{thm:from_generator_matrix_to_parity_check_matrix}
+  Let $\mathcal{C}$ be a $[n, k]_q$ code and $A \in \mathbb{F}_q^{(n - k) \times k}$. Then $G = \begin{bmatrix} I_k & A \end{bmatrix}$ is a generator matrix for $\mathcal{C}$ if and only if $H = \begin{bmatrix}-A^T & I_{n - k}\end{bmatrix}$ is a parity check matrix for $\mathcal{C}$.
+%Let $\mathcal{C}$ be a $[n, k]_q$ code. If $\mathcal{C}$ has a generator matrix $G$ which is in standard form, that is $G = \begin{bmatrix}
+%I_k & A
+%                                                                                                                   \end{bmatrix}$ for some $A \in \mathbb{F}_q^{(n  - k) \times k}$, then $H = \begin{bmatrix}
+%-A^T & I_{n - k}
+%                                                                                                                                                                                           \end{bmatrix}$ is a parity check matrix for $\mathcal{C}$.
+\end{theorem}
+\begin{proof}
+  We start by noting that $HG^T = -A^T + A^T = 0_{k \times k}$ hence all rows of $G$ are in $\Null(H)$. Hence if $G$ is a generator matrix of $\mathcal{C}$, then $H$ is a parity check matrix of $\mathcal{C}$. On the otherhand if $H$ is a parity check matrix for $\mathcal{C}$, then $G$ is a generator matrix for $\mathcal{C}$ since $\dim_{\mathbb{F}_q}(\Null(H)) = n - \rank(H) = n - (n - k) = k$ and $\rank(G) = k$. Hence the rows of $G$ must form a $\mathbb{F}_q$-basis of $\Null(H) = \mathcal{C}$.
+\end{proof}
+
+Hence if we receive a generator matrix for a $[n, k]_q$ code $C$, we can simply apply Gaussian elimination algorithm to get a generator matrix $G$ which is in reduced echelon form, note that $G$ isn't neccecarily standard form, but by multiplying our generator matrix $G$ by a permutation matrix $P$, we may obtain a generator matrix $G'$, which is in standard form, since $G$ has $k$ pivots as $\dim(\mathcal{C}) = k$. We note that $G'$ is not nessecarily a generator matrix for $\mathcal{C}$ but rather a generator matrix for a code $\mathcal{C}'$ permutation equvilent to $\mathcal{C}$. Applying Theorem \ref{thm:from_generator_matrix_to_parity_check_matrix} we obtain a parity check matrix $H'$ for $\mathcal{C}'$, which we transform into a parity check matrix $H$ of $\mathcal{C}$ by setting $H = P^{-1}H'$
+
+Finally we consider the time and space complexity of Algorithm \ref{alg:syndrome_decoding}. We will consider the two procedures described seperately, since we only need to create one syndrome lookup table once, to decode
+a given code.
+
+Since $\textsc{SLT Construction}$ loops over each coset of $\mathcal{C}$, of which there is $q^{n - k}$, by \ref{prop:basic_properties_of_cosets}\ref{prop:basic_properties_of_coset3}. To find the coset leader we can assume that we simply iterate over the words in $y + \mathcal{C}$, of which there is $q^k$, hence we see that $\textsc{SLT Construction}$ has a time complexity of $O(q^{n})$. In addition since each syndrome and coset leader pair needs to be stored, we see that $\textsc{SLT Construction}$ has a space complexity of $O(q^{n - k})$.
+
+Continuing with the $\textsc{Syndrome Decoding}$ procedure, we once again get a space complexity of $O(q^{n - k})$, since we have to store $S_H^{*}$, while the time complexity depends on the underlying datastructure chosen to represent $S_H^{*}$, however it will be atleast $O((n - k)n)$ since we have to compute $S_H(y) = Hy$ and $H$ is a $(n - k) \times n$ matrix

@@ -1,0 +1,19 @@
+ \chapter{Introduction}
+ Most of the widely used public key cryptosystems are build upon problems in abstract algebra and number theory, that seem hard to solve on classical computers, notable examples include the following problems:
+ \begin{problem}[Integer Factorization]\label{prob:int_fac}
+   Given $n \in \mathbb{N}$, compute the prime factors of $n$.
+ \end{problem}
+ \begin{problem}[Discrete Logarithm]\label{prob:disc_log}
+   Let $n \in \mathbb{N}$ and $a$ be an element of a group $(G, \circ)$, then given $a^{n} = \underset{n \text{ times} }{\underbrace{a \circ a \circ \cdots \circ a}}$, compute $n$.
+ \end{problem}
+ Problem \ref{prob:int_fac} underpin the security of the well know RSA cryptostyem, see \cite{alg_lauritzen}[Section 1.9], while Problem \ref{prob:disc_log} underpin more recent cryptosystem, such as the Diffie-Hellman key exchange system\footnote{This scheme actually relies on the fact that given $g^{n}$ and $g^{m}$ it seems to be computationally infeasible to compute $g^{nm}$, however if there exists a method for solving Problem \ref{prob:disc_log}, then this problem is solved trivially.}, see \cite{n_t_and_c}[Section 4.3]. However algorithms for solving these problems, in polynomial time, on a sufficiently powerfull quantum computer have are already well known. The previously mentioned algorithms where initially described by Peter Williston Shor in 1996, see \cite{shor}. Instead the goal of this project will be to study a public key cryptosystem based on the following problem:
+
+ \begin{problem}[General Decoding Problem]\label{prob:general_decoding}
+   Let $\mathcal{C} \subseteq \mathbb{F}_q^{n}$ be a linear code, let $t \in \mathbb{N}$ such that $t \leq n$ and $y \in \mathbb{F}_q^n$. Decide if there exists a codeword $c \in \mathcal{C}$, such that $d(c, y) \leq t$
+ \end{problem}
+ The general decoding problem, has been proved to be $\mathbf{NP}$-complete, see \cite{general_decoding_problem_is_np}, for the case where $q = 2$. For a brief and informal introduction to the topic of $\mathbf{NP}$-completeness we refer the reader to Appendix \ref{app:np_completeness}.
+
+ The public key cryptosystem in question is named after Robert J. McElice, who originally proposed it in 1978.
+
+ \input{main/introduction/McElice}
+ \input{main/introduction/Niederreiter}

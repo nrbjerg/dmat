@@ -1,0 +1,151 @@
+\section{Differentials on Projective Algebraic Curves}%
+The following section will be based on \cite{CCC_with_CA}[Sections 11.1.6 and 11.2.2] and \cite{AG_codes_and_applications}[Chapter 3].
+
+\begin{definition}
+  Let $\mathcal{X}$ be a plane irreducible regular projective curve over $\mathbb{F}$ and $\mathcal{V}$ be a vectorspace over $\mathbb{F}(\mathcal{X})$. A $\mathbb{F}$-linear map $D: \mathbb{F}(\mathcal{X}) \to \mathcal{V}$ is called a \textit{derivation} if it satisfies the \textit{Leibniz rule}:
+  \begin{equation*}
+    D(fg) = fD(g) + gD(f)
+  \end{equation*}
+  for all $f, g \in \mathcal{V}$.
+\end{definition}
+\begin{example}\label{exmp:}
+  The projecitve line $\mathbb{P}^1$, with defining equation $Y = 0$, has the function field $\mathbb{F}(X)$. Let $F = \sum_{i = 0}^{m} a_i X^i$ be a polynomial in $\mathbb{F}[X]$, then define $D(F) = \sum_{i = 1}^m i a_i X^{i - 1}$. Extending $D$ to $\mathbb{F}(\mathcal{X})$ by defining:
+  \begin{equation*}
+    D \left(\frac{F}{G}\right) = \frac{G D(F) - F D(G)}{G^{2}} % NOTE: er ikke sikker på at der skal være minus her.
+  \end{equation*}
+  yields an gives an derivation $D: \mathbb{F}(\mathcal{X}) \to \mathbb{F}(\mathcal{X})$ since:
+  \begin{align*}
+    D \left(\frac{F_{1}}{G_{1}} \frac{F_{2}}{G_{2}}\right) &= \frac{G_1G_2 D(F_1F_2) - F_1F_2 D(G_1G_2)}{(G_1G_2)^{2}}\\ &= \frac{G_1G_2 (F_1D(F_2) + F_2D(F_1)) - F_1F_2 (G_1 D(G_2) + G_2 D(G_1))}{(G_1G_2)^{2}} \\ %&= \frac{G_{1}G_2 F_1 D(F_2) - F_1F_2 G_1 D(G_2)}{(G_{1}G_2)^2} + \frac{G_1G_2 F_2 D(F_1) - F_1F_2G_2D(G_1)}{(G_1G_2)^{2}} \\
+                                                           &= \frac{G_2 F_1 D(F_2) - F_1F_2 D(G_2)}{G_{1}G_2^2} + \frac{G_{1} F_2 D(F_1) - F_1F_2D(G_1)}{G_1^{2}G_{2}} \\
+    &= \frac{F_1}{G_1} \underset{=D \left(F_2 / G_2\right)}{\underbrace{\frac{G_2D(F_2) - F_2D(G_2)}{G_2^2}}} + \frac{F_{2}}{G_{2}} \underset{=D \left(F_1 / G_1\right)}{\underbrace{\frac{G_1D(F_1) - F_1D(G_1)}{G_1^{2}}}}
+  \end{align*}
+  holds for all $\frac{F_{1}}{G_{1}}, \frac{F_{2}}{G_{2}} \in \mathbb{F}(\mathcal{X})$.
+\end{example}
+% 1. Define differentials
+\begin{definition}
+  Let $Der(\mathcal{X}, \mathcal{V})$ denote the set of all derivations $D: \mathbb{F}(\mathcal{X}) \to \mathcal{V}$, additionally we denote $Der(\mathcal{X}, \mathbb{F}(\mathcal{X}))$ by $Der(\mathcal{X})$. A $\mathbb{F}(\mathcal{X})$-linear transformation from $Der(\mathcal{X})$ to $\mathbb{F}(\mathcal{X})$ is called a \textit{differential} on $\mathcal{X}$, the set of differnetials on $\mathcal{X}$ is denoted by $\Omega(\mathcal{X})$.
+\end{definition}
+Let $\mathcal{V} \subseteq \mathbb{F}(\mathcal{X})$ be a $\mathbb{F}(\mathcal{X})$-subspace, then both $Der(\mathcal{X}, \mathcal{V})$ and $\Omega(\mathcal{X})$ forms $\mathbb{F}(\mathcal{X})$-vectorspaces.
+
+The fact that $Der(\mathcal{X}, \mathcal{V})$ forms a $\mathbb{F}(\mathcal{X})$-vectorspace can be seen as follows: Let $D_1, D_2 \in Der(\mathcal{X}, \mathcal{V})$, then we define their sum as by $(D_1 + D_2)(f) = D_1(f) + D_2(f)$, now since both $D_1$ and $D_2$ satisfies the Leibniz rule, then so will $(D_1 + D_2)$. Additionally for $f \in \mathbb{F}(\mathcal{X})$ and $D \in Der(\mathcal{X}, \mathcal{V})$ we define their multilication as $(fD)(g) = f D(g)$.
+
+\begin{lemma}\label{lem:easy_lemma}
+  Let $D \in Der(\mathcal{X}, \mathcal{V})$ then if there exists an $f \in \mathbb{F}(\mathcal{X})$ such that $D(f) = 1$, then $D(f^k) = \phi(k) f^{k - 1}$ for all $k \in \mathbb{N} \setminus \left\{0\right\}$, where $\phi$ is the unique ring homomorphism from $\mathbb{Z}$ to $\mathbb{F}(\mathcal{X})$.
+\end{lemma}
+\begin{proof}
+  We shall prove the result using induction. Thus suppose $k = 1$ we see that
+  \begin{equation*}
+    D(f) = 1 = \phi(0)f^{1}
+  \end{equation*}
+  Next consider $k \in \mathbb{N}$ such that $k > 1$, then:
+  \begin{align*}
+     D(f^k) = D(f)f^{k - 1} + D(f^{k - 1})f\\ &\stackrel{(a)}{=} f^{k - 1} + (\phi(k -  1) f^{k - 2})f\\ &= (\phi(1) + \phi(k - 1))  f^{k - 1} = \phi(k) f^{k - 1}
+  \end{align*}
+  where equality $(a)$ follows from the induction hypothesis.
+\end{proof}
+
+\begin{theorem}\label{thm:unique_derivation}
+  Let $t$ be a local parameter at $P \in \mathcal{X}$. Then there exists a unique derivation $D_t: \mathbb{F}(\mathcal{X}) \to \mathbb{F}(\mathcal{X})$ such that $D_t(t) = 1$.
+\end{theorem}
+\begin{proof}
+  We start by proving the uniqueness of such a derivation. hence suppose $D_t^{(1)}$ and $D_t^{(2)}$ are both  derivations with $D_t^{(1)}(t) = D_t^{(2)}(t) = 1$. Let $f \in \mathbb{F}(\mathcal{X})$ then we may write $f = u t^m$ where $u \in \mathcal{O}_{P}(\mathcal{X})$ \textcolor{blue}{check}. Then
+  \begin{align*}
+    D_t^{(i)}(f) = D_t^{(i)}(u t^{m}) &= uD^{(i)}_t(t^m) + t^m D_t^{(i)}(u) \\
+    &= u \phi(m) t^{m - 1} + t^m D_t^{(i)}(u)
+  \end{align*}
+\end{proof}
+
+The next corollary is a natural consequence of Theorem \ref{thm:unique_derivation}, which allows us to find a $\mathbb{F}(\mathcal{X})$-basis of $Der(\mathcal{X})$.
+\begin{corollary}\label{cor:D_t_forms_basis}
+  Let $t$ be a local parameter at $P \in \mathcal{X}$ and $D_t$ be the unique derivation such that $D_t(t) = 1$, then $D_t$ forms a $\mathbb{F}(\mathcal{X})$-basis for $Der(\mathcal{X})$ for all local parameters $t$.
+\end{corollary}
+\begin{proof}
+  Suppose $D \in Der(\mathcal{X})$, with $D(t) = f$ for some $f \in \mathbb{F}(\mathcal{X})$. Then $f^{-1} D \in Der(\mathcal{X})$, since $Der(\mathcal{X})$ forms a $\mathbb{F}(\mathcal{X})$-vectorspace. Additionally as $(f^{-1}D)(t) = 1$, we see that $D_t = f^{-1}D$, by Theorem \ref{thm:unique_derivation}, and hence $fD_t = D$.
+\end{proof}
+
+Let $f \in \mathbb{F}(\mathcal{X})$, then we define the map $df: Der(\mathcal{X}) \to \mathbb{F}(\mathcal{X})$ by $df(D) = D(f)$.
+
+\begin{theorem}
+If $t \in \mathbb{F}(\mathcal{X})$ is a local parameter at $P \in \mathcal{X}$, then $dt$ is a $\mathbb{F}(\mathcal{X})$-basis of $\Omega(\mathcal{X})$.
+\end{theorem}
+\begin{proof}
+  Let $\omega \in \Omega(\mathcal{X})$ and $D \in Der(\mathcal{X})$ then $D = D(t)D_{t}$ by the proof of Corollary \ref{cor:D_t_forms_basis}. We see that:
+  \begin{equation*}
+    \omega (D) = \omega(D(t)D_t) = D(t) \omega(D_t) = dt(D) \omega(D_t)
+  \end{equation*}
+  Hence $\omega = fdt$ where $f = d(D_t) \in \mathbb{F}(\mathcal{X})$.
+\end{proof}
+
+
+% 2. Define their divisors
+
+\begin{definition}\label{def:divisor_of_differential}
+  Let $\omega \in \Omega(\mathcal{X})$ then $\omega = f dt$ for some local parameter $t$ of $P \in \mathcal{X}$, then we define $\ord_P(\omega) = \ord_P(f)$. If $\omega \neq 0$ then we define the \textit{canonical divisor} associated with $\omega$ as:
+  \begin{equation*}
+    (\omega) := \sum_{P \in \mathcal{X}} ord_P(\omega)
+  \end{equation*}
+\end{definition}
+Definition \ref{def:divisor_of_differential}, raises some natural questions, namely:
+\begin{enumerate}
+  \item Is $\ord_P(\omega)$, well defined (meaning does it is independent on our choice of $f$). Hence we will assume that $t_1$ and $t_2$ is local parameters at $P$, then there exists $f_1, f_2 \in \mathbb{F}(\mathcal{X})$ such that $\omega = f_1 dt_1 = f_2 dt_2$.
+  \item Is the divior $(\omega)$ well defined \textcolor{blue}{Passer denne forklaring eller arbejder vi over $\overline{\mathbb{F}_{q}}$}(meaning is $\ord_P(\omega) = 0$ for all but a finite number of points $P \in \mathcal{X}$. We will not discuss this over a general field $\mathbb{F}$, instead we refer the reader to \cite{Fulton}[Section 8.5]. We will however consider the case where $\mathbb{F} = \mathbb{F}_q$, hence $\abs{\mathcal{X}} \leq \abs{\mathbb{P}^n(\mathbb{F}_q)} \leq n \abs{\mathbb{F}_q^{n - 1}}$, when $\mathcal{X} \subseteq \mathbb{P}^n(\mathbb{F}_q)$. Where the last inequality follows since there is $(q^{n - 1}) = \abs{\mathbb{F}_q^{n - 1}}$ distinct points of the form $P = (1 : P_1 : \cdots :  P_{n}) \in \mathbb{P}^n(\mathbb{F}_q)$.)
+\end{enumerate}
+
+\begin{proposition}\label{prop:degree_of_canonical_divisor}
+  Let $\mathcal{X}$ be a projective regular curve of genus $g$ over an algebraicly closed field $\mathbb{F}$ and $\omega \in \Omega(\mathcal{X})$ then $\deg((\omega)) = 2g - 2$.
+\end{proposition}
+\textcolor{red}{\textbf{TODO}} der mangler kilder
+\begin{proof}
+  We have $\ell(0) - \ell(\omega) = \deg(0) - g + 1$ by the Reimann Roch Theorem \textbf{CITE}, additionally since $L(0) = \mathbb{F}$, we see that $\ell(0) = 1$, hence $\ell((\omega)) = g$. Additionally
+  \begin{equation}\label{eq:rr_of_canonical}
+    \ell((\omega)) - \ell((\omega) - (\omega)) = \deg((\omega)) - g + 1
+  \end{equation}
+  by the Reimann Roch Theorem \textbf{CITE}. Combining the facts that: $\ell((\omega)) = g$ and $\ell((\omega) - (\omega)) = \ell(0) = 1$ with Equation \eqref{eq:rr_of_canonical} yields the desired result.
+\end{proof}
+
+\begin{definition}
+  Let $D$ be a divisor on $\mathcal{X}$, then we define:
+  \begin{equation*}
+    \Omega(D) = \left\{\omega \in \Omega(\mathcal{X}) | (\omega) - D \text{ is effective} \right\}
+  \end{equation*}
+\end{definition}
+The space $\Omega(D)$ forms a $\mathbb{F}$-vectorspace, just like the Riemann-Roch space $L(D)$, the dimension of $\Omega(D)$ will be denoted by $\delta(D)$.
+\subsection{Residue Codes}
+% 3. Define residue codes
+Suppose $f / g \in \mathbb{F}(\mathcal{X})$ and that $t$ is a local parmeter at $P \in \mathcal{X}$. Recall that $v_P(f / g) = v_P(f) - v_P(g)$. Let $z \in \mathbb{F}(\mathcal{X})$ if $m := v_P(z)$, then we can write $z = a t^m + z'$ where $a \in \mathbb{F}^{*}$ and $v_P(z') > m$ similarly $z'$ can be expanded in a similar way, hence we may write:
+\begin{equation*}
+  z = \sum_{i \geq m} a_i t^i
+\end{equation*}
+with $a_i \in \mathbb{F}$ and $a_m \neq 0$. Additionally we will use the convention that $a_i = 0$ if $i < v_P(f)$ to write:
+\begin{equation*}
+  z = \sum_i a_i t^i
+\end{equation*}
+This leads us to the following definition.
+\begin{definition}
+  Let $t$ be a local parameter at $P \in \mathcal{X}$ and $\omega = f dt$. The rational function $f$ can be written as $\sum_i a_i t^i$ with $a_i \in \mathbb{F}$. We call $a_{-1}$ the \textit{residue} of $\omega$ at $P$ and denote it by $\Res_P(\omega)$.
+\end{definition}
+The residue $\Res_P(\omega)$ doesn't depend on the chosen local parameter,
+
+\begin{definition}
+  Let $\mathcal{X}$ be a projective absolutely irreducible regular curve over $\mathbb{F}_q$ and let $\mathcal{P} := (P_1, P_2, \ldots, P_{n})$ be a tuple of $n$ distinct rational points of $\mathcal{X}$. Define $D := \sum^n_{i = 1} P_i$ and let $G$ be a divisor on $\mathcal{X}$ such that $\support(G) \cap \support(D) = \emptyset$. Furthermore define $\Res_{\mathcal{P}}: \Omega(G - D) \to \mathbb{F}_q^n$ as:
+  \begin{equation*}
+    \Res_{\mathcal{P}}(\omega) = (\Res_{P_1}(\omega), \Res_{P_2}(\omega), \ldots, \Res_{P_{n}(\omega)})
+  \end{equation*}
+  then we define the \textit{residue code} $\mathcal{C}_\Omega(\mathcal{X}, D, G)$ as $\mathcal{C}_\Omega(\mathcal{X}, D, G) := \Res_{\mathcal{P}}(\Omega(G - D))$.
+\end{definition}
+The relationship between residue codes and evaluation codes, is fascinating\footnote{For example the dual code of an evaluation code is a residue code, and vice versa.}, however we will only mention the following theorem.
+
+\begin{theorem}\label{thm:res_is_eval}
+  Let $P_1, P_2, \ldots, P_{n}$ be distinct points on the projective plane curve $\mathbb{P}_1$, such that none of the points lie at infinity, meaning $P_i = (x_i : 1)$ for some $x_i \in \mathbb{F}_q^{*}$ for all $i = 1, 2, \ldots, n$. Furthermore let $D = \sum_{i = 1}^n P_i$ and $G$ be a divisor on $\mathbb{P}^{1}$ such that $\support(D) \cap \support(G) = \emptyset$. Then:
+  \begin{equation*}
+    \mathcal{C}_{\Omega}(\mathbb{P}^1, D, G) = \mathcal{C}_L(\mathbb{P}^1, D, (\omega) + D - G)
+  \end{equation*}
+  with $\omega := \frac{dh}{h}$ where $h(x) := \prod_{i = 1}^n (x - x_{i})$.
+\end{theorem}
+
+The proof of the theorem can be found \cite{AG_codes_and_applications}[Proposition 35]\footnote{Be aware that they state that $\mathcal{C}_{\Omega}(\mathbb{P}^1, D, G) = \mathcal{C}_L(\mathbb{P}^1, D, (\omega) - D + G)$, however they do prove the theorem which is stateted above.}
+
+\begin{remark}
+  We will restrict our selves to residue codes of the form $\mathcal{C}_{\Omega}(\mathbb{P}^1, D, G)$.
+  Hence Theorem \ref{thm:res_is_eval} implies that it is sufficient for us to describe decoding algorithms for AG codes of the form $\mathcal{C}_L(\mathcal{X}, D, G)$.
+\end{remark}

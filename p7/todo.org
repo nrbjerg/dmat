@@ -1,0 +1,56 @@
+#+title: P7 Planing
+
+* Time left:
++ 6 weeks [Mon. Nov 13]
+
+* Questions:
++ They mention that we can have at most one discrepency at each row / column why is this.
++ Hvorfor tilføjer vi $d(\mathcal{C}_l)$ is $d_{r}$
+
+* Lose ends:
++ [ ] Check the names.
++ [ ] Appendix.
++ [ ] Convert $\mathcal{C}_{D, G}$ to $\mathcal{C}_{L}(\mathcal{X}, D, G)$
+
+* Chapter 2
++ [ ] Citations
+** Correct [1/5]
++ [X] McElice #W44
++ [ ] Syndrome #W44
++ [ ] Neiderreiter #W44
++ [ ] Information sets #W45
+
+** Information Set Decoding
++ [ ] Compute expected work factors of the algorithms for constructing information sets
+
+* Chapter 3
++ [ ] Citations
+** Differentials & Residue Codes #W46
++ [-] Differentials [0/4]
+  + [ ] Show that $\mathcal{C}_{\omega}(\mathcal{X}, D, G)$ and $\mathcal{C}_{L}(\mathcal{X}, D, G)$ are dual codes.
+  + [ ] Show that residues are independent of the choice of $f$.
+  + [ ] Show that $(\omega)$ are well behaved divisors
+  + [-] Show that there exists a unique derivation $D$ such that $D(t) = 1$ #W46
+
+* Chapter 4
++ [ ] Citations
+** The basic algorithm
++ [ ] Check if there is any mistakes in the proof #TUE
+** Error correcting pairs #W46
++ [ ] Complexity
+** Error correcting arrays #W46
++ [X] Motivation
++ [X] Definition of an array of codes
++ [X] Theorem 4.2
++ [X] Definition of a t-error correcting array
++ [ ] Show that there is at most one discrepency in each row / column
++ [X] Theorem 4.4
++ [ ] Give example of error correcting array #WED
+** Structural attacks on McElice based on AG-codes.
++ [ ] Discuss ag_codes_are_fucked
++ [ ] Structural attacks based on GRS Codes.
+
+* Chapter 5
++ [ ] Correct the section #TUE
++ [X] Show that $\Gamma(x, f, \F_q)$ is an AG code
++ [X] Give an example of a classical Goppa code. #W44

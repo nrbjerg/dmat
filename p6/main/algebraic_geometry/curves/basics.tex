@@ -1,0 +1,129 @@
+In this section we will fix a finite field $\mathbb{F}_{q}$. We will apply the theory of algebraic geometry, to the affine and projective plane.
+However since $\mathbb{F}_{q}$ is not algebraically closed, confer Proposition \ref{prop:finite_fields_arent_algebraicly_closed}, we will let $\cF_{q}$ be the algebraic closure of $\mathbb{F}_{q}$, as in Proposition \ref{prop:algebraic_closure_of_finite_field}.
+
+\begin{definition}\label{def:affine_plane_curve}
+  Let $F \in \F_{q}[X, Y]$, then the zero set $V(F)$ is called an \textit{affine plane curve} over $\cF_{q}$. The equation $F = 0$ is called the \textit{defining equation} of $V(F)$. The points $P \in \mathbb{F}_{q}^{n} \cap V(F)$ are called \textit{$\mathbb{F}_q$-rational points} of $V(F)$. The \textit{degree} of $V(F)$ is the degree of $F$, a curve of degree $1$ is called a \textit{line}.
+\end{definition}
+In general the defining equation of an affine plane curve, is not unique, for instance the equations $X = 0$ and $aX = 0$ describe the same curve for all $a \in \F_{q}^{*}$.
+Additionally it is worth highlighting that many of the properties of the curve depend on the particular ground field.
+
+\begin{example}\label{exmp:affine_line}
+  Every line $L$ over $\mathbb{F}_{q}$ in the affine plane has $q$ $\mathbb{F}_{q}$-rational points. Consider the general defining equation $aX + bY + c = 0$ of a line where at least one of $a, b$ are non-zero.
+  Then assuming $a \neq 0$ we get that $X = - a^{-1}(bY + c)$, so picking $y \in \F_{q}$ yields an element $x \in \F_{q}$ such that $(x, y)$ is a $\mathbb{F}_{q}$-rational point of $L$.
+  Conversely if $a = 0$, we see that $bY + c = 0$. Hence we see that $Y = -b^{-1}c$, so $(x, -b^{-1}c)$ where $x \in \F_{q}$ are the only $\mathbb{F}_{q}$-rational points on $L$.
+\end{example}
+\begin{definition}
+  Let $F \in \F_{q}[X, Y]$ and $P \in \mathbb{A}^{n}(\cF_{q})$ be a point on the affine plane curve $V(F)$, then $P$ is called \textit{singular} if $F_{X}(P) = F_{Y}(P) = 0$, the point $P$ is called \textit{regular} otherwise. If all points $P \in V(F)$ are singular or regular then the curve it self is called singular or regular respectively.
+  Let $P = (a, b)$ be a regular point of the curve $V(F)$, then we define the \textit{tangent line} at $P$ as the affine curve $V \left(F_{X}(P)(X - a) + F_{Y}(P)(Y - b)\right)$.
+\end{definition}
+
+
+This is one of the properties, which depends strongly on the characteristic of the ground field, we will illustrate this in Example \ref{exmp:fermat_curve_derivatives}.
+
+In corollary \ref{cor:irr_gives_affine_variety} we saw that the affine zero set of irreducible polynomials were affine varieties, we would like to extend the notion of irreducibility to polynomials over $\F_{q}$, however as we consider the affine zero set over the ground field $\cF_{q}$, we are primarily interested in if $F \in \F_{q}[X_1, X_2, \ldots, X_{n}]$ is also irreducible when viewed as a polynomial in $\cF_{q}[X_1, X_2, \ldots, X_{n}]$.
+\begin{definition}
+  Let $F \in \F_{q}[X_1, X_2, \ldots, X_{n}]$, then $F$ is called \textit{absolutely irreducible} if $F$ is irreducible in $\cF_{q}[X_1, X_2, \ldots, X_{n}]$. That is there exists no $G \in \cF_{q}[X_1, X_2, \ldots, X_{n}]$ with $0 < \deg(G) < \deg(F)$, such that $F = G H$ for some $H \in \cF_{q}[X_1, X_2, \ldots, X_{n}]$.
+\end{definition}
+
+We will call $V(F)$ an \textit{absolutely irreducible affine plane curve} if $F \in \mathbb{F}_{q}(X, Y)$ is absolutely irreducible, by Corollary \ref{cor:irr_gives_affine_variety} we see that every absolutely irreducible affine plane curve is an affine variety.
+
+%By Corollary \ref{cor:irr_gives_affine_variety} we have that $\mathcal{X} := V(F)$ is an affine variety if $F \in \F_{q}[X, Y]$ is absolutely irreducible. We will call $Z(F)$ an \textit{absolutely irreducible curve} if $F$ is absolutely irreducible.
+
+\begin{definition}
+  If $F \in \cF_{q}[X, Y, Z]$ is a homogeneous polynomial, then $V_{\mathbb{P}}(F)$ is called a \textit{projective plane curve}. A point $P \in V_{\mathbb{P}}(F)$ is called \textit{rational} if there exists a representation $P = [a : b : c]$, where $a, b, c \in \F_{q}$.
+\end{definition}
+The \textit{defining equation} and \textit{degree} of a projective plane curve are defined similarly to the affine case. Hence we will omit them.
+\begin{definition}
+  Let $F \in \cF_{q}[X, Y, Z]$ be a homogeneous polynomial and $P \in V_{\mathbb{P}}(F)$. Then $P$ is called a \textit{singular} if $F_{X}(P) = F_{Y}(P) = F_{Z}(P) = 0$, otherwise $P$ is called \textit{regular}
+\end{definition}
+\begin{remark}
+  Since the polynomial $F$ is homogeneous we see that $F_X, F_Y$ and $F_Z$ are homogeneous as well.
+  Combining this with the fact that the notion of a root of a homogeneous polynomial at a projective point, is well defined, we see that the notion of a singular and regular point on a projective line is well defined. \\
+  However since the value of a homogeneous polynomial at a projective point is not generally well defined, we can not define a tangent line of a projective plane curve.
+\end{remark}
+
+
+Let $F \in \F_q[X, Y]$, then $V(F)$ is an affine plane curve and $V(F^{*})$ is a projective plane curve, furthermore we say that $V(F^{*})$ \textit{corresponds to} $V(F)$. \\ Similarly to an affine curve, a projective plane curve is a projective variety if the defining polynomial $F$ is absolutely irreducible, by Corollary \ref{cor:irr_gives_projective_variety}. \\
+
+\begin{example}\label{exmp:fermat_curve_derivatives}
+  Let $F = X^m + Y^m + Z^{m}$, then the \textit{Fermat curve} of degree $m$ denoted $\mathcal{F}_m$ is the projective plane curve with defining equation $F = 0$. The partial derivatives $F$ was found in Example \ref{exmp:fermat_curve_derivatives}, as $mX^{m - 1}, mY^{m - 1}, mZ^{m - 1}$. Assuming $m \geq 2$ and that $m$ is coprime with $q$ then this curve is regular. However if $m$ is not coprime with $q$, then all points are singular.
+\end{example}
+
+\begin{example}\label{exmp:hermetian_curve}
+   Let $p$ be a prime, and $\cF_{p^{2}}$ be the algebraic closure of $\mathbb{F}_{p^{2}}$, as noted Remark \ref{rem:existence_of_alg_closure} this algebraic closure exists. Let $F :=Y^{p}Z + YZ^{p} - X^{p + 1}$, then the \textit{Hermitian curve} $\mathcal{H}_{p}$ over $\cF_{p^{2}}$ is the projective curve with defining equation $F = 0$. The polynomial $F$ has the following partial derivatives: $F_{X} = -(p + 1)X^{p} = -X^{p}$, since $\ch({\cF_{p^{2}}}) = p$, $F_{Y} = Z^{p}$ and $F_{Z} = Y^{p}$. Hence the Hermitian curve is another example of a smooth curve.
+\end{example}
+
+\begin{lemma}\label{lem:maximal_ideal_of_plane_curves_are_prinicpal}
+  Let $\mathcal{X}$ be a regular affine plane curve and $P \in \mathcal{X}$, then the unique maximal ideal $\mathfrak{m}_{P} \subseteq \mathcal{O}_{P}(\mathcal{X})$ is a principal ideal.
+\end{lemma}
+
+\begin{proof}
+  Let $F = 0$ be the defining equation of $\mathcal{X}$. We may assume that $P = (0, 0)$, and that the tangent of $\mathcal{X}$ at $P$ has defining equation $Y = 0$\footnote{If this is not the case, then there exists an affine change of coordinates such that this is the case.}.
+  Furthermore we have that $\mathfrak{m}_{P} = \gen{x, y}$, by Hilbert Nullstellensatz (Theorem \ref{thm:hilbert_nullstellensatz}).
+  It follows that all monomials of $F$ have degree greater than or equal to $2$, as $\mathcal{X}$ is regular and the tangent line has defining equation $Y = 0$. Hence one can write
+\begin{equation}\label{eq:m_p_is_pid}
+  F(X, Y) = Y + Y G(Y) + X H(X, Y)
+\end{equation}
+where $G(0) = 0$ and $H(0, 0) = 0$. Now $F(x, y) = 0$ implies that $y = -x H(x,y) (1 + G(y))^{-1}$, by Equation \eqref{eq:m_p_is_pid}. From this it follows that $H(x, y) \in \mathcal{O}_{P}(\mathcal{X})$ as $G(0) = 0$. Therefore $y \in \gen{x}$ and hence $\mathfrak{m}_{P} = \gen{x, y} = \gen{x}$.
+\end{proof}
+
+\begin{remark}\label{rem:projective_is_also_dvr}
+   If $\mathcal{X}$ is a projective plane curve we likewise have that $\mathcal{O}_{P}(\mathcal{X})$ is a prinicipal ideal, as $\mathcal{O}_{P}(\mathcal{X})$ is isomorphic to $\mathcal{O}_{P}(\mathcal{X}_{*})$, confer Remark \ref{rem:function_fields_are_iso}.
+\end{remark}
+
+%The next proposition is stated without its proof which can be found in \cite{Fulton}[Section 3.2]. The overall outline of the proof is quite similar to the proof of Lemma \ref{lem:maximal_ideal_of_plane_curves_are_prinicpal}. However will omit it as the proposition is primarily be used in examples.
+%
+%\begin{proposition}\label{prop:uniformizing_parameter}
+%  Let $\mathcal{X}$ be a regular affine plane curve and $p \in \mathcal{X}$, if the line $\mathcal{L}$ with defining equation $F = 0$ is not a tangent to $\mathcal{X}$ at $p$, then $f$ is a uniformizing parameter of $\mathcal{O}_{p}(\mathcal{X})$.
+%\end{proposition}
+
+In many examples we will need a way to compute the uniformizing parameter at a point of a projective plane curve. Hence we state the next proposition from \cite{notes_on_alg_geom_codes}[Chapter 3] without proof as we will exclusively be using it in examples.
+\begin{proposition}\label{prop:uniformizing_parameter}
+  Let $\mathcal{X}$ be a smooth projective plane curve, and $P = [a : b : c] \in \mathcal{X}$ such that $c \neq 0$. Then $f = L_{1} / L_{2} \in \mathfrak{m}_{P}$ is a uniformizing parameter at $P$ if $\deg(L_{1}) = \deg(L_{2}) = 1$, $L_{2}(P) \neq 0$ and $L_1$ is not a constant multiple of $F_X(P)X + F_Y(P)Y + F_Z(P)Z$.
+\end{proposition}
+\begin{remark}
+  It is actually sufficient that one of $a, b, c$ is non zero.\footnote{As we can apply a projective change of cordinates otherwise, for instance if $b \neq 0$, then we may swap $Y$ and $Z$.}
+\end{remark}
+
+Suppose that $\mathcal{X}$ is an affine or projective regular plane curve then, by Lemma \ref{lem:maximal_ideal_of_plane_curves_are_prinicpal} or Remark \ref{rem:projective_is_also_dvr}, there exists $t \in \mathcal{O}_{P}(\mathcal{X})$ such that $\mathfrak{m}_{P}(\mathcal{X}) = \gen{t}$. By Theorem \ref{thm:local_ring_is_a_DVR} We see that $\mathcal{O}_{P}(\mathcal{X})$ is a discrete valuation ring and that $t$ is a uniformizing parameter. We will denote the order of $f \in \mathcal{O}_{P}(\mathcal{X})$ as $ord_{P}(f)$.
+
+\begin{definition}\label{def:vp}
+  Let $\mathcal{X}$ be an regular plane curve, the function $v_{P}: \mathcal{O}_{P}(\mathcal{X}) \to \mathbb{N} \cup \left\{\infty\right\}$, defined as:
+  \begin{equation*}
+    v_{P}(f) = \begin{cases} \infty & \text{if } f = 0 \\ ord_{P}(f) & \text{otherwise.} \end{cases}
+  \end{equation*}
+  Let $f \in \mathcal{O}_{P}(\mathcal{X})$, then $P$ is called a \textit{zero} of order $v_P(f)$ if $v_{P}(f) > 0$.
+\end{definition}
+\begin{remark}\label{rem:extension}
+The function $v_{P}$, can be extended to the domain $\cF_{q}(\mathcal{X})$ and codomain $\mathbb{Z} \cup \left\{\infty\right\}$, since $\mathcal{O}_{P}(\mathcal{X})$ is a subring of $\cF_{q}(\mathcal{X})$, by setting $v_{P}(f) = v_{P}(g) - v_{P}(h)$, where $f = g/h \in \cF_{q}(\mathcal{X})$. If $v_{P}(f) < 0$, then $f$ is said to have a \textit{pole} at $P$ of order $-v_{P}(f)$.
+\end{remark}
+
+We will now show that the map $v_{P}: \mathcal{O}_P(\mathcal{X}) \to \mathbb{N} \cup \left\{\infty\right\}$, that is the non extended version, is a \textit{discete valuation}, meaning that it satisfies properties \ref{thm:vp_is_dv:1}-\ref{thm:vp_is_dv:5} in the theorem below. However the map $v_{P}: \cF_{q}(\mathcal{X}) \to \mathbb{Z} \cup \left\{\infty\right\}$, have properties similar to \ref{thm:vp_is_dv:3} and \ref{thm:vp_is_dv:4} albeit for $f, g \in \cF_{q}(\mathcal{X})$.
+\begin{theorem}\label{thm:vp_is_dv}
+  The function $v_{P}: \mathcal{O}_P(\mathcal{X}) \to \mathbb{N} \cup \left\{\infty\right\}$, satisfies the following properties hold for all $f, g \in \mathcal{O}_{P}(\mathcal{X})$:
+  \begin{enumerate}
+    \item $v_P(f) = \infty$ if and only if $f = 0$. \label{thm:vp_is_dv:1}
+    \item $v_P(\lambda f) = v_P(f)$ for all $\lambda \in \cF_{q}^{*}$.\label{thm:vp_is_dv:2}
+    \item $v_{P}(f + g) \geq \min \left\{v_P(f), v_P(g)\right\}$.\label{thm:vp_is_dv:3}
+    \item $v_P(fg) = v_P(f) + v_P(g)$.\label{thm:vp_is_dv:4}
+    \item If $v_{P}(f) = v_P(g)$, where $f, g \in \mathcal{O}_{P}(\mathcal{X}) \setminus \left\{0\right\}$ then there exists a unit $\lambda \in \cF_{q}$ such that $v_P(f - \lambda g) > v_{P}(g)$ \label{thm:vp_is_dv:5}
+  \end{enumerate}
+\end{theorem}
+\begin{proof}
+  Assertions \ref{thm:vp_is_dv:1} and \ref{thm:vp_is_dv:2} follow directly from Definitions \ref{def:dvr} and \ref{def:vp}. Next we will show that $v_P$ satisfies Assertion \ref{thm:vp_is_dv:3}:
+  Let $t \in \mathcal{O}_{P}(\mathcal{X})$ be the uniformizing parameter. Suppose $f = 0$ this implies that $v_{P}(f + g) = v_{P}(g) = \min \left\{v_{P}(f), v_{P}(g)\right\}$ as $v_{P}(f) = \infty$. A similar argument holds when $g = 0$.
+  Hence we may assume $f \neq 0$ and $g \neq 0$, furthermore we can assume without loss of generality that $v_{P}(g) \geq v_{P}(f)$. Since $f \neq 0$ and $g \neq 0$ there exists units $u, v$ such that $f = u t^{v_{P}(f)}$ and $g = v t^{v_{P}(g)}$, then:
+  \begin{equation*}
+    f + g = (u + v t^{v_{P}(g) - v_{P}(f)}) t^{v_P(f)}.
+  \end{equation*}
+  Hence $v_{P}(f + g) \geq v_{P}(f) = \min \left\{v_{P}(f) v_P(g)\right\}$ as $(u + v t^{v_P(g) - v_P(f)})$ is a unit in $\mathcal{O}_P(\mathcal{X})$ since
+  \begin{equation*}
+    (u + v t^{v_P(g) - v_P(f)})(P) = u(P) + v(P) t^{v_{P}(g) - v_P(f)}(P) = u(P) \neq 0
+  \end{equation*}
+  because $u \in \mathcal{O}_{P}(\mathcal{X})^{*}$. Continuing with Assertion \ref{thm:vp_is_dv:4}, we are once again able to assume that $f \neq 0$ and $g \neq 0$, then $fg = u t^{v_{P}(f)} \cdot v t^{v_{P}(g)} = u v \cdot t^{v_{P}(f) + v_{P}(g)}$, and hence $v_{P}(fg) = v_{P}(f) + v_{P}(g)$. Finishing the proof with Assertion \ref{thm:vp_is_dv:5}, we consider the polynomial $f - \lambda g \in \mathcal{O}_{P}(\mathcal{X})[\lambda]$, then:
+  \begin{equation*}
+    f - \lambda g = u t^{v_{P}(f)} + \lambda vt^{v_P(g)} = (u + \lambda v) t^{v_{P}(f)}
+  \end{equation*}
+  However when $\lambda = -uv^{-1}$ then $(u + \lambda v) = 0$, and hence $v_{P}(f - \lambda g) = \infty$.
+\end{proof}
+\newpage

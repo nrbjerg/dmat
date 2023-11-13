@@ -1,0 +1,1892 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/nixos.org) (preloaded format=pdflatex 1980.1.1)  15 JUN 2023 14:18
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**master.tex
+(./master.tex
+LaTeX2e <2021-11-15> patch level 1
+L3 programming layer <2022-02-24>
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/base/book.cls
+Document Class: book 2021/10/04 v1.4n Standard LaTeX document class
+
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/base/bk11.clo
+File: bk11.clo 2021/10/04 v1.4n Standard LaTeX file (size option)
+)
+\c@part=\count185
+\c@chapter=\count186
+\c@section=\count187
+\c@subsection=\count188
+\c@subsubsection=\count189
+\c@paragraph=\count190
+\c@subparagraph=\count191
+\c@figure=\count192
+\c@table=\count193
+\abovecaptionskip=\skip47
+\belowcaptionskip=\skip48
+\bibindent=\dimen138
+) (./aaumath.sty
+Package: aaumath 2019/07/19 LaTeX preamble package for AAU Math
+ (./incl/pre/pkgs.tex
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/base/fontenc.sty
+Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/base/inputenc.sty
+Package: inputenc 2021/02/14 v1.3d Input encoding file
+\inpenc@prehook=\toks16
+\inpenc@posthook=\toks17
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/babel/babel.sty
+Package: babel 2022/02/26 3.73 The Babel package
+\babel@savecnt=\count194
+\U@D=\dimen139
+\l@unhyphenated=\language87
+
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/babel/txtbabel.def)
+\bbl@readstream=\read2
+\bbl@dirlevel=\count195
+
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/babel-english/english.ldf
+Language: english 2017/06/06 v3.3r English support from the babel system
+Package babel Info: Hyphen rules for 'canadian' set to \l@english
+(babel)             (\language0). Reported on input line 102.
+Package babel Info: Hyphen rules for 'australian' set to \l@ukenglish
+(babel)             (\language21). Reported on input line 105.
+Package babel Info: Hyphen rules for 'newzealand' set to \l@ukenglish
+(babel)             (\language21). Reported on input line 108.
+))
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/natbib/natbib.sty
+Package: natbib 2010/09/13 8.31b (PWD, AO)
+\bibhang=\skip49
+\bibsep=\skip50
+LaTeX Info: Redefining \cite on input line 694.
+\c@NAT@ctr=\count196
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/hyperref/hyperref.sty
+Package: hyperref 2022-02-21 v7.00n Hypertext links for LaTeX
+
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/ltxcmds/ltxcmds.sty
+Package: ltxcmds 2020-05-10 v1.25 LaTeX kernel commands for general use (HO)
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/iftex/iftex.sty
+Package: iftex 2022/02/03 v1.0f TeX engine tests
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/pdftexcmds/pdftexcmds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/infwarerr/infwarerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks18
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/kvsetkeys/kvsetkeys.sty
+Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/kvdefinekeys/kvdefinekeys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/pdfescape/pdfescape.sty
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/hycolor/hycolor.sty
+Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/letltxmacro/letltxmacro.sty
+Package: letltxmacro 2019/12/03 v1.6 Let assignment for LaTeX macros (HO)
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/auxhook/auxhook.sty
+Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/kvoptions/kvoptions.sty
+Package: kvoptions 2020-10-07 v3.14 Key value format for package options (HO)
+)
+\@linkdim=\dimen140
+\Hy@linkcounter=\count197
+\Hy@pagecounter=\count198
+
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2022-02-21 v7.00n Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/intcalc/intcalc.sty
+Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/etexcmds/etexcmds.sty
+Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
+)
+\Hy@SavedSpaceFactor=\count199
+
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/hyperref/puenc.def
+File: puenc.def 2022-02-21 v7.00n Hyperref: PDF Unicode definition (HO)
+Now handling font encoding PU ...
+... no UTF-8 mapping file for font encoding PU
+)
+Package hyperref Info: Hyper figures OFF on input line 4137.
+Package hyperref Info: Link nesting OFF on input line 4142.
+Package hyperref Info: Hyper index ON on input line 4145.
+Package hyperref Info: Plain pages OFF on input line 4152.
+Package hyperref Info: Backreferencing OFF on input line 4157.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4390.
+\c@Hy@tempcnt=\count266
+
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/url/url.sty
+\Urlmuskip=\muskip16
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 4749.
+\XeTeXLinkMargin=\dimen141
+
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/bitset/bitset.sty
+Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
+
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/bigintcalc/bigintcalc.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
+)
+))
+\Fld@menulength=\count267
+\Field@Width=\dimen142
+\Fld@charsize=\dimen143
+Package hyperref Info: Hyper figures OFF on input line 6027.
+Package hyperref Info: Link nesting OFF on input line 6032.
+Package hyperref Info: Hyper index ON on input line 6035.
+Package hyperref Info: backreferencing OFF on input line 6042.
+Package hyperref Info: Link coloring OFF on input line 6047.
+Package hyperref Info: Link coloring with OCG OFF on input line 6052.
+Package hyperref Info: PDF/A mode OFF on input line 6057.
+LaTeX Info: Redefining \ref on input line 6097.
+LaTeX Info: Redefining \pageref on input line 6101.
+
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/base/atbegshi-ltx.sty
+Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
+package with kernel methods
+)
+\Hy@abspage=\count268
+\c@Item=\count269
+\c@Hfootnote=\count270
+)
+Package hyperref Info: Driver (autodetected): hpdftex.
+
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2022-02-21 v7.00n Hyperref driver for pdfTeX
+
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/base/atveryend-ltx.sty
+Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend pac
+kage
+with kernel methods
+)
+\Fld@listcount=\count271
+\c@bookmark@seq@number=\count272
+
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/rerunfilecheck/rerunfilecheck.sty
+Package: rerunfilecheck 2019/12/05 v1.9 Rerun checks for auxiliary files (HO)
+
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/uniquecounter/uniquecounter.sty
+Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
+)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+86.
+)
+\Hy@SectionHShift=\skip51
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/xpatch/xpatch.sty
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/l3kernel/expl3.sty
+Package: expl3 2022-02-24 L3 programming layer (loader) 
+
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/l3backend/l3backend-pdftex.def
+File: l3backend-pdftex.def 2022-02-07 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count273
+\l__pdf_internal_box=\box50
+))
+Package: xpatch 2020/03/25 v0.3a Extending etoolbox patching commands
+
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/l3packages/xparse/xparse.sty
+Package: xparse 2022-01-12 L3 Experimental document command parser
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count274
+))
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/mathtools/mathtools.sty
+Package: mathtools 2022/02/07 v1.28a mathematical typesetting tools
+
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/tools/calc.sty
+Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count275
+\calc@Bcount=\count276
+\calc@Adimen=\dimen144
+\calc@Bdimen=\dimen145
+\calc@Askip=\skip52
+\calc@Bskip=\skip53
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count277
+\calc@Cskip=\skip54
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/mathtools/mhsetup.sty
+Package: mhsetup 2021/03/18 v1.4 programming setup (MH)
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/amsmath/amsmath.sty
+Package: amsmath 2021/10/15 v2.17l AMS math features
+\@mathmargin=\skip55
+
+For additional information on amsmath, use the `?' option.
+
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/amsmath/amstext.sty
+Package: amstext 2021/08/26 v2.01 AMS text
+
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks19
+\ex@=\dimen146
+))
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen147
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/amsmath/amsopn.sty
+Package: amsopn 2021/08/26 v2.02 operator names
+)
+\inf@bad=\count278
+LaTeX Info: Redefining \frac on input line 234.
+\uproot@=\count279
+\leftroot@=\count280
+LaTeX Info: Redefining \overline on input line 399.
+\classnum@=\count281
+\DOTSCASE@=\count282
+LaTeX Info: Redefining \ldots on input line 496.
+LaTeX Info: Redefining \dots on input line 499.
+LaTeX Info: Redefining \cdots on input line 620.
+\Mathstrutbox@=\box51
+\strutbox@=\box52
+\big@size=\dimen148
+LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
+\macc@depth=\count283
+\c@MaxMatrixCols=\count284
+\dotsspace@=\muskip17
+\c@parentequation=\count285
+\dspbrk@lvl=\count286
+\tag@help=\toks20
+\row@=\count287
+\column@=\count288
+\maxfields@=\count289
+\andhelp@=\toks21
+\eqnshift@=\dimen149
+\alignsep@=\dimen150
+\tagshift@=\dimen151
+\tagwidth@=\dimen152
+\totwidth@=\dimen153
+\lineht@=\dimen154
+\@envbody=\toks22
+\multlinegap=\skip56
+\multlinetaggap=\skip57
+\mathdisplay@stack=\toks23
+LaTeX Info: Redefining \[ on input line 2938.
+LaTeX Info: Redefining \] on input line 2939.
+)
+\g_MT_multlinerow_int=\count290
+\l_MT_multwidth_dim=\dimen155
+\origjot=\skip58
+\l_MT_shortvdotswithinadjustabove_dim=\dimen156
+\l_MT_shortvdotswithinadjustbelow_dim=\dimen157
+\l_MT_above_intertext_sep=\dimen158
+\l_MT_below_intertext_sep=\dimen159
+\l_MT_above_shortintertext_sep=\dimen160
+\l_MT_below_shortintertext_sep=\dimen161
+\xmathstrut@box=\box53
+\xmathstrut@dim=\dimen162
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/amscls/amsthm.sty
+Package: amsthm 2020/05/29 v2.20.6
+\thm@style=\toks24
+\thm@bodyfont=\toks25
+\thm@headfont=\toks26
+\thm@notefont=\toks27
+\thm@headpunct=\toks28
+\thm@preskip=\skip59
+\thm@postskip=\skip60
+\thm@headsep=\skip61
+\dth@everypar=\toks29
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/bbm-macros/bbm.sty
+Package: bbm 1999/03/15 V 1.2 provides fonts for set symbols - TH
+LaTeX Font Info:    Overwriting math alphabet `\mathbbm' in version `bold'
+(Font)                  U/bbm/m/n --> U/bbm/bx/n on input line 33.
+LaTeX Font Info:    Overwriting math alphabet `\mathbbmss' in version `bold'
+(Font)                  U/bbmss/m/n --> U/bbmss/bx/n on input line 35.
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/tools/bm.sty
+Package: bm 2021/04/25 v1.2e Bold Symbol Support (DPC/FMi)
+\symboldoperators=\mathgroup6
+\symboldletters=\mathgroup7
+\symboldsymbols=\mathgroup8
+Package bm Info: No bold for \OMX/cmex/m/n, using \pmb.
+Package bm Info: No bold for \U/msa/m/n, using \pmb.
+Package bm Info: No bold for \U/msb/m/n, using \pmb.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 149.
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/xcolor/xcolor.sty
+Package: xcolor 2021/10/31 v2.13 LaTeX color extensions (UK)
+
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 227.
+
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2020/10/05 v1.2a Graphics/color driver for pdftex
+)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1352.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1356.
+Package xcolor Info: Model `RGB' extended on input line 1368.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1370.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1371.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1372.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1373.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1374.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1375.
+
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/graphics/dvipsnam.def
+File: dvipsnam.def 2016/06/17 v3.0m Driver-dependent file (DPC,SPQR)
+))
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/graphics/graphicx.sty
+Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/graphics/graphics.sty
+Package: graphics 2021/03/04 v1.4d Standard LaTeX Graphics (DPC,SPQR)
+
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/graphics/trig.sty
+Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 107.
+)
+\Gin@req@height=\dimen163
+\Gin@req@width=\dimen164
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/pagecolor/pagecolor.sty
+Package: pagecolor 2017/05/29 v1.0i Provides thepagecolor (HMM)
+
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/iftex/ifpdf.sty
+Package: ifpdf 2019/10/25 v3.4 ifpdf legacy package. Use iftex instead.
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/iftex/ifluatex.sty
+Package: ifluatex 2019/10/25 v1.5 ifluatex legacy package. Use iftex instead.
+))
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/booktabs/booktabs.sty
+Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
+\heavyrulewidth=\dimen165
+\lightrulewidth=\dimen166
+\cmidrulewidth=\dimen167
+\belowrulesep=\dimen168
+\belowbottomsep=\dimen169
+\aboverulesep=\dimen170
+\abovetopsep=\dimen171
+\cmidrulesep=\dimen172
+\cmidrulekern=\dimen173
+\defaultaddspace=\dimen174
+\@cmidla=\count291
+\@cmidlb=\count292
+\@aboverulesep=\dimen175
+\@belowrulesep=\dimen176
+\@thisruleclass=\count293
+\@lastruleclass=\count294
+\@thisrulewidth=\dimen177
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/caption/caption.sty
+Package: caption 2022/03/01 v3.6b Customizing captions (AR)
+
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/caption/caption3.sty
+Package: caption3 2022/03/17 v2.3b caption3 kernel (AR)
+\caption@tempdima=\dimen178
+\captionmargin=\dimen179
+\caption@leftmargin=\dimen180
+\caption@rightmargin=\dimen181
+\caption@width=\dimen182
+\caption@indent=\dimen183
+\caption@parindent=\dimen184
+\caption@hangindent=\dimen185
+Package caption Info: Standard document class detected.
+)
+\c@caption@flags=\count295
+\c@continuedfloat=\count296
+Package caption Info: hyperref package is loaded.
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/caption/subcaption.sty
+Package: subcaption 2022/01/07 v1.5 Sub-captions (AR)
+\c@subfigure=\count297
+\c@subtable=\count298
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/pgf/frontendlayer/tikz.sty
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/pgf/basiclayer/pgf.sty
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/pgf/utilities/pgfrcs.sty
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/pgf/utilities/pgfutil-common.tex
+\pgfutil@everybye=\toks30
+\pgfutil@tempdima=\dimen186
+\pgfutil@tempdimb=\dimen187
+
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/pgf/utilities/pgfutil-common-lists.tex))
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/pgf/utilities/pgfutil-latex.def
+\pgfutil@abb=\box54
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/pgf/utilities/pgfrcs.code.tex
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/pgf/pgf.revision.tex)
+Package: pgfrcs 2021/05/15 v3.1.9a (3.1.9a)
+))
+Package: pgf 2021/05/15 v3.1.9a (3.1.9a)
+
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/pgf/basiclayer/pgfcore.sty
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/pgf/systemlayer/pgfsys.sty
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/pgf/systemlayer/pgfsys.code.tex
+Package: pgfsys 2021/05/15 v3.1.9a (3.1.9a)
+
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/pgf/utilities/pgfkeys.code.tex
+\pgfkeys@pathtoks=\toks31
+\pgfkeys@temptoks=\toks32
+
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/pgf/utilities/pgfkeysfiltered.code.tex
+\pgfkeys@tmptoks=\toks33
+))
+\pgf@x=\dimen188
+\pgf@y=\dimen189
+\pgf@xa=\dimen190
+\pgf@ya=\dimen191
+\pgf@xb=\dimen192
+\pgf@yb=\dimen193
+\pgf@xc=\dimen194
+\pgf@yc=\dimen195
+\pgf@xd=\dimen196
+\pgf@yd=\dimen197
+\w@pgf@writea=\write3
+\r@pgf@reada=\read3
+\c@pgf@counta=\count299
+\c@pgf@countb=\count300
+\c@pgf@countc=\count301
+\c@pgf@countd=\count302
+\t@pgf@toka=\toks34
+\t@pgf@tokb=\toks35
+\t@pgf@tokc=\toks36
+\pgf@sys@id@count=\count303
+
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/pgf/systemlayer/pgf.cfg
+File: pgf.cfg 2021/05/15 v3.1.9a (3.1.9a)
+)
+Driver file for pgf: pgfsys-pdftex.def
+
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+File: pgfsys-pdftex.def 2021/05/15 v3.1.9a (3.1.9a)
+
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/pgf/systemlayer/pgfsys-common-pdf.def
+File: pgfsys-common-pdf.def 2021/05/15 v3.1.9a (3.1.9a)
+)))
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
+File: pgfsyssoftpath.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgfsyssoftpath@smallbuffer@items=\count304
+\pgfsyssoftpath@bigbuffer@items=\count305
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
+File: pgfsysprotocol.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+))
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/pgf/basiclayer/pgfcore.code.tex
+Package: pgfcore 2021/05/15 v3.1.9a (3.1.9a)
+
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/pgf/math/pgfmath.code.tex
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/pgf/math/pgfmathcalc.code.tex
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/pgf/math/pgfmathutil.code.tex)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/pgf/math/pgfmathparser.code.tex
+\pgfmath@dimen=\dimen198
+\pgfmath@count=\count306
+\pgfmath@box=\box55
+\pgfmath@toks=\toks37
+\pgfmath@stack@operand=\toks38
+\pgfmath@stack@operation=\toks39
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/pgf/math/pgfmathfunctions.code.tex
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/pgf/math/pgfmathfunctions.basic.code.tex)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/pgf/math/pgfmathfunctions.trigonometric.code.tex)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/pgf/math/pgfmathfunctions.random.code.tex)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/pgf/math/pgfmathfunctions.comparison.code.tex)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/pgf/math/pgfmathfunctions.base.code.tex)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/pgf/math/pgfmathfunctions.round.code.tex)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/pgf/math/pgfmathfunctions.misc.code.tex)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/pgf/math/pgfmathfunctions.integerarithmetics.code.tex)))
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/pgf/math/pgfmathfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count307
+))
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/pgf/math/pgfint.code.tex)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
+File: pgfcorepoints.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgf@picminx=\dimen199
+\pgf@picmaxx=\dimen256
+\pgf@picminy=\dimen257
+\pgf@picmaxy=\dimen258
+\pgf@pathminx=\dimen259
+\pgf@pathmaxx=\dimen260
+\pgf@pathminy=\dimen261
+\pgf@pathmaxy=\dimen262
+\pgf@xx=\dimen263
+\pgf@xy=\dimen264
+\pgf@yx=\dimen265
+\pgf@yy=\dimen266
+\pgf@zx=\dimen267
+\pgf@zy=\dimen268
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/pgf/basiclayer/pgfcorepathconstruct.code.tex
+File: pgfcorepathconstruct.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgf@path@lastx=\dimen269
+\pgf@path@lasty=\dimen270
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/pgf/basiclayer/pgfcorepathusage.code.tex
+File: pgfcorepathusage.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgf@shorten@end@additional=\dimen271
+\pgf@shorten@start@additional=\dimen272
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/pgf/basiclayer/pgfcorescopes.code.tex
+File: pgfcorescopes.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgfpic=\box56
+\pgf@hbox=\box57
+\pgf@layerbox@main=\box58
+\pgf@picture@serial@count=\count308
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.tex
+File: pgfcoregraphicstate.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgflinewidth=\dimen273
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/pgf/basiclayer/pgfcoretransformations.code.tex
+File: pgfcoretransformations.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgf@pt@x=\dimen274
+\pgf@pt@y=\dimen275
+\pgf@pt@temp=\dimen276
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/pgf/basiclayer/pgfcorequick.code.tex
+File: pgfcorequick.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex
+File: pgfcoreobjects.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/pgf/basiclayer/pgfcorepathprocessing.code.tex
+File: pgfcorepathprocessing.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/pgf/basiclayer/pgfcorearrows.code.tex
+File: pgfcorearrows.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgfarrowsep=\dimen277
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
+File: pgfcoreshade.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgf@max=\dimen278
+\pgf@sys@shading@range@num=\count309
+\pgf@shadingcount=\count310
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
+File: pgfcoreimage.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex
+File: pgfcoreexternal.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgfexternal@startupbox=\box59
+))
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/pgf/basiclayer/pgfcorelayers.code.tex
+File: pgfcorelayers.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/pgf/basiclayer/pgfcoretransparency.code.tex
+File: pgfcoretransparency.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/pgf/basiclayer/pgfcorepatterns.code.tex
+File: pgfcorepatterns.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/pgf/basiclayer/pgfcorerdf.code.tex
+File: pgfcorerdf.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+)))
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/pgf/modules/pgfmoduleshapes.code.tex
+File: pgfmoduleshapes.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgfnodeparttextbox=\box60
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/pgf/modules/pgfmoduleplot.code.tex
+File: pgfmoduleplot.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
+Package: pgfcomp-version-0-65 2021/05/15 v3.1.9a (3.1.9a)
+\pgf@nodesepstart=\dimen279
+\pgf@nodesepend=\dimen280
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty
+Package: pgfcomp-version-1-18 2021/05/15 v3.1.9a (3.1.9a)
+))
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/pgf/utilities/pgffor.sty
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/pgf/utilities/pgfkeys.sty
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/pgf/utilities/pgfkeys.code.tex))
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/pgf/math/pgfmath.sty
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/pgf/math/pgfmath.code.tex))
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/pgf/utilities/pgffor.code.tex
+Package: pgffor 2021/05/15 v3.1.9a (3.1.9a)
+
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/pgf/math/pgfmath.code.tex)
+\pgffor@iter=\dimen281
+\pgffor@skip=\dimen282
+\pgffor@stack=\toks40
+\pgffor@toks=\toks41
+))
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+Package: tikz 2021/05/15 v3.1.9a (3.1.9a)
+
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/pgf/libraries/pgflibraryplothandlers.code.tex
+File: pgflibraryplothandlers.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgf@plot@mark@count=\count311
+\pgfplotmarksize=\dimen283
+)
+\tikz@lastx=\dimen284
+\tikz@lasty=\dimen285
+\tikz@lastxsaved=\dimen286
+\tikz@lastysaved=\dimen287
+\tikz@lastmovetox=\dimen288
+\tikz@lastmovetoy=\dimen289
+\tikzleveldistance=\dimen290
+\tikzsiblingdistance=\dimen291
+\tikz@figbox=\box61
+\tikz@figbox@bg=\box62
+\tikz@tempbox=\box63
+\tikz@tempbox@bg=\box64
+\tikztreelevel=\count312
+\tikznumberofchildren=\count313
+\tikznumberofcurrentchild=\count314
+\tikz@fig@count=\count315
+
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/pgf/modules/pgfmodulematrix.code.tex
+File: pgfmodulematrix.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgfmatrixcurrentrow=\count316
+\pgfmatrixcurrentcolumn=\count317
+\pgf@matrix@numberofcolumns=\count318
+)
+\tikz@expandcount=\count319
+
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopaths.code.tex
+File: tikzlibrarytopaths.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+)))
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/algorithms/algorithm.sty
+Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating enviro
+nment
+
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count320
+\float@exts=\toks42
+\float@box=\box65
+\@float@everytoks=\toks43
+\@floatcapt=\box66
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/base/ifthen.sty
+Package: ifthen 2020/11/24 v1.1c Standard LaTeX ifthen package (DPC)
+)
+\@float@every@algorithm=\toks44
+\c@algorithm=\count321
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/algorithmicx/algpseudocode.sty
+Package: algpseudocode 
+
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/algorithmicx/algorithmicx.sty
+Package: algorithmicx 2005/04/27 v1.2 Algorithmicx
+
+Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
+\c@ALG@line=\count322
+\c@ALG@rem=\count323
+\c@ALG@nested=\count324
+\ALG@tlm=\skip62
+\ALG@thistlm=\skip63
+\c@ALG@Lnr=\count325
+\c@ALG@blocknr=\count326
+\c@ALG@storecount=\count327
+\c@ALG@tmpcounter=\count328
+\ALG@tmplength=\skip64
+)
+Document Style - pseudocode environments for use with the `algorithmicx' style
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/listings/listings.sty
+\lst@mode=\count329
+\lst@gtempboxa=\box67
+\lst@token=\toks45
+\lst@length=\count330
+\lst@currlwidth=\dimen292
+\lst@column=\count331
+\lst@pos=\count332
+\lst@lostspace=\dimen293
+\lst@width=\dimen294
+\lst@newlines=\count333
+\lst@lineno=\count334
+\lst@maxwidth=\dimen295
+
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
+\c@lstnumber=\count335
+\lst@skipnumbers=\count336
+\lst@framebox=\box68
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/listings/listings.cfg
+File: listings.cfg 2020/03/24 1.8d listings configuration
+))
+Package: listings 2020/03/24 1.8d (Carsten Heinz)
+
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/microtype/microtype.sty
+Package: microtype 2022/03/14 v3.0d Micro-typographical refinements (RS)
+\MT@toks=\toks46
+\MT@tempbox=\box69
+\MT@count=\count337
+LaTeX Info: Redefining \noprotrusionifhmode on input line 1027.
+LaTeX Info: Redefining \leftprotrusion on input line 1028.
+LaTeX Info: Redefining \rightprotrusion on input line 1036.
+LaTeX Info: Redefining \textls on input line 1195.
+\MT@outer@kern=\dimen296
+LaTeX Info: Redefining \textmicrotypecontext on input line 1781.
+\MT@listname@count=\count338
+
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/microtype/microtype-pdftex.def
+File: microtype-pdftex.def 2022/03/14 v3.0d Definitions specific to pdftex (RS)
+
+LaTeX Info: Redefining \lsstyle on input line 900.
+LaTeX Info: Redefining \lslig on input line 900.
+\MT@outer@space=\skip65
+)
+Package microtype Info: Loading configuration file microtype.cfg.
+
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/microtype/microtype.cfg
+File: microtype.cfg 2022/03/14 v3.0d microtype main configuration file (RS)
+))
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/emptypage/emptypage.sty
+Package: emptypage 2010/05/30 v1.2 Suppress page numbers and headings on empty 
+pages
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/fancyhdr/fancyhdr.sty
+Package: fancyhdr 2021/01/28 v4.0.1 Extensive control of page headers and foote
+rs
+\f@nch@headwidth=\skip66
+\f@nch@O@elh=\skip67
+\f@nch@O@erh=\skip68
+\f@nch@O@olh=\skip69
+\f@nch@O@orh=\skip70
+\f@nch@O@elf=\skip71
+\f@nch@O@erf=\skip72
+\f@nch@O@olf=\skip73
+\f@nch@O@orf=\skip74
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/titlesec/titlesec.sty
+Package: titlesec 2021/07/05 v2.14 Sectioning titles
+\ttl@box=\box70
+\beforetitleunit=\skip75
+\aftertitleunit=\skip76
+\ttl@plus=\dimen297
+\ttl@minus=\dimen298
+\ttl@toksa=\toks47
+\titlewidth=\dimen299
+\titlewidthlast=\dimen300
+\titlewidthfirst=\dimen301
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/geometry/geometry.sty
+Package: geometry 2020/01/02 v5.9 Page Geometry
+
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/iftex/ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+)
+\Gm@cnth=\count339
+\Gm@cntv=\count340
+\c@Gm@tempcnt=\count341
+\Gm@bindingoffset=\dimen302
+\Gm@wd@mp=\dimen303
+\Gm@odd@mp=\dimen304
+\Gm@even@mp=\dimen305
+\Gm@layoutwidth=\dimen306
+\Gm@layoutheight=\dimen307
+\Gm@layouthoffset=\dimen308
+\Gm@layoutvoffset=\dimen309
+\Gm@dimlist=\toks48
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/appendix/appendix.sty
+Package: appendix 2020/02/08 v1.2c extra appendix facilities
+\c@@pps=\count342
+\c@@ppsavesec=\count343
+\c@@ppsaveapp=\count344
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/background/background.sty
+Package: background 2014/03/04 v2.1 background material
+
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/xkeyval/xkeyval.sty
+Package: xkeyval 2020/11/20 v2.8 package option processing (HA)
+
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/xkeyval/xkeyval.tex
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/xkeyval/xkvutils.tex
+\XKV@toks=\toks49
+\XKV@tempa@toks=\toks50
+)
+\XKV@depth=\count345
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+))
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/everypage/everypage.sty
+Package: everypage 2020/10/17 R2.0b Hooks to run on every page
+
+
+Package everypage Warning: Functionality similar to this package has recently
+(everypage)                been implemented in LaTeX. This package is now in
+(everypage)                legacy status.
+(everypage)                Please, don't use it in new documents and packages.
+
+
+Package everypage Warning: You appear to be running a version of LaTeX
+(everypage)                providing the new functionality.
+(everypage)                Doing the best to deliver the original `everypage`
+(everypage)                interface on top of it. Strict equivalence is
+(everypage)                not possible, breakage may occur.
+(everypage)                If truly needed, Use `everypage-1x` to force the
+(everypage)                loading of an older code base.
+
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/tools/afterpage.sty
+Package: afterpage 2014/10/28 v1.08 After-Page Package (DPC)
+\AP@output=\toks51
+\AP@partial=\box71
+\AP@footins=\box72
+))
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/tools/enumerate.sty
+Package: enumerate 2015/07/23 v3.00 enumerate extensions (DPC)
+\@enLab=\toks52
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/enumitem/enumitem.sty
+Package: enumitem 2019/06/20 v3.9 Customized lists
+\labelindent=\skip77
+\enit@outerparindent=\dimen310
+\enit@toks=\toks53
+\enit@inbox=\box73
+\enit@count@id=\count346
+\enitdp@description=\count347
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/multirow/multirow.sty
+Package: multirow 2021/03/15 v2.8 Span multiple rows of a table
+\multirow@colwidth=\skip78
+\multirow@cntb=\count348
+\multirow@dima=\skip79
+\bigstrutjot=\dimen311
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/dejavu/DejaVuSansMono.sty
+Package: DejaVuSansMono 2011/06/01 Style file for DejaVuSansMono.
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/ulem/ulem.sty
+\UL@box=\box74
+\UL@hyphenbox=\box75
+\UL@skip=\skip80
+\UL@hook=\toks54
+\UL@height=\dimen312
+\UL@pe=\count349
+\UL@pixel=\dimen313
+\ULC@box=\box76
+Package: ulem 2019/11/18
+\ULdepth=\dimen314
+) (./incl/pre/ext/aautitlepage.sty
+
+LaTeX Warning: You have requested package `incl/pre/ext/aautitlepage',
+               but the package provides `aautitlepage'.
+
+Package: aautitlepage 
+
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/lastpage/lastpage.sty
+Package: lastpage 2021/09/03 v1.2n Refers to last page's name (HMM; JPG)
+))) (./incl/pre/cmds.tex
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/changepage/changepage.sty
+Package: changepage 2009/10/20 v1.0c check page and change page layout
+\c@cp@cntr=\count350
+\cp@tempcnt=\count351
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/framed/framed.sty
+Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
+\OuterFrameSep=\skip81
+\fb@frw=\dimen315
+\fb@frh=\dimen316
+\FrameRule=\dimen317
+\FrameSep=\dimen318
+)
+\c@theorem=\count352
+) (./incl/pre/conf.tex
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/pgf/libraries/pgflibraryarrows.meta.code.tex
+File: pgflibraryarrows.meta.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgfarrowinset=\dimen319
+\pgfarrowlength=\dimen320
+\pgfarrowwidth=\dimen321
+\pgfarrowlinewidth=\dimen322
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarycalc.code.tex
+File: tikzlibrarycalc.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2020/03/24 1.8d listings language file
+))) (./master.aux (./incl/misc/frontpage.aux)
+(./incl/misc/titlepage.aux) (./incl/misc/preface.aux) (./incl/misc/contents.aux
+) (./incl/misc/notation.aux) (./incl/misc/introduction.aux)
+(./main/codes/index.aux) (./main/algebraic_geometry/index.aux
+
+LaTeX Warning: Label `exmp:fermat_curve_derivatives' multiply defined.
+
+) (./main/algebraic_geometry_codes/index.aux))
+\openout1 = `master.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+Package hyperref Info: Link coloring OFF on input line 35.
+
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/hyperref/nameref.sty
+Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
+
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/refcount/refcount.sty
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/generic/gettitlestring/gettitlestring.sty
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+)
+\c@section@level=\count353
+)
+LaTeX Info: Redefining \ref on input line 35.
+LaTeX Info: Redefining \pageref on input line 35.
+LaTeX Info: Redefining \nameref on input line 35.
+ (./master.out) (./master.out)
+\@outlinefile=\write4
+\openout4 = `master.out'.
+
+
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count354
+\scratchdimen=\dimen323
+\scratchbox=\box77
+\nofMPsegments=\count355
+\nofMParguments=\count356
+\everyMPshowfont=\toks55
+\MPscratchCnt=\count357
+\MPscratchDim=\dimen324
+\MPnumerator=\count358
+\makeMPintoPDFobject=\count359
+\everyMPtoPDFconversion=\toks56
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/epstopdf-pkg/epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: changepage package is loaded.
+\caption@adjustwidth@hsize=\dimen325
+\caption@adjustwidth@linewidth=\dimen326
+Package caption Info: float package is loaded.
+Package caption Info: listings package is loaded.
+Package caption Info: End \AtBeginDocument code.
+\c@lstlisting=\count360
+LaTeX Info: Redefining \microtypecontext on input line 35.
+Package microtype Info: Applying patch `item' on input line 35.
+Package microtype Info: Applying patch `toc' on input line 35.
+Package microtype Info: Applying patch `eqnum' on input line 35.
+Package microtype Info: Applying patch `footnote' on input line 35.
+Package microtype Info: Generating PDF output.
+Package microtype Info: Character protrusion enabled (level 2).
+Package microtype Info: Using default protrusion set `alltext'.
+Package microtype Info: Automatic font expansion enabled (level 2),
+(microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
+Package microtype Info: Using default expansion set `alltext-nott'.
+LaTeX Info: Redefining \showhyphens on input line 35.
+Package microtype Info: No adjustment of tracking.
+Package microtype Info: No adjustment of interword spacing.
+Package microtype Info: No adjustment of character kerning.
+
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/microtype/mt-cmr.cfg
+File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
+(RS)
+)
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(85.35826pt, 426.79135pt, 85.35826pt)
+* v-part:(T,H,B)=(85.35826pt, 674.33032pt, 85.35826pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=426.79135pt
+* \textheight=674.33032pt
+* \oddsidemargin=13.08827pt
+* \evensidemargin=13.08827pt
+* \topmargin=-18.78552pt
+* \headheight=12.0pt
+* \headsep=19.8738pt
+* \topskip=11.0pt
+* \footskip=27.46295pt
+* \marginparwidth=53.0pt
+* \marginparsep=7.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+Package lastpage Info: Please have a look at the pageslts package at
+(lastpage)             https://www.ctan.org/pkg/pageslts
+(lastpage)             ! on input line 35.
+\openout2 = `incl/misc/frontpage.aux'.
+
+(./incl/misc/frontpage.tex (./fig/tikz/aau-badge.tex
+<fig/img/aau/logos/AAU_UK_CIRCLE_white_rgb.png, id=115, 158.5925pt x 160.6pt>
+File: fig/img/aau/logos/AAU_UK_CIRCLE_white_rgb.png Graphic file (type png)
+<use fig/img/aau/logos/AAU_UK_CIRCLE_white_rgb.png>
+Package pdftex.def Info: fig/img/aau/logos/AAU_UK_CIRCLE_white_rgb.png  used on
+ input line 7.
+(pdftex.def)             Requested size: 119.49974pt x 121.01576pt.
+)
+LaTeX Font Info:    Trying to load font information for U+msa on input line 26.
+
+
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/microtype/mt-msa.cfg
+File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 26.
+
+
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/microtype/mt-msb.cfg
+File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+)
+LaTeX Font Info:    Trying to load font information for T1+bch on input line 30
+.
+
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/psnfss/t1bch.fd
+File: t1bch.fd 2004/10/18 font definitions for T1/bch.
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/microtype/mt-bch.cfg
+File: mt-bch.cfg 2007/03/03 v1.5 microtype config. file: Bitstream Charter (RS)
+
+)
+Overfull \hbox (6.08817pt too wide) in paragraph at lines 49--51
+ [][][][][][][] 
+ []
+
+<fig/img/aau/waves/AAU_BOELGER_WHITE-10.png, id=117, 597.432pt x 845.0772pt>
+File: fig/img/aau/waves/AAU_BOELGER_WHITE-10.png Graphic file (type png)
+<use fig/img/aau/waves/AAU_BOELGER_WHITE-10.png>
+Package pdftex.def Info: fig/img/aau/waves/AAU_BOELGER_WHITE-10.png  used on in
+put line 52.
+(pdftex.def)             Requested size: 597.55817pt x 845.04933pt.
+[1
+
+
+
+
+{/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf-
+var/fonts/map/pdftex/updmap/pdftex.map} <./fig/img/aau/waves/AAU_BOELGER_WHITE-
+10.png> <./fig/img/aau/logos/AAU_UK_CIRCLE_white_rgb.png>])
+\openout2 = `incl/misc/titlepage.aux'.
+
+
+(./incl/misc/titlepage.tex
+\titlepageleftcolumnwidth=\skip82
+\titlepagerightcolumnwidth=\skip83
+
+Underfull \hbox (badness 10000) in paragraph at lines 31--31
+
+ []
+
+
+Overfull \hbox (224.2389pt too wide) in paragraph at lines 31--31
+\T1/cmr/m/n/10.95 -  []
+ []
+
+
+Overfull \hbox (224.2389pt too wide) in paragraph at lines 31--31
+\T1/cmr/m/n/10.95 -  []
+ []
+
+(./incl/misc/abstract.tex)
+Overfull \hbox (7.26111pt too wide) in paragraph at lines 31--31
+[] 
+ []
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.i}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.31 }
+       [1
+
+
+
+])
+\openout2 = `incl/misc/preface.aux'.
+
+ (./incl/misc/preface.tex)
+Underfull \hbox (badness 10000) in paragraph at lines 23--43
+
+ []
+
+[2
+
+
+
+
+
+]
+\openout2 = `incl/misc/contents.aux'.
+
+ (./incl/misc/contents.tex (./master.toc [3
+
+
+
+
+])
+\tf@toc=\write5
+\openout5 = `master.toc'.
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[4])
+\openout2 = `incl/misc/notation.aux'.
+
+ (./incl/misc/notation.tex
+LaTeX Font Info:    Trying to load font information for U+bbm on input line 21.
+
+
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/bbm-macros/ubbm.fd
+File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
+)
+LaTeX Font Info:    Trying to load font information for U+euf on input line 31.
+
+
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/amsfonts/ueuf.fd
+File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
+)
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/microtype/mt-euf.cfg
+File: mt-euf.cfg 2006/07/03 v1.1 microtype config. file: AMS Euler Fraktur (RS)
+
+)
+Overfull \hbox (223.79169pt too wide) in paragraph at lines 20--39
+[][] 
+ []
+
+[5
+
+
+
+
+
+]
+LaTeX Font Info:    Trying to load font information for OMS+zplm on input line 
+45.
+
+(/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+tex/latex/psnfss/omszplm.fd
+File: omszplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMS/zplm.
+))
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[6]
+\openout2 = `incl/misc/introduction.aux'.
+
+ (./incl/misc/introduction.tex) [7
+
+
+
+
+]
+\openout2 = `main/codes/index.aux'.
+
+ (./main/codes/index.tex
+Chapter 1.
+(./main/codes/basics.tex [1
+
+
+
+
+
+]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[2]) (./main/codes/transmission_and_nearest_neighbour_decoding.tex
+Underfull \hbox (badness 10000) in paragraph at lines 2--9
+
+ []
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[3]) (./main/codes/bounds.tex
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[4] (./main/codes/gilbert_varshamov.tex
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[5]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[6]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[7])))
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[8]
+\openout2 = `main/algebraic_geometry/index.aux'.
+
+ (./main/algebraic_geometry/index.tex
+Chapter 2.
+(./main/algebraic_geometry/alg/fields_and_rings.tex [9
+
+
+
+
+])
+(./main/algebraic_geometry/alg/multivariate_polynomials.tex
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[10]) (./main/algebraic_geometry/alg/hilbert_basis_theorem.tex
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[11]
+Overfull \hbox (3.31583pt too wide) in paragraph at lines 19--20
+[][]\T1/cmr/bx/n/10.95 (-20) Theorem 2.20 \T1/cmr/m/n/10.95 (-20) (Hilbert Ba-s
+is The-o-rem)\T1/cmr/bx/n/10.95 (-20) . []\T1/cmr/m/it/10.95 (-20) Let $\OML/cm
+m/m/it/10.95 R$ \T1/cmr/m/it/10.95 (-20) be a Noethe-rian ring, then $\OML/cmm/
+m/it/10.95 R\OT1/cmr/m/n/10.95 (-20) [\OML/cmm/m/it/10.95 X[]; X[]; [] ; X[]\OT
+1/cmr/m/n/10.95 (-20) ]$
+ []
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[12]) (./main/algebraic_geometry/geom/basics.tex
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[13]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[14])
+(./main/algebraic_geometry/geom/vanishing_ideals_and_hilberts_nullstellensatz.t
+ex
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[15]) (./main/algebraic_geometry/geom/projective_spaces.tex
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[16]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[17]) (./main/algebraic_geometry/geom/varieties.tex
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[18]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[19]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[20]) (./main/algebraic_geometry/geom/local_rings_and_dvr.tex
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[21]) (./main/algebraic_geometry/curves/basics.tex
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[22]
+Underfull \hbox (badness 10000) in paragraph at lines 46--47
+
+ []
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[23]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[24]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[25]) (./main/algebraic_geometry/curves/bezouts_theorem.tex
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[26])
+(./main/algebraic_geometry/curves/divisors_and_the_riemann_roch_theorem.tex
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[27]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[28]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[29]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[30]))
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[31]
+\openout2 = `main/algebraic_geometry_codes/index.aux'.
+
+ (./main/algebraic_geometry_codes/index.tex
+Chapter 3.
+[32
+
+
+
+
+] (./main/algebraic_geometry_codes/from_plane_curves.tex)
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[33] (./main/algebraic_geometry_codes/goppa.tex
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[34]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[35]
+<tvz.png, id=795, 1373.13pt x 718.3638pt>
+File: tvz.png Graphic file (type png)
+<use tvz.png>
+Package pdftex.def Info: tvz.png  used on input line 100.
+(pdftex.def)             Requested size: 420.85103pt x 221.55527pt.
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[36]))
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[37 <./tvz.png>] (./master.bbl) [38
+
+
+
+
+] 
+AED: lastpage setting LastPage
+(./master.aux (./incl/misc/frontpage.aux) (./incl/misc/titlepage.aux)
+(./incl/misc/preface.aux) (./incl/misc/contents.aux) (./incl/misc/notation.aux)
+(./incl/misc/introduction.aux) (./main/codes/index.aux)
+(./main/algebraic_geometry/index.aux)
+(./main/algebraic_geometry_codes/index.aux))
+
+LaTeX Warning: There were multiply-defined labels.
+
+
+Package rerunfilecheck Warning: File `master.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `master.out':
+(rerunfilecheck)             Before: B731A94AD94B80C6A4E7A2D71BF6DB79;4996
+(rerunfilecheck)             After:  8AA10C2840969EE9D00A091810FA93AB;4932.
+ ) 
+Here is how much of TeX's memory you used:
+ 32184 strings out of 478278
+ 613827 string characters out of 5825089
+ 1070915 words of memory out of 5000000
+ 49019 multiletter control sequences out of 15000+600000
+ 529631 words of font info for 294 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 104i,16n,107p,1362b,810s stack positions out of 5000i,500n,10000p,200000b,80000s
+pdfTeX warning (dest): name{page.39} has been referenced but does not exist, 
+replaced by a fixed one
+
+pdfTeX warning (dest): name{chapter.4} has been referenced but does not exist, 
+replaced by a fixed one
+
+{/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/
+fonts/enc/dvips/cm-super/cm-super-t1.enc} </home/nrbjerg/.texlive2021/texmf-var
+/fonts/pk/ljfour/public/bbm/bbm10.657pk>{/nix/store/87fc2hvjlnxfh4wvbz8ghc75v86
+b7gz0-texlive-combined-2021/share/texmf/fonts/enc/dvips/base/8r.enc}</nix/store
+/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/fonts/type1
+/bitstrea/charter/bchb8a.pfb></nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texli
+ve-combined-2021/share/texmf/fonts/type1/bitstrea/charter/bchr8a.pfb></nix/stor
+e/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/fonts/type
+1/public/amsfonts/cm/cmex10.pfb></nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-te
+xlive-combined-2021/share/texmf/fonts/type1/public/amsfonts/cm/cmmi10.pfb></nix
+/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/fonts
+/type1/public/amsfonts/cm/cmmi6.pfb></nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz
+0-texlive-combined-2021/share/texmf/fonts/type1/public/amsfonts/cm/cmmi8.pfb></
+nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/fo
+nts/type1/public/amsfonts/cm/cmmi9.pfb></nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b
+7gz0-texlive-combined-2021/share/texmf/fonts/type1/public/amsfonts/cm/cmr10.pfb
+></nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf
+/fonts/type1/public/amsfonts/cm/cmr6.pfb></nix/store/87fc2hvjlnxfh4wvbz8ghc75v8
+6b7gz0-texlive-combined-2021/share/texmf/fonts/type1/public/amsfonts/cm/cmr8.pf
+b></nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texm
+f/fonts/type1/public/amsfonts/cm/cmr9.pfb></nix/store/87fc2hvjlnxfh4wvbz8ghc75v
+86b7gz0-texlive-combined-2021/share/texmf/fonts/type1/public/amsfonts/cm/cmsy10
+.pfb></nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/t
+exmf/fonts/type1/public/amsfonts/cm/cmsy6.pfb></nix/store/87fc2hvjlnxfh4wvbz8gh
+c75v86b7gz0-texlive-combined-2021/share/texmf/fonts/type1/public/amsfonts/cm/cm
+sy8.pfb></nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/shar
+e/texmf/fonts/type1/public/amsfonts/cm/cmsy9.pfb></nix/store/87fc2hvjlnxfh4wvbz
+8ghc75v86b7gz0-texlive-combined-2021/share/texmf/fonts/type1/public/amsfonts/eu
+ler/eufm10.pfb></nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-20
+21/share/texmf/fonts/type1/public/amsfonts/symbols/msam10.pfb></nix/store/87fc2
+hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/fonts/type1/publi
+c/amsfonts/symbols/msbm10.pfb></nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texl
+ive-combined-2021/share/texmf/fonts/type1/public/cm-super/sfbi1095.pfb></nix/st
+ore/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/fonts/ty
+pe1/public/cm-super/sfbx1095.pfb></nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-t
+exlive-combined-2021/share/texmf/fonts/type1/public/cm-super/sfbx1200.pfb></nix
+/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/fonts
+/type1/public/cm-super/sfbx1440.pfb></nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz
+0-texlive-combined-2021/share/texmf/fonts/type1/public/cm-super/sfbx2488.pfb></
+nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf/fo
+nts/type1/public/cm-super/sfrm0600.pfb></nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b
+7gz0-texlive-combined-2021/share/texmf/fonts/type1/public/cm-super/sfrm0800.pfb
+></nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/texmf
+/fonts/type1/public/cm-super/sfrm0900.pfb></nix/store/87fc2hvjlnxfh4wvbz8ghc75v
+86b7gz0-texlive-combined-2021/share/texmf/fonts/type1/public/cm-super/sfrm1095.
+pfb></nix/store/87fc2hvjlnxfh4wvbz8ghc75v86b7gz0-texlive-combined-2021/share/te
+xmf/fonts/type1/public/cm-super/sfti0900.pfb></nix/store/87fc2hvjlnxfh4wvbz8ghc
+75v86b7gz0-texlive-combined-2021/share/texmf/fonts/type1/public/cm-super/sfti10
+95.pfb>
+Output written on master.pdf (46 pages, 1118817 bytes).
+PDF statistics:
+ 1006 PDF objects out of 1200 (max. 8388607)
+ 883 compressed objects within 9 object streams
+ 260 named destinations out of 1000 (max. 500000)
+ 57594 words of extra memory for PDF output out of 61914 (max. 10000000)
+

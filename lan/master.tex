@@ -1,0 +1,136 @@
+% master.tex : master file for the project
+% ------------------------------------------------------------------------------
+% This is the main file in the project, which collects the contents from all the
+% input files (text, images, literature databases, etc.).
+
+% The 'book' class is a document class with many flexible options.
+% See https://tex.stackexchange.com/a/36989/118167
+\documentclass[11pt,a4paper,oneside,openright,english]{article}
+
+% Some top level variables that are used to automatically input title, authors,
+% etc. in the title page and front page.
+
+% The preamble, i.e. all the settings and commands that go before actual
+% document contents, in this template is handled in the single file aaumath.sty,
+% which defines a package that can be loaded here with \usepackage.
+%\usepackage{aaumath}
+% All contents of the document go between the \begin and \end commands for the
+% 'document' environment.
+\include{incl/pre/pkgs}
+\include{incl/pre/cmds}
+\include{incl/pre/conf}
+
+\title{Linear Algebra Notes}
+\author{Martin Sig Nørbjerg}
+\date{\today}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+% The front matter is not counted in the numbered pages and are instead numbered
+% with roman numerals. This consists of, for exmp, the front page, title
+% page, preface, and table of contents.
+% The main matter is were the bulk of your work goes. Pages and headings have
+% arabic numbers.
+
+\section{Introduction}
+Throughout these notes we let $\mathbb{F}$ denote a field, either $\mathbb{F} = \mathbb{R}$ (the field of real numbers) or $\mathbb{F} = \mathbb{C}$ (the field of complex numbers). However the most of the results of linear algebra generalizes to arbitrary fields.
+
+
+\section{Linear Systems}
+Suppose we have a system of linear equations:
+\begin{align*}
+  x + 2y - z = 2 \\
+  y  + z = 1
+\end{align*}
+Then this linear system can be represented as a matrix vector multiplication
+\begin{equation*}
+  \begin{bmatrix} 1 & 2 & -1 \\ 0 & 1 & 1 \end{bmatrix} \begin{bmatrix} x \\ y \\ z \end{bmatrix} = \begin{bmatrix} 2 \\ 1 \end{bmatrix}
+\end{equation*}
+\subsection{Augmented matricies}
+
+
+\section{Vector Spaces}
+
+\begin{definition}
+  A \textit{vectorspace} $V$ is a
+\end{definition}
+
+\section{Eigenvalues and Eigenvectors}
+Eigenvalues and Eigenvectors are in my opinion the crown jewel's of linear algebra. They tie together every concept introduced so far.
+
+\begin{definition}
+  Let $A \in \mathbb{F}^{n \times n}$, suppose that there exists $\lambda \in \mathbb{F}$ and a non-zero $\mathbf{v} \in \mathbb{F}^{n}$ then $\lambda$ is called an \textit{eigenvalue} and $\mathbf{v}$ and \textit{eigenvector} of $A$ if and only if:
+  \begin{equation}\label{eq:eigen_cond}
+    A \mathbf{v} = \lambda \mathbf{v}
+  \end{equation}
+\end{definition}
+
+\begin{remark}
+  It is important to note that $\mathbf{v} = \mathbf{0}$ is never an eigenvector, for technical reasons which will become apparent later. However it does obey Equation \eqref{eq:eigen_cond}.
+\end{remark}
+
+\begin{example}\label{exmp:}
+  Show that $v = \begin{bmatrix} 1 & -1 \end{bmatrix}^{T}$ is an eigenvector of $A = \begin{bmatrix}  \end{bmatrix}$ and find the corresponding eigenvalue $\lambda$.
+
+  \textit{Solution:}
+\end{example}
+\subsection{Computing Eigenvalues and Eigenvectors}
+
+Let $A \in \mathbb{F}^{n \times n}$, suppose we want to find an
+Suppose $\mathbf{v}$ is an eigenvector of $A$ with eigenvalue $\lambda$, that is $A \mathbf{v} = \lambda \mathbf{v}$. Then:
+\begin{equation*}
+  \mathbf{0} = A \mathbf{v} - \lambda \mathbf{v} = A \mathbf{v} - \lambda I \mathbf{v} = (A - \lambda I) \mathbf{v}
+\end{equation*}
+
+If the matrix $A - \lambda I$ is invertible, then:
+\begin{equation*}
+  (A - \lambda I)^{-1}\mathbf{0} = \mathbf{v}
+\end{equation*}
+Hence we must have $\mathbf{v} = 0$ by Lemma \ref{lem:x=0_implies_Ax=0}. However for $\mathbb{v}$ to be an eigenvector we must have $\mathbb{v} \neq \mathbf{0}$. Hence $(A - \lambda I)$ cannot be invertible and hence:
+\begin{equation*}
+  \det(A - \lambda I) = 0
+\end{equation*}
+
+This leads us to the following theorem:
+\begin{theorem}\label{thm:char_polynomial}
+  Let $A \in \mathbb{F}^{n \times n}$ be a matrix, then the \textit{charateristic polynomial} of $A$ is:
+  \begin{equation*}
+    f(\lambda) = \det(A - \lambda I)
+  \end{equation*}
+  Furthermore $\lambda' \in \mathbb{F}$ is an eigenvalue of $A$ if and only if $f(\lambda') = 0$.
+\end{theorem}
+
+After we have found an eigenvalue $\lambda'$ using Theorem \ref{thm:char_polynomial} we may obtain an eigenvector by solving the system:
+\begin{equation*}
+  (A - \lambda'I) \mathbb{v} = \mathbb{0}
+\end{equation*}
+We will get a parametric solution. The basis of the solution space is a basis of the eigenspace associated with $\lambda'$.
+
+\begin{example}\label{exmp:eigen_value_using_char_polynomial}
+  Consider the matrix $A = \begin{bmatrix} 2 & 5 \\ -1 & 3 \end{bmatrix}$ find the eigenvalues of $A$ and their associated eigenspaces.
+
+  \textit{Solution:}
+\end{example}
+
+
+\section{Factorizations}
+
+
+% Input files should be partitioned such that each file corresponds to one
+% chapter. The \include command forces a page break and inserts the contents of
+% the input file.
+
+
+% Appendices are included inside an appendices block, which enumerates chapters
+% with letters, starting from A, instead of numbers.
+
+% The backmatter is for extra stuff. Headings are not numbered.
+
+% Automatic list of references, based on which references in the literaturery
+% database files were referenced throughout the document.
+
+%\bibliographystyle{apalike_new}
+
+\end{document}

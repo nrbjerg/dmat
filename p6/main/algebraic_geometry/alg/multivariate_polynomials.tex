@@ -1,0 +1,58 @@
+\subsection{Multivariate Polynomials}
+Moving on we define multivariate polynomials over an arbitrary ring $R$. A multivariate polynomial, with $n$ variables, can be thought of as a polynomial with coefficients which are themselves multivariate polynomials, with $n - 1$ variables. The following definitions are based on those found in \cite{Fulton}[Section 1.1] and \cite{lang}[Section 2.3].
+\begin{definition} \label{def:multivariate_polynomials}
+  Let $R$ be a ring, then we define the ring of \textit{multivariate polynomials} with $n \geq 1$ variables $X_1, X_2, \ldots, X_{n}$ over $R$ inductively as
+  \begin{equation*}
+    R[X_{1}, X_{2}, \ldots, X_{n}] := R[X_{1}, X_{2} \ldots, X_{n - 1}][X_{n}]
+  \end{equation*}
+  with $R[X_{1}]$ defined the usual way.
+\end{definition}
+\begin{remark}
+When $n = 1, 2$ or $3$ we usually write $R[X]$, $R[X, Y]$ or $R[X, Y, Z]$ respectively instead of $R[X_1, X_2, \ldots, X_{n}]$.
+\end{remark}
+A polynomial $f \in R[X_1, X_2, \ldots, X_{n}]$, can be thought of as a function, similarly to univariate polynomials over $R$. Next we introduce some special types of multivariate polynomials, with the end goal of being able to define the degree of an arbitrary multivariate polynomial.
+\begin{definition}\label{def:monomial}
+  Let $R$ be a ring and $k \in \N^{n}$, then a polynomial of the form $X^{(k)} := \prod_{i = 1}^{n}X_{i}^{k_{i}} \in R[X_1, X_2, \ldots, X_{n}]$ is called a \textit{monomial}, the \textit{degree} of the monomial $X^{(k)}$ is defined as $\deg\left(X^{(k)}\right) := \sum^{n}_{i = 1} k_{i}$.
+\end{definition}
+Next we consider polynomials given as linear combinations of monomials of the same degree.
+\begin{definition}\label{def:homogeneous_poly}
+  Let $d, m \in \mathbb{N}$, and $X^{(k_{1})}, X^{(k_{2})}, \ldots, X^{(k_{m})} \in R[X_1, X_2, \ldots, X_{n}]$ be monomials of degree $d$. Furthermore if $a_1, a_2, \ldots, a_{m} \in R \setminus \left\{0\right\}$, then the polynomial $H := \sum^{k}_{i = 1} a_{i} X^{(k_{i})}$ is called a \textit{homogeneous} polynomial or a \textit{form}
+  and we define the \textit{degree} of $H$ as $\deg(H) := d$.
+\end{definition}
+
+Finally, we are able to define the degree of an arbitrary non-zero multivariate polynomial.
+
+\begin{definition}\label{def:degree}
+  Let $F \in R[X_1, X_2, \ldots, X_{n}] \setminus \left\{0\right\}$ then there exists some $d \in \N$ and homogeneous polynomials $H_{0}, H_{1}, \ldots, H_{d} \in R[X_1, X_2, \ldots, X_{n}]$, such that with $\deg(H_{i}) = i$ and $F = \sum^{d}_{i = 1} H_{i}$.
+ Then we define the \textit{degree} of $F$ to be $\deg(F) = d$.
+\end{definition}
+The existence of a $d \in \N$, as described in Definition \ref{def:degree}, is guaranteed since every polynomial consist of a finite number of terms.
+\begin{remark}\label{rem:deg_0}
+  We will use the convention that the polynomial $0 \in R[X_1, X_2, \ldots, X_{n}]$ has degree $0$.
+\end{remark}
+It is worth noting that if $F$ is a monomial or a homogeneous polynomial, the degree defined in Definition \ref{def:degree} agrees with the definitions of degree found in Definition \ref{def:monomial} or \ref{def:homogeneous_poly} respectively.
+Finally, a univariate polynomial $F \in R[X]$ the degree defined in definition \ref{def:degree} also corresponds to the standard definition for the degree of $F$, since $X^{k}$ where $k \in \N$ are the only monomials found in $R[X]$.
+
+Consider the polynomial $F = \sum_{k \in \N^{n}} a_{(k)}X^{(k)} \in R[X_1, X_2, \ldots, X_{n}]$ where $a_{(k)} = 0$ for all but a finite number of $k$'s. Then the \textit{partial derivative of $F$ with respect to $X_{j}$} denoted $F_{X_j}$ is defined as:
+\begin{equation*}
+F_{X_{j}} := \sum_{k \in \N^{n}} k_{j} a_{(k)} X^{(k - e_{j})}
+\end{equation*}
+where $X^{(k - e_{j})}$ is interpreted as $0$ if $k_{j} - e_{j} < 0$.
+
+\begin{example}\label{exmp:fermat_curve_derivatives}
+   The calculations with partial derivatives depends strongly on the characteristic of $R$. For instance let $R$ be a ring of non-zero characteristic $p$ and $m \in \mathbb{N}$. Consider the homogeneous polynomial $F = X^{m} + Y^{m} + Z^{m} \in R[X, Y, Z]$, then $\deg(F) = m$ and the partial derivatives of $F$ are $F_{X} = mX^{m-1}$, $F_{Y} = mY^{m-1}$ and $F_{Z} = mZ^{m-1}$. However, if $m$ and $p$ are not coprime, then $F_X = F_Y = F_Z = 0$.
+\end{example}
+
+Below we note two important results on polynomial rings, which will come in handy later. The first result will be stated without proof, to avoid introducing otherwise unnecessary concepts, however its proof can be found in \cite{lang}[Section 2.2].
+\begin{theorem}\label{thm:R_UFT_implies_polynomial_ring_over_R_is_UFD}
+  Let $R$ be a UFD, then $R[X]$ is also a UFD.
+\end{theorem}
+
+The theorem above have a very natural extension to multivariate polynomial rings.
+\begin{corollary}\label{cor:multivariate_polynomial_ring_is_UFD}
+  If $R$ is a UFD, then $R[X_1, X_2, \ldots, X_{n}]$ is also a UFD.
+\end{corollary}
+
+\begin{proof}
+  Follows directly by induction, since $R[X_1, X_2, \ldots, X_{k - 1}]$ being a UFD means $R[X_1, X_2, \ldots, X_{n}]$ is a UFD, by Theorem \ref{thm:R_UFT_implies_polynomial_ring_over_R_is_UFD}.
+\end{proof}

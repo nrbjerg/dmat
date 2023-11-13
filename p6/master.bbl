@@ -1,0 +1,65 @@
+\begin{thebibliography}{10}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Fulton(2008)]{Fulton}
+W.~Fulton.
+\newblock Algebraic curves: An introduction to algebraic geometry, 2008.
+
+\bibitem[Giulietti(2003)]{notes_on_alg_geom_codes}
+M.~Giulietti.
+\newblock Notes on algebraic-geometric codes, 2003.
+\newblock Lecture notes from a series of lectures, given in May 2003.
+
+\bibitem[Huffman and Pless(2003)]{huffman}
+W.~C. Huffman and V.~Pless.
+\newblock \emph{Fundementals of Error-Correcting Codes}.
+\newblock Cambrige University Press, 1st edition, 2003.
+\newblock ISBN 9780521131704.
+
+\bibitem[Lahtonen(2023)]{covering_distance_of_linear_code}
+J.~Lahtonen.
+\newblock Covering distance for a linear code, 2023.
+\newblock url: \url{https://math.stackexchange.com/q/4653336}.
+
+\bibitem[Lang(2002)]{lang}
+S.~Lang.
+\newblock \emph{Algebra}.
+\newblock Springer, 3rd edition, 2002.
+\newblock ISBN 03879585X.
+
+\bibitem[Lauritzen(2003)]{alg_lauritzen}
+N.~Lauritzen.
+\newblock \emph{Concrete Abstract Algebra: From Numbers to Gröbner Bases}.
+\newblock Cambridge University Press, 1st edition, 2003.
+\newblock ISBN 9780521534109.
+
+\bibitem[Pellikaan et~al.(2018)Pellikaan, Wu, Bulygin, and
+  Jurrius]{CCC_with_CA}
+R.~Pellikaan, X.-W. Wu, S.~Bulygin, and R.~Jurrius.
+\newblock \emph{Codes, Cryptology and Curves with Computer Algebra}.
+\newblock Cambrige University Press, 1st edition, 2018.
+\newblock ISBN 9780521520362.
+
+\bibitem[Shum and Zhang(2016)]{the_singleton_bound_and_rs_code}
+K.~Shum and B.~Zhang.
+\newblock The singleton bound and reed-solomon code, 2016.
+\newblock url:
+  \url{https://piazza.com/class_profile/get_resource/isgy6spmwwm3ba/itzo5as3bbw7kk}.
+
+\bibitem[Tsfasman et~al.(2007)Tsfasman, Vlăduţ, and Nogin]{alg_geom_codes}
+M.~Tsfasman, S.~Vlăduţ, and D.~Nogin.
+\newblock \emph{Algebraic Geometry Codes: Basic Notations}.
+\newblock American Mathematical Society, 1st edition, 2007.
+\newblock ISBN 9780821843062.
+
+\bibitem[Weintraub(2020)]{Galois_theory}
+S.~H. Weintraub.
+\newblock \emph{Galois Theory}.
+\newblock Springer, 2nd edition, 2020.
+\newblock ISBN 9780387875743.
+
+\end{thebibliography}

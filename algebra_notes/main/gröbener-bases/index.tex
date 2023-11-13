@@ -1,0 +1,103 @@
+\chapter{Division of multivariate polynomials}
+The following notes are based on Chapter 5 and appendix A, of ``Concrete Abstract Algebra From Numbers to Gröbener bases''.
+\section{Relations}
+\begin{definition}
+Let $S$ be a set and let $R \subseteq S \times S$ then $R$ is called a \textit{relation} on $S$ and we write $x R y$ to mean $(x,y) \in R$.
+\end{definition}
+
+\begin{definition}
+These relations can have certain properties, for instance $R$ is called \textit{reflective} if $x R x$, \textit{symmetric} if $x R y \implies y R x$, \textit{antisymmetric} if $x R y \wedge y R x \implies x = y$ and \textit{transitive} if $x R y \wedge y R z \implies x R z$ for every $x, y, z \in S$
+\end{definition}
+
+\begin{definition}
+If $R$ is reflective, symmetric and transitive, then $R$ is called an \textit{equivilence relation}.
+On the other hand if $R$ is reflective, antisymmetric and transitive, then $R$ is called a \textit{partial ordering}
+\end{definition}
+
+\subsection{Partial Orderings}
+\begin{definition}
+A partial ordering $R$ on $S$ is called \textit{total ordering} if $x \leq y$ or $y \leq x$ for every $x,y \in S$.
+If every non-empty $M \subseteq S$ as a \textit{minimum element} $m \in M$, meaning $m \leq x$ for all $x \in M$, then $\leq$ is called a \textit{well ordering} on $S$
+\end{definition}
+
+\section{Orderings}
+\begin{definition}\label{def:term_ordering}
+A total ordering $\leq$ on $\mathbb{N}^{n}$ is called a \textit{term ordering} if:
+1. $0 \leq v$.
+2. $v_1 \leq v_2 \implies v_1 + v \leq v_2 + v$.
+For all $v, v_1,v_2 \in \mathbb{N}^{n}$.
+\end{definition}
+\begin{example}\label{exmp:lexigraphic_orderings}
+ The \textit{lexicographic ordering} $\leq_{lex}$ on $\mathbb{N}^{n}$ is defined by $v \leq_{lex} w$ if there exists $j \in \mathbb{N}$ such that $v_i = w_i$ for all $i \leq j$ and $v_j < w_j$ or $j = n$. \footnote{The lexicographic ordering can be thought of the ``alphabetic'' ordering of the tuples of natural numbers.} \\
+
+The \textit{graded lexicographic ordering} $\leq_{glex}$ is defined by $v \leq_{glex} w$ if $\sum_{i = 1}^n v_i \leq \sum_{i = 1}^n w_{i}$ in the case of equality we also require that $v \leq_{lex} w$.
+\end{example}
+\subsection{Dicksons Lemma}
+\begin{lemma}\label{lem:dicksons}[Dickons]
+Let $S \subseteq \mathbb{N}^{n}$. Then there exists a finite set of vectors $v_1, v_2, \ldots v_m \in S$ such that
+\begin{equation*}
+    S \subseteq \bigcup_{i = 1}^m v_i + \mathbb{N}^{n}
+\end{equation*}
+\end{lemma}
+
+\begin{proof}
+We use strong induction, if $n = 1$, then pick $v_1 = \inf S$, then clearly $S \subseteq v_1 + \mathbb{N}$.
+
+Let $\pi: \mathbb{N}^n \to \mathbb{N}^{n - 1}$ denote the map $(x_1, x_2 \ldots, x_{n}) \mapsto (x_2 \ldots, x_{n})$. Using our hypothesis we see that there exists $v_1, v_2, \ldots v_m \in \pi(S) \subseteq S$ such that $\pi(S) \subseteq \bigcup_{i = 1}^m v_i + \mathbb{N}^{n - 1}$ (since $\pi(S) \subseteq \mathbb{N}^{n - 1}$)
+
+However it is not always the case that $S \subseteq \bigcup_{i = 1}^m v_i + \mathbb{N}^{n}$, after all $v_1, v_2, \ldots v_m$ wheren't constructed with the first coordinates in mind. Hence let
+\begin{equation*}
+ M = \max\{(v_{1})_{1}, (v_2)_1, \ldots, (v_m)_1\}
+\end{equation*}
+and $S_i = \left\{s \in S \middle| s_1 = i \right\}$ as well as $S \leq M = \left\{s \in S \middle| s_1 \leq M\right\}$. Then $S = \bigcup_{k = 0}^{M - 1} S_{k} \cup S_{\leq M}$, now since $S_{\geq M} \subseteq \bigcup_{i = 1}^m v_i + \mathbb{N}^{n}$, and $S_j$ can be identified with $\mathbb{N}^{n - 1}$ (The first coordinate of each element is fixed.) the result follows from our hypothesis
+\end{proof}
+
+\begin{corollary}\label{cor:every_term_ordering_is_a_well_ordering}
+ Every term ordering $\leq$ on $\mathbb{N}^n$ is a well ordering
+\end{corollary}
+\begin{proof}
+  Let $S \subseteq \mathbb{N}^{n}$ be a non-empty subset, then by Dicksons Lemma there are finitely many elements $v_1, v_2, \ldots v_m \in S$ such that $S \subseteq \bigcup_{i = 1}^{m} v_i + \mathbb{N}^{n}$.
+  Now if $v \in v_i + \mathbb{N}^{n}$, then $v = v_i + w$ for some $w \in \mathbb{N}^{n}$ which implies $v - v_i \in \mathbb{N}^{n}$ hence $v = (v - v_i) + v_{i} \geq v_{i}$ by Definition \ref{def:term_ordering}, this means that the smallest element in $S$ is the smallest element in $v_1, v_2 \ldots, v_{m}$.
+\end{proof}
+
+\begin{definition}
+  Let $f = \sum^{m}_{i = 1} a_i X^{v_{i}} \in \mathbb{F}[X_1, X_2 \ldots, X_{n}]$ then the \textit{leading term} of $f$ with respect to the term ordering $\leq$ is denoted as $LT_{\leq}(f) = a_{j}X^{v_{j}}$ where $v_j \leq v_{i}$ for all $i$. We also often write $aX^v_{1} \leq aX^{v_{2}}$ if $v_1 \leq v_{2}$.
+\end{definition}
+If $R$ is a domain then $LT_{\leq}(fg) = LT_{\leq}(f)LT_{\leq}(g)$ for all $f, g \in R[X_1, X_2 \ldots, X_{n}]$.
+
+\section{The Division Algorithm}%
+\label{sec:division algorithm for multivariate polynomials.}
+
+\begin{proposition}\label{prop:division_algorithm}
+  Let $R$ be a domain, $\leq$ a term ordering and $f \in R[X_1, X_2 \ldots, X_{n}] \setminus \left\{0\right\}$. Suppose that $f_1, f_2 \ldots, f_{m} \in R[X_1, X_2 \ldots, X_{n}] \setminus \left\{0\right\}$, then there exists $a_1, a_2 \ldots, a_{m} , r \in R[X_1, X_2 \ldots, X_{n}]$ such that
+  \begin{equation*}
+    f = \sum_{i = 1}^m a_i f_i + r
+  \end{equation*}
+  where $r = 0$ or none of the terms in $r$ is divisible by $LT_{\leq}(f_{i})$. Furthermore $LT_{\leq}(a_if_i) \leq LT_{\leq}(f)$ if $a_i \neq 0$.
+\end{proposition}
+Here is the algorithm for computing $a_1, a_2 \ldots, a_{m}, r$:
+\begin{enumerate}
+  \item Let $a_1 := a_2 := a_m := r := 0$ and $s := f$ giving: $f \stackrel{(*)}{=} \sum_{i = 1}^m a_i f_i + (r + s)$ (The main idea is that this expression, should stay constant during the algorithm.)
+  \item We now iterate. If $s = 0$ we are done with the algorithm otherwise we perform the following steps
+  \begin{enumerate}
+    \item If $LT_{\leq}(f_{i}) | LT_{\leq} (s)$ for some $i$, then pick the smallest of these $i$'s and let:
+\begin{align*}
+  s := s - \frac{LT_{\leq}(s)}{LT_{\leq}(f_{i})} f_{i}, \quad
+  a_{i} := a_{i} + \frac{LT_{\leq}(f_{i})}{LT_{\leq}(f_{i})}
+\end{align*}
+    Notice that $(*)$ still holds.
+    \item If $LT_{\leq}(s)$ is not divisible by any $LT_{\leq}(f_{i})$, we set $r := r + LT_{\leq}(s)$ and $s := s - LT_{\leq}(s)$, again notice that $(*)$ still holds.
+  \end{enumerate}
+\end{enumerate}
+We will leave out the proof of the correctness of this algorithm.
+\section{Gröbner bases}%
+\label{sec:gröbner}
+The main idea is that we want to have a set, where the remainder of the division algorithm does not depend on the term ordering.
+
+\begin{definition}
+  Let $f_1, f_2 \ldots, f_{m} \in \K[X_1, X_2 \ldots, X_{n}] \setminus \left\{0\right\}$, then the set $F := \left\{f_1, f_2 \ldots, f_{m}\right\}$ is called a \textit{Gröbner basis for an ideal} $I \subseteq \K[X_1, X_2 \ldots, X_{n}]$ with respect to the term ordering $\leq$ if $F \subseteq I$ and for every $f \in I \setminus \left\{0\right\}$, we have $LT_{\leq}(f_{i}) | LT_{\leq}(f)$ for some $i = 1, \ldots, m$. Finally $F$ is called a \textit{Gröbner basis} with respect to the term ordering $\leq$ if it is a Gröbner basis of $\gen{f_1, f_2 \ldots, f_{m}}$.
+\end{definition}
+
+\begin{proposition}\label{prop:}
+  Let $\left\{f_1, f_2 \ldots, f_{m}\right\}$ be a Gröbner basis with respect to the term ordering $\leq$. Then for $I = \gen{f_1, f_2 \ldots, f_{m}}$ we have $f \in I$ if and only if $f$ divided by $f_1, f_2 \ldots, f_{m}$ has remainder $0$.
+\end{proposition}

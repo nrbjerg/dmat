@@ -1,0 +1,81 @@
+\section{Subfield Subcodes}%
+The following section is concerned with what happends if we only consider the codewords, of a linear code over $\mathbb{F}_q$, with entries in a subfield of $\mathbb{F}_q$. We start by motivating the concept by the following proposition:
+\begin{proposition}\label{prop:classical_goppa_is_subfield_subcodes}
+  Let $x \in \mathbb{F}_q^n$ and $f \in \mathbb{F}_q[X]$, such that $f(x_i) \neq 0$ for $i = 1, 2, \ldots, n$.
+  Suppose $\mathbb{F}_{q_0}$ is a subfield of $\mathbb{F}_q$ then:
+  \begin{equation*}
+    \Gamma(x, f, \mathbb{F}_{q_0}) = \Gamma(x, f, \mathbb{F}_q) \cap \mathbb{F}_{q_0}^n
+  \end{equation*}
+\end{proposition}
+\begin{proof}
+  Follows straight from the definition, namely:
+  \begin{align*}
+  \Gamma(x, f, \mathbb{F}_{q_0}) &= \left\{c \in \mathbb{F}_{q_0}^n \middle| \sum_{i = 1}^n \frac{c_{i}}{X - x_{i}} \equiv 0 \mod f\right\}\\ &=\left\{c \in \mathbb{F}_{q}^n \middle| \sum_{i = 1}^n \frac{c_{i}}{X - x_{i}} \equiv 0 \mod f\right\} \cap \mathbb{F}_{q_0}^{n} = \Gamma(x, f, \mathbb{F}_q) \cap \mathbb{F}_{q_0}^n\qedhere
+  \end{align*}
+\end{proof}
+
+We generalize the concept described in Proposition \ref{prop:classical_goppa_is_subfield_subcodes}, with the following definition.
+\begin{definition}
+  Let $\mathcal{C}$ be a $\mathbb{F}_q$ linear code and $\mathbb{F}_{q_0}$ be a subfield of $\mathbb{F}_q$, then the $\mathbb{F}_{q_0}$ linear code:
+  \begin{equation*}
+  \mathcal{C}\vert_{\mathbb{F}_{q_0}} := \mathcal{C} \cap \mathbb{F}_{q_0}^{n}
+  \end{equation*}
+  is called a \textit{subfield subcode} of $\mathcal{C}$.
+\end{definition}
+Let $c_{1}, c_{2} \in \mathcal{C} \vert_{\mathbb{F}_{q_0}}$, then $c_{1} + c_{2} \in \mathcal{C} \vert_{\mathbb{F}_{q_0}}$, since they are both in $\mathcal{C}$ and $\mathbb{F}_{q_0}^n$. Additionally $c \in \mathcal{C} \vert_{\mathbb{F}_{q_{0}}}$ implies that $kc \in \mathcal{C} \vert_{\mathbb{F}_{q_0}}$ for all  $k \in \mathbb{F}_{q_0}$, since $kc \in \mathcal{C}$ and $kc \in \mathbb{F}_{q_0}^{n}$. Hence $\mathcal{C} \vert_{\mathbb{F}_{q_0}}$ is a $\mathbb{F}_{q_{0}}$ linear code.
+
+\begin{proposition}\label{prop:mininum_distance_of_subfield_subcode}
+  If $\mathcal{C}$ is a $\mathbb{F}_q$ linear code and $\mathbb{F}_{q_0}$ is a subfield of $\mathbb{F}_q$, then $d(\mathcal{C}) \leq d(\mathcal{C} \vert_{\mathbb{F}_{q_0}})$.
+\end{proposition}
+\begin{proof}
+  We have $\displaystyle d(\mathcal{C}) = \min_{c \in \mathcal{C}} \wt(c) \leq \min_{c \in \mathcal{C} \vert_{\mathbb{F}_{q_0}}} \wt(c) = d(\mathcal{C} \vert_{\mathbb{F}_{q_0}})$ since $\mathcal{C} \vert_{\mathbb{F}_{q_0}} \subseteq \mathcal{C}$.
+\end{proof}
+
+If $\mathcal{C}$ is a $[n, k]_q$ code we generally do not have $d(\mathcal{C}) = d(\mathcal{C} \vert_{\mathbb{F}_{q_0}})$, where $\mathbb{F}_{q_0}$ is a subfield of $\mathbb{F}_q$. This is illustrated with the following example.
+\begin{example}\label{exmp:reduction_to_repr}
+  Let $\mathbb{F}_{4}$ be the finite field with the four elements $0, 1, \alpha, 1 + \alpha$ where $\alpha^{2} = 1 + \alpha$ and $x + x = 0$ for all $x \in \mathbb{F}_4$. Consider the $[3, 2]_{4}$ linear code $\mathcal{C}$ with generator matrix:
+  \begin{equation*}
+    G = \begin{bmatrix}
+          \alpha & 0 & 1 + \alpha \\
+          1 & 1 & 1
+        \end{bmatrix}
+  \end{equation*}
+  We will show that $\mathcal{C} \vert_{\mathbb{F}_2}$ is nothing but the $[3, 1]_2$ repetition code. Hence we assume that $c \in \mathcal{C} \vert_{\mathbb{F}_2}$, then
+  \begin{equation}\label{eq:condition_for_c}
+    c = x_1 G_{*, 1} + x_2 G_{*, 2}
+  \end{equation}
+  for some $x \in \mathbb{F}_4$. Notice that since $c_2 \in \mathbb{F}_2$ we must have $x_2 \in \mathbb{F}_2$, as $G_{0, 1} = 0$ and $G_{0, 2} = 1$. We will show that we must have $x_1 = 0$. Combining the $x_1 G_{*, 1} = \begin{bmatrix}
+                      x_1 \alpha & 0 & x_1 + \alpha x_{1}
+                   \end{bmatrix}$
+  with Equation \ref{eq:condition_for_c} we get that we must have:
+  \begin{equation*}
+    x_1 + x_2 \in \mathbb{F}_2 \text{ and }  (x_1 + \alpha x_1) + x_2 \in \mathbb{F}_2
+  \end{equation*}
+  The condition that $x_1 + x_2 \in \mathbb{F}_2$ yields that $x_1 \in \mathbb{F}_2$, since if $x_2 = 1$, then $1 + x_1 \in \mathbb{F}_2$ if and only if $x_1 \in \mathbb{F}_2$ as $1 + \alpha \not \in \mathbb{F}_2$ and $1 + (1 + \alpha) = \alpha \not \in \mathbb{F}_2$. Additionally the condition that $(x_1 + \alpha x_1) + x_2 \in \mathbb{F}_2$ implies that $x_1 = 0$, since $x_{1} = 1$ gives $1 + \alpha + x_2 \in \mathbb{F}_2$ which would imply that $x_2 \in \left\{\alpha, 1 + \alpha \right\}$. Hence $\begin{bmatrix} 1 &  1 & 1 \end{bmatrix}$ is a generator matrix for  $\mathcal{C} \vert_{\mathbb{F}_2}$. Meaning $\mathcal{C} \vert_{\mathbb{F}_2}$ is nothing but the $[3, 1]_2$ repetition code. Hence $d(\mathcal{C} \vert_{\mathbb{F}_2}) = 3$ however $d(\mathcal{C}) = \min\{\wt(c) \vert c \in \mathcal{C} \setminus \left\{0\right\}\} \leq 2$ since $\wt(G_{*, 1}) = 2$.
+\end{example}
+
+\begin{remark}
+  If we have a $t$-error correcting decoder for $\mathcal{C}$, then we may apply it on $\mathcal{C} \vert_{\mathbb{F}_{q_0}}$, however we might have $d(\mathcal{C} \vert_{\mathbb{F}_{q_0}}) > d(\mathcal{C})$, confer Example \ref{exmp:reduction_to_repr}. Hence there might exist a decoding algorithm with a higher error correcting radius.
+\end{remark}
+
+\begin{theorem}\label{thm:min_distance_of_classical_goppa}
+  Let $x \in \mathbb{F}_q^{n}$ and $f \in \mathbb{F}_q[X]$ such that $f(x_i) \neq 0$ for all $i = 1, 2, \ldots, n$. Let $\mathbb{F}_{q_0}$ be a subfield of $\mathbb{F}_q$ then:
+  \begin{enumerate}
+     \item The minimum distance of $\Gamma(x, f, \mathbb{F}_{q_0})$ atleast $\deg(f) + 1$.\label{thm:min_distance_of_classical_goppa1}
+     \item Any word $y = c + e$ where $c \in \Gamma(x, f, \mathbb{F}_{q_0})$ and $e \in \mathbb{F}_q^n$ with $\wt(e) \leq \floor{\frac{\deg(f) + 1}{2}}$ can a decoded using either one of Algorithms \ref{alg:basic_decoding_algorithm} and \ref{alg:ECP}.\label{thm:min_distance_of_classical_goppa2}
+  \end{enumerate}
+\end{theorem}
+\begin{proof}
+  We start by showing Assertion \ref{thm:min_distance_of_classical_goppa1}. Note that since $\overline{\mathbb{F}}_q = \bigcup_{k = 1}^{\infty} \mathbb{F}_{q^k}$ there exists an $N \in \mathbb{N}$ such that $f$ splits into irreducible factors over $\mathbb{F}_{q^N}$, hence $d\left(\Gamma(x, f, \mathbb{F}_{q^N})\right) = \deg(f) + 1$ by Corollary \ref{cor:f_splitting_yields_design_distance}. The rest follows by Proposition \ref{prop:mininum_distance_of_subfield_subcode}. \\
+  Assertion \ref{thm:min_distance_of_classical_goppa2} follows since $\Gamma(x, f, \mathbb{F}_{q_0})$ is a subfield subcode of $\Gamma(x, f, \mathbb{F}_{q^N})$. Furthermore $\Gamma(x, f, \mathbb{F}_{q^N})$ has $\floor{\frac{\deg(f) + 1}{2}}$-error decoding algorithms by Theorems \ref{thm:basic_decoding_algorithm_works} and \ref{thm:error_correcting_pair_for_AG_codes}.
+\end{proof}
+
+
+%Even though the mimimum distance of a
+%\begin{example}\label{exmp:sub_field_subcode_of_rs}
+%  Let $\mathcal{C}$ be a $[4, 3]_{4}$ Reed Solomon code, then $\mathcal{C} \vert_{\mathbb{F}_2}$ is a linear code over $\mathbb{F}_2$ of length $4$, in particular $\mathcal{C}$ is not a Reed Solomon code. However by combining Proposition \ref{prop:mininum_distance_of_subfield_subcode} and the Singleton bound we see that:
+%  \begin{equation*}
+%    d(\mathcal{C}) - 1 \leq d(\mathcal{C}\vert_{\mathbb{F}_{2}}) - 1 \leq 4 - \dim(\mathcal{C}\vert_{\mathbb{F}_2})
+%  \end{equation*}
+%  Now since $\mathcal{C}$ is an MDS code, we see  that $d(\mathcal{C}) = 4 - 3 + 1 = 2$, hence $\dim_{\mathbb{F}_2}(\mathcal{C} \vert_{\mathbb{F}_2}) \leq 3$
+%\end{example}

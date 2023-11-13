@@ -1,0 +1,45 @@
+#+title: Itinerary
+#+author: Martin Sig Nørbjerg
+
+* 1. Meeting
+1. I would like to go over how the definition of Goppa codes in the notes, relate with the classical definition using Riemann Roch spaces.
+   - Goppa codes  werent actually the codes constructed on AG geometry.
+   - We normally use sub field sub codes.
+   + In addition how i should addapt Patterson's algorithm to use our approach? Alternatively I might use the approach explained in AG codes and some applications. (The PDF i sent to you previusly.)
+     - Go through the notes.
+   + What is the difference between syndrome decoding algorithms and regular decoding algorithms?
+     - Syndrome decoding grows in exponential time.
+
+2. Questions about the McEliece cryptosystem:
+   + Why do we use AG codes instead of say RS codes, I am guessing that it is because the family of codes are larger and hence more secure is this correct or is there other factors at play?
+     - Nice question: we should be very carefull when choosing our code, we need it to have very little structure.
+     - Sub field sub codes.
+     - The structure can be extracted by looking at the generator matrix.
+
+   + They also mention that any other alternant code might also provide an equivalently good security, should I investigate alternant codes?
+     - NO! forget it. Maybe have a look at McWiliams Lund.
+
+   + Our public key is given by $PGS$ where $G$  is our generator matrix, $P \in \mathbb{F}_q^{n \times n}$ is a permutation matrix and $S \in \mathbb{F}_q^{k \times k}$ is non-singular. But why do we multiply the message by a random non-singular matrix? and how do we know for sure that $PGS$ isn't simply a generator matrix of another algebraic geometry code?
+     - We get an equivalent code. (They have the same properties.) This should look more like a random code.
+
+   + Why do we use our error to have weight exactly $t$ (our error correcting radius), instead of picking some weight $\leq t$, wouldn't this increase the size of the search space?
+     - If we take error $\leq t$ it is easier to decode. There are also algorithms for decoding $\geq t$, however
+
+3. We will go with sage.
+
+* 2. Meeting
+1. Syndrome Decoding:
+   - Last meeting you mentioned that the syndrome decoding algorithm grows in exponential time, (is this with respect to the number of errors, the dimension or length of the code. Or is it a combination?) also do you have a source that i may reference?
+
+   - What is *complete* nearest neighbour decoding, i have heard of nearest neighbour decoding, what is the difference between the "regular" nn decoding and "complete" nn decoding?
+
+2. Information Set Decoding:
+   + Does my algorithm for computing information sets work? Most sources refer to different algorithms, where you for instance simply pick $k$ columns uniformly and check for their independence, alternatively they also mention an algorithm where check if each new coloumn we add to our set is linearly independent of the previus columns.
+     - I fear that my algorithm may not produce every single information set.
+
+   + In plain ISD we look for a information set $I$ such that $wt(y - y_IG_I^{-1}G) \leq t$, where $y$ is the recived word and $t$ is the number of allowed errors, why is this less than or equal to $t$ and not simply equal? (This is regards to p7_r3 i.e. the phd thesis of Carl Löndahl)
+     - Also why do we know that the condition is false if the infromation set isn't error free.
+
+3. General Questions:
+    + I really want to try decoding of algebraic geometry codes if possible, i can't get it out of my head, hence i have been looking around for proofs of the fact that classical goppa codes are algebraic geometry codes (or atleeast subfield subcodes), in this setting i was wondering about the following question:
+        - If $\mathcal{C}$ is a $[n, k, d]_q$ code, with an efficient decoding algorithm $dec_\mathcal{C}$ and $\mathcal{C}*$ is a subfield subcode of $\mathcal{C}$, is there a way to modify $dec_{\mathcal{C}}$ to work for $C^{*}$?

@@ -1,0 +1,90 @@
+\subsection{Affine and Projective Vararities}
+In this subsection we will define both affine and projective vararities, the contents will be based on \cite{Fulton}[Chapter 2 and 4] as well as \cite{CCC_with_CA}[Subsection 11.1.1]. We will start in the affine case:
+
+\begin{definition}\label{def:affine_variety}
+Let $V \subseteq \mathbb{A}^{n}$ be an algebraic set. Then $V$ is called \textit{reducible} if there exists proper algebraic subsets $V_1, V_2 \subset V$ such that $V = V_1 \cup V_{2}$. Otherwise, $V$ is called an \textit{irreducible}, an affine algebraic set which is irreducible is called an \textit{affine variety}.
+\end{definition}
+These varieties will be one of our main objects of study. We will usually follow the convention of \cite{CCC_with_CA} and use $\mathcal{X}$ to denote an affine variety.
+\begin{example}\label{exmp:reducible_set_in_plane}
+  Consider the polynomial $F = X^{2} - Y^{2} \in \K[X, Y]$, then $V(F)$ is reducible. This can be seen as follows: The polynomial $F$ can be factored as $(X + Y)(X - Y)$, and hence $V(F) = V(X + Y) \cup V(X - Y)$, so $V(F)$ is the union of two lines in $\mathbb{A}^{2}$.
+\end{example}
+\newpage
+Below we prove a couple of useful results which well help us to determine whether an algebraic set is a variety.
+\begin{proposition}\label{prop:affine_sets_have_prime_ideals}
+  The algebraic set $V \subseteq \mathbb{A}^{n}$ is an affine variety if and only if $I(V)$ is a prime ideal.
+\end{proposition}
+\begin{proof}
+  Suppose $I(V)$ is not prime, and that $F G \in I(V)$, but $F, G \not\in I(V)$, then $V = (V \cap V(F)) \cup (V \cap V(G))$, since $F G \in I(V)$ if and only if we for all $P \in V$ have either $F(P) = 0$ or $G(P) = 0$. However $V \cap V(F)$ and $V \cap V(G)$ are proper algebraic subsets of $V$, confer Proposition \ref{prop:closed_sets_zariski}\ref{prop:closed_sets_zariski_intersection}, and thus $V$ is reducible.
+
+  On the other hand suppose $V = V_{1} \cup V_{2}$, where $V_1, V_{2}$ are algebraic and proper subsets of $V$, then $I(V) \subset I(V_{i})$. Thus, there exists $F_{1} \in I(V_{1}) \setminus I(V)$, and $F_{2} \in I(V_{2}) \setminus I(V)$. However, we have $F_{1}F_{2} \in I(V)$ since $V = V_{1} \cup V_{2}$ and hence either $F_{1}(P) = 0$ or $F_{2}(P)$ for all $P \in V$.
+\end{proof}
+
+Recall that the polynomial $F$ from Example \ref{exmp:reducible_set_in_plane}, could be factorized into two unique factors, both with degree greater or equal to $1$ meant that $V(F)$ was reducible. The corollary below, illustrates the opposite situation.
+\begin{corollary} \label{cor:irr_gives_affine_variety}
+  Let $F \in \K[X_1, X_2, \ldots, X_{n + 1}]$, be an irreducible polynomial, then $V(F)$ is an affine variety.
+\end{corollary}
+\begin{proof}
+  First we note that $\K$ is a field it is a PID and recall that every PID is a UFD. From this it follows that the ring $\K[X_1, X_2, \ldots, X_{n + 1}]$ is a UFD, confer Corollary \ref{cor:multivariate_polynomial_ring_is_UFD}. This in turn imply that every irreducible element is a prime element, from this it follows that $\gen{F}$ is a prime ideal, and hence $V(F) = V(\gen{F})$ is an affine variety, by Proposition \ref{prop:affine_sets_have_prime_ideals}.
+\end{proof}
+Considering Example \ref{exmp:reducible_set_in_plane} and Corollary \ref{cor:irr_gives_affine_variety}, it is natural to ask the following question: ``Does $G \in \K[X_1, X_2, \ldots, X_{n}]$ being reducible imply that $V(G)$ is reducible.'' This is not the case consider for instance the polynomial $F = X^{2} + Y^{2} + 2XY$ which can be factorized as $(X + Y)^{2}$ so $V(F) = V(X + Y)$, but $X + Y$ is irreducible, so by Corollary \ref{cor:irr_gives_affine_variety}, $V(F)$ is an affine variety.
+
+Suppose we have a prime ideal $I \subseteq \K[X_1, X_2, \ldots, X_{n}]$, consider the associated affine variety $\mathcal{X} := V(I)$. Let $F \in \K[X_1, X_2, \ldots, X_{n}]$ and $G \in I$, then $F(P) = F(P) + G(P)$ for all $P \in \mathcal{X}$. For this reason we consider the following ring, consisting of the left cosets $[F] = F + I$ for some $F \in \K[X_1, X_2, \ldots, X_{n}]$.
+\begin{definition}\label{def:coordinate_ring_affine}
+  Let $I \subseteq \K[X_1, X_2, \ldots, X_{n}]$ be a prime ideal, consider the affine variety $\mathcal{X} := V(I)$ associated with $I$. Then the ring $\K[\mathcal{X}] := \K[X_1, X_2, \ldots, X_{n}] / I$ is called the \textit{coordinate ring} of $\mathcal{X}$.
+\end{definition}
+We will view the elements in $\K[\mathcal{X}]$ both as equivalence classes of polynomials, but also as functions on $\mathcal{X}$, as $[F] = [G]$ if and only if $F(P) = G(P)$ for all $P \in \mathcal{X}$. If $F, G$ and $H$ are polynomials, then their cosets modulo $I$, will be denoted as $f, g$ and $h$ respectively.
+
+\newpage
+Consider the ideal $I$ from Definition \ref{def:coordinate_ring_affine}, since $I$ is prime, it follows that $\K[\mathcal{X}]$ is an integral domain. This can be seen as follows given $f, g \in \K[\mathcal{X}]$, then $f \cdot g = [FG] + I = 0$ if and only if $FG \in I$, it now follows by the primality of $I$ that either $F \in I$ or $G \in I$. Thus, we may form a quotient field of $\K[\mathcal{X}]$.
+% Følger af proposition 3.2.6
+\begin{definition}\label{def:rational_function_field_affine}
+  Let $\mathcal{X} \subseteq \mathbb{A}^{n}$ be an affine variety, then the quotient field of $\K[\mathcal{X}]$ denoted $\K(\mathcal{X})$, is called the \textit{function field} of $\mathcal{X}$. We will refer to the elements of $\K(\mathcal{X})$ as \textit{rational functions}. Let $\alpha \in \K(\mathcal{X})$ be a rational function, then $\alpha$ is said to be \textit{defined} at $P \in \mathcal{X}$ if there exists $f, g \in \K[\mathcal{X}]$ such that $\alpha = f / g$ and $g(P) \neq 0$.
+\end{definition}
+
+\begin{example}\label{exmp:coordinate_ring_and_rational_function_field}
+  Consider the irreducible polynomial $F = XY - Z^{2} \in \K[X, Y, Z]$, then $\mathcal{X} := V(F)$ is an affine variety, by Corollary \ref{cor:irr_gives_affine_variety}. Consider the point $P = (0, 1, 0) \in \mathcal{X}$, and the rational function $\alpha = X / Z$, then it would appear that $\alpha$ is not defined at $P$, however $Z / Y$ is also a representative of $\alpha$, since $XY = Z^{2}$ for all points in $\mathcal{X}$. So $\alpha$ is actually defined at $P$ after all.
+\end{example}
+% NOTE: The rational functions are  actually equivilence classees.
+
+As we mentioned in section \ref{sec:projective_spaces} most of the definitions regarding affine spaces, have analogous projective counterparts, below we introduce more of these counterparts.
+
+\begin{definition}\label{def:projective_variety}
+Let $V \subseteq \mathbb{P}^{n}$ be a projective algebraic set. Then $V$ is called \textit{reducible} if there exists proper projective algebraic subsets $V_{1}, V_{2} \subset V$ such that $V = V_{1} \cup V_{2}$. Otherwise, $V$ is called \textit{irreducible} or an \textit{projective variety}.
+\end{definition}
+
+Again we state an analogous result of Proposition \ref{prop:affine_sets_have_prime_ideals} and Corollary \ref{cor:irr_gives_affine_variety}, this time without proof.
+\begin{proposition}\label{prop:projective_variety_iff_vanishing_ideal_is_prime}
+The algebraic set $V \subseteq \mathbb{P}^{n}$ is a projective variety if and only if $I_{\mathbb{P}}(V)$ is a prime ideal.
+\end{proposition}
+\begin{corollary}\label{cor:irr_gives_projective_variety}
+  Let $F \in \K[X_1, X_2, \ldots, X_{n + 1}]$ be an irreducible homogeneous polynomial then $V_{\mathbb{P}}(f)$ is a projective variety.
+\end{corollary}
+
+%We will now investigate the connection between affine varieties and projective varieties. Recall the map $\phi: \mathbb{A}^n \to U$, where $U = \left\{[X_{1} : X_{2} \ldots : X_{n + 1}] \in \mathbb{P}^n \middle| x_{n+1}\not= 0\right\}$, from Section \ref{sec:projective_spaces}. \textcolor{red}{\textbf{TODO}}
+
+Let $\mathcal{X}$ be an affine variety, then the homogenization of $I(\mathcal{X})$ is a homogeneous prime ideal, which by Proposition \ref{prop:projective_variety_iff_vanishing_ideal_is_prime} defines a projective variety $\mathcal{X}^{*}$. Similarly if $\mathcal{X}$ is a projective variety then the dehomogenization of $I(\mathcal{X})$ is a prime ideal, and hence by Proposition \ref{prop:affine_sets_have_prime_ideals} the affine algebraic set $X_{*}$ defines an affine variety.
+
+Like in the affine case, we once again have that $I_{\mathbb{P}}(\mathcal{X})$ is a prime ideal if and only if $\mathcal{X}$ is a projective variety, as such we can make a definition analogously to Definition  \ref{def:coordinate_ring_affine} and Definition \ref{def:rational_function_field_affine}.
+\begin{definition}
+  Let $\mathcal{X}$ be a projective variety then he \textit{homogenus cordinate ring} on $\mathcal{X}$ is defined as $\K_{\mathbb{P}}[\mathcal{X}] := \K[X_1, X_2, \ldots, X_{n+1}] / I_{\mathbb{P}}(\mathcal{X})$, an element $f \in \K_{\mathbb{P}}[\mathcal{X}]$ is called a \textit{form of degree $\deg(F)$} if $F$ is a homogeneous polynomial. The \textit{homogeneous function field} $\K_{\mathbb{P}}(\mathcal{X})$ is defined as the quotient field of $\K_{\mathbb{P}}[\mathcal{X}]$
+\end{definition}
+\begin{remark}
+  In general elements in $\K_{\mathbb{P}}[\mathcal{X}]$ and $\K_{\mathbb{P}}(\mathcal{X})$, cannot be viewed as functions from $\mathcal{X}$, as a point $P \in \mathcal{X} \subseteq \mathbb{P}^{n}$ has multiple distinct homogeneous coordinates.
+\end{remark}
+
+\newpage
+Recall from Section \ref{sec:projective_spaces} that if $F = \sum^{k}_{i = 1} c_{i} G_{i} \in \K[X_1, X_2, \ldots, X_{n + 1}]$ is a homogeneous polynomial of degree $d$ then $F(\lambda a_1, \lambda a_2, \ldots, \lambda a_{n + 1}) = \lambda^d \cdot F(a_1, a_2, \ldots, a_{n + 1})$. Hence:
+\begin{equation*}
+\frac{F(\lambda a_1, \lambda a_2, \ldots, \lambda a_{n + 1})}{G(\lambda a_1, \lambda a_2, \ldots, \lambda a_{n + 1})} = \frac{F(a_1, a_2, \ldots, a_{n + 1})}{G(a_1, a_2, \ldots, a_{n + 1})}
+\end{equation*}
+when $F$ and $G$ are homogeneous polynomials of the same degree.
+\begin{definition}
+  Let $\mathcal{X}$ be a projective variety the \textit{function field} of $\mathcal{X}$ is defined as
+\begin{equation*}
+  \K(\mathcal{X}) := \left\{f / g \in \K_{\mathbb{P}}(\mathcal{X}) \mid f, g \in \K_{\mathbb{P}}[\mathcal{X}] \text{ are forms of the same degree} \right\}.
+\end{equation*}
+The elements in $\mathcal{X}$ are called \textit{rational functions}, a rational function $\alpha$ is said to be \textit{ defined} at $P \in \mathcal{X}$ if there exists $f, g \in \K_{\mathbb{P}}[\mathcal{X}]$ such that $g(P) \neq 0$ and $\alpha = f / g$.
+\end{definition}
+\begin{remark}\label{rem:function_fields_are_iso}
+  Let $\mathcal{X}$ be an affine variety, then $\K[\mathcal{X}]$ and $\K[\mathcal{X}^{*}]$ are isomorphic. Since the map $\K[\mathcal{X}] \ni f/g \mapsto x_{n+1}^{m} f^{*} / g^{*} \in \K[\mathcal{X}^{*}]$, where $m = \deg(g) - \deg(f)$, is an isomorphism. At first one might question why $f^{*} / g^{*}$ is multiplied by $x_{n + 1}^{m}$, however this is done to make sure that the two homogeneous polynomials have the same degree.
+\end{remark}

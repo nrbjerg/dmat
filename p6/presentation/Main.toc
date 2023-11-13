@@ -1,0 +1,8 @@
+\babel@toc {english}{}\relax 
+\addvspace {-5\p@ }
+\beamer@sectionintoc {1}{Coding Theory}{2}{0}{1}
+\beamer@subsectionintoc {1}{1}{Bounds on the Parameters of Codes}{4}{0}{1}
+\addvspace {-5\p@ }
+\beamer@sectionintoc {2}{Divisors}{8}{0}{2}
+\addvspace {-5\p@ }
+\beamer@sectionintoc {3}{Goppa Codes}{20}{0}{3}

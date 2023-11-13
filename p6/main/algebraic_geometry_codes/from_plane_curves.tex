@@ -1,0 +1,34 @@
+\section{Codes Constructed on Affine Plane Curves}
+We will start by considering codes constructed from affine plane curves, as this is the simplest case to understand. Our proof of the following proposition will be based on the proof of \cite{CCC_with_CA}[Proposition 11.2.1].
+\begin{proposition}\label{prop:plane_code}
+  Let $F$ be an absolutely irreducible polynomial in $\mathbb{F}_{q}[X, Y]$, of degree $m$, and let $\mathcal{X}$ be the curve with defining equation $F = 0$. Furthermore let $P_1, P_2, \ldots, P_{n} \in \mathcal{X}$ be $n$ distinct rational points and $\mathcal{P} := (P_1, P_2, \ldots, P_{n})$. Finally consider the linear code:
+  \begin{equation*}
+    E(l) = \left\{\ev(G) \mid G \in \mathbb{F}_{q}[X, Y], \deg(G) \leq l\right\}.
+  \end{equation*}
+  Then if $lm < n$, then the minimum distance $d$ and dimension $k$ of $E(l)$ satisfies:
+  \begin{align*}
+    d &\geq n  - lm \\
+    k &= \begin{cases} \binom{l + 2}{2} & \text{ if } l < m \\
+                      lm  + 1 - \binom{m - 1}{2} & \text{ otherwise }
+        \end{cases}
+  \end{align*}
+\end{proposition}
+\begin{proof}
+  Let $V_{l} \subseteq \mathbb{F}_{q}[X, Y]$ be the $\mathbb{F}_{q}$ vector space of polynomials with degree at most $l$, notice that $\ev(V_{l}) = E(l)$. Then the monomials $X^{i}Y^{j}$, with $i + j = 0, 1, \ldots, l$ form a basis of $V_{l}$. Since there is $\binom{l + 2}{2}$ of these the vector space $V_{l}$ has dimension $\binom{l + 2}{2}$. \\
+  Let $G \in V_{l}$, if $F$ factors $G$, then $\ev(G) = 0$. Conversely, if $\ev(G) = 0$, then the projective curves with defining equations $F^{*} = 0$ and $G^{*} = 0$, have degrees $\deg(G) \leq l$ and $m$ respectively but intersect at $n$ points namely $\phi(P_{1}), \phi(P_{2}), \ldots, \phi(P_{n})$, where $\phi(x_1, x_2, \ldots, x_{n}) = [x_1: x_2 : \cdots :  x_{n} : 1]$. This is a contradiction since $\deg(G)m \leq lm < n$ and Bézout's Theorem \ref{thm:bézouts} implies that they intersect in at most $\deg(G)m$ points. Hence $F$ and $G$ must have a common factor; meaning $G$ is divisible by $F$ as $F$ is irreducible. Hence, $\ev$ restricted to $V_{l}$ have kernel $FV_{l - m}$. Now if $l < m$, then $FV_{l - m}$ has dimension $0$ and hence:
+  \begin{equation*}
+    k = \dim_{\mathbb{F}_{q}}(E(l)) = \dim_{\mathbb{F}_{q}}(V_l) - \dim_{\mathbb{F}_{q}}(FV_{l - m}) = \binom{l + 2}{2}
+  \end{equation*}
+  since $\ev$ is a linear map. Conversely if $l \geq m$ we obtain:
+  \begin{align*}
+    k = \binom{l + 2}{2} - \binom{l - m + 2}{2} = \frac{-m^{2} - 2lm + 3m}{2} = lm + 1 - \binom{m - 1}{2}
+  \end{align*}
+  Finally by a similar argument as earlier, by Bézouts Theorem \ref{thm:bézouts} a nonzero codeword has at most $lm$ zeros. Hence the minimum weight of $E(l)$ is at least $n - lm$.
+\end{proof}
+
+The results of Proposition \ref{prop:plane_code} indicate that if we want $E(l)$ to have a high minimum distance, we should choose $F$ and $l$ such that $\deg(F)$ and $l$ are as small as possible, while maximizing the number of rational points on $\mathcal{X}$. \\
+Conversely if we want to maximize the dimension of $E(l)$ then we should choose $F$ and $l$ such that $\deg(F)$ and $l$ are as large as possible, albeit such that $l\deg(F)$ is strictly less than the number of rational points on $\mathcal{X}$.
+
+\begin{example}\label{exmp:code_from_plane_curve_rs}
+  If we pick $F = Y - 1$ and let $\mathcal{X}$ be the affine plane curve with defining equation $F = 0$. Then the set of rational points of $\mathcal{X}$ consist of the points $P = (a, 1)$ where $a \in \F_{q}$. Let $G \in \F_{q}[X, Y]$ such that $\deg(G) \leq l$ then $G(X, 1)$ is an univariate polynomial of degree less than or equal to $l$. Hence the linear code $E(l)$, where $l \in \N$, corresponds to the Reed-Solomon code of degree $l + 1$.
+\end{example}

@@ -1,0 +1,18 @@
+\babel@toc {english}{}\relax 
+\contentsline {chapter}{\numberline {1}Groups}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Monoids}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Groups}{1}{section.1.2}%
+\contentsline {chapter}{\numberline {2}Miscilanius}{4}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Category Theory}{4}{section.2.1}%
+\contentsline {chapter}{\numberline {3}Division of multivariate polynomials}{5}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Relations}{5}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Partial Orderings}{5}{subsection.3.1.1}%
+\contentsline {section}{\numberline {3.2}Orderings}{5}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Dicksons Lemma}{6}{subsection.3.2.1}%
+\contentsline {section}{\numberline {3.3}The Division Algorithm}{6}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Gröbner bases}{7}{section.3.4}%
+\contentsline {chapter}{\numberline {4}Field Theory}{8}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Extensions and Polynomials}{9}{section.4.1}%
+\contentsline {chapter}{\numberline {5}Galois Theory}{11}{chapter.5}%
+\contentsline {part}{Appendices}{12}{section*.2}%
+\contentsline {chapter}{\numberline {A}Number Theory for Mum}{13}{appendix.1.A}%

@@ -1,0 +1,86 @@
+\subsection{Algorithms for Computing Information Sets}
+We start by introducing perhaps the simplest way to generate information sets in Algorithm \ref{alg:information_set}. The idea behind the algorithm is stems from the following lemma:
+\begin{lemma}\label{lem:new_information_sets}
+  Let $G \in \mathbb{F}_q^{k \times n}$ be the generator matrix of code $\mathcal{C}$, and $G'$ be $G$ reduced to row echelon form. Let $I'$ be the tuple consisting of the indicies of the $k$ pivot columns of $G$ sorted with respect to the canonical order $\leq$ on $\mathbb{N}$, then any set of the form $\left\{i_1, i_2 \ldots, i_{k}\right\}$ with $i_j \in \mathbb{N}$ and $G'_{i_j,j} \neq 0$ such that $I'_j \leq i_j < I'_{j + 1}$ for all $j < k$ and $I'_k \leq i_k \leq n$.
+\end{lemma}
+\begin{proof}
+  Suppose $\left\{i_1, i_2 \ldots, i_{k}\right\}$ is such a set, then there exists a permutation matrix such that $P \in \mathbb{F}_q^{n \times n}$ such that the pivot columns in $GP$ has indicies $i_1, i_2 \ldots, i_{k}$, since $G'_{i_{j}, j} \neq 0$. Hence the columns $g_{i_1}, g_{i_2} \ldots, g_{i_{k}}$ are $\mathbb{F}_q$-linearly independent and thus $\{i_1, i_2 \ldots, i_{n}\}$ also form an information-set.
+\end{proof}
+
+The notion of a information set will become pivotal in the algorithms to come, hence we will need a efficient way to compute these information-sets, the procedures in Algorithm \ref{alg:information_set} provides a way to do exactly this, the correctness follows immediately by Lemma \ref{lem:new_information_sets}.
+\begin{algorithm}[H]
+\caption{Construction of information sets using initial row reduction}\label{alg:information_set}
+\begin{algorithmic}
+  \Procedure{RR IS Generator}{$G$: a generator matrix of $[n,k]_q$ code, $r$: boolean value}
+  \State $G' \gets G$ reduced to row echelon form
+  \State $I' \gets$ The tuple consisting of the indicies of the $k$ pivot columns in $G'$
+  \State $J \gets \left\{\left\{i_1, i_2 \ldots, i_{k}\right\} \subseteq \left\{1, 2, \ldots, n\right\}| G'_{i_{j},j} \neq 0, I'_{j} \leq i_{j} < I_{j + 1} \forall j < k, I'_{k} \leq i_k \leq n \right\}$
+  \If{$r$}
+   \Loop
+     \State \textbf{yield} $I \in J$ \Comment{Chosen uniformly, with replacement}
+   \EndLoop
+  \Else
+  \For{$I \in J$}
+     \State \textbf{yield} $I$ \Comment{Chosen uniformly, without replacement}
+  \EndFor
+  \EndIf
+  \EndProcedure
+\end{algorithmic}
+\end{algorithm}
+\begin{remark}\label{rem:information_set_alg}
+  Gaussian reduction, which is used compute $G'$ has a time complexity of $O(nk\min\{n, k\}) = O(nk^{2})$. In comparison the computational cost the other parts (looking up the pivot columns and constructing new information-sets given this information-set) of Algorithm \ref{alg:information_set}, are negitable. Hence the bulk of the computation time will be spent when computing $G'$. This means that we may allow our algorithms to use multiple different information sets, with very little additional overhead.
+\end{remark}
+Next we highlight a general weakness of Algorithm \ref{alg:information_set}, namely that we aren't guaranteed to get every information set.
+\begin{example}\label{exmp:first_IS_algorithm}
+  Consider the generator matrix $G$ of the $[7, 4, 3]_2$ hamming code $\mathcal{H}_3$ as described in Example \ref{exmp:information_sets_of_hamming}. Then using the same notation as in Algorithm \ref{alg:information_set} we see that $G' = G$. Hence $I' = (1, 2, 3, 4)$. Next we find that
+  \begin{equation*}
+    J = \left\{\left\{1, 2, 3, 4\right\}, \left\{1, 2, 3, 6\right\}, \left\{1, 2, 3, 7\right\}\right\}
+  \end{equation*}
+  Since $G_{5, 4} = 0$. However $J$ does not contain all of the information sets of $\mathcal{H}_3$, In particular $J$ does not contain $\left\{1, 3, 6, 7\right\}$ which is also an information set, confer Example \ref{exmp:information_sets_of_hamming}.
+\end{example}
+
+\textcolor{red}{\textbf{TODO}} perhaps one could use permutations of the coulumns of $G$ to find other information sets.
+
+
+\begin{algorithm}[H]
+\caption{Constructing Information Sets using Gaussian Elimination}\label{alg:information_set_gauss}
+\begin{algorithmic}
+  \Procedure{Gaussian IS Generator}{$G$: a generator matrix of $[n,k]_q$ code,
+    \newline\phantom{\textbf{procedure} \textsc{Gaussian IS Generator}(}$r$: boolean value}
+  \For{$I \subseteq \left\{1, 2, \ldots, n\right\}$} \Comment{Chosen uniformly, with replacement if $r$ is true.}
+    \If{$G_I$ is invertible}
+    \State \textbf{yield} $I$
+    \EndIf
+  \EndFor
+  \EndProcedure
+\end{algorithmic}
+\end{algorithm}
+\begin{remark}\label{rem:is_gauss}
+  One of the simplest ways to check if $G_I$ is invertible in Algorithm \ref{alg:information_set_gauss}, is to see if it is row equivalent with a upper triangular matrix (with non-zero entries in the diagonal). This can be done using Gaussian elimination.
+\end{remark}
+
+The next algorithm is an improvement of Algorithm \ref{alg:information_set_gauss}, the main idea is to gradually construct $I$ by adding a new index at each iteration, which allows us to perform an early abort if one of the columns of $G_I$ is linearly dependent on the rest.
+
+\begin{algorithm}[H]
+\caption{Construction of information sets with early abort}\label{alg:information_set_early_abort}
+\begin{algorithmic}
+  \Procedure{IS Generator}{$G$: a generator matrix of $[n,k]_q$ code}
+  \Loop
+    \State $I \gets \left\{i\right\}$ with $i \in \left\{1, 2, \ldots, n\right\}$ \Comment{Picked uniformly}
+    \While{$\abs{I} \neq k$}
+       \State $J \gets \left\{j \in \left\{1, 2, \ldots, n\right\} \middle| \rank\left(\begin{bmatrix} G_I & G_{*, j} \end{bmatrix}\right) = \abs{I} + 1\right\}$
+       \If{$\abs{J} \neq 0$}
+          \State $j \in J$ \Comment{Picked uniformly}
+          \State $I \gets I \cup \left\{j\right\}$
+       \Else
+         \State \textbf{break}
+       \EndIf
+    \EndWhile
+    \If{$\abs{I} = k$}
+       \State \textbf{yield} $I$
+    \EndIf
+  \EndLoop
+  \EndProcedure
+\end{algorithmic}
+\end{algorithm}
+Each iteration of the while loops adds (if possible) a $j \in \left\{1, 2, \ldots, n\right\}$ to $I$ such that the columns of $G_I$ and $G_{*, j}$ are linearly independent, hence if the while-loop terminates with $\abs{I} = k$, then we have found an information set. The other case is that the while-loop terminates but $\abs{I} \neq k$, in that case we performed an early abort, since we couldn't find a $j \in \left\{1, 2, \ldots, n\right\}$ such that $\rank\left(\begin{bmatrix} G_I & G_{*, j} \end{bmatrix}\right) = \abs{I} + 1$.

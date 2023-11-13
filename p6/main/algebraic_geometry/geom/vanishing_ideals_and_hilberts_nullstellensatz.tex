@@ -1,0 +1,56 @@
+\subsection{Vanishing Ideals and Hilberts Nullstellensatz}\label{subsec:hilbert_nullstellenzats}
+So far we have only considered how subsets of $\K[X_1, X_2, \ldots, X_{n}]$ define subsets of $\mathbb{A}^{n}$, a natural next step is to introduce a way in which subsets of $\mathbb{A}^{n}$, defines ideals in $\K[X_1, X_2, \ldots, X_{n}]$.
+\begin{definition}\label{def:affine_vanishing_deal}
+  Let $V \subseteq \A^n$, be an algebraic set, then the \textit{vanishing ideal} of $V$ is defined as
+  \begin{equation*}
+    I(V) := \{F \in \pols \;\vert\; F(P) = 0 \text{ for all } P \in V\}
+  \end{equation*}
+\end{definition}
+This is clearly an ideal of $\K[X_1, X_2, \ldots, X_{n}]$ as $F, G \in  I(V)$ implies that $(F + G)(P) = F(P) + G(P) = 0$ and $(FG)(P) = F(P)G(P) = 0$ for all $P \in V$. If $V = \left\{P_1, P_2, \ldots, P_{n}\right\}$ then we may write $I(P_1, P_2, \ldots, P_{n})$ instead of $I(V)$.
+
+\begin{example}\label{exmp:vanishing_ideal_of_zero}
+  Let $P := (0, 0, \ldots, 0) \in \A^{n}$, then the vanishing ideal $I(P)$ consist of the set of polynomials with no constant terms. Additionally $I(\A^{n}) = \left\{0\right\}$ since every polynomial consist of a finite number of terms and every algebraically closed field is infinite.
+\end{example}
+
+Before we prove the main result of this section, we need to introduce a special type of ideal.
+\begin{definition}
+  Let $R$ be a commutative ring and $I$ be an ideal in $R$, then the \textit{radical} of $I$ is defined as:
+  \begin{equation*}
+    \Rad(I) := \left\{x \in R \mid \text{there exists } n \in \N \text{ such that } x^{n} \in I\right\}
+  \end{equation*}
+\end{definition}
+
+During the proof of the main theorem, the following proposition will be used. We will omit the proof of this result, instead we refer to the proof found in \cite{Fulton}[Section 1.7 and 1.10].
+\begin{proposition}[Weak Nullstellensatz]\label{prop:weak_nullstellensatz}
+  Let $I \subseteq \K[X_1, X_2, \ldots, X_{n}]$ be a proper ideal then $V(I) \neq \emptyset$.
+\end{proposition}
+The proposition above is interesting in itself, since it means that every proper ideal $I$ of $\K[X_1, X_2, \ldots, X_{n}]$, there exists at least one point $P \in \mathbb{A}^{n}$ such that $F(P) = 0$ for all $F \in I$.
+
+\begin{theorem}[Hilbert Nullstellensatz]\label{thm:hilbert_nullstellensatz}
+  Let $I \subseteq \K[X_1, X_2, \ldots, X_{n}]$ be an ideal, then $I(V(I)) = \Rad(I)$.
+\end{theorem}
+
+Before we prove the theorem, we will dissect the statement of the theorem. Recall that $I$ is finitely generated, by Corollary \ref{cor:pols_noetherian}. Assume $G_1, G_2, \ldots, G_{m} \in \K[X_1, X_2, \ldots, X_{n}]$ generates $I$. Then if $F \in \K[X_1, X_2, \ldots, X_{n}]$ vanishes whenever $G_1, G_2, \ldots, G_{m}$ vanish, then there exists a $k \in \N$ such that $F^{k} \in I$ and hence $F^{k} = \sum_{i = 1}^{m} H_{i} G_{i}$ for some $H_1, H_2, \ldots, H_{m} \in \K[X_1, X_2, \ldots, X_{n}]$.
+
+\begin{proof}
+  We start by showing that $\Rad(I) \subseteq I(V(I))$. Suppose $P \in V(I)$, then if $F \in \Rad(I)$, then there exists $m \in \mathbb{N}$ such that $F^{m} \in I$, meaning $F^{m}(P) = 0$ which implies $F(P) = 0$, since $\K$ is a domain. Hence we have that $F \in I(V(I))$.
+
+  Next we show that $I(V(I)) \subseteq \Rad(I)$. Let $G_1, G_2, \ldots, G_{m}$ generate $I$, and $F \in I(V(I))$. Consider the ideal $J = \gen{G_1, G_2, \ldots, G_{m}, X_{n + 1}F - 1} \subseteq \K[X_1, X_2, \ldots, X_{n + 1}]$, then $V(J) = \emptyset$, since $F$ vanishes whenever $G_1, G_2, \ldots, G_{m}$ vanish. Applying Proposition \ref{prop:weak_nullstellensatz}, we get that $J = \K[X_1, X_2, \ldots, X_{n + 1}]$ and hence $1 \in J$ therefore there exists $H_1, H_2, \ldots, H_{m + 1} \in \K[X_1, X_2, \ldots, X_{n + 1}]$ such that
+  \begin{equation}\label{eq:1eq}
+    1 = \sum_{i = 1}^{m} H_{i}(X_1, X_2, \ldots, X_{n + 1}) G_{i} + H_{m + 1}(X_1, X_2, \ldots, X_{n + 1})(X_{n + 1}F - 1).
+  \end{equation}
+  Let $Y = 1 / X_{n + 1}$ and $k \in \mathbb{N}$ such that $k \geq \max \left\{\deg(H_{i}) \mid i \in \left\{1, 2, \ldots, m + 1\right\}\right\} + 1$. Then multiplying both sides of Equation \eqref{eq:1eq} by $Y^{n}$ we see that:
+  \begin{equation}\label{eq:sub}
+    Y^{k} = \sum^{m}_{i = 1}H'_{i}(X_1, X_2, \ldots, X_{n}, Y) G_{i} + H'_{m + 1}(X_1, X_2, \ldots, X_{n}, Y) (F - Y)
+  \end{equation}
+  where $H'_1, H'_2, \ldots, H'_{m + 1} \in \K[X_1, X_2, \ldots, X_{n}, Y]$. The rest follows by substituting $Y = F$ in Equation \eqref{eq:sub}.
+\end{proof}
+
+%Before we move on, we will investigate the algebraic structure of $I_{\mathbb{P}}(V)$ more closely.
+%\begin{definition}
+%  The ideal $I \subseteq \K[X_1, X_2, \ldots, X_{n + 1}]$ is called \textit{homogeneous} if every $F \in I$ may be written as $F = \sum_{i = 0}^\deg(F) F_i$ such that $F_0, F_1, \ldots, F_{\deg(F)} \in I$ such that $F_{i}$ are homogeneous and of degree $i$
+%\end{definition}
+%
+%\begin{lemma}
+%  Let $V \subseteq \mathbb{P}^{n}$ be an algebraic set, then $I_{\mathbb{P}}(V)$ is a homogeneous ideal.
+%\end{lemma}

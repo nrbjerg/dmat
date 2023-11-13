@@ -1,0 +1,98 @@
+\section{The McElice Public Key Cryptosystem}
+The introduction of the McElice public key cryptosystem (McElice PKC), is based upon \cite{r6}. Before we can present the basic setup McElice PKC, we need to introduce some basic concepts from error correcting codes.
+
+\begin{definition}
+  Let $\mathcal{C}_1$ and $\mathcal{C}_2$ be $[n, k]_{q}$ codes, with generator matrices $G_1, G_2 \in \mathbb{F}_q^{k \times n}$ respectively then:
+  \begin{enumerate}
+    \item If there exists a permutation matrix $P \in  \mathbb{F}_{q}^{k \times k}$ such that $G_1 = G_{2}P$, then $\mathcal{C}_1$ and $\mathcal{C}_{2}$ are called \textit{permutation equivalent}.
+    \item The codes $\mathcal{C}_1$ and $\mathcal{C}_2$ are called \textit{equivalent}, denoted $\mathcal{C}_1 \sim \mathcal{C}_{2}$, if there exists a matrix $S \in GL_n(\mathbb{F}_q)$ and permutation matrix $P \in \mathbb{F}_q^{n \times n}$ such that $G_1 = S G_2P$.
+  \end{enumerate}
+%  then if there exists a permutation matrix $P \in \mathbb{F}_q^{k \times k}$ and a non-singular matrix $S \in \mathbb{F}_q^{n \times n}$ such that $G_1 = SG_2P$, then $\mathcal{C}_1$ and $\mathcal{C}_2$ are called \textit{equivalent}, written $\mathcal{C}_1 \sim \mathcal{C}_{2}$. Additionally if there exits a permutation matrix $Q \in \mathbb{F}_{q}^{k \times k}$ such that $G_1 = QG_2$, then $\mathcal{C}_1$ is called \textit{permutation equivalent} to $\mathcal{C}_{2}$.
+  %, then $\mathcal{C}_1$ and $\mathcal{C}_2$ are called \textit{permutation equivalent} if there exists a permutation matrix $P \in \mathbb{F}_q^{k \times k}$ such that $G_1 = G_{2}P$ alternatively if there exists a non-singular matrix $S \in \mathbb{F}_q^{n \times n}$ such that  $G_1 = SG_2P$ then $\mathcal{C}_1$ and $\mathcal{C}_2$ are called \textbf{equivalent}.
+\end{definition}
+\begin{remark}
+  The relation $\sim$, is indeed an equivalence relation:
+  \begin{enumerate}
+\item If $G$ is a generator matrix, then $G = G$ so $\sim$ is reflective.
+\item Additionally if $G_1 = SG_2P$  then $S^{-1}G_1P^{-1} = G_2$ so $\sim$ is symmetric.
+\item Finally, to show that $\sim$ is transitive, let $G_1 = S_1G_2P_1$ and $G_2 = S_2G_{3}P_2$, then $G_1 = (S_1S_2)G_3(P_2P_1)$.
+  \end{enumerate}
+\end{remark}
+
+Two equivalent codes, clearly share the same dimension, however it is not immediately obvious that they share the same minimum distance.
+\begin{proposition}\label{prop:equvilant_codes_share_parameters}
+  Let $\mathcal{C}_1$ and $\mathcal{C}_2$ be equivalent $[n, k]_q$ codes, with generator matricies $G_1$ and $G_2$ respectively, such that $G_1 = SG_2P$, for some $S \in GL_n(\mathbb{F}_q)$ and permutation matrix $P \in \mathbb{F}_q^{k \times k}$: Then:
+  \begin{enumerate}
+    \item If $H_2 \in \mathbb{F}_q^{n \times k}$ is a parity check matrix of $\mathcal{C}_2$ then the matrix $H_2 P$ is a parity check matrix of $\mathcal{C}_{1}$. \label{prop:equvilant_codes_share_parameters1}
+    \item Additionally $d(\mathcal{C}_1) = d(\mathcal{C}_2)$. \label{prop:equvilant_codes_share_parameters2}
+  \end{enumerate}
+\end{proposition}
+\begin{proof}
+  We start by proving Assertion \ref{prop:equvilant_codes_share_parameters1}, by showing that $(H_2P)G_1^T = 0_{k \times k}$ meaning $\mathcal{C}_1 \subseteq \Null(H_2P)$ and that $\dim_{\mathbb{F}_q}(\Null(H_2P)) = k$ which follows directly, since $P$ is a permutation matrix and
+  \begin{equation*}
+    \dim_{\mathbb{F}_q}(\Null(H_2)) = \dim_{\mathbb{F}_q} (\mathcal{C}) = k
+  \end{equation*}
+  Next using the fact that $G_1 = SG_2P$ we see that:
+  \begin{equation*}
+    H_2PG_1^{T} = H_2P(P^TG_2^TS^T) \overset{(a)}{=} H_2G_2^TS^T \overset{(b)}{=} 0_{n \times n}
+    % NOTE: har fjernet en (S^T)^{-1}
+  \end{equation*}
+  where equality $(a)$ follows as $P$ is a permutation matrix and hence orthogonal, and equality $(b)$ as $H_2G_{2}^{T} = 0_{n \times n}$.
+  Continuing Assertion \ref{prop:equvilant_codes_share_parameters2}, follows by combining Assertion \ref{prop:equvilant_codes_share_parameters1} with the fact that the minimum distance of a code with parity check matrix $H$, corresponds with the minimum number of linearly dependent columns of $H$. The rest follows as $H_2P$ has the same columns as $H_2$.
+  %We note that $\mathcal{C}_1 \sim \mathcal{C}_2$ implies that there exists a $S \in GL_{n}(\mathbb{F}_{q})$ and a permutation matrix $P \in \mathbb{F}_q^{k \times k}$ such that $G_1 = SG_{2}P$. Hence as $S$ and $P$ are non-singular we know that $rank(G_1) = rank(G_{2})$.
+  \label{}
+\end{proof}
+\begin{definition}\label{def:decoder}
+Let $\mathcal{C}$ be a $[n, k]_{q}$ code. A \textit{$t$-error correcting decoder} for $\mathcal{C}$ is a mapping $dec_{\mathcal{C}}: \mathbb{F}_q^n \to \mathcal{C} \cup \left\{?\right\}$ which satisfies the condition that $dec_{\mathcal{C}}(y) = c$ whenever $y = c + e$, with $c \in \mathcal{C}$ and $e \in \mathbb{F}_q^n$ such that $\wt(e) \leq t$, and $dec_{\mathcal{C}}(y) = \; ?$ otherwise. An algorithm which implements a $t$-error correcting decoder is called a \textit{$t$-error correcting decoding algorithm}.
+\end{definition}
+\begin{remark}
+  We often simply refer to the $t$-error correcting decoder $dec_{\mathcal{C}}$ as a \textit{decoder} and any algorithm which implements a decoder as an \textit{decoding algorithm}.
+\end{remark}
+
+%Let $\mathcal{C}$ be a $[n, k, d]_q$ code with generator matrix $G \in \mathbb{F}_q^{n \times k}$, such that we have an efficient algorithm $dec_{\mathcal{C}}$ for decoding codewords up to $t$ errors. Furthermore we let $S \in \mathbb{F}_q^{k \times k}$ be a random non-singular matrix and $P \in \mathbb{F}_q^{n \times n}$ be a random permutation matrix.
+%The secret key will be the tripe $(Dec_{\mathcal{C}}, S, P)$ and the public key will be $G' = S \cdot G \cdot P$. To encrypt a $k$-length message $m$, we will compute $y = m G' + e$, such that $e \in \mathbb{F}_q^{n}$ is a random vector with $\wt(e) \leq t$. The decryption of the message is slightly more complicated, the algorithm is given in Algorithm \ref{alg:McElice_decrypt}.
+
+We have now covered all of the necessary tools needed to introduce the McElice PKC:
+Let $\mathcal{C}$ be an $[n, k, d]_q$ code with generator matrix $G$ and an efficient $t$-error correcting decoding algorithm $dec_{\mathcal{C}}$, furthermore let $S \in GL_{k \times k}(\mathbb{F}_q)$ and $P \in \mathbb{F}_q^{n \times n}$ be a random permutation matrix. An overview of the McElice PKC is given below in Algorithm \ref{alg:McElice}.
+\begin{algorithm}
+\caption{McElice PKC}\label{alg:McElice}
+\begin{algorithmic}
+  \State \textbf{private key} $(Dec_{\mathcal{C}}, S, P)$
+  \State \textbf{public key} $(G' = S \cdot G \cdot P, t)$
+  \\
+  \Procedure{McElice Encryption} {$m$: plain message, $(G', t)$: public key}
+    \State $c \gets m^{T} G'$
+    \State \Return $c + e$ \Comment{$e \in \mathbb{F}_q^{n}$ with $\wt(e) = t$, chosen uniformly.}
+  \EndProcedure \\
+  \Procedure{McElice Decryption} {$y$: received message, $(dec_{\mathcal{C}}, S, P)$: private key}
+    \State $y' \gets y P^{-1}$
+    \State $m' \gets Dec_{\mathcal{C}}(y')$
+    \State \Return $m' S^{-1}$
+  \EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+\begin{remark}
+  The matrix $G'$ will be the generator matrix of another $[n, k, d]_{q}$ code $\mathcal{C}'$, by Proposition \ref{prop:equvilant_codes_share_parameters}, hence the decoding of $m^T G' + e$ also makes sense. In fact the decoding $m^T G' + e$ is one of the ways to attack the McElice PKC. We will discuss this in more detail in Sections \ref{sec:syndrome_decoding} and \ref{sec:information_set_decoding}.
+\end{remark}
+
+\textcolor{red}{\textbf{TODO}} skal rettes herfra og ned
+
+We mentioned earlier that we would study public key cryptosystem which where bases on the general decoding problem, See Problem \ref{prob:general_decoding}. However the McElice PKC is actually based on the following ``weaker'' problem, in the sense that a solution to this problem doesn't necessarily yield a solution to the Problem \ref{prob:general_decoding}. However if $\mathbf{NP} = \mathbf{P}$, meaning that Problem \ref{prob:general_decoding} could be solved in polynomial time, then the McElice PKC would be venerable to attack.
+\begin{problem}[McElice Problem]\label{prob:McElice}
+  Given $(G', t)$ and a ciphertext $y$ find the unique $m \in \mathbb{F}_q^{k}$ such that $\wt(m^{T}G' - c) = t$.
+\end{problem}
+Problem \ref{prob:McElice} is certainly not NP-complete, however the idea is to have as little structure of the underlying code revealed by $G'$ as possible, to make the problem closer to Problem \ref{prob:general_decoding}
+
+\begin{remark}\label{rem:decryption_algorithm_produces_correct_message}
+   Given some $y = m^{T}G' + e$, where $e \in \mathbb{F}_q^{n}$ such that $\wt(e) = t$, the decryption algorithm as described in Algorithm \ref{alg:McElice} produces the correct message $m^{T}$. This can be seen as follows from Algorithm \ref{alg:McElice} we have $y' := (m^{T} G' + e) P^{-1} = m^{T}SG + e P^{-1}$, however as $P^{-1}$ is simply another permutation matrix, we see that $\wt(eP^{-1}) = t$. Hence we may apply our decoding algorithm $Dec_{\mathcal{C}}$ to $y'$ and get $m' := m^{T}S$ now multiplying $m'$ by $S^{-1}$ we obtain $m^{T}$.
+\end{remark}
+
+In general we have two kinds of attacks on the McElice PKC
+\begin{enumerate}
+    \item \textit{Structural Attacks}: Where we try to extract information about the underlying code, using $G'$. If we obtain enough information we may implement our own efficient decryption algorithm.
+    \item \textit{Generic Attacks}: Where we try to construct efficient $t$-error correcting decoding algorithms given $(G', t)$, we will refer to such algorithms as being \textit{generic}.
+\end{enumerate}
+
+Two of the main goals of this project is to investigate these attacks. Understanding of structural attacks allows us to gain insights into which families of codes constitutes ``good'' candidates for use in the McElice PKC. On the otherhand generic attacks allows us to measure the security of the McElice PKC constructed on these codes resilient to structural attacks.
+

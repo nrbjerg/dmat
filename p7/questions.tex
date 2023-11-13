@@ -1,0 +1,16 @@
+\chapter*{Questions}
+
+\begin{enumerate}
+  \item With regards to residues I am a bit unsure how local Laurent series of a rational function $z \in \mathbb{F}(\mathcal{X})$ is computed given a local parameter $t$ at $P \in \mathcal{X}$, it should be of the form $\sum_i a_i t^i$. Most sources note that we may write $z = at^m + z'$ where $m := v_P(z) < 0$, $a \in \mathbb{F}^{*}$ and $v_P(z') > m$. I don't quite understand how this follows since we only know that: $z = ut^{v_P(z)}$ for some $u \in \mathbb{F}(\mathcal{X})$. Additionally I need to show that $a_{-1}$ does not depend on the choice of local parameter.
+  \item I have never been in a situation where it would be appropriate to reference back to a previous project. Hence I am wondering how I should proceed (Perhaps a simple appendix with the nessesary results will be sufficient?)
+  \item I have a couple of questions / requests regarding the notes by Alain Couvreur and Hugues Randriambololona:
+  \begin{enumerate}
+    \item Lemma 19 states that $\mathcal{C}_{\Omega}(\mathcal{X}, \mathcal{P}, G)$ and $C_L(\mathcal{X}, \mathcal{P}, K_X + D_{\mathcal{P}} - G)$, (where $K_X$ is a canonical divisior) are diagonally equivalent and later in the same Lemma they state that $\mathcal{C}_{\Omega}(\mathcal{X}, \mathcal{P}, G) = C_L(\mathcal{X}, \mathcal{P}, K_X - D_{\mathcal{P}} + G)$ if $\support(G)$ is disjoint from $\mathcal{P}$. Is it $K_X - D_{\mathcal{P}} + G$ or  $K_X + D_{\mathcal{P}} - G$. I have assumed the latter since it also agreed with the paper ``On the Decoding of Algebraic-Geometric Codes'' by Høholt and Pelikaan. But I simply want to be sure that this is in fact correct.
+    \item If time permits I would like to go through the proof of Theorem 37.
+  \end{enumerate}
+  \item Finally I am struggling with proving the following theorem:
+    \begin{theorem}
+      Let $t$ be a local parameter at $P \in \mathcal{X}$, then there exists a unique derivation $D_t$ such that $D_t(t) = 1$.
+    \end{theorem}
+    I have tried proving the uniqueness part using the fact that every rational function on $\mathcal{X}$ can be written as $z = ut^{v_P(z)}$ with $u \in \mathcal{O}_P(\mathcal{X})$. However it dosn't seem to budge. Do you perhaps have a hint?
+\end{enumerate}

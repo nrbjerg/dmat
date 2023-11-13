@@ -1,0 +1,24 @@
+\section{Category Theory}%
+\label{sec:label}
+
+A \textit{category} $\mathcal{C}$ consists of a collection of \textit{objects}
+$Obj(\mathcal{C})$, for each $A, B \in Obj(\mathcal{C})$, there exists a set $Mor(A, B)$ of \textit{morphisms} (maps between $A$ and $B$), such that for all $A, B, C \in Obj(\mathcal{C})$ there exists a law of composition (ie. map):
+\begin{equation*}
+  \circ: Mor(B, C) \times Mor(A, B) \to Mor(A, C)
+\end{equation*}
+that satisifies:
+\begin{enumerate}
+\item $Mor(A, B) \cap Mor(A', B') = \emptyset$ unless $A = A' \wedge B = B'$, in that case they are equal.
+\item for all $A \in Obj(\mathcal{C})$ there exists a morphism $id_A \in Mor(A, A)$,  which acts as a left and right identity for the elements in $Mor(A, B)$ and $Mor(B, A)$, for all $B \in Obj(\mathcal{C})$.
+  \item Law of composition is associative meaning if $f \in Mor(A, B), g \in Mor(B, C), h \in Mor(C, D)$, then
+        \begin{equation*}
+          f \circ (g \circ h) = (f \circ g) \circ h
+        \end{equation*}
+\end{enumerate}
+Every morphism in $\mathcal{C}$, is called an \textit{arrow} and the collection of all arrows is denoted $Ar(\mathcal{C})$.
+The morphism $f \in Mor(A, B)$ is called an \textit{isomorphism}
+if there exists a $g \in Mor(B, A)$ such that $f \circ g = id_{A}$ and $g \circ f = id_{B}$ if $A = B$, then $f$ is called an \textit{automorphism}, automorphisms of $A$ will be denoted $Aut(A)$, these together with the law of composition forms a group.
+.
+\begin{example}
+  The groups form a category, whose morphisms are the group-homomorphisms.
+\end{example}

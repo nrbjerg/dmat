@@ -1,0 +1,86 @@
+In this section we are going to fix an algebraically closed field $\K$ and a positive natural number $n$. Most of the definitions and results will be stated either in the $n$-dimensional affine or projective spaces, we start by considering the affine case, as it is the simplest to understand.
+
+\begin{definition}
+  The $n$-dimensional \textit{affine space} over $\K$ is defined as
+  \begin{equation*}
+    \A^{n}(\K) := \{(a_{1}, a_{2},\ldots, a_{n}) \;\vert\; a_1, a_2, \ldots, a_{n} \in \K\}
+  \end{equation*}
+  If $\K$ is understood from the context we omit it, and simply write $\A^{n}$.
+\end{definition}
+
+Suppose $P = (a_{1}, a_{2}, \ldots, a_{n}) \in \A^{n}$ and $F \in \pols$, then $P$ is called a \textit{point} and we may write $F(P)$ instead of $F(a_{1}, a_{2}, \ldots, a_{n})$.
+
+\begin{definition}\label{def:alg_set}
+  Let $S \subseteq \pols$, then we define the \textit{zero set} of $S$ as
+  \begin{equation*}
+    V(S) = \{P \in \A^{n} \mid F(P) = 0 \text{ for all }  F \in S\}.
+  \end{equation*}
+  Furthermore the zero set $V(S)$ is called an \textit{affine algebraic set} in $\A^{n}$.
+\end{definition}
+\begin{remark}\label{rem:bigger_sets_lead_to_smaller_zero_sets}
+  It is easy to see that if $S \subseteq \pols$ and $T \subseteq S$, then $V(S) \subseteq V(T)$, since $P \in V(S)$ implies $F(P) = 0$ for all $F \in S$ and in particular for all $F \in T$.
+\end{remark}
+
+When $S := \{F_{1}, F_{2}, \ldots, F_{m}\} \subseteq \pols$, we may write $V(S)$ as $V(F_{1}, F_{2}, \ldots, F_{m})$. If $F \in \pols$ we call $V(F)$ a \textit{hypersurface}. Next we will show that every affine algebraic set, is the zero set of some ideal in $\pols$.
+
+\begin{lemma}\label{lem:algebraic_set_of_ideal}
+  Let $S \subseteq \pols$, then $V(S) = V(\gen{S})$.
+\end{lemma}
+\begin{proof}
+  Since $S \subseteq \gen{S}$, it follows from remark \ref{rem:bigger_sets_lead_to_smaller_zero_sets} that $V(\gen{S}) \subseteq V(S)$. Now suppose $P \in V(S)$, then $F(P) = 0$ for all $F \in S$, now let $G \in \gen{S}$, then $G$ can be written as
+  \begin{equation*}
+    G = \sum^{m}_{i = 1} H_{i} F_{i}
+  \end{equation*}
+  for some $m \in \N$ and $H_{i} \in \K[X_1, X_2, \ldots, X_{n}], F_{i} \in S$ for $i = 1, 2, \ldots, m$. Evaluating $G$ at the $P$ gives:
+  \begin{equation*}
+    G(P)=\sum^{m}_{i = 1} H_{i}(P) F_{i}(P) = 0
+  \end{equation*}
+  since $F_{i}(P) = 0$ for all $i = 1,2, \ldots, m$, and hence $V(S) \subseteq V(\gen{S})$.
+\end{proof}
+An interesting consequence of Lemma \ref{lem:algebraic_set_of_ideal} and Corollary \ref{cor:pols_noetherian}, is that every affine algebraic subset $V(S)$ is the intersection of finitely many hypersurfaces, this can be seen as follows: From Lemma \ref{lem:algebraic_set_of_ideal} we have that $V(S) = V(\gen{S})$. The ideal $\gen{S}$ is finitely generated since $\K[X_1, X_2, \ldots, X_{n}]$ is Noetherian, by Corollary \ref{cor:pols_noetherian}, hence there exists some $k \in \mathbb{N}$ and $F_1, F_2, \ldots, F_{k} \in \K[X_1, X_2, \ldots, X_{n}]$ such that:
+\begin{equation*}
+  V(S) = V(\gen{F_1, F_2, \ldots, F_{k}}) = \bigcap_{i = 1}^k V(F_{i}).
+\end{equation*}
+
+We will now define a topology on $\A^{n}$, where the affine algebraic sets form the closed sets.
+\begin{definition}
+  The topology $\mathcal{T}_{Z} = \{V(S)^{c} \;\vert\; S \subseteq \pols\}$ is called the \textit{Zariski topology} on $\mathbb{A}^{n}$.
+\end{definition}
+
+We will now prove that the Zariski topology is indeed actually a topology on $\A^{n}$. We do however first require the following proposition.
+\begin{proposition}\label{prop:closed_sets_zariski}
+  Let $S, T \subseteq \pols$ and $\{S_{i}\}_{i \in \mathcal{I}}$ be a family of subsets of $\pols$ then:
+  \begin{enumerate}
+    \item $\A^{n}$ and $\emptyset$ are both algebraic sets. \label{prop:closed_sets_zariski:1}
+    \item $V(S) \cup V(T) = V(S \cdot T)$ where $S \cdot T = \left\{F G \mid F \in S, G \in T\right\}$. \label{prop:closed_sets_zariski:2}
+    \item $\bigcap_{i \in \mathcal{I}} V(S_{i}) = V\left(\cup_{i \in \mathcal{I}})S_{i}\right)$ is an algebraic subset \label{prop:closed_sets_zariski_intersection}\label{prop:closed_sets_zariski:3}
+  \end{enumerate}
+\end{proposition}
+\begin{proof} We will prove each claim individually.
+  \begin{enumerate}
+      \item We have $\A^{n} = V(\emptyset)$ and $\emptyset = V(\K^{*})$.
+      \item Suppose $P \in V(S) \cup V(T)$, then $F(P) \cdot G(P) = 0$ for all $F \in S$ and $G \in T$. Thus $V(S) \cup V(T) \subseteq V(S \cdot T)$.
+
+        On the other hand if $P \in V(S \cdot T)$, then $F(P) \cdot G(P) = 0$ for all $F \in S$ and $G \in T$, assuming $P \not \in V(S)$, then there exists $F \in S$ such that $F(P) \neq 0$ however this implies that $G(P) = 0$ for all $G \in T$, since $\K$ is a domain, and it therefore follows $V(S \cdot T) \subseteq V(S) \cup V(T)$.
+      \item Follows from Definition \ref{def:alg_set}. \qedhere
+  \end{enumerate}
+\end{proof}
+
+\begin{corollary}
+  $(\A^{n}, \Zar)$ is a topological space.
+\end{corollary}
+\begin{proof}
+  Let $U, U' \in \Zar$, then there exists $S, T \subseteq \pols$ such that $U = \A^{n} \backslash V(S)$ and $U' = \A^n \backslash V(T)$, thus it follows that
+  \begin{equation*}
+    U \cap U' = \A^{n} \backslash (V(S) \cup V(T)) = \A^{n} \backslash V(S \cdot T) = V(S \cdot T)^{c} \in \Zar
+  \end{equation*}
+  confer Assertion \ref{prop:closed_sets_zariski:2} of Proposition \ref{prop:closed_sets_zariski}. Let $\{U_{i}\}_{i \in \mathcal{I}}$ be an indexed family of open sets, then there exists an indexed family $\{S_{i}\}_{i \in \mathcal{I}}$ of subsets of $\K[X_1, X_2, \ldots, X_{n}]$, such that $U_{i} = \A^{n} \backslash V(S_{i})$ for all $i \in \mathcal{I}$. It therefore follows that
+  \begin{equation*}
+    \bigcup_{i \in \mathcal{I}} U_{i} = \bigcup_{i \in \mathcal{I}} \A^{n} \backslash V(S_{i}) = \A^{n} \backslash \bigcap_{i \in \mathcal{I}} V(S_{i}) = \A^{n} \backslash V\left(\bigcup_{i \in \mathcal{I}} S_{i}\right) \in \Zar
+  \end{equation*}
+  which follows from De Morgan Law for set differences and Assertion \ref{prop:closed_sets_zariski:3} of Proposition \ref{prop:closed_sets_zariski}. Finally since $\emptyset$ and $\A^{n}$ are both algebraic, by Assertion  \ref{prop:closed_sets_zariski:1} of Proposition \ref{prop:closed_sets_zariski}, we have $\emptyset^{c} = \A^{n} \in \Zar$ as well as $(\A^{n})^{c} = \emptyset \in \Zar$.
+\end{proof}
+
+\begin{example}\label{exmp:closed_sets_of_A1}
+  From the fundamental theorem of algebra we know that a univariate polynomial $F \in \K[X]^{*}$ has exactly $\deg(F)$ roots. Hence the algebraic and hence closed subsets of $\mathbb{A}^{1}$ consists of the finite subsets as well as $\A^{1}$ itself.
+\end{example}

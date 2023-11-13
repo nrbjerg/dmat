@@ -1,0 +1,119 @@
+\section{The Basic Deocding Algorithm}%
+Throughout this section we will fix a algebraic geometry code $\mathcal{C}_{D, G}$ constructed on the curve $\mathcal{X}$ of genus $g$. We will describe and show the correctness of an $t$-error decoding algorithm for $\mathcal{C}_{D, G}$ with
+\begin{equation*}
+  t \leq \floor{\frac{d^{*} - 1}{2} - \frac{g}{2}}
+\end{equation*}
+The term $\frac{g}{2}$ is called the \textit{genus penalty}. Our treatment will be based on \cite{AG_codes_and_applications}[Section 6.1]
+
+We start by proving the following proposition, which will guide our search for such an decoding algorithm.
+\begin{proposition}\label{prop:error_located_implies_reduction_to_correct_erasures}
+  Let $\mathcal{C}$ be a $[n, k, d]_q$ code with parity check matrix $H$. Furthermore let $y = c + e$ where $c \in \mathcal{C}$ and $e \in \mathbb{F}_q^n$ and $J \subseteq \left\{1, \ldots, n\right\}$, such that $\support(e) \subseteq J$ and $\abs{J} < d$. Then $e$ is the unique solution to the system:
+\begin{equation}\label{eq:condition}
+  \begin{cases} He = Hy \\ e_i = 0 \text{ for all } i \in \left\{1, \ldots, n\right\} \setminus J\end{cases}
+\end{equation}
+\end{proposition}
+\begin{proof}
+Clearly $e$ is a solution to the system in Equation \eqref{eq:condition} since $Hy = Hc + He = He$. Additionally if $e'$ is another solution to $He' = Hy$ such that $\support(e) \subseteq J$, then $e - e' \in \Null(H) = \mathcal{C}$, however as $\abs{J} < d$ the codeword $e' - e$ has weight $\wt(e' - e) \leq d$ meaning $e' - e = 0$.
+\end{proof}
+
+For the remaining part of the section we will let $y = c + e$ with $c  \in \mathcal{C}_{D, G}$, meaning $c = (f(P_{1}), f(P_{2}), \ldots, f(P_{n}))$ for some $f \in L(G)$, and $e \in \mathbb{F}_q^{n}$ such that $\wt(e) \leq t$, unless otherwise specified. Proposition \ref{prop:error_located_implies_reduction_to_correct_erasures}, implies that if we can find a small subset $J$ such that $\support(e) \subseteq J$, correcting the errors in the recived vector $y$ is simply a matter of solving the linear system presented in Equation \eqref{eq:condition} for $e \in \mathbb{F}_q^n$. To find such a subset $J$ we introduce the concept of an \textit{error locating function}.
+
+
+We will now describe a procedure for locating the errors. Let $F$ be a divisor such that $\support(F) \cap \support(D) = \emptyset$. If $\lambda \in L(F)$ vanishes at every point $P_i$ where $i \in \support(e)$ then:
+\begin{equation*}
+  \lambda(P_{i})y_i = \lambda(P_i)f(P_i) \text{ for all } i \in \left\{1, \ldots, n\right\}.
+\end{equation*}
+Since either $e_{i} = 0$ meaning $y_i = f(P_i)$ or alternatively if $i \in \support(e)$ then $\lambda(P_{i}) = 0$. Hence $\lambda$ can be used to locate the $\support(e)$.
+
+\begin{remark}\label{rem:product_of_rational_functions}
+  If $f \in L(G)$ and $\lambda \in L(F)$, then $\lambda f \in L(G + F)$. This can be seen as follows
+  \begin{equation*}
+    (\lambda f) = \sum_{P \in \mathcal{X}} v_{P}(\lambda f) P \stackrel{(a)}{=}  \sum_{P \in \mathcal{X}} (v_P(\lambda) + v_{P}(f)) P = (\lambda) + (f)
+  \end{equation*}
+  where $(a)$ follows as $v_P$ is a discrete valuation. Now since $(f) + G$ and $(\lambda) + F$ are effective divisors, we see that $(\lambda f) + (G + F) = (\lambda) + (f) + G + F$ is effective.
+\end{remark}
+The contents of Remark \ref{rem:product_of_rational_functions}, motivates the following definition:
+\begin{definition}
+Let $F$ be a divisor on $\mathcal{X}$ such that $\support(F) \cap \support(D) = \emptyset$, then we define the set of \textit{error locating functions} as:
+\begin{equation*}
+  K_y(F) := \left\{\lambda \in L(F) \; \middle| \; (\lambda(P_{1})y_{1}, \lambda(P_{2})y_{2}, \ldots, \lambda(P_{n})y_{n}) \in \mathcal{C}_{D, G + F}\right\}
+\end{equation*}
+\end{definition}
+
+By now we can finally state the basic algorithm.
+\begin{algorithm}[H]
+\caption{Basic Decoding Algorithm}\label{alg:basic_decoding_algorithm}
+\begin{algorithmic}
+  \Procedure{Basic Decoding}{$y$: received word with a maximum of $t$ errors
+    \newline\phantom{\textbf{procedure} \textsc{Basic Decoding}(}$f_1, f_2, \ldots, f_{m}$: a basis for $L(F)$,
+    \newline\phantom{\textbf{procedure} \textsc{Basic Decoding}(}$(H, H')$: parity check matrices for $\mathcal{C}_{D, G}$ and $\mathcal{C}_{D, G + F}$}
+  \State Compute $K_y(F)$
+  \If{$K_y(F) = \left\{0\right\}$}
+    \State \Return $?$
+  \Else
+    \State $\triangleright$ Both $f_1, f_2, \ldots, f_{m}$ and $H'$ are used implicitly to find $\lambda \in K_y(F) \setminus \left\{0\right\}$.
+    \State $J \gets \left\{i \in \left\{1, \ldots, n\right\} \middle| \lambda(P_i) = 0\right\}$ for some $\lambda \in K_y(F) \setminus \left\{0\right\}$
+    \State $S \gets \left\{e \in \mathbb{F}_q^n \middle| He = Hy \text{ and }  e_i = 0 \text{ for all } i \in \left\{1, \ldots, n\right\} \setminus J\right\}$
+    \If{$\abs{S} \neq 1$}
+      \State \Return $?$
+    \Else
+      \State \Return $y - e$ where $e$ is the unique solution in $S$.
+    \EndIf
+  \EndIf
+  \EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+Next we will show that correctness of Algorithm \ref{alg:basic_decoding_algorithm}, we start by proving the following lemma.
+\begin{lemma}\label{lem:Ky_equals_L}
+  Let $D_e = \sum_{i \in \support(e)} P_{i}$. If $t \leq d^{*} - \deg(F) - 1$, then $K_y(F) = L(F - D_{e})$.
+\end{lemma}
+\begin{proof}
+  We start by showing that $K_y(F) \supseteq L(F - D_{e})$. So assume that $\lambda \in L(F - D_e)$. Then $\lambda(P_i) = 0$ for all $i \in \support(e)$, as $\support(F) \cap \support(D_e) \subseteq \support(F) \cap \support(D) = \emptyset$, hence $\lambda(P_{i})y_{i} = \lambda(P_i)f(P_i)$ for all $i \in \left\{1, \ldots, n\right\}$, hence $(\lambda(P_1)y_1, \lambda(P_2)y_2, \ldots, \lambda(P_n)y_n) \in \mathcal{C}_{D, G + F}$ as $\lambda f \in L(G + F)$, by Remark \ref{rem:product_of_rational_functions}.
+
+  Next we show that $K_y(F) \subseteq L(F - D_e)$. Let $c_{y} = (\lambda(P_1)y_1, \lambda(P_2)y_2, \ldots \lambda(P_{n})y_n) \in \mathcal{C}_{D, G + F}$. Now since $\lambda f \in L(G + F)$, we see that $c_f = (\lambda(P_1)f(P_{1}), \lambda(P_2)f(P_2), \ldots, \lambda(P_n)f(P_n)) \in \mathcal{C}_{D, G + F}$. Since $\mathcal{C}_{D, G + F}$ is a linear subspace, we see that:
+  \begin{equation*}
+   c_e = c_{y} - c_{f} = (\lambda(P_{1})e_{1}, \lambda(P_{2})e_{2}, \ldots, \lambda(P_{n})e_{n}) \in \mathcal{C}_{D, G + F}
+  \end{equation*}
+   additionally we note that $\wt(c_e) \leq \wt(e) \leq t$. Now applying Theorem \ref{thm:ag_codes_properties}\ref{thm:ag_codes_properties2} we see that the minimum distance of $\mathcal{C}_{D, G + F}$ is at least $n - \deg(G + F)$. However $\wt(c_{e}) \leq t \leq d^{*} - \deg(F) - 1 = n - \deg(G + F) - 1 < n - \deg(G + F)$. Hence $c_e = 0$ and $\lambda(P_i) = 0$ for all $i \in \support(e)$, so $\lambda \in L(F - D_{e})$.
+\end{proof}
+
+By now we are finally able to state and prove the correctness of the basic decoding algorithm.
+
+\begin{theorem}\label{thm:basic_decoding_algorithm_works}
+If $t \leq \floor{\frac{d^{*} - 1}{2} - \frac{g}{2}}$ and $\deg(F) = t + g$, then Algorithm \ref{alg:basic_decoding_algorithm} is a $t$-error decoding algorithm for $\mathcal{C}_{D, G}$. Which returns the good solution in $O(n^{\omega})$ operations in $\mathbb{F}_q$ with $\omega \leq 3$.
+\end{theorem}
+\begin{proof}
+  The condition $t \leq \floor{\frac{d^{*} - 1}{2} - \frac{g}{2}}$ implies that
+  \begin{equation*}
+    2t + g \leq d^{*} - 1
+  \end{equation*}
+  which in turn implies that $t \leq d^{*} - \deg(F) - 1$, applying Lemma \ref{lem:Ky_equals_L}, we see $K_y(F) = L(F + D_e)$ and in particular that $K_y(F) \neq \left\{0\right\}$ as $\ell(F - D_e) > 0$, by \cite{bachellor}[Proposition 2.88(i)], as $\deg(F) \geq t + g$ implies $\deg(F - D_e) \geq g$ since $\deg(D_e) \leq t$. Hence one can take a non-zero rational function $\lambda \in K_y(F)$. Now as $\lambda \in K_{y} = L(F - D_e)$, we know that $\deg( (\lambda)_{0} ) \leq \deg(F)$. In addition we noted earlier that $t \leq d^{*} - \deg(F) - 1$, meaning $\deg((\lambda)_{0}) \leq \deg(F) \leq d^{*} - 1 < d^{*}$. So $\abs{\ker(\lambda)} < d^{*} < d(C_{D, G})$. Applying Proposition \ref{prop:error_located_implies_reduction_to_correct_erasures}, we see that there will exist a unique solution to the system: $He = Hy$ and $e_{i} = 0$ for all $i \in \left\{1, \ldots, n\right\}$ such that $\lambda(P_i) \neq 0$. \\
+  Next we show that Algorithm \ref{alg:basic_decoding_algorithm} has time complexity $O(n^{\omega})$. We start by noting that solving a linear system such as $He = Hy$ under the constraint that $e_i = 0$ for all $i \in \left\{1, 2, \ldots, n\right\} \setminus J$ can be done in $O(n^{\omega})$, with $\omega \leq 3$ \textcolor{blue}{(Should probaly have a source)}. We will show that finding a non-zero $\lambda \in K_y(F)$, boils down to solving a similar linear system. Suppose $\lambda \in L(F)$, we note that $c_\lambda := (\lambda(P_1), \lambda(P_2), \ldots, \lambda(P_n)) * y \in \mathcal{C}_{D, G + F}$ if and only if:
+  \begin{equation*}
+    0 = H'(c_\lambda * y) = \sum_{j = 1}^n h'_j (c_\lambda)_{j} y_{j} = \underset{:= H'_y}{\underbrace{\begin{bmatrix}
+h'_1 y_1 & h'_2 y_2 & \cdots & h'_n y_{n}
+                                                          \end{bmatrix}}} c_{\lambda}
+  \end{equation*}
+  Additionally since $\lambda \in L(F)$, there exists some $a_1, a_2, \ldots, a_{m} \in \mathbb{F}_q$ such that $\lambda = \sum^m_{i = 1} a_i f_i$ thus:
+  \begin{equation*}
+    c_\lambda = \begin{bmatrix}
+f_1(P_1) & f_2(P_1) & \cdots & f_m(P_{1}) \\
+f_1(P_2) & f_2(P_2) & \cdots & f_m(P_{2}) \\
+\vdots & \vdots & \ddots & \vdots \\
+f_1(P_n) & f_{2}(P_{n}) & \cdots & f_m(P_{n})
+    \end{bmatrix} \begin{bmatrix}
+a_1 \\ a_2 \\ \vdots \\ a_{m}
+                  \end{bmatrix}
+  \end{equation*}
+  Hence we can find a non-zero $\lambda \in K_y$ by finding a non-zero solution to:
+  \begin{equation}\label{eq:linear_system_for_a}
+    H'_{y}\begin{bmatrix}
+f_1(P_1) & f_2(P_1) & \cdots & f_m(P_{1}) \\
+f_1(P_2) & f_2(P_2) & \cdots & f_m(P_{2}) \\
+\vdots & \vdots & \ddots & \vdots \\
+f_1(P_n) & f_{2}(P_{n}) & \cdots & f_m(P_{n}) \end{bmatrix}
+a = 0
+  \end{equation}
+  and setting $\lambda = \sum_{i=1}^m a_i f_i$, since a non-zero solution to Equation \eqref{eq:linear_system_for_a} can be found in $O(\max \{k, m\}^{\omega})$ and hence $O(n^\omega)$ \textcolor{blue}{(Im a little unsure about the previous statement)}. Thus the total time complexity of the basic algorithm is $O(n^{\omega})$.
+\end{proof}

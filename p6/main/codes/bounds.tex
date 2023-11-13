@@ -1,0 +1,66 @@
+\section{Bounds on the Parameters of Linear Codes}\label{sec:bounds}
+In this section we will introduce a few select bounds for the parameters of codes, namely the Singleton, Gilbert and asymptotic Gilbert-Varshamov bound. We will start by stating and proving the following lemma, its proof will be based upon the ideas presented in the proof of Theorem 2 found in \cite{the_singleton_bound_and_rs_code}. % FIXME: Find en anden kilde
+
+\begin{proposition}\label{prop:d-1_distinct_columns_are_linearly_independent}
+  Let $\mathcal{C}$ be a $[n, k, d]_q$ code, with parity check matrix $H$ then any $d-1$ columns of $H$ are $\mathbb{F}_{q}$-linearly independent.
+\end{proposition}
+
+\begin{proof}
+  Let $h_1, h_{2}, \ldots, h_n$ be the columns of $H$, assume for the sake of contradiction that there exists distinct indices $i_1, i_2, \ldots, i_{d-1}$ such that $h_{i_{1}}, h_{i_{2}}, \ldots, h_{i_{d-1}}$ are $\mathbb{F}_{q}$-linearly dependent.
+  We will now construct a $c \in \mathcal{C} \setminus \left\{0\right\}$ with $\wt(c) \leq d - 1$. We start by setting $c_{k} = 0$ for all $k \not \in \left\{i_1, i_2 \ldots, i_{d-1}\right\}$. Now as $h_{i_{1}}, h_{i_{2}}, \ldots, h_{i_{d-1}}$ are $\mathbb{F}_{q}$-linearly dependent, there exists $c_{i_{1}}, c_{i_{2}}, \ldots, c_{i_{d-1}} \in \mathbb{F}_{q}$, not all $0$, such that
+  \begin{equation*}
+    \sum^{n}_{j = 1} c_{j}h_{j} = \sum^{d - 1}_{j = 1} c_{i_{j}}h_{i_j} = 0 \implies c \in \mathcal{C}.
+  \end{equation*}
+  Which is a contradiction since $\wt(c) \leq d - 1$.
+\end{proof}
+\begin{remark}\label{rem:minimum_distance_coresponds_to_minimum_number_of_linearly_dependent_columns}
+Another perhaps more natural connection between the minimum distance of a $[n, k]_{q}$ code $\mathcal{C}$ and one of its  parity check matrices $H$, is that the minimum distance of $\mathcal{C}$ corresponds to the minimum number of linearly dependent columns of $H$. This can be seen easily as the minimum distance of $\mathcal{C}$ corresponds to the minimum weight of $\mathcal{C}$.
+\end{remark}
+Using Proposition \ref{prop:d-1_distinct_columns_are_linearly_independent} we can now state and prove our first upper bound on the parameters of a $[n, k, d]_{q}$ code.
+
+\begin{corollary}[Singleton Bound]\label{cor:singleton_bound}
+  Let $\mathcal{C}$ be a $[n, k, d]_q$ code then $d-1 \leq n - k$.
+\end{corollary}
+
+\begin{proof}
+  Let $H$ be a parity check matrix of $\mathcal{C}$, then $d - 1 \leq \rank(H)$ as any collection of $d-1$ columns of $H$ are $\mathbb{F}_{q}$-linearly independent, confer Proposition \ref{prop:d-1_distinct_columns_are_linearly_independent}. The rest follows from Lemma \ref{lem:H_has_rank_n-k} as $\rank(H) = n -k$.
+\end{proof}
+
+\begin{remark}\label{rem:alternative_formulation_of_singleton_bound}
+  Rearranging the Singleton bound to obtain $d + k \leq n + 1$ the trade-off between minimum distance and dimension of a code, becomes even more self-evident, as such we can either wish to find a code with a high minimum distance $d$ or a high dimension $k$, relative to the length of the code, but not both!
+\end{remark}
+
+\begin{definition}\label{def:MDS_code}
+  If a $[n, k, d]_{q}$ code $\mathcal{C}$ meets the singleton bound, that is $d - 1 = n - k$, it is called a \textit{maximum distance seperable (MDS)} code.
+\end{definition}
+
+We have actually already seen a MDS code in Example \ref{exmp:repetition_code}. We will now introduce a more interesting example of a MDS code, based on elements of \cite{alg_geom_codes}[Subsection 1.2.1] as well as \cite{notes_on_alg_geom_codes}[Chapter 2].
+
+\begin{example}\label{exmp:rs_codes}[Reed-Solomon Codes]
+  Let $q$ be a prime power, and fix $n, k \in \N$ such that $1 \leq k \leq n \leq q$. Since $n \leq q$ we can chose $P_{1}, P_{2}, \ldots, P_{n} \in \F_{q}$ all distinct and define the set $\mathcal{P} := \{P_{1}, P_{2}, \ldots, P_{n}\}$. Finally, we define the vector space
+  \begin{equation*}
+    L_{k} := \{F \in \F_{q}[X] \;\vert\; \deg(F) \leq k - 1\}.
+  \end{equation*}
+  Please note that $0 \in L_{k}$, as we use the convention that $\deg(0) = 0$, confer remark \ref{rem:deg_0}.
+  Then the evaluation map:
+  \begin{align*}
+    \ev\colon L_{k} \to \F_{q}^{n}, \quad F \mapsto (F(P_{1}), F(P_{2}), \ldots, F(P_{n}))
+  \end{align*}
+  is injective, since $\ev$ is a linear map and $F \in \F_{q}[X] \backslash \{0\}$ can have at most $\deg(F)$ roots, so $\ev(F) = 0$ if and only if $F \equiv 0$. The linear code $\mathcal{C} := \ev(L_{k})$, is called the Reed-Solomon code of degree $k$, we will show that $\mathcal{C}$ is a $[n, k, n - k + 1]_{q}$ code.
+  Since $1, X, \ldots, X^{k - 1}$ form a basis of $L_{k}$, we see that $\C$ has dimension $k$, and that
+  \begin{equation*}
+    G = \begin{bmatrix}
+          1 & 1 & \cdots & 1\\
+          P_{1} & P_{2} & \cdots & P_{n} \\
+          \vdots & \vdots & \ddots & \vdots \\
+          P_{1}^{k - 1} & P_{2}^{k - 1} & \cdots & P_{n}^{k -  1}
+    \end{bmatrix}
+  \end{equation*}
+  is a generator matrix for $\C$. \\
+  Let $F \in L_{k}$ and $c := (F(P_1), F(P_2), \ldots, F(P_{n}))$ then $F$ vanishes at $n - \wt(c)$ of the points, therefore we have $n - \wt(c) \leq \deg(F) \leq k - 1$.
+  In the special case $\wt(c) = d$ and $d$ is the minimum distance of $\mathcal{C}$, we see that $n - d \leq k - 1$ from rearranging this inequality we obtain $n - k \leq d - 1$. Combining this with the Singleton bound (Corollary \ref{cor:singleton_bound}) we obtain $n - k = d - 1$, and thus $\mathcal{C}$ is a MDS code, with minimum distance $n - k + 1$.
+\end{example}
+% TODO: This is of cause a nice property to have, however these codes aren't the solution to all of our problems as we require $n \leq q$, so their lengths are limited.
+Later on we will show that Reed-Solomon codes are a special case of what will be our main object of study, namely algebraic geometry codes.
+
+\input{main/codes/gilbert_varshamov}

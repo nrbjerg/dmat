@@ -1,0 +1,33 @@
+#+title: Bachellor Project Planing
+
+* General stuff that needs to be done
++ [ ] Change point to capital P
++ [ ] Change textbf to textit
++ [ ] Change Z to V
+
+* Week 19
++ [X] Proof for covering radie (Theorem 1.22). #FRI
++ [3/3] Finish and correct.
+  - [X] Preface. #FRI
+  - [X] Introduction. #FRI
+  - [X] Error Correcting Codes.
+
+* Week 20
++ [X] Unifomizing parameter of a projective curve. #MON
++ [ ] Dimension of a variety. #TUE
++ [X] Reed solomon code example.  #MON
++ [ ] Remove todo's in chapter 2
++ [1/4] Finish and correct.
+  - [X] Algebraic Preleminaries. #MON
+  - [ ] Algebraic Geometry. #TUE
+  - [ ] Algebraic Curves. #WED
+  - [ ] Codes from plane curves. #FRI
+
+* Week 21
++ [ ] Goppa codes and the Gilbert-Varshamov bound.
++ [X] Abstract.
++ [0/4] Finish and correct.
+  - [ ] Goppa Codes.
+  - [ ] Notation and shorthands.
+  - [ ] Abstract.
+  - [ ] Maybe some appendicies.

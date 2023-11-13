@@ -1,0 +1,36 @@
+\chapter{Algebraic Geometry Codes}
+This chapter will deal with the decoding of algebraic geometry codes, and subsequent construction of McElice PKC on these codes. Recall that an algebraic geometry code is defined as follows:
+\begin{definition}
+Let $\mathcal{X}$ be a regular absolutely irreducible protective algebraic curve of genus $g$. Furthermore let $\mathcal{P}=\left(P_1, P_2, \ldots, P_{n}\right)$ such that $P_1, P_2, \ldots, P_{n} \in \mathcal{X}$ are $n$ distinct rational points. Let $D = \sum_{i = 1}^n P_{i}$ and $G$ be a rational divisor on $\mathcal{X}$ such that $\support (D) \cap \support(G) = \emptyset$, then the code $\mathcal{C}_{L}(\mathcal{X}, D, G) = \ev(L(G))$ is called an \textit{algebraic geometry code} or simply an AG code.
+\end{definition}
+Next we list a couple of results on the properties of these algebraic geometry codes, for the proofs of the properties we refer the reader to \cite{bachellor}[Chapter 3].
+\begin{theorem}\label{thm:ag_codes_properties}
+  Let $\mathcal{C}_{L}(\mathcal{X}, G, D)$ be an algebraic geometry code and let $\mathcal{X}$ have genus $g$. Then the minimum distance $d$ and dimension $k$ of $\mathcal{C}_L(\mathcal{X}, G, D)$ satisfies:
+  \begin{enumerate}
+    \item $k = \ell(G) - \ell(G - D)$ \label{thm:ag_codes_properties1}
+    \item $d \geq n - \deg(G)$. For this reason $d^{*} = n - \deg(G)$ is called the \textit{designed minimum distance} of $\mathcal{C}_{L}(\mathcal{X}, D, G)$ \label{thm:ag_codes_properties2}
+    \item If $\deg(G) < n$, then $k = \ell(G)$. Furthermore if $f_1, f_2, \ldots, f_{k} \in L(G)$ is a $\mathbb{F}_q$-basis of $L(G)$, then
+          \begin{equation*}
+            M := \begin{bmatrix}
+                    f_1(P_1) & f_1(P_2) & \cdots & f_1(P_{n}) \\
+                    f_2(P_1) & f_2(P_2) & \cdots & f_2(P_{n}) \\
+                    \vdots & \vdots & \ddots & \vdots \\
+                    f_k(P_1) & f_k(P_2) & \cdots & f_k(P_{n}) \\
+                 \end{bmatrix}
+          \end{equation*}
+          is a generator matrix of $\mathcal{C}_{L}(\mathcal{X}, D, G)$.\label{thm:ag_codes_properties3}
+    \item If $2g - 2 < \deg(G) < n$, then $k = \deg(G) - g + 1$.\label{thm:ag_codes_properties4}
+  \end{enumerate}
+\end{theorem}
+
+Two natural practical problems comes to mind:
+\begin{enumerate}
+  \item Given a divisor $G$ on $\mathcal{X}$ we need a way to compute a $\mathbb{F}_q$-basis of $L(G)$. This will give us the ability to compute a generator matrix for our algebraic geometry codes and will also be needed for most decoding algorithms.
+
+  \item Given an algebraic geometry code $\mathcal{C}_L(\mathcal{X}, D, G)$ we need an efficent decoding algorithm.
+\end{enumerate}
+We will not address the first problem during the project. Instead we simply note that such an algorithm exists, we will however address the second problem in Chapter \ref{chap:AG_decoding}. However we will first introduce some more theory on algebraic geometry codes.
+
+\input{main/AG_codes/residue_codes}
+\input{main/AG_codes/gaps}
+%\input{main/AG_codes/basis}

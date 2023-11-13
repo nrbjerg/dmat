@@ -1,0 +1,64 @@
+\begin{thebibliography}{}
+
+\bibitem[Axler, 2015]{lama_sheldon}
+Axler, S. (2015).
+\newblock {\em Linear Algebra Done Right}.
+\newblock Undergraduate Texts in Mathematics. Springer International
+  Publishing, 3rd edition.
+
+\bibitem[Fulton, 2008]{Fulton}
+Fulton, W. (2008).
+\newblock Algebraic curves: An introduction to algebraic geometry.
+\newblock avalible at {\small
+  \url{https://dept.math.lsa.umich.edu/~wfulton/CurveBook.pdf}}.
+
+\bibitem[Giulietti, 2003]{notes_on_alg_geom_codes}
+Giulietti, M. (2003).
+\newblock Notes on algebraic-geometric codes.
+\newblock Lecture notes from a series of lectures, given in May 2003.
+
+\bibitem[Göttsche, 2012]{alg_geom_lec}
+Göttsche, L. (2012).
+\newblock Algebraic geometry lectures.
+\newblock Video recordings of algebraic geometry lectures, given at ICTP
+  Mathematics, can be found at {\small
+  \url{https://www.youtube.com/playlist?list=PLLq_gUfXAnkkeQKfjfWwyJP8eUV08Kygd}}.
+
+\bibitem[Göttsche, 2016]{alg_notes}
+Göttsche, L. (2016).
+\newblock Introduction to algebra.
+\newblock Lecture notes, can be found at: {\small
+  \url{https://users.ictp.it/~gottsche/}}.
+
+\bibitem[Huffman and Pless, 2003]{huffman}
+Huffman, W.~C. and Pless, V. (2003).
+\newblock {\em Fundementals of Error-Correcting Codes}.
+\newblock Cambrige University Press, 1st edition.
+
+\bibitem[Lauritzen, 2003]{alg_lauritzen}
+Lauritzen, N. (2003).
+\newblock {\em Concrete Abstract Algebra: From Numbers to Gröbner Bases}.
+\newblock Cambridge University Press, 1st edition.
+
+\bibitem[Pellikaan et~al., 2018]{CCC_with_CA}
+Pellikaan, R., Wu, X.-W., Bulygin, S., and Jurrius, R. (2018).
+\newblock {\em Codes, Cryptology and Curves with Computer Algebra}.
+\newblock Cambrige University Press, 1st edition.
+
+\bibitem[Shum and Zhang, 2016]{the_singleton_bound_and_rs_code}
+Shum, K. and Zhang, B. (2016).
+\newblock The singleton bound and reed-solomon code.
+\newblock avalible at {\small
+  \url{https://piazza.com/class_profile/get_resource/isgy6spmwwm3ba/itzo5as3bbw7kk}}.
+
+\bibitem[Tsfasman et~al., 2007]{alg_geom_codes}
+Tsfasman, M., Vlăduţ, S., and Nogin, D. (2007).
+\newblock {\em Algebraic Geometry Codes: Basic Notations}.
+\newblock American Mathematical Society, 1st edition.
+
+\bibitem[Weintraub, 2020]{Galois_theory}
+Weintraub, S.~H. (2020).
+\newblock {\em Galois Theory}.
+\newblock Springer, 2nd edition.
+
+\end{thebibliography}

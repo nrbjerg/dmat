@@ -1,0 +1,49 @@
+\documentclass[11pt,a4paper,oneside,openright,english]{article}
+
+\input{incl/pre/pkgs}
+\input{incl/pre/cmds}
+
+\begin{document}
+
+\section*{Errata and Notes}
+Mistakes are marked with \textcolor{red}{red} and their fixes with \textcolor{blue}{blue}.
+
+\section*{Introduction}
+\begin{enumerate}
+  \item End of page vi: ``which shows the existence of sequences of Goppa codes \textcolor{red}{which} exceed the Gilbert-Varshamov bound.'' should have been:  ``which shows the existence of sequences of Goppa codes \textcolor{blue}{with parameters that} exceed the Gilbert-Varshamov bound.''
+\end{enumerate}
+
+\section{Error Correcting Codes}
+\begin{enumerate}
+  \item Middle of page 3: ``This implies that \textcolor{red}{the} $n - k$ rows of $H$ are $\mathbb{F}_q$-linearly independent.'' should have been: ``This implies that \textcolor{blue}{there exists} $n - k$ rows of $H$ \textcolor{blue}{which} are $\mathbb{F}_q$-linearly independent.''
+  \item Middle of page 5 (in Example 1.21) $P := \color{red}{\{} P_1, P_2, \ldots, P_{n} \color{red}{\}$ should have been: \\ $P := \color{blue}(P_1, P_2, \ldots, P_{n})$
+\end{enumerate}
+
+\section{Algebraic Geometry}
+\subsection*{Algebraic Preleminaries}
+\begin{enumerate}
+  \item Middle of page 10 (in the proof of Theorem 2.8): $F$ is both defined as a finite field and a polynomial (Polynomials where originally written using lower case letters.).
+\end{enumerate}
+\subsection*{Algebraic Geometry}
+\begin{enumerate}
+   \item Bottom of page 14 (Proposition 2.28 (iii) and the proof of Corollary 2.29): Should have noted that $\mathcal{I}$ may be uncountable, and there is also a spare parenthesis (in 2.28).
+  \item Midde of page 16 (in the proof of Theorem 2.35): ``Then multiplying both sides of Equation (2.1) by $Y^{\color{red}{n}}$ we see that:'' should have been: ``Then multiplying both sides of Equation (2.1) by $Y^{\color{blue}{k}}$ we see that:''
+  \item Middle of page 19 (Proof of Proposition 2.43): ``hence either \textcolor{red}{$F_{1}(P) = 0$ or $F_2(P)$ for  all $P \in V$.}'' should have been: ``hence either \textcolor{blue}{$F_1 \in I(V)$ or $F_2 \in I(V)$ which is a contradiction.}''
+  \item Middle of page 20: Needs an explaination as to why $\K(\mathcal{X})$ and $\K(\mathcal{X}^{*})$ are isomorphic. However this follows as $\K[\mathcal{X}]$ and $\K[\mathcal{X}^{*}]$ are isomorphic.
+\end{enumerate}
+\subsection*{Algebraic Plane Curves}
+\begin{enumerate}
+  \item Third last paragraph, strictly speaking Proposition 2.8 only concerns finite fields with a prime number of elements.
+  \item Page 25 onwards: The extended valuation $v_P$, that is to the domain $\cF_q(\mathcal{X})$ has codomain $\mathbb{Z} \cup \left\{\pm \infty\right\}$ not $\mathbb{Z} \cup \left\{\infty\right\}$.
+  \item Bottom of Page 27, onwards: When we speak of a principal divisor $(f)$, i have sometimes assummed that \textcolor{red}{$f \in \cF_q[\mathcal{X}] \setminus \left\{0\right\}$}, this is of cause a mistake and should have been \textcolor{blue}{$f \in \cF_q(\mathcal{X}) \setminus \left\{0\right\}$}.
+  \item Page 29 (proof of Lemma 2.87): $f$ having no zeros or poles implies that $f \in \cF_q^{\textcolor{blue}{*}}$, however the result still holds as we get $L(D) = \cF_q^{*} \cup \left\{0\right\}$.
+\end{enumerate}
+
+\section{Algebraic Geometry Codes}%
+\begin{enumerate}
+  \item Second last paragraph of page 32: ``The vector space $L(D)$ will only \textcolor{red}{consist of rational divisors}...'' should have been: ``The vector space $L(D)$ will only \textcolor{blue}{be considered when $D$ is rational}...''
+  \item From page 34, onwards: I seem to have forgotten to convert $C_{D, G}$ to $\mathcal{C}_{D, G}$ at some places.
+\end{enumerate}
+
+
+\end{document}

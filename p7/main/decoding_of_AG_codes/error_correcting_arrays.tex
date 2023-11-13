@@ -1,0 +1,191 @@
+\section{Error Correcting Arrays}
+As we have seen previously both the basic algorithm described in Algorithm \ref{alg:basic_decoding_algorithm} and the error correcting pairs algorithm described in Algorithm \ref{alg:ECP}, suffers under a genus penalty, meaning they can correct up to:
+\begin{equation*}
+  \floor{\frac{d^{*} - 1}{2} - \frac{g}{2}}
+\end{equation*}
+where $d^{*}$ is the designed minimum distance of $\mathcal{C}_L(\mathcal{X}, D, G)$ and $g$ is the genus of $\mathcal{X}$. This isn't a problem when $g = 0$, which is the case when $\mathcal{X} = \mathbb{P}^1$ (atleast in the planar case.). Hence we may apply those algorithms to Reed Solomon codes or even classical Goppa codes, which we shall see in Chapter \ref{chap:classical_goppa}, without being concerned. The algorithm described in this section deals with the case where $g \neq 0$, and will allow us to correct up to $\floor{\frac{d^{*} - 1}{2}}$ errors.
+
+\begin{definition}
+  Let $A_{u} = \left\{\mathcal{A}_i\right\}_{i = 1}^{u}$, $B_{v} = \left\{\mathcal{B}_j\right\}_{j = 1}^{v}$ and $C_{w,l} := \left\{\mathcal{C}_r\right\}_{r = w}^l$ be sequences linear codes over $\mathbb{F}_q$ of length $n$. Then the triple $(A_{u}, B_v, C)_{w, l}$ is called an \textit{array of codes} if the following conditions hold:
+  \begin{enumerate}[label=(ECA\arabic*), leftmargin=*]
+    \item $\dim_{\mathbb{F}_q}(\mathcal{A}_i) = i$, $\dim_{\mathbb{F}_q}(\mathcal{B}_j) = j$ and $\dim_{\mathbb{F}_q}(\mathcal{C}_r) = n - r$. \label{ECA1}
+    \item The sequences $A$ and $B$ are increasing while $C$ is decreasing, that is: \label{ECA2}
+          \begin{equation*}
+            \mathcal{A}_i \subseteq \mathcal{A}_{i + 1}, \mathcal{B}_j \subseteq \mathcal{B}_{j + 1} \text{ and } \mathcal{C}_{r} \subseteq \mathcal{C}_{r - 1}
+          \end{equation*}
+    \item For every pair $(i, j)$ there exists at least one index $r$ such that $\mathcal{A}_{i} * \mathcal{B}_j \subseteq \mathcal{C}_r^{\perp}$. We will denote the smallest such $r$ by $r(i, j)$.\label{ECA3}
+    \item If $a \in \mathcal{A}_i \setminus \mathcal{A}_{i - 1}$ and $b \in \mathcal{B}_j \setminus \mathcal{B}_{j - 1}$ and $r(i, j) \geq w + 1$, then $a * b \in \mathcal{C}_{r(i, j)}^{\perp} \setminus \mathcal{C}_{r(i,j) - 1}^{\perp}$. \label{ECA4}
+  \end{enumerate}
+\end{definition}
+\begin{remark}\label{rem:r_is_increasing}
+  the function $r(i, j)$ is increasing (meaning $i \leq i'$ and $j \geq j'$ implies $r(i, j) \geq r(i', j')$). This follows from the fact that $C$ is a decreasing sequence and hence the sequence $\left\{\mathcal{C}^{\perp}_{r}\right\}_{r = w}^{l}$ is increasing.
+\end{remark}
+
+We will let
+\begin{equation*}
+N_r = \left\{(i, j) \middle| i \in \left\{1, 2, \ldots, u\right\}, j \in \left\{1, 2, \ldots, v\right\}, r(i,j) = r + 1\right\}
+\end{equation*}
+and $n_r = \abs{N_r}$ as well as:
+\begin{equation*}
+  d_r = \min \left\{n_{r'} | r \leq r' < l\right\} \cup \left\{d(\mathcal{C}_l)\right\}
+\end{equation*}
+We note that $d_r \leq d_{r + 1}$, since $\min \left\{\abs{N_{r'}} \middle| r \leq r' < l \right\} \leq \min \left\{\abs{N_{r'}} \middle| r + 1 \leq r' < l\right\}$.
+\begin{theorem}\label{thm:d_r_bounded_by_min_distance}
+For any array of codes $(A_u, B_v, C_{w, l})$ we have $d_r \geq d(\mathcal{C}_r)$ for $r = w, w + 1, \ldots, l$.
+\end{theorem}
+To prove the Theorem, we will show that $d_l \geq d(\mathcal{C}_l)$ and show that $d_{r + 1} \geq d(\mathcal{C}_{r + 1})$ implies that $d_r \geq d(\mathcal{C}_r)$. This resembles mathematical induction, except we are going in the oppisite direction, however this is sufficient, since our sequence $C_{w, l}$ only consists of $l - w$ elements.
+
+\begin{proof}
+  We start by proving that $d_l \geq d(\mathcal{C}_l)$, this follows straight from the definition of $d_l$. Next assume that $d_{r + 1} \geq d(\mathcal{C}_{r + 1})$. Let $y \in \mathcal{C}_r \setminus \left\{0\right\}$ we will show that $\wt(y) \leq d_r$, meaning $d(\mathcal{C}_r) \leq d_r$. If $y \in \mathcal{C}_{r + 1} \setminus \left\{0\right\}$ then $\wt(y) \geq d_{r + 1} \geq d_r$, where the first inequality follows by our hypothesis and the second from the definition of $d_{r}$. On the otherhand suppose that $y \in \mathcal{C}_r \setminus \mathcal{C}_{r + 1}$.
+  Let $a_1, a_2, \ldots, a_{i}$ and $b_1, b_2, \ldots, b_{j}$ be bases for $\mathcal{A}_i$ and $\mathcal{B}_i$ respectively, we note that such bases exist by \ref{ECA1} and \ref{ECA2}. Then $a_i \in \mathcal{A}_i \setminus \mathcal{A}_{i - 1}$ and $b_j \in \mathcal{B}_j \setminus \mathcal{B}_{j - 1}$, since $\dim_{\mathbb{F}_q} (\mathcal{A}_i) = i$ and $\dim_{\mathbb{F}_q} (\mathcal{B}_j) = j$ by \ref{ECA1}. Hence $a_i * b_j \in \mathcal{C}_{r(i, j)}^{\perp} \setminus \mathcal{C}_{r(i, j) -1}^{\perp}$, by \ref{ECA4}.
+  Consider the matrix:
+  \begin{equation*}
+    S = \begin{bmatrix}
+         \gen{y, a_1 * b_1} & \gen{y, a_1 * b_2} & \cdots & \gen{y, a_1 * b_{v}}\\
+         \gen{y, a_2 * b_1} & \gen{y, a_2 * b_2} & \cdots & \gen{y, a_2 * b_{v}}\\
+          \vdots & \vdots & \ddots & \vdots \\
+         \gen{y, a_u * b_1} & \gen{y, a_u * b_2} & \cdots & \gen{y, a_u * b_{v}}
+        \end{bmatrix}
+  \end{equation*}
+  Where $\gen{\cdot, \cdot}$, denotes the usual dot product. If $r(i, j) \leq r$, then $S_{i, j} = 0$ by \ref{ECA3}, since $y \in \mathcal{C}_r$ and $a_i * b_j \in \mathcal{C}_r^{\perp}$.
+  If $r(i, j) = r + 1$, then $S_{i,j} \neq 0$. Since $\mathcal{C}_{r + 1}^{\perp} = \mathcal{C}_r^{\perp} \oplus \Span_{\mathbb{F}_q}\left\{a_i * b_j\right\}$ as $a_i * b_j \in \mathcal{C}_{r + 1}^{\perp} \setminus \mathcal{C}_r^{\perp}$ and $\dim_{\mathbb{F}_q}(\mathcal{C}_r) = \dim_{\mathbb{F}_q}(\mathcal{C}_{r + 1}) + 1$ by \ref{ECP1} meaning:
+  \begin{equation*}
+  \dim_{\mathbb{F}_q}(\mathcal{C}_{r + 1}^{\perp}) = n - \dim_{\mathbb{F}_q}(\mathcal{C}_{r + 1}) = n - (\dim_{\mathbb{F}_q}(\mathcal{C}_{r}) - 1) = \dim_{\mathbb{F}_q}(\mathcal{C}_r^{\perp}) + 1
+  \end{equation*}
+  Thus $S$ has a row echelon form with pivots atleast at all entries $S_{i, j}$ such that $r(i, j) = r + 1$. Hence:
+  \begin{equation}\label{eq:ineq_1}
+    \rank(S) \geq \abs{N_r} = n_r
+  \end{equation}
+  Additionally we may write $S$ as:
+  \begin{equation*}
+    S = \begin{bmatrix} a_1^T \\ a_2^T \\ \vdots \\ a_u^T \end{bmatrix} \diag(y) \begin{bmatrix} b_1 & b_2 & \ldots & b_{v} \end{bmatrix}
+  \end{equation*}
+  where $\diag(y)$ is $n \times n$ the diagonal matrix with the entries of $y$ in the diagonal.
+  Thus
+  \begin{equation}\label{eq:ineq_2}
+  \rank(S) \leq \min \left\{u, \rank(\diag(y)), v\right\} \leq \rank(\diag(y)) = \wt(y)
+  \end{equation}
+  since $\rank(AB) \leq \rank(A)\rank(B)$ for all matrices $A$ and $B$. Combining inequalities \eqref{eq:ineq_1} and \eqref{eq:ineq_2} we get $n_r \leq \rank(S) \leq \wt(y)$ the rest follows as $d_r \leq n_{r}$.
+\end{proof}
+
+\begin{definition}
+  Let $(A_{u}, B_v, C_{w, l})$ be an array of codes and $\mathcal{C}$ be a $\mathbb{F}_q^n$ linear code. Then $(A, B, C)$ is called a $t$-error correcting array if $\mathcal{C}_w = \mathcal{C}$ and $t \leq \floor{\frac{d_{w} - 1}{2}}$ and either:
+  \begin{enumerate}
+    \item $C_l = \left\{0\right\}$
+    \item or there exists $i, j$ such that $(A_{i}, B_j)$ is a $t$-error correcting pair for $\mathcal{C}_{r(i, j)}$.
+  \end{enumerate}
+\end{definition}
+We will fix some notation for the rest of the section.
+Namely let $(A_u, B_v,C_{w, l})$ be a $t$-error correcting array for $\mathcal{C}$ and $y = c + e$ with $c \in \mathcal{C}$ and $e \in \mathbb{F}_q^n$ with $\wt(e) \leq t$. Fix the matrix
+\begin{equation*}
+    S := \begin{bmatrix}
+\gen{e, a_1 * b_1} & \gen{e, a_1 * b_2} & \cdots & \gen{e, a_1 * b_u} \\
+\gen{e, a_2 * b_1} & \gen{e, a_2 * b_2} & \cdots & \gen{e, a_2 * b_u} \\
+\vdots & \vdots & \ddots & \vdots \\
+\gen{e, a_v * b_1} & \gen{e, a_v * b_2} & \cdots & \gen{e, a_v * b_u} \\
+        \end{bmatrix}
+\end{equation*}
+where $a_1, a_2, \ldots, a_{i}$ and $b_1, b_2, \ldots, b_{j}$ forms a basis of $\mathcal{A}_i$ and $\mathcal{B}_j$ respectively. Additionally we will let:
+\begin{equation*}
+  S \vert_{(i', j')} = \begin{bmatrix}
+S_{1, 1} & S_{1, 2} & \cdots & S_{1, j'} \\
+S_{2, 1} & S_{2, 2} & \cdots & S_{2, j'} \\
+\vdots & \vdots & \ddots & \vdots \\
+S_{i', 1} & S_{i', 2} & \cdots & S_{i', j'}
+              \end{bmatrix}
+\end{equation*}
+
+\begin{definition}
+  Consider the conditions
+  \begin{enumerate}[label=(D\arabic*), leftmargin=*]
+    \item $\rank(S \vert_{(i - 1, j - 1)}) = \rank(S \vert_{(i - 1, j)}) = \rank(S \vert_{(i, j -1)})$. \label{D1}
+    \item $\rank(S \vert_{(i - 1, j - 1)}) = \rank(S \vert_{(i, j)})$. \label{D2}
+  \end{enumerate}
+  The pair $(i, j)$ is called a \textit{discrepancy} if \ref{D1} holds but \ref{D2} does not.
+\end{definition}
+Clearly \ref{D2} implies \ref{D1}, afterall $\rank(S \vert_{(i - 1, j - 1)}) = \rank(S \vert_{(i, j)})$ if and only if the last row and or column in $S \vert_{(i, j)}$ is a $\mathbb{F}_q$-linear combination of the others. The converse is not that obvious:
+
+\begin{lemma}\label{lem:unique_value_for_D2}
+  Suppose \ref{D1} holds for the pair $(i, j)$ then there exists a unique value of $S_{i, j}$ such that \ref{D2} holds.
+\end{lemma}
+\begin{proof}
+  Since \ref{D1} holds, there exists $c \in \mathbb{F}_q^{j}$ and $k \in \mathbb{F}_q^{j}$, with $\wt(c) = \wt(k) = \rank(S |_{(i - 1, j - 1)})$ such that $c_i \neq k_j$ and:
+  \begin{equation*}
+    \sum_{l = 1}^i c_l \begin{bmatrix} S_{l, 1} & S_{l, 2} & \cdots & S_{l, j - 1} \end{bmatrix}^T = \sum_{l = 1}^j k_l \begin{bmatrix} S_{1, l} \\ S_{2, l} \\ \vdots \\ S_{i - 1, l} \end{bmatrix} = 0
+  \end{equation*}
+  Hence \ref{D2} holds if and only if:
+  \begin{equation*}
+    \sum_{l = 1}^{i - 1} c_{l} S_{l, j} + c_i S_{i, j} = \sum_{l = 1}^{j - 1} k_l S_{i, l} + k_j S_{i, j} = 0
+  \end{equation*}
+  Solving for $S_{i, j}$ using the fact that $c_i \neq k_j$, gives:
+  \begin{equation*}
+    S_{i,j} = \frac{\sum_{l = 1}^{j - 1} k_l S_{i, l} - \sum_{l = 1}^{i - 1} c_{l} S_{l, j}}{(c_i - k_j)}
+  \end{equation*}
+  Finally we note that if $S_{i,j} \neq \frac{\sum_{l = 1}^{j - 1} k_l S_{i, l} - \sum_{l = 1}^{i - 1} c_{l} S_{l, j}}{(c_i - k_j)}$, then $\rank(S \vert_{(i, j)}) \neq \rank(S \vert_{i - 1, j - 1})$ since the row $i$ and or column $j$ is not in the span of the first $i - 1$ rows or $j - 1$ columns respectively.
+\end{proof}
+
+\begin{remark}\label{rem:only_one_discrepancy_in_each_column_or_row}
+  Condition \ref{D1} holds for the pair $(i, j)$ if and only if \ref{D2} holds for all $(i', j)$ with $1 \leq i' < i$ and all $(i, j')$ with $1 \leq j' < j$. \textcolor{blue}{needs a proof}.
+  Thus there is at most one discrepancy in each row and column of $S$.
+\end{remark}
+\begin{lemma}\label{lem:rank_is_geq_number_of_discrepancies}
+  Let $M$ denote the number of discrepancies of $S$, then $M \leq \rank(S)$
+\end{lemma}
+\begin{proof}
+  Assume for the sake of contradiction that $M > \rank(S)$. Then there exists $M$ 1 $(i_k, j_k)$ for $k = 1, 2, \ldots, M$, we will assume that these are in lexicographic order, additionally we note that each row and or column can have at most one discrepancy, by Remark \ref{rem:only_one_discrepancy_per_row_or_col}. Since condition \ref{D2} does not hold for $(i_k, j_k)$ we see that:
+  \begin{equation*}
+    \rank(S \vert_{(i_{k - 1}, j_{k - 1})}) < \rank(S |_{(i_k, j_k)})
+  \end{equation*}
+  Since $\rank(S |_{(i_k, j_k)})$ is the maximum number of linearly independent columns / rows of $S |_{(i_k, j_k)}$. Hence $\left\{\rank(S \vert_{(i_k, j_k)})\right\}_{k = 1}^M$ is a strictly increasing sequence, thus $\rank(S) \geq \rank(S |_{i_M, j_M}) \geq M$, since $S |_{i_M, j_M}$ is a submatrix.
+\end{proof}
+
+\begin{definition}
+  Let $y_r \in \mathcal{C}_r + e$, the pair $(i, j)$ is called a $r$-\textit{candidate} if $r(i, j) = r + 1$ and \ref{D1} holds. A candidate $(i, j)$ is called \textit{true} if \ref{D2} holds and \textit{false} otherwise.
+\end{definition}
+
+\begin{proposition}\label{prop:false_is_less_than_true}
+  Let $y \in \mathcal{C}_r + e$ and $T$ denote the number of true $r$-candidates and $F$ denote the number of false $r$-candidates. Then:
+  \begin{equation*}
+    F < T
+  \end{equation*}
+\end{proposition}
+\begin{proof}
+  If $(i, j)$ is a discrepancy such that $r(i, j) \leq r$, then $(i, j)$ is called a known discrepancy, otherwise if $r(i, j) > r$, then $(i, j)$ is called an unknown discrepancy. Let $K$ denote the number of known discrepancies. Let $(i, j)$ be a false $r$-candidate then $r(i, j) = r + 1 > r$, hence every false $r$-candidate is a unknown discrepancy, thus:
+  \begin{equation}\label{eq:ineq_1_of_lemma}
+    K + F \leq M \leq \rank(S) \leq t
+  \end{equation}
+  where $M$ denotes the total number of discrepancies of $S$, two final inequalities follows by Lemma \ref{lem:rank_is_geq_number_of_discrepancies} and the proof of Theorem \ref{thm:d_r_bounded_by_min_distance} respectively.
+  Consider the pair $(i, j) \in N_r$ if $(i, j)$ is not a candidate there exists a known discrepency in the same row and or column. On the otherhand if $(i, j)$ is a candidate, then there exists no known discrepancy in the same row nor column, by Lemma \ref{prop:}. Hence:
+  \begin{equation}\label{eq:ineq_2_of_lemma}
+    n_r \leq T + F + 2K
+  \end{equation}
+  Finally combining Inequalities \eqref{eq:ineq_1_of_lemma} and \eqref{eq:ineq_2_of_lemma} we see:
+  \begin{equation*}
+    n_r \leq T + F + 2K \leq T + F + (2t - 2F) = T - F + 2t < T - F + n_r
+  \end{equation*}
+  where the last inequality follows as $2t < d_w \leq d_r < n_r$, since $\left\{d_r\right\}_{r = w}^l$ is an increasing sequence, and $d_r = \min \left\{n_{r'} \middle | r \leq r' < l\right\} \cup \left\{d(\mathcal{C}_{l})\right\}$. Thus $0 < T - F$ meaning $F < T$.
+\end{proof}
+
+\begin{theorem}\label{thm:}
+If $\mathcal{C}$ has a $t$ error correcting array $(A, B, C)$, then it has a $t$ error correcting decoding algorithm with a time complexity of $O(n^{3})$.
+\end{theorem}
+\begin{proof}
+  Suppose $y_{w} = c_{w} + e$ with $c_{w} \in \mathcal{C} = \mathcal{C}_{w}$, $e \in \mathbb{F}_q^{n}$ and $\wt(e) \leq t \leq \floor{\frac{d_w - 1}{2}}$. We will show that for each $y_{r} \in e + \mathcal{C}_r$ we can construct a $y_{r + 1} \in e + \mathcal{C}_{r + 1}$. The fundemental idea will be to associate a $\lambda \in \mathbb{F}_q$ with each candidate such that all true candidates have the same $\lambda$. Hence since $F < T$ by Proposition \ref{prop:false_is_less_than_true} where $F$ denotes the number of false candidates and $T$ denotes the number of false candidates, this will allow us to identify the false and true candidates, by majority.
+  Hence suppose that we have $y_r \in e + \mathcal{C}_{r}$. For every candidate $(i, j)$ there exists a unique $S_{i, j}' \in \mathbb{F}_q$ such that \ref{D2} holds if and only if $S_{i, j} = S_{i, j}'$, by Lemma \ref{lem:unique_value_for_D2}. We may compute $S'_{i,j}$, as seen in the proof of Lemma \ref{lem:unique_value_for_D2}, using the known entries of $S$, meaning the entries $S_{i,j}$ with $r(i, j) < r$.
+  Additionally we note that $\dim_{\mathbb{F}_q} (\mathcal{C}_r) = \dim_{\mathbb{F}_q}(\mathcal{C}_{r + 1}) + 1$ by \ref{ECA1} and $\mathcal{C}_{r + 1} \subseteq \mathcal{C}_{r}$, hence there exists a $c_r \in \mathbb{F}_q^{n}$ such that $\mathcal{C}_r = \Span_{\mathbb{F}_q} \left\{c_r\right\} \oplus \mathcal{C}_{r + 1}$.
+  Hence there exists a unique $\lambda_{r} \in \mathbb{F}_q$ such that $y_{r + 1} := y_r + \lambda_r c_r \in e + \mathcal{C}_{r + 1}$ as $y_r = c'_r + e$ with $c'_r \in \mathcal{C}_r$ and every element in $\mathcal{C}_{r + 1}$ can be written uniquely as $c'_r + \lambda c_r$ for some $\lambda$.
+
+  If $r(i, j) = r + 1$ then $\mathcal{C}_{r + 1}^{\perp} = \mathcal{C}_r \oplus \Span_{\mathbb{F}_q} \left\{a_i * b_i\right\}$ by \ref{ECA4} and $\dim_{\mathbb{F}_q}(\mathcal{C}_{r + 1}^{\perp}) = \dim_{\mathbb{F}_q}(\mathcal{C}_r^\perp) + 1$.
+  We note that since $c_r \in \mathcal{C}_r$ we see that $\gen{c_r, a_i * b_i} \neq 0$ by \ref{ECP4}. Thus:
+  \begin{equation*}
+    \gen{y_{r + 1}, a_i * b_{i}} = \gen{y_r, a_i * b_i} + \lambda_r \gen{c_r, a_i * b_j} = S_{i, j}
+  \end{equation*}
+  as $S_{i, j} = \gen{e, a_i * b_j} = \gen{c_{r + 1}, a_i * b_j} + \gen{e, a_i * b_j} = \gen{y_{r + 1}, a_i * b_j}$ as $a_i * b_j \in \mathcal{C}_{r + 1}^{\perp}$, we note that such a $c_{r + 1} \in \mathcal{C}_{r + 1}$ exists as $y_{r + 1} \in e + \mathcal{C}_{r + 1}$.
+  Thus for every candidate $(i, j)$ we let
+  \begin{equation*}
+    \lambda_{i, j} := \frac{S_{i, j}' - \gen{y_r, a_i*b_j}}{\gen{c_r, a_{i} * b_{j}}}
+  \end{equation*}
+  hence if $S_{i, j}' = S_{i, j}$ meaning $(i, j)$ is a true candidate, we see that $\lambda_{i, j} = \lambda_r$. Hence the $\lambda_{i, j}$ which occurs most often is equal to $\lambda_r$. In this way we find $y_{r + 1} \in e + \mathcal{C}_{r + 1}$ and the syndromes $S_{i, j}$ such that $r(i, j) \leq r + 1$. We continue this process until we reach $\mathcal{C}_l = \left\{0\right\}$, in which case we are done as $y_l = e$, or a $\mathcal{C}_r$ with a $t$-error correcting pair $(\mathcal{A}_i, \mathcal{B}_j)$ with $r = r(i, j)$ and $t \leq \frac{d_{w} - 1}{2}$ in which case we apply the error correcting pairs algorithm.
+\end{proof}
+
+\textcolor{red}{\textbf{TODO}} mangler et resultat som giver os at der findes ECA for AG koder.

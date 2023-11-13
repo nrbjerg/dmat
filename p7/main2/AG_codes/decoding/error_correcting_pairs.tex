@@ -1,0 +1,204 @@
+\section{Error Correcting Pairs}%
+In this section we will discuss an generalization of the basic algorithm, to the level of codes. The algorithm is the error correcting pairs algorithm (ECP algorithm). The primary principal of the algorithm is the same (locate the errors, and subsequently correct them using Proposition \ref{prop:error_located_implies_reduction_to_correct_erasures}). Our treatment will be based on \cite{panaccione_phd}[Subsections 1.6.2 and 1.8.1] as well as \cite{AG_codes_and_applications}[Subsection 6.1.2].
+
+We start by noting that $\mathbb{F}_q^n$ is the product of $n$ fields, hence it forms a ring, together with element wise addition and multiplication, this motivates the following definition:
+\begin{definition}
+  Let $a,b \in \mathbb{F}_q^n$ then we define the \textit{hadaman} product of $a$ and $b$ as:
+  \begin{equation*}
+    a * b := (a_1b_1, a_2b_2,\ldots, a_nb_{n})
+  \end{equation*}
+  Additionally if $\mathcal{A}, \mathcal{B} \subseteq \mathbb{F}_q^n$ are linear codes, we define their \textit{hadaman} product as
+  \begin{equation*}
+    \mathcal{A} * \mathcal{B} := \Span_{\mathbb{F}_q} \left\{a * b \middle| a \in \mathcal{A}, b \in \mathcal{B}\right\}
+  \end{equation*}
+\end{definition}
+
+\begin{remark}\label{rem:canonical_and_hadaman}
+  If $a, b, c \in \mathbb{F}_q^n$, then $\gen{a * b, c} = \gen{a, b * c} = \gen{a * c, b}$ where $\gen{\cdot, \cdot}$ denotes the canonical inner product in $\mathbb{F}_q^{n}$.
+\end{remark}
+
+\begin{lemma}\label{lem:hadaman_and_dual}
+  Let $\mathcal{A}, \mathcal{B}, \mathcal{C} \subseteq \mathbb{F}_q^n$ be linear codes, then $\mathcal{A} * \mathcal{B} \subseteq \mathcal{C}^{\perp}$ if and only if $\mathcal{A} * \mathcal{C} \subseteq \mathcal{B}^{\perp}$.
+\end{lemma}
+\begin{proof}
+  Assume $\mathcal{A} * \mathcal{B} \subseteq \mathcal{C}^{\perp}$. Hence if $a \in \mathcal{A}$, $b \in \mathcal{B}$ and $c \in \mathcal{C}$, then $\gen{a * b, c} = 0$, the rest follows by combining this with Remark \ref{rem:canonical_and_hadaman} which states that $\gen{a * b , c} = \gen{a * c, b}$. A similar argument can be constructed to show the other implication.
+\end{proof}
+We need to introduce some special notation before we can describe the error correcting pairs algorithm.
+\begin{definition}
+  Let $J = \left\{j_1, j_2, \ldots, j_{m}\right\} \subseteq \left\{1, \ldots, n\right\}$ and $x \in \mathbb{F}_q^n$. Then we let $x_J$ denote $(x_{j_1}, x_{j_2}, \ldots, x_{j_{m}})$, that is the projection of $x$ on the coordinates in $J$ and let $Z(x) := \left\{i \in \left\{1, \ldots, n\right\} \middle| x_i = 0\right\}$. \\
+  In addition for $A \subseteq \mathbb{F}_q^n$ we define:
+  \begin{enumerate}
+    \item $A_J = \left\{a_J | a \in A\right\} \subseteq \mathbb{F}_q^{\abs{J}}$ (extracting)
+    \item $A(J) := \left\{a \in A | a_J = 0\right\}$ (shortening)
+    \item $Z(A) := \left\{i \in \left\{1, \ldots, n\right\} \middle| a_i = 0 \text{ for all } a \in A\right\}$
+  \end{enumerate}
+\end{definition}
+\begin{remark}
+  Let $\mathcal{C}$ be a $[n, k]_q$ code with generator matrix $G \in \mathbb{F}_q^{n \times k}$, then if $I$ is an information set, then $\mathcal{C}_I = \mathbb{F}_q^{k}$, since $\abs{I} = k$ and $G_I$ is non-singular.
+\end{remark}
+We note that this notation differs from the normal notation used in coding theory. For instance the shortening of set $A \subseteq \mathbb{F}_q^{n}$ normally referees the set $\left\{a_{I} | a  \in A(J)\right\}$ where $I = \left\{1, 2, \ldots, n\right\} \setminus J$. We use this alternative notation because we want to be able to apply the hadaman product.
+\begin{example}\label{exmp:shortening_example}
+  Consider the $[2, 2]_{3}$ code $\mathcal{C}$. With generator matrix: $G = \begin{bmatrix} 1 & 0 & 0 \\ 0 & 2 & 1 \end{bmatrix}$, Then:
+  \begin{equation*}
+    \mathcal{C} = \left\{(0, 0), (0, 2, 1), (0, 1, 2), (1, 2, 1), (1, 1, 2), (2, 1, 2)\right\}
+  \end{equation*}
+  hence $\mathcal{C}(\{1\}) = \left\{(0, 0, 0), (0, 2, 1), (0, 1, 2)\right\}$ while $\mathcal{C}_{\{2, 3\}} = \left\{(0, 0), (2, 1), (1, 2)\right\}$.
+\end{example}
+\begin{definition}
+  Let $\mathcal{A}, \mathcal{B}, \mathcal{C} \subseteq \mathbb{F}_q^n$ be linear codes. Then the pair $(\mathcal{A}, \mathcal{B})$ is called a \textit{$t$-error correcting pair} for $\mathcal{C}$ if the following conditions are satisfied:
+  \begin{enumerate}[label=(ECP\arabic*), leftmargin=*]
+    \item $\mathcal{A} * \mathcal{B} \subseteq \mathcal{C}^{\perp}$ \label{ECP1}
+    \item $\dim_{\mathbb{F}_q}(\mathcal{A}) > t$ \label{ECP2}
+    \item $d(\mathcal{B}^{\perp}) > t$ \label{ECP3}
+    \item $d(\mathcal{A}) + d(\mathcal{C}) > n$ \label{ECP4}
+  \end{enumerate}
+\end{definition}
+The definition might seem abstract, however each of the conditions \ref{ECP1}-\ref{ECP4}, will be used to prove the correctness of the ECP algorithm. For an overview of the primary roles of each of the conditions, we refer the reader to Table \ref{tab:role_of_ecp_conditions}. Before moving on we will show our first example of a $t$-error correcting pair.
+
+\begin{example}\label{exmp:reed_solomon_ECP}
+  Let $\mathcal{C}$ be a $[n, k, n - k + 1]_{q}$ Reed-Solomon code and $t \leq \floor{\frac{n - k}{2}}$. In addition let $\mathcal{A}$ be a Reed-Solomon code of dimension $t + 1$, and $\mathcal{B}$ the dual code of a Reed-Solomon code of dimension $t + k$. If $\mathcal{A}$, $\mathcal{B}^{\perp}$ and $\mathcal{C}$ share the same evaluation points, say $P_1, P_2, \ldots, P_{n}$, then $(\mathcal{A}, \mathcal{B})$ is a $t$-error correcting pair for $\mathcal{C}$. We start by showing condition \ref{ECP1}. Suppose $a \in \mathcal{A}$ and $c \in \mathcal{C}$, then $a = (F(P_1), F(P_2), \ldots, F(P_n))$ for some $F \in \mathbb{F}_q[X]_{< t + 1}$ and $c = (g(P_1), g(P_2), \ldots, g(P_n))$ for some $G \in \mathbb{F}_q[X]_{< k}$. We see that:
+  \begin{equation*}
+    a * c = (FG(p_1), FG(p_2), \ldots, FG(p_n)) \in \mathcal{B}^{\perp}
+  \end{equation*}
+  as $\deg(FG) < k + t$, since $\deg(F) < t + 1$ and $\deg(G) < k$. The rest follows by applying Lemma \ref{lem:hadaman_and_dual}. Condition \ref{ECP2} is clearly meet, since $\dim_{\mathbb{F}_q}(\mathcal{A}) = t + 1$ by our construction, and condition \ref{ECP3} follows as $d(\mathcal{B}^{\perp}) = n - (t + k) + 1 \geq n - \frac{n - k}{2} - k + 1 = \frac{n - k}{2} + 1 > t$. Finally:
+  \begin{align*}
+    d(\mathcal{A}) + d(\mathcal{C}) &= (n - (t + 1) + 1) + (n - k + 1)\\ &\geq 2n - k + 2 - \frac{n - k}{2}  = \frac{2n + (n - k + 1) + 3}{2} > n + \frac{3}{2} > n
+  \end{align*}
+  since $0 < d(\mathcal{C}) = n - k + 1$, which shows that \ref{ECP4} is satisfied.
+\end{example}
+
+We can now describe the ECP algorithm. We fix $y := c + e$ such that $c \in \mathcal{C}$ and $e \in \mathbb{F}_q^n$ with $\wt(e) \leq t$ for the rest of the section.
+Just like in the basic algorithm, the ECP algorithm consists of two steps: First we locate the errors by finding a subset $J \subseteq \left\{1, \ldots, n\right\}$ such that $\support(e) \subseteq J$, secondly we apply Proposition \ref{prop:error_located_implies_reduction_to_correct_erasures}, to find $e$, if possible.
+
+One of the main ideas is to investigate the space:
+\begin{equation*}
+  \left\{a \in \mathcal{A} \middle| a * e = 0\right\} = \mathcal{A}(\support(e))
+\end{equation*}
+the equality follows as $a * e = 0$ if and only if $a_i = 0$ for all $i \in \support(e)$. This vector space consists of vectors whose entries indexed by $\support(e)$ are all $0$, hence they can be used to locate the errors. Thus we want $\mathcal{A}(\support(e))$ to contain at least one non-zero vector, which we can use to locate the errors.
+\begin{lemma}\label{lem:A_e_is_non_zero}
+  Let $(\mathcal{A}, \mathcal{B})$ be a $t$-error correcting pair for $\mathcal{C}$ and $y = c + e$ with $c \in \mathcal{C}$ and $e \in \mathbb{F}_q^n$ with $\wt(e) \leq t$. Then:
+  \begin{equation*}
+    \mathcal{A}(\support(e)) \neq \left\{0\right\}
+  \end{equation*}
+\end{lemma}
+\begin{proof}
+  Let $m = \dim_{\mathbb{F}_q}(\mathcal{A})$ and $a_1, a_2, \ldots, a_{m} \in \mathbb{F}_q^n$ form a basis of $\mathcal{A}$. Consider the vectors $a_1 * e, a_2 * e , \ldots, a_{m} * e$, then $\wt(a_{i} * e) \leq t$ as $\wt(e) \leq t$. Now since $\support(a_i * e) \subseteq \support(e)$ and $\abs{\support(e)} = \wt(e) \leq t < m$, by \ref{ECP2}. Using this information we can conclude that the vectors $a_1 * e, a_2 * e, \ldots, a_{m} * e$ are $\mathbb{F}_q$-linearly dependent, thus the equation:
+  \begin{equation*}
+    \sum_{i = 1}^m x_{i} (a_i * e) = 0
+  \end{equation*}
+  has no unique solution, where $x \in \mathbb{F}_q^m$, meaning multiple $a \in \mathcal{A}$ exists such that $a * e = 0$.
+\end{proof}
+
+This is all quite theoretical, since $e$ and in particular $\support(e)$ is unknown in practical applications, we do not have any information about $A(\support(e))$. Instead we consider the following vector space:
+\begin{definition}
+  Let $(\mathcal{A}, \mathcal{B})$ be a $t$-error correcting pair for $\mathcal{C}$, and $y = c + e$, with $c \in \mathcal{C}$ and $e \in \mathbb{F}_q^n$ such that $\wt(e) \leq t$. Then we define:
+  \begin{equation*}
+    M_{ECP} := \left\{a \in \mathcal{A} \middle| a * y \in \mathcal{B}^{\perp}\right\}
+  \end{equation*}
+\end{definition}
+
+The vector space $M_{ECP}$ will play a similar role, in the ECP algorithm, to the role of the set $K_{y}(F)$ in the basic algorithm.
+
+\begin{theorem}\label{thm:ECP}
+  Let $(\mathcal{A}, \mathcal{B})$ be a $t$-error correcting pair for $\mathcal{C}$. Furthermore let $y = c + e$ with $c \in \mathcal{C}$ and $e \in \mathbb{F}_q^n$ with $\wt(e) \leq t$. Then:
+  \begin{enumerate}
+    \item $\mathcal{A}(\support(e)) \subseteq M_{ECP} \subseteq \mathcal{A}$. \label{thm:ECP1}
+    \item If $d(\mathcal{B}^{\perp}) > t$, then $\mathcal{A}(\support(e)) = M_{ECP}$. \label{thm:ECP2}
+  \end{enumerate}
+\end{theorem}
+\begin{proof}
+  We start by proving Assertion \ref{thm:ECP1}, the inclusion $M_{ECP} \subseteq \mathcal{A}$ follows straight away from the definition of $M_{ECP}$. Next assume that $a \in \mathcal{A}(\support(e))$, then for all $b \in \mathcal{B}$ we have:
+  \begin{equation}\label{eq:ecp_orth}
+    \gen{a * y, b} \stackrel{(a)}{=} \gen{a * c, b} + \gen{a * e, b} \stackrel{(b)}{=} \gen{a * b, c} + \gen{a * e, b} \stackrel{(c)}{=} 0
+  \end{equation}
+  where $(a)$ follows since $\gen{\cdot, \cdot}$ is linear in the first argument, $(b)$ follows by Remark \ref{rem:canonical_and_hadaman} and $(c)$ as $\mathcal{A} * \mathcal{B} \subseteq \mathcal{C}^{\perp}$, by \ref{ECP1} and $a * e = 0$.
+  From Equation \eqref{eq:ecp_orth} we see that $a * y \in \mathcal{B}^{\perp}$ and hence $\mathcal{A}(\support(e)) \subseteq M_{ECP}$. \\
+  Continuing with Assertion \ref{thm:ECP2}. We only need to prove that $A(\support(e)) \supseteq M_{ECP}$. Hence let $a \in M_{ECP}$, then $a * y = a * c + a * e$, so $a * e = a * y - a * c \in \mathcal{B}^{\perp}$, since $a * y \in \mathcal{B}^{\perp}$ by definition and $\mathcal{A} * \mathcal{C} \subseteq \mathcal{B}^{\perp}$ by Lemma \ref{lem:hadaman_and_dual} and \ref{ECP1}. Finally $\wt(a * e) \leq \wt(e) \leq t < d(\mathcal{B}^{\perp})$, by \ref{ECP3}, so $a * e = 0$, meaning $a \in \mathcal{A}(\support(e))$.
+\end{proof}
+
+\begin{lemma}\label{lem:bound_on_ZM_ECP}
+  Let $(\mathcal{A}, \mathcal{B})$ be a $t$-error correcting pair for the linear code $\mathcal{C}$, and $y = c + e$ with $c \in \mathcal{C}$ and $e \in \mathbb{F}_q^n$ such that $\wt(e) \leq t$. Then $\abs{Z(M_{ECP})} \leq d(\mathcal{C})$.
+\end{lemma}
+\begin{proof}
+  By Theorem \ref{thm:ECP}\ref{thm:ECP1} and Lemma \ref{lem:A_e_is_non_zero} there exists a $a \in \mathcal{A}(\support(e)) \setminus \left\{0\right\} \subseteq M_{ECP}$. Since $Z(M_{ECP}) \subseteq Z(a)$ we get that:
+  \begin{equation*}
+    \abs{Z(M_{ECP})} \leq \abs{Z(a)} = n - \wt(a) \leq n - d(\mathcal{A}) \leq d(\mathcal{C})
+  \end{equation*}
+  by \ref{ECP4}.
+\end{proof}
+
+This means that we can apply Proposition \ref{prop:error_located_implies_reduction_to_correct_erasures}, to find the error $e$. This was the final piece of the puzzle, so we can now describe the ECP decoding algorithm.
+
+\begin{algorithm}[H]
+\caption{Error Correcting Pairs Decoding Algorithm}\label{alg:ECP}
+\begin{algorithmic}
+  \Procedure{ECP Decoding}{$y$: a received word with a maximum of $t$ errors,
+    \newline\phantom{\textbf{procedure} \textsc{ECP Decoding}(}$(\mathcal{A}, \mathcal{B})$: a $t$-error correcting pair for $\mathcal{C}$,
+    \newline\phantom{\textbf{procedure} \textsc{ECP Decoding}(}$H$: a parity check matrix for $\mathcal{C}$}
+
+  \State $M_{ECP} \gets \left\{a \in \mathcal{A} | a * y \in \mathcal{B}^{\perp}\right\}$
+  \State $I \gets Z(M_{ECP})$
+    \State $S \gets \left\{e \in \mathbb{F}_q^n \middle| He = Hy \text{ and }  e_i = 0 \text{ for all } i \in \left\{1, \ldots, n\right\} \setminus I\right\}$
+    \If{$\abs{S} \neq 1$}
+      \State \Return $?$
+    \Else
+      \State \Return $y - e$ where $e$ is the unique solution in $S$.
+    \EndIf
+  \EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+\begin{remark}
+  The time complexity of Algorithm \ref{alg:ECP}, is also $O(n^{\omega})$. \textcolor{red}{\textbf{TODO}}
+\end{remark}
+
+Below in Table \ref{tab:role_of_ecp_conditions}, the role of each ECP condition, is briefly explained, we note that there is a natural overlap, between the roles of some the conditions.
+\begin{table}[H]
+    \centering
+    \begin{tabular} {||c|l||}
+        \hline
+        \textbf{Condition} & \textbf{Role in the ECP algorithm} \\
+        \hline
+        \ref{ECP1} & Use to ensure $A(\support(e)) \subseteq M_{ECP}$ and that $\mathcal{A}(M_{ECP}) = M_{ECP}$. \\
+        \hline
+        \ref{ECP2} & Ensures that $A(\support(e)) \neq \left\{0\right\}$ and $M_{ECP} \neq \left\{0\right\}$.\\
+        \hline
+        \ref{ECP3} & Ensures that $A(\support(e)) = M_{ECP}$. \\
+        \hline
+        \ref{ECP4} & Ensures that $\abs{Z(M_{ECP})} \leq d(\mathcal{C})$, thus Proposition \ref{prop:error_located_implies_reduction_to_correct_erasures} can be applied.\\
+        \hline
+    \end{tabular}
+    \caption{The roles of each ECP condition.}
+    \label{tab:role_of_ecp_conditions}
+\end{table}
+Finally to apply the theory of $t$-error correcting pairs to AG codes we a way to find a $t$-error correcting pair for a given AG code, luckily the next theorem provides exactly this. In addition it is a ``natural'' generalization of the approach taken in Example \ref{exmp:reed_solomon_ECP}.
+\begin{theorem}\label{thm:error_correcting_pair_for_AG_codes}
+  Let $\mathcal{X}$ be a regular absolutely projective algebraic curve of genus $g$ over $\mathbb{F}_q$, and $\mathcal{C}_{D, G}$ be an AG code, constructed on $\mathcal{X}$, with $D = \sum_{i=1}^n P_i$. Let $t \leq \floor{\frac{d^{*} - 1}{2} - \frac{g}{2}}$ and let $F$ be a divisor on $\mathcal{X}$ such that $\support(F) \cap \support(D) = \emptyset$ and $\deg(F) = t + g$ as well as $\deg(F + G) < n$. Then $(\mathcal{C}_{D, F}, \mathcal{C}_{D, F + G}^{\perp})$ forms a $t$-error correcting pair for $\mathcal{C}_{D,G}$.
+\end{theorem}
+
+\begin{proof}
+  For the sake of simplicity we let $\mathcal{A} := \mathcal{C}_{D, F}$ and $\mathcal{B} := \mathcal{C}_{D, F + G}^{\perp}$
+  We start by showing that \ref{ECP1} holds. Let $a \in \mathcal{C}_{D, F} = \mathcal{A}$ and $c  \in \mathcal{C}_{D, G}$ then there exists some $f \in L(F)$ and $h \in L(G)$ such that $a =(f(P_{1}), f(P_2), \ldots, f(P_{n}))$ and $c = (h(P_{1}), h(P_2), \ldots, h(P_{n})) \in L(G)$.
+  using this information we see that:
+  \begin{equation*}
+    a * c = (fh(P_1), fh(P_2), \ldots, fh(P_{n})) \in \mathcal{C}_{D, F + G}
+  \end{equation*}
+  since $L(F)L(G) \subseteq L(F + G)$ by Remark \ref{rem:product_of_rational_functions}. Thus:
+  \begin{equation*}
+  \mathcal{A} * \mathcal{C}_{D, F} = \mathcal{C}_{D, F} * \mathcal{C}_{D, G} \subseteq C_{D, F + G} = \mathcal{B}^{\perp}
+  \end{equation*}
+
+  Continuing using $\deg(F) < \deg(F + G) < n$, since $\support(F) \cap \support(G) = \emptyset$, we see that:
+  \begin{equation*}
+    \dim_{\mathbb{F}_q}(\mathcal{A}) \stackrel{(a)}{=} \ell(F) \stackrel{(b)}{\geq} \deg(F) - g + 1 = t + g - g + 1 = t + 1
+  \end{equation*}
+  where $(a)$ follows by Theorem \ref{thm:ag_codes_properties}\ref{thm:ag_codes_properties3} and $(b)$ by the Riemann-Roch Theorem, see \cite{Fulton}[Section 8.6]. This shows that $\mathcal{A}$ satisfies \ref{ECP2}. Combining Theorem \ref{thm:ag_codes_properties}\ref{thm:ag_codes_properties2} and the fact that $\deg(G + F) = \deg(G) + t + g$ yields  \ref{ECP3}. This is seen as follows:
+  \begin{align*}
+    d(\mathcal{B}^{\perp}) \geq n - \deg(G + F) &= n - \deg(G) - t - g\\ &\stackrel{(c)}\geq n - \deg(G) - \frac{n - \deg(G) - g - 1}{2} - g \\ &= \frac{n - \deg(G) - g - 1}{2} \stackrel{(d)}{\geq} t
+  \end{align*}
+  where $(c)$ and $(d)$ follows as $t \leq \floor{\frac{d^{*} - g - 1}{2}}$ with $d^{*} = n - \deg(G)$. Finally we need to verify that \ref{ECP4} holds. By applying Theorem \ref{thm:ag_codes_properties}\ref{thm:ag_codes_properties2} we see that:
+  \begin{equation*}
+    d(\mathcal{A}) + d(\mathcal{C}_{D, G}) > n - \deg(F) + n - \deg(G) = \deg(F + G) > n
+  \end{equation*}
+  by our original assumption.
+\end{proof}

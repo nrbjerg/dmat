@@ -1,0 +1,24 @@
+% BLIVER IKKE BRUGT MERE, DET LIGGER I BOUNDS
+The following example is based on elements of \citep{alg_geom_codes}[Subsection 1.2.1] and \citep{notes_on_alg_geom_codes}[chapter 2], and it will be our second example of a MDS code.
+\begin{example}[Reed-Solomon Codes]
+  Let $q = p^{m}$, where $p$ is prime, and $n, k \in \N$ such that $1 \leq k \leq n \leq q$. As such we may find distinct $P_{1}, \ldots, P_{n} \in \F_{q}$ and define the set $\mathcal{P} := \{P_{1}, \ldots, P_{n}\}$. Finally we define the vector space $L_{k} := \{f \in \F_{q}[X] \;\vert\; \deg(f) \leq k - 1\}$, we have $0 \in L_{k}$, since we use the convention that $\deg(0) = 0$, confer remark \ref{rem:deg_0}.
+  Then the evaluation map:
+  \begin{align*}
+    \ev\colon L_{k} \to \F_{q}^{n}, \quad f \mapsto (f(P_{1}), \ldots, f(P_{n}))
+  \end{align*}
+  is injective, since $\ev$ is a linear map and $f \in \F_{q}[X] \backslash \{0\}$ can have at most $\deg(f)$ roots, so $\ev(f) = 0$ if and only if $f = 0$.
+  We define the Reed-Solomon code of degree $k$ as $\C := \ev(L_{k})$, we will show that $\C$ is a $[n, k, n - k + 1]_{q}$ code.
+  As $1, X, \ldots, X^{k - 1}$, forms a basis of $L_{k}$, we see that $\C$ has dimension $k$, furthermore that
+  \begin{equation*}
+    G = \begin{bmatrix}
+          1 & 1 & \cdots & 1\\
+          P_{1} & P_{2} & \cdots & P_{n} \\
+          \vdots & \vdots & \ddots & \vdots \\
+          P_{1}^{k - 1} & P_{2}^{k - 1} & \cdots & P_{n}^{k -  1}
+    \end{bmatrix}
+  \end{equation*}
+  is a generator matrix for $\C$.
+  Now every codeword $c \in \mathcal{C}$, has weight $w$, then $f$ vanishes in $n - w$ of the points and thus we have $n - w \leq \deg(f) \leq k - 1$.
+  In the special case $w = d$ where $d$ is the minimum distance of $\mathcal{C}$, we see that $n - d \leq k - 1$ rearranging we see that $n - k \leq d - 1$, combining this with the Singleton bound (Corollary \ref{cor:singleton_bound}) we obtain $n - k = d - 1$, and thus $\mathcal{C}$ is a MDS code, with minimum distance $n - k + 1$. This is of cause a nice property to have, however these codes aren't the solution to all of our problems as we require $n \leq q$, so their lengths are limited.
+\end{example}
+Later on we will show that Reed-Solomon codes are a special case of our main object of study, namely algebraic geometry codes.

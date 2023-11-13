@@ -1,0 +1,48 @@
+\subsection{Bézout’s Theorem and It's Applications} \label{subsec:bezouts}
+The contents of this subsection is based on \cite{Fulton}[Section 5.3] or \cite{CCC_with_CA}[Subsection 11.1.4]
+
+\begin{definition}\label{def:intersection_multiplicity}
+  Let $\mathcal{X}$ and $\mathcal{Y}$ be regular projective plane curves of degrees $m$ and $l$, and defining equations $F = 0$ and $G = 0$ respectively. Assume that $\mathcal{X} \not \subseteq \mathcal{Y}$, and let $P \in \mathcal{X}$ and $H$ be a homogeneous linear polynomial such that $H(P) \neq 0$. Then the \textit{intersection multiplicity} $I(P, \mathcal{X}, \mathcal{Y})$ of $\mathcal{X}$ and $\mathcal{Y}$ at the point $P$ is defined to be $v_{P}(g / h^{m})$, where $g$ and $h$ are the classes of $G$ and $H$ modulo $I(\mathcal{X})$ respectively.
+\end{definition}
+The intersection multiplicity is well defined: Suppose $H_{0}$ is another homogeneous linear polynomial such that $H_{0}(P) \neq 0$ and $h_{0}$ is the class of $H_{0}$ modulo $I(\mathcal{X})$, then $h / h_{0} \in \mathcal{O}_{P}(\mathcal{X})$ is a unit. From this it follows that:
+\begin{align*}
+  v_{P}(g / h^{m}) &= v_{P}(g) - v_{P}(h^{m}) + (v_{P}(h_{0}^{m}) - v_{P}(h_{0}^{m}))\\ &= v_{P}(g) - v_{P}(h^{m} h_{0}^{m}) - v_{P}(h_{0}^{m}) = v_{P}(g) - v_{P}(h_{0}^{m}) = v_{P}(g / h_{0}^{m})
+\end{align*}
+since $v_{P}(f) = 0$ for all units $f \in \mathcal{O}_{P}(\mathcal{X})$, as $f$ can be written as $f t^{0}$, where $t$ is a uniformizing parameter in $O_{P}(\mathcal{X})$. Next we state the strong version of Bézout's theorem, without proof. The theorem is proved in \cite{Fulton}[Section 5.3].
+\begin{theorem}\label{thm:bézouts}
+  Let $\mathcal{X}$ and $\mathcal{Y}$ be regular projective plane curves, with defining equations $F = 0$ and $G = 0$ respectively. If $F$ and $G$ have no common factors, then
+  \begin{equation*}
+    \sum_{P \in \mathcal{X} \cap \mathcal{Y}} I(P, \mathcal{X}, \mathcal{Y}) = \deg(F) \deg(G)
+  \end{equation*}
+  Meaning that $\mathcal{X}$ and $\mathcal{Y}$ intersect at exactly $\deg(F)\deg(G)$ points, assuming the points are counter with multiplicity.
+\end{theorem}
+This is a pretty powerfull result, which has many interesting consequences, for instance the following corollary follows naturally:
+\begin{corollary}\label{cor:intersect_in_at_least_one_point}
+  If $\mathcal{X}$ and $\mathcal{Y}$ are regular plane projective curves with strictly positive degree, then they intersect in at least one point.
+\end{corollary}
+
+Finally we obtain the following usefull result, which will help us to determine which plane projective curves are varieties.
+
+\begin{corollary}\label{cor:regular_plane_curves_are_varieties}
+  Let $F = 0$ be the defining equation of a regular projective plane curve, then $F$ is absolutely irreducible.
+\end{corollary}
+\begin{proof}
+  Suppose for the sake of contradiction that $F$ factors into $GH$, with $\deg(G), \deg(H) \geq 1$, then
+  \begin{equation*}
+    F_X = G H_{X} + H G_{X}
+  \end{equation*}
+  Hence $F_X \in \gen{G, H}$ similarly for the other partial derivatives. Hence $V(G) \cap V(H)$ is a subset of $V(F_{X}), V(F_{Y}), V(F_{Z})$ and $V(F)$. However by Corollary \ref{cor:intersect_in_at_least_one_point}, the curves with defining equations $G = 0$ and $H = 0$ intersect in at least one point, and hence $V(G) \cap V(H) \neq \emptyset$. However the points in $V(G) \cap V(H)$ are all singular, meaning $F$ did have a singular point after all.
+\end{proof}
+
+The following example is based on \cite{CCC_with_CA}[Example 11.1.38].
+\begin{example}\label{exmp:klein_quadratic}
+  The \textit{Klein quadratic} $\mathcal{K}$ is the curve with defining equation $X^{3}Y + Y^{3}Z + Z^{3}X = 0$, consider the projective line $\mathcal{L}$ with defining equation $X = 0$, then $\mathcal{K}$ and $\mathcal{L}$ intersects at the points $P_{1} = [0 : 1 : 0]$ and $P_{2} = [0 : 0 : 1]$. We will start by considering the point $P_{1} = [0 : 1 : 0]$, applying Proposition \ref{prop:uniformizing_parameter} we see that $t = X / Y$ is a unifomzing parameter of $\mathcal{O}_{P_{1}}(\mathcal{X})$ as $X$ is not a constant multiple of $\mathcal{K}_X(P_{1})X + \mathcal{K}_Y(P_{1})Y + \mathcal{K}_Z(P_1)Z$. We see that $I(P_{1}, \mathcal{K}, \mathcal{L}) = v_{P_{1}}(X / Y^{4}) = v_{P_{1}}(X) - v_{P_{1}}(Y^{4})$.
+  Computing using the uniformizing parameter we get that $v_{P_{1}}(Y^{4}) = 0$ since $Y^{4}$ is a unit in $\mathcal{O}_{P_{1}}(\mathcal{X})$, and hence $Y^{4} = Y^{4}(X / Y)^{0}$. Similarly we have $v_{P_{1}}(X) = 1$ as $Y$ is a unit in $\mathcal{O}_{P_1}(\mathcal{X})$ and $X = Y t^{1}$. Thus $I(P_{1}, \mathcal{K}, \mathcal{L}) = 1$. This in turn implies that $I(P_{2}, \mathcal{K}, \mathcal{L}) = 3$, by Bézuotz Theorem \ref{thm:bézouts}.
+\end{example}
+%Before we introduce the next definition, we need to introduce the notation of a formal sum. A formal sum is informally defined to be a sum which we don't nessarily give a meaning, for instance the formal sum $1 + 0$ is just the sum, we don't give it a meaning, which we would do under normal circumstances, by assing it the value $1$. In our case we will use formal sums to construct elements in an abelian group.
+%\begin{definition}
+%  A \textbf{cycle} is a formal sum $C := \sum_{p \in \mathbb{P}^{2}(\cF_{q})} m_{p} p$ with $m_{p} \in \mathbb{Z}$ and $m_{p} = 0$ for all but a finite number of points $p \in \mathbb{P}^{2}(\cF_{q})$, the \textbf{degree} of $C$ is defined as $\deg(C) := \sum_{p \in \mathbb{P}^{2}(\cF_{q})} m_{p}$. If $\mathcal{X}$ and $\mathcal{Y}$ are projective plane curves, then we define their \textbf{intersection cycle} to be
+%  \begin{equation*}
+%    \mathcal{X} \cdot \mathcal{Y} = \sum_{p \in \mathbb{P}^{2}(\cF_{q})} I(p, \mathcal{X} \cap \mathcal{Y})p
+%  \end{equation*}
+%\end{definition}

@@ -1,0 +1,236 @@
+\subsection{Divisors and the Reimann Roch Theorem}%
+\label{subsec:divisors_and_the_reiman_roch_theorem}
+The following subsection will be based on \cite{Fulton}[Chapter 8], \cite{alg_geom_codes}[Section 2.1.3] and \cite{CCC_with_CA}[Subsection 11.1.5]. We will let $\mathcal{X}$ be an absolutely irreducible regular projective plane curve, over $\cF_{q}$.
+
+Before we can introduce our main object of study in this section, we need to introduce the notion of a formal sum. A formal sum is informally defined to be a sum which we do not assign a meaning, for instance the formal sum $1 + 4$ is simply the sum, it does not attain the value $5$. In this way formal sums are simply a way of specifying elements in a set, this is exactly their usage, in the following definition:
+\begin{definition}
+A \textit{divisor} $D$ on $\mathcal{X}$, is defined as a formal sum $\sum_{P \in \mathcal{X}} n_P P$, where $n_P \in \mathbb{Z}$ and $n_{P} = 0$ for all but a finite number of points $P \in \mathcal{X}$. The set of divisors on $\mathcal{X}$ will be denoted $Div(\mathcal{X})$, furthermore each $n_{P}$ will be refereed to as the \textit{weight} associated with $P$. The \textit{support} of a divisor $D$, denoted $\support(D)$, is defined as the set of points $P$ where $n_P \not= 0$. The divisor $D$ is called \textit{effective} if $n_P \geq 0$ for all $P \in \mathcal{X}$. Finally, the \textit{degree} of the divisor $D$ is defined as $\deg(D) := \sum_{P \in \mathcal{X}} n_{P}$.
+\end{definition}
+The divisors $Div(\mathcal{X})$ form an abelian group with respect to \textit{addition of divisors}, mainly if $D = \sum_{P \in \mathcal{X}} n_P P$ and $D' = \sum_{P \in \mathcal{X}} m_{P} P$ are both divisors on $\mathcal{X}$, then $D \pm D' = \sum_{P \in \mathcal{X}} (n_P \pm m_{P}) P$, the neutral element of $Div(\mathcal{X})$, will be denoted $0$.
+Using this addition of divisors we can introduce a partial ordering $\geq$ on $Div(\mathcal{X})$, where $D \geq D'$ if and only if $D - D'$ is effective.
+
+One of the applications of divisors is to keep track of the locations where a rational function has zeros and poles and their respective orders. This is exactly the idea of the following definition:
+\begin{definition}
+  Let $f \in \cF_{q}[\mathcal{X}] \setminus \left\{0\right\}$, then we define the \textit{divisor of zeros} and \textit{divisor of poles}
+  of $f$, is defined as the formal sums:
+  \begin{equation*}
+    (f)_{0} := \sum_{v_{P}(f) > 0} v_{P}(f) P  \text{  and  }  (f)_{\infty} := \sum_{v_{P}(f) < 0} -v_{P}(f) P.
+  \end{equation*}
+  Finally, we define the \textit{principal divisor} of $f$ as
+  \begin{equation*}
+    (f) := \sum_{P \in \mathcal{X}} v_{P}(f)P = (f)_{0} - (f)_{\infty}.
+  \end{equation*}
+  Two divisors $D$ and $D'$ are called \textit{linearly equivalent}, denoted $D \sim D'$, if there exists $g \in \cF_{q}(\mathcal{X}) \setminus \left\{0\right\}$ such that $D - D' = (g)$.
+\end{definition}
+Notice that we used the extension of the discrete valuation $v_{P}: \mathcal{O}_{P}(\mathcal{X}) \to \mathbb{N}$ to the domain $\cF_{q}[\mathcal{X}] \setminus \left\{0\right\}$, as described in Remark \ref{rem:extension}.
+
+Next we will show that these principal divisors are well-defined, meaning that they have a finite number of weights which are non-zero. This by extension shows that $(f)_{0}$ and $(f)_{\infty}$ are well-defined, since they do not share any weights.
+\begin{proposition}\label{prop:principal_divisors_are_well_defined}
+  Let $f \in \cF_{q}[\mathcal{X}]\setminus \left\{0\right\}$, then $\deg((f)) = 0$.
+\end{proposition}
+\begin{proof}
+  Suppose $\mathcal{X}$ has degree $n$, then $f$ can be represented as $g / g'$, where $G, G'$ are homogeneous polynomials of the same degree $m$. Then let $\mathcal{Y} = V(G)$ and $\mathcal{Z} = V(G')$, notice that $f = g / g' = (g / h^{m})(g' / h^{m})^{-1}$, where $h$ is the class of a homogenus linear polynomial $H$ such that $H(P) \neq 0$. Hence we have $v_P(f) = I(P, \mathcal{X}, \mathcal{Y}) - I(P, \mathcal{X}, \mathcal{Z})$, from this it follows by Bézout's Theorem \ref{thm:bézouts} that:
+  \begin{equation*}
+    \deg((f)) = \sum_{P \in \mathcal{X}} v_{P}(f) P = \sum_{P \in \mathcal{X}} I(P, \mathcal{X}, \mathcal{Y}) - \sum_{P \in \mathcal{X}} I(P, \mathcal{X}, \mathcal{Z}) = nm - nm = 0 \qedhere
+  \end{equation*}
+\end{proof}
+
+%\begin{proposition}\label{prop:linear_equvilent}
+%  The relation $\sim$ is an equvilence relation, which satisifes the following properties
+%  \begin{enumerate}
+%    \item $D \sim 0_{d}$ if and only if $D$ is a principal divisor.
+%    \item If $D \sim D'$, then $\deg(D) = \deg(D')$.
+%    \item If $D \sim D'$ and $D_{1} \sim D_{1}'$ then $D + D_{1} \sim D' + D_{1}'$.
+%    \item \textcolor{red}{\textbf{TODO}} der er en mere men jeg ved ikke om den er nødvendig.
+%  \end{enumerate}
+%\end{proposition}
+
+Let $D = \sum_{i = 1}^{k} n_{i}P_{i} - \sum^{l}_{j = 1} m_{j} Q_{j}$, where $P_{i}, Q_{j} \in \mathcal{X}$ and $n_{i}, m_{j} > 0$, be a divisor.
+We could be interested in keeping track of which rational functions that have zeros of order at least $n_{i}$ at the points $P_{i}$ and have no poles except those found at $Q_{j}$, with order at most $m_{j}$.
+This is precisely the key to understanding the following definition:
+\begin{definition}
+  Let $D$ be a divisor on $\mathcal{X}$ then we define the set
+  \begin{equation*}
+    L(D) := \left\{f \in \cF_{q}(\mathcal{X}) \setminus \left\{0\right\} \mid (f) + D \text{ is effective}\right\} \cup \left\{0\right\}.
+  \end{equation*}
+  The set $L(D)$ forms a vector space over $\cF_{q}$ and we define $\ell(D) := \dim_{\cF_{q}}(L(D))$.
+\end{definition}
+\begin{remark}\label{rem:vector_spaces_of_equivilent_divsors_are_isomorphic}
+  If $D \sim D'$, meaning there exists $g \in \cF_{q}(\mathcal{X})$ such that $D - D' = (g)$, then $L(D)$ and $L(D')$ are isomorphic, which can be seen as follows: Suppose $D = \sum_{P\in \mathcal{X}} n_{P}P$ and $D' = \sum_{P \in \mathcal{X}} n_P'P$ then $f \in L(D)$ implies that $fg \in L(D')$. Since the weight $m_{P}$ of a point $P$ in the divisor $(fg) + D'$, satisfies:
+  \begin{equation*}
+    m_{P} = n_{P}' + v_{P}(fg) = n_{P}' + v_{P}(f) + v_{P}(g) = n_{P} + v_{P}(f) > 0.
+  \end{equation*}
+  The last equality follows from the fact that $D - D' = (g)$ implies that $n_{P} + v_{P}(g) = n_{P}$ and the last inequality from the fact that $D + (f)$ is an effective divisor. A similar argument can be made to show that $f \in L(D')$ implies $fg^{-1} \in L(D)$. The rest follows from the fact that $f \mapsto fg$ is a linear map.
+\end{remark}
+
+\newpage
+We will briefly discuss how $L(D)$ forms a vector space over $\cF_{q}$: Suppose $D = \sum_{P \in \mathcal{X}} n_{P} P$ and $f = g/h, f' = g'/h' \in L(D)$. Then
+\begin{equation*}
+(\lambda f) + D = \sum_{P \in \mathcal{X}} (n_{P} + v_{P}(\lambda f))P = \sum_{P \in \mathcal{X}} \left(n_{P} + v_{P}(f)\right)P = (f) + D
+\end{equation*}
+for all $\lambda \in \cF_{q}^{*}$, where the last equality followed from Assertion \ref{thm:vp_is_dv:2} of Theorem \ref{thm:vp_is_dv}. This combined with the fact that $0 \in L(D)$ imply that $\lambda f \in L(D)$ for all $f \in L(D)$ and $\lambda \in \cF_{q}$. Secondly we have
+\begin{equation*}
+  (f + f') + D = \sum_{P \in \mathcal{X}} \left(n_{P} + v_{P}\left(\frac{gh' + g'h}{h h'}\right)\right) P
+\end{equation*}
+Instead of looking at the entirety of the formal sum, we will focus on the weight of a single point $P \in \mathcal{X}$, as we only need to show that this is non-negative, to show that $(f + f') + D$ is effective. We have:
+\begin{align*}
+  n_{P} + v_{P}\left(\frac{gh' + g'h}{h h'}\right) &= n_{P} + v_{P}(gh' + g'h) - v_{P}(h h') \\
+                                                   &= n_{P} + \min \left\{v_{P}(g) + v_{P}(h'), v_P(g') + v_P(h)\right\} - (v_P(h) + v_{P}(h'))
+\end{align*}
+Where the last equality follows by applying Assertions \ref{thm:vp_is_dv:3} and \ref{thm:vp_is_dv:4} from Theorem \ref{thm:vp_is_dv}. However, as $n_{P} + \min \left\{v_{P}(g) + v_{P}(h'), v_P(g') + v_P(h)\right\} - (v_P(h) + v_{P}(h'))$ is either $n_{P} + v_{P}(g) - v_{P}(h)$ or $n_{P} + v_P(g') - v_{P}(h')$ depending on which of $v_{P}(g) + v_{P}(h')$ and $v_P(g') + v_P(h)$ is smaller, we get that each weight is non-negative, since $(f) + D$ and $(f') + D$ are both effective, and hence $f + f' \in L(D)$ whenever $f, f' \in L(D)$.
+
+\begin{example}
+  Let $\mathcal{X}$ be the projective line, defined by $X - Y = 0$, consider the divisor $D = [1 : 1 : 0]$, then $L(D)$, consists of all rational functions $\alpha \in \cF_{q}(\mathcal{X})$ such that $\alpha$ has a root at $[1 : 1 : 0]$ and no poles.
+\end{example}
+
+\begin{lemma}\label{lem:L_of_zero}
+  Let $D$ be the zero divisor on $\mathcal{X}$, then $L(D) = \cF_{q}$.
+\end{lemma}
+\begin{proof}
+  Since $\mathcal{X}$ is a projective plane curve, then $f \in L(D)$, implies that $f$ has no poles, however Proposition \ref{prop:principal_divisors_are_well_defined} implies that the number of poles equals the number of zeros of $f$, each counted with multiplicity. Hence, $f$ can not have any zeros or poles, meaning $f \in \cF_{q}$. Combining this with the fact that every constant polynomial has no poles, we get $L(D) = \cF_{q}$.
+\end{proof}
+
+Next we show some properties of the vector space $L(D)$, combining these facts we see that $L(D)$ is finite dimensional for all $D \in Div(\mathcal{X})$.
+\begin{proposition}\label{prop:dimension_of_vector_space_of_divisors}
+  Let $D$ be a divisor on $\mathcal{X}$, then:
+  \begin{enumerate}
+    \item $\deg(D) < 0$ implies that $\ell(D) = 0$. \label{prop:dimension_of_vector_space_of_divisors:1}
+    \item If $D$ is an effective divisor then $\ell(D) \leq 1 + \deg(D)$.\label{prop:dimension_of_vector_space_of_divisors:2}
+  \end{enumerate}
+\end{proposition}
+
+\newpage
+\begin{proof}
+  We start by proving Assertion \ref{prop:dimension_of_vector_space_of_divisors:1}. Let $\deg(D) < 0$, then for any $f \in \cF_{q}(\mathcal{X})$, we have
+  \begin{equation*}
+    \deg((f) + D) = \deg((f)) + \deg(D) < 0
+  \end{equation*}
+  by Proposition \ref{prop:principal_divisors_are_well_defined}, meaning $f \not \in L(D)$. Since $f \in \cF_{q}(\mathcal{X})$ was arbitrary we see that $L(D) = \left\{0\right\}$.
+
+  Next we prove Assertion \ref{prop:dimension_of_vector_space_of_divisors:2} by induction on $\deg(D)$. If $\deg(D) = 0$ then $D$ being effective implies that $D = 0$, then Lemma \ref{lem:L_of_zero} implies that $\ell(D) = \dim_{\cF_{q}} \cF_{q} = \deg(D) + 1$.
+  Now suppose that $\deg(D) > 0$, then there exists $P \in \mathcal{X}$ such that the weight of $P$ satisfies $n_{P} > 0$. Let $D' = D - P$. Since $n_{P} > 0$, we have that $D' \geq 0$ and $\deg(D') = \deg(D) - 1$, hence we can apply our induction hypothesis, to obtain $\ell(D') = \deg(D)$.
+
+  If we can represent $L(D')$ as the kernel of a linear transformation $\phi$ from $L(D)$ into $\cF_{q}$, then
+  \begin{equation*}
+    \ell(D) = \dim_{\cF_{q}} L(D) = \dim_{\cF_{q}} \ker(\phi) + \dim_{\cF_{q}} \image(\phi) \leq \ell(D') + \dim_{\cF_{q}} \image(\phi).
+  \end{equation*}
+  However as $\image(\phi)$ is a subspace of $\cF_{q}$ we get that $\ell(D) \leq \deg(D) + 1$. Hence, it is sufficient to construct a linear transformation $\phi: L(D) \to \cF_{q}$ such that $\ker(\phi) = L(D')$. Let $t$ be the uniformizing parameter of $\mathcal{O}_{P}(\mathcal{X})$, then we define $\phi(f) = (t^{n_{P}} f)(P)$. The transformation $\phi$ is well-defined since $v_{P}(t^{n_{P}} f) = n_{P} + v_{P}(f) \geq 0$, implies that  $t^{n_{P}} f$ is defined at $P$.
+  Clearly $\phi$ is linear, moreover $f \in \ker(\phi)$ if and only if $P$ is a zero of $t^{n_P}f$, meaning $v_{P}(t^{n_{P}}f) > 0$. However this is equivalent to $v_{P}(f) + n_{P} > 0$ by Assertion \ref{thm:vp_is_dv:4} of Theorem \ref{thm:vp_is_dv}, which is in turn equivalent to $(f) + D' \geq 0$, so $f \in L(D')$.
+\end{proof}
+%Continuing with \ref{prop:dimension_of_vector_space_of_divisors:2}, suppose $f \in L(D) \setminus \left\{0\right\}$, then $D' = D + (f)$ is effective, and by Remark \ref{rem:vector_spaces_of_equivilent_divsors_are_isomorphic}, $L(D)$ is isomorphic to $L(D')$. Hence we may without loss of generality assume that $L(D)$ is effective, since all weights except a finite number is zero we may enumerate the points with strictly positive weights and write $D = \sum_{i = 1}^{m} n_{i} P_{i}$, where $n_{i} > 0$ for $1 \leq i \leq m$. Suppose $P_{i}$ \textcolor{blue}{\textbf{TODO}}
+
+\begin{definition}
+  Let $\mathcal{X}$ be a projective smooth plane curve of degree $m$, then the \textit{genus} $g$ of $\mathcal{X}$ is defined as $g = (m - 1)(m - 2)$.
+\end{definition}
+This is not the standard definition of the genus of a curve, but rather a way to compute the genus of a smooth projective plane curve, which was proved by the German mathematician Julius Plücker. However, it is sufficient for our purposes.
+
+\begin{definition}
+  Let $\mathcal{X}$ be a smooth projective plane curve, with genus $g$, then a divisor $W$ on $\mathcal{X}$ with $\deg(W) = 2g - 2$ is called a \textit{canonical} divisor.
+\end{definition}
+%Moving on from principal divisors, we introduce a generalization of the notion of a derivative. \textcolor{blue}{\textbf{TODO}}
+%
+%\begin{definition}
+%  Let $\mathcal{V}$ be a vector space over $\cF_{q}(\mathcal{X})$. An $\cF_{q}$-linear map $D: \cF_{q}(\mathcal{X}) \to \mathcal{V}$ is called a \textit{derivation}, if it satisfies the \textit{product rule}:
+%  \begin{equation*}
+%    D(fg) = fD(g) + gD(f)
+%  \end{equation*}
+%  for all $f, g \in \cF_{q}(\mathcal{X})$. The set of all derivations $D: \cF_{q}(\mathcal{X}) \to \mathcal{V}$ will be denoted $Der(\mathcal{X}, \mathcal{V})$ or simply $Der(\mathcal{X})$ if $\mathcal{V} = \cF_{q}(\mathcal{X})$.
+%\end{definition}
+%
+%We define the sum of $D, D' \in Der(\mathcal{X}, \mathcal{V})$ as $(D + D')(f) = D(f) + D'(f)$, and the product between $D \in Der(\mathcal{X}, \mathcal{V})$ and $f \in \cF_{q}(\mathcal{X})$ is defined as $(fD)(g) = f D(g)$, with these operations $Der(\mathcal{X}, \mathcal{V})$ becomes a vector space over $\cF_{q}(\mathcal{X})$.
+%\begin{example}\label{exmp:first_example_of_derivation}
+%  Let $\mathcal{X}$ be the projective line with function field:
+%  \begin{equation*}
+%    \cF_{q}(\mathcal{X}) = \left\{F / G \mid F, G \in \cF_{q}[X] \text{ are homogeneous polynomials and } \deg(f) = \deg(g) \right\}
+%  \end{equation*}
+%  Now for a polynomial $F = \sum_{i = 0}^{m} a_{i} X^{i} \in \cF_{q}[X]$ we define derivation $D$ to be the usual derivative of $F$, meaning $D(F) = \sum_{i = 0} i a_{i} X^{i - 1}$, this can be extended to quotients by setting:
+%  \begin{equation*}
+%    D \left(\frac{G}{H}\right) = \frac{H D(G) - G D(H)}{H^{2}}
+%  \end{equation*}
+%  then $D \in Der(\mathcal{X})$, to avoid having a large portion of calculations in the example, the proof of the fact that $D$ satisfies the product rule, has been put in Appendix \ref{app:calc}.
+%\end{example}
+%
+%\begin{definition}
+%A $\cF_{q}(\mathcal{X})$ linear map from $Der(\mathcal{X})$ to $\cF_{q}(\mathcal{X})$ is called a \textit{differential} on $\mathcal{X}$, and the set of all differentials on $\mathcal{X}$ is denoted $\Omega(\mathcal{X})$.
+%\end{definition}
+%This again a vector space, with operations defined similarly to the operations on $\cF_{q}(\mathcal{X})$.
+%
+%Consider the map $d: \cF_{q}(\mathcal{X}) \to \Omega(\mathcal{X})$, such that for each $f \in \cF_{q}(\mathcal{X})$, we let $df: Der(\mathcal{X}) \to \cF_{q}(\mathcal{X})$ be defined as $df(D) = D(f)$. Then $d$ is a differential \textcolor{blue}{\textbf{WTF?}}
+%
+%We state the following Theorem without proof:
+%\begin{theorem}
+%Let $p$ be a point on $\mathcal{X}$ and $t_{p}$ be the uniformizing parameter at $p$, then $\Omega(\mathcal{X})$ has dimension $1$ over $\cF_{q}(\mathcal{X})$ and $dt_{p}$ forms a basis of $\Omega(\mathcal{X})$.
+%\end{theorem}
+%
+%This means that given a differential $\omega$, then for all points $p \in \mathcal{X}$ and uniformizing parameter $t_p$, then $\omega$ can be represented uniquely as $\omega = f_p dt_p$, where $f_p \in \cF_{q}(\mathcal{X})$.
+%
+%\begin{definition}
+%Let $\omega$ be a differential on $\mathcal{X}$, then the \textit{order} of $\omega$ at the point $p \in \mathcal{X}$ is defined to be $ord_{p}(\omega) = v_p(f_{p})$. The differential $\omega$ is called \textit{regular} if $ord_p(\omega) \geq 0$ for all $p \in \mathcal{X}$. Set of regular differentials on $\mathcal{X}$ is denoted $\Omega[\mathcal{X}]$.
+%The divisor associated with $\omega$ denoted $(\omega)$ is called a \textit{canonical divisor} and is defined as
+%\begin{equation*}
+%  (\omega) := \sum_{p \in \mathcal{X}} ord_{p}(\omega)p
+%\end{equation*}
+%\end{definition}
+%This doesn't depend on the choices made, \textcolor{blue}{\textbf{TODO}}
+%
+%Furthermore $\Omega[\mathcal{X}]$ is a $\cF_{q}[\mathcal{X}]$-module. \textcolor{blue}{\textbf{REMOVE}}
+%
+%\begin{definition}
+%  Let $\mathcal{X}$ be a non-singular projective curve over $\cF_{q}$, then the \textit{genus} $g$ of $\mathcal{X}$, is defined as $g = \ell(W)$, where $W$ is a canonical divisor.
+%\end{definition}
+%The genus is well defined, this can be seen as follows: If $\omega$ and $\omega'$ are differentials on $\mathcal{X}$, then $\omega' = f\omega$ for some $f \in \cF_{q}(\mathcal{X})$, since $\Omega(\mathcal{X})$ has dimension $1$ over $\cF_{q}(\mathcal{X})$, therefore $(\omega') = (f\omega) = \sum_{p \in \mathcal{X}} v_p(f) p + (\omega)$ and hence $(\omega') \sim (\omega)$, therefore the set of canonical divisors form an equivalence class. Hence $\ell((\omega)) = \ell((\omega'))$ by Remark \ref{rem:vector_spaces_of_equivilent_divsors_are_isomorphic}.
+%
+%The genus of a curve, will play a crucial role in the following, hence we need a way to calculate it, for this reason we introduce the following formula, which we state without proof.
+%\begin{theorem}[The Plücker formula]
+%  Let $\mathcal{X}$ be a non-singular projective plane curve, of degree $m$, then $g = \frac{(m -1)(m-2)}{2}$.
+%\end{theorem}
+
+We now reach the main result of this section or arguably even the main result of this chapter. But we will omit it's proof, which can be found in \cite{Fulton}[Section 8.6]
+%\begin{theorem}[Reimann Roch Theorem]
+%  Let $\mathcal{X}$ be a projective plane curve, then there exists $g \in \mathbb{N}$, called the \textit{genus} of $\mathcal{X}$ such that $\ell(D) \geq \deg(D) + 1 - g$ for all $D \in Div(\mathcal{X})$.
+%\end{theorem}
+
+\begin{theorem}[Reimann Roch Theorem]\label{thm:reimann_roch}
+  Let $\mathcal{X}$ be a regular projective plane curve of genus $g$, and $D$ be a divisor on $\mathcal{X}$, then for all canonical divisors $W$ we have
+  \begin{equation*}
+    \ell(D) - \ell(W - D) = \deg(D) - g + 1
+  \end{equation*}
+\end{theorem}
+
+%The theorem can be used to determine the degree of canonical divisors, which we will show in the following corollary
+%\begin{corollary}\label{cor:deg_of_canonical_divisor}
+%  Let $\mathcal{X}$ be a regular plane curve of genus $g$ and let $W$ be a canonical divisor, then $\deg(W) = 2g - 2$.
+%\end{corollary}
+%\begin{proof}
+%  Rational functions without poles are constant, since $\mathcal{X}$ is a projective curve and hence the function field consists of quotients of homogeneous polynomials of the same degree. This mean $L(0_{d}) = \cF_{q}$, hence $\ell(0_{d})  = 1$, subsituting $D = W$ in Theorem \ref{thm:reimann_roch}, and recalling that the genus of a projective plane curve $\mathcal{X}$ was defined as $\ell(W)$ we see that:
+%  \begin{equation*}
+%    \ell(W) - \ell(W - W) = \deg(W) - \ell(W) + 1 \iff \deg(W) = 2\ell(W) + 2 \qedhere
+%  \end{equation*}
+%\end{proof}
+
+Next we show the following corollary, which have numerous applications, one of these is determining the minimum distance of algebraic geometry codes.
+\begin{corollary}\label{cor:degree_less_than_2g-2}
+  Let $\mathcal{X}$ be a regular projective plane curve of genus $g$ and let $\deg(D) > 2g - 2$, then $\ell(D) = \deg(D) - g + 1$.
+\end{corollary}
+\begin{proof}
+We have $\deg(W - D) = \deg(W) - \deg(D) < \deg(W) - (2g - 2) < 0$, since $W$ is a canonical divisor and hence by Assertion \ref{prop:dimension_of_vector_space_of_divisors:1} of Proposition \ref{prop:dimension_of_vector_space_of_divisors}, we have that $\ell(W - D) = 0$. The rest follows from the Reimann Roch Theorem \ref{thm:reimann_roch}.
+\end{proof}
+
+\begin{example}\label{exmp:divisors_for_rs_codes}
+  Let $\mathcal{X}$ be the projective plane curve with defining equation $Y = 0$ over $\cF_{q}$. Let $G = (k - 1)P_{\infty}$ where $P_{\infty} = [1 : 0 : 0]$. Finally let
+  \begin{equation*}
+    V = \left\{F(X, Z) / Z^{k -1} \mid F(X, Y) \in \cF_{q}[X, Z], \text{ homogeneous with } \deg(F) \leq k - 1\right\}
+  \end{equation*}
+  We will show that $L(G) = V$. Since every $f = F(X, Z) / Z^{k - 1} \in V$ has the property that $F$ is homogeneous we may write $f = \sum_{i = 0}^{k - 1} a_{i} f_{i}$, where $f_{i} = (X / Z)^{i}$. Then $t = Z / X$ is an uniformizing parameter of $\mathcal{O}_{P_{\infty}}(\mathcal{X})$ by Proposition \ref{prop:uniformizing_parameter}. Hence,
+  \begin{equation*}
+  v_{P_{\infty}}(f) = v_{P_{\infty}}\left(\sum_{i = 1}^{k - 1} a_{i} f_{i}\right) = \max \left\{v_{P_{\infty}}(a_{i} f_{i}) \mid 1 \leq i \leq k - 1\right\} = -\max \left\{i \mid a_{i} \neq 0\right\}.
+  \end{equation*}
+  Where the second equality follows from Theorem \ref{thm:vp_is_dv} and the third equality from the fact that $a_{i} f_{i} = a_{i} t^{-i}$. Since $f$ is defined at all points, except $P_{\infty}$ we have that $(f)_{\infty} = -v_{P_{\infty}}(f) P_{\infty}$, and since $v_{P_{\infty}} \leq k - 1$ we have $f \in L(G)$.
+
+  From this it follows that it is sufficient to prove that $\dim(V) = \ell(G)$, as we have shown that $V \subseteq L(G)$.
+  Clearly $\dim(V) = k$ as $f_0, f_1, \ldots, f_{k - 1}$, forms a basis of $V$, however we also have that $\ell(G) = k$, by Corollary \ref{cor:degree_less_than_2g-2} since $\mathcal{X}$ has genus $0$.
+\end{example}
+
+%\begin{proposition}\label{prop:existence_of_laurent_series}
+%  Let $t$ be a uniformizing parameter of $\mathcal{O}_{p}(\mathcal{X})$ and $f \in \mathcal{O}_{p}(\mathcal{X})^{*}$, with $v_{p}(f) = m$. Then there exists $a_m, a_{m + 1}, \ldots \in \cF_{q}$, with $a_{m} \neq 0$ such that $f = \sum_{i = m}^{\infty} a_{i}t^{i}$
+%\end{proposition}

@@ -1,0 +1,55 @@
+Unless otherwise specified the definitions and results in this section will be based on those found in \cite{lang}[Section 5.2].
+Later when we will introduce the theory of algebraic geometry, we will be considering polynomials over a field, since we are interested in the geometry of the zero sets of these polynomials, it would be nice to know that our non-constant polynomials has at least one root.
+% Most of the theory of algebraic geometry assumes that we are working over fields, where polynomials always has at least one root. It is thus natural to introduce the following definition.
+\begin{definition}\label{def:alg_closed}
+  Let $\F$ be a field, if there for all $F \in \F[X] \backslash \F^*$, exists an $\alpha \in \F$ such that $F(\alpha) = 0$. Then $\F$ is said to be \textit{algebraically closed}.
+\end{definition}
+\begin{remark}
+  We often denote an arbitrary closed field with the letter $\K$.
+\end{remark}
+\begin{example}\label{exmp:complex}
+  The complex numbers $\mathbb{C}$ is perhaps the most well known algebraically closed field.
+\end{example}
+Later when we try to apply algebraic geometry to error correcting codes we will be working with finite fields. These fields are however not algebraically closed, as we will show in the following proposition.
+\begin{proposition}\label{prop:finite_fields_arent_algebraicly_closed}
+  Let $\F_{q}$ be a finite field, then $\F_{q}$ is not algebraically closed.
+  %Let $p$ be prime and $n \in \N \backslash \{0\}$, then $\F_{p^{n}}$ is not algebraically closed.
+\end{proposition}
+\begin{proof}
+  We will enumerate the distinct elements of $\mathbb{F}_{q}$ as $a_{0}, \ldots, a_{q - 1}$, since $\mathbb{F}_{q}$ is finite. Consider the polynomial $F = 1 + \prod^{q - 1}_{k = 0} (a_{k} - X) \in \F_{q}[X] \backslash \F_{q}^{*}$. If $\alpha \in \F_{q}$ then
+  \begin{equation*}
+    F(\alpha) = 1 + \prod^{q - 1}_{k = 0} (a_{k} - \alpha) = 1,
+  \end{equation*}
+  since $\alpha = a_{k}$ for some $k \in \{0,1, \ldots, q - 1\}$. Hence, $F$ has no roots in $\F_{q}$. Hence $\mathbb{F}_{q}$ is in fact not algebraically closed.
+\end{proof}
+
+%\begin{definition}
+%  Let $\mathbb{K}$ be a field, if $\F \subseteq \mathbb{K}$ is a subfield, we say that $\mathbb{K}$ is a \textbf{field extension} of $\F$, also written $\mathbb{K} / \F$.
+%\end{definition}
+%If $\mathbb{K}$ is a field, and $\F, \mathbb{L} \subseteq \mathbb{K}$, are both subfields, such that $\mathbb{L} \subseteq \mathbb{F}$, then $\mathbb{L}$ is called an \textit{intermediate field}  of the field extension $\mathbb{K} / F$. If $\mathbb{L} \subset \mathbb{F}$ we instead say that $\mathbb{L}$ is a \textit{proper intermediate field}.
+%Finally suppose $\mathbb{K}$ and $\mathbb{L}$ are both field extensions of $\mathbb{F}$, then a isomorphism $\phi: \mathbb{K} \to \mathbb{L}$ with $\phi(x) = x$ for all $x \in \mathbb{F}$ is called a \textit{$\mathbb{F}$-isomorphism} and $\mathbb{K}$ and $\mathbb{L}$ is said to be \textit{$\mathbb{F}$-isomorphic}.
+%
+%\begin{definition}
+%  Let $\mathbb{K} / \F$ be a field extension, then $a \in \mathbb{K}$ is called \textbf{algebraic} over $\F$, if there exists $f \in \F[x]$ such that $f(a) = 0$, otherwise $a$ is called \textbf{trancendental}. If all $a \in \mathbb{K}$ are algebraic over $\F$, then $\mathbb{K}$ is called an \textbf{algebraic extension} of $\F$.
+%\end{definition}
+
+\begin{definition}
+  Let $\mathbb{K}$ be a field, if $\F \subseteq \mathbb{K}$ is a subfield, we say that $\mathbb{K}$ is a \textit{field extension} of $\F$, which we denote $\mathbb{K} / \F$. The field extension $\mathbb{K}/\F$ is called an \textit{algebraic closure} of $\F$, if $\mathbb{K}$ is algebraically closed.
+\end{definition}
+\begin{remark}
+  Our definition of algebraic closures, is less strict than the standard definition where an algebraic closure is required to be the smallest algebraically closed field extension. In this stricter setting the algebraic extension is unique, however our definition is sufficient for the scope of this project.
+\end{remark}
+\begin{remark}\label{rem:existence_of_alg_closure}
+  It can be shown that if $\mathbb{F}$ is an arbitrary field, then there exists an algebraic closure of $\mathbb{F}$, see for instance \cite{Galois_theory}[Section 5.3].
+\end{remark}
+
+Instead of proving the  result stated in Remark \ref{rem:existence_of_alg_closure}, we will restrict ourselves and only show the case where $\mathbb{F}$ is a finite field, with a prime number of elements.
+
+The proof will be based on the ideas found in \cite{Galois_theory}[Proof of Theorem 2.2.6] and \cite{alg_lauritzen}[Remark 4.6.8].
+\begin{theorem}\label{prop:algebraic_closure_of_finite_field}
+   Let $p$ be prime, then $\cF_{p} := \bigcup_{n = 1}^{\infty} \F_{p^{n}}$ is an algebraic closure of $\F_p$.
+ \end{theorem}
+ \begin{proof}
+   Let $F \in \cF_{p}[X]$ then there exists $n \in \N$ such that $F \in \F_{p^{n}}[X]$.
+   We can without loss of generality assume $F$ to be irreducible, otherwise write $F$ as a product of irreducible polynomials and continue the proof by replacing $F$ with one of its irreducible factors. Then $F := \F_{p}[X] / \gen{F}$ is a finite field with $p^{\deg(F)}$ elements. This in turn imply that $F \cong \F_{p^{\deg(F)}}$, since finite fields with the same number of elements are isomorphic. Furthermore we have $[X] \in F$ and $F([X]) = 0 \in F$, this combined with the fact that $F$ is isomorphic to a subfield of $\cF_{p}$ implies that $F$ must have a root in $\cF_{p}$.
+ \end{proof}

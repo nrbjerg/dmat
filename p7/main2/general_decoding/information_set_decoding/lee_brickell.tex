@@ -1,0 +1,39 @@
+ \subsection{Lee-Brickell's Algorithm}
+ The next algorithm, due to Lee and Brickell is a natural generalization of plain information set decoding, which allows for a number of errors $p$ in the recived word $y$, more specifically given an information set $I$ we allow $y_I$ to have $p$ corrupted entries.
+
+ \begin{algorithm}[H]
+ \caption{Lee-Brickell's algorithm for information set decoding}\label{alg:lee-brickell}
+ \begin{algorithmic}
+   \Procedure{Lee-Brickell ISD}{$G$: a generator matrix of $[n,k]_q$ code, $y$: recived word,
+     \newline\phantom{\textbf{procedure} \textsc{LEE-Brickell ISD}}$t$: number of errors, $p$: an integer such that $0 \leq p \leq t$}
+  \For{$I \in \Call{IS Generator}{G, false}$}
+  \State $y' \gets y - y_I G_I^{-1}G$
+  \For{$J = \left\{j_1, j_2 \ldots, j_{p}\right\} \subseteq I$ such that $\abs{J}=p$}
+  \For{$m \in (\mathbb{F}_q^*)^{p}$}
+    \State $e \gets y' - \sum_{i=1}^p m_i g_{*, j_i}$
+    \If{$\wt(e) = t$}
+    \State \Return $e$
+    \EndIf
+  \EndFor
+  \EndFor
+  \EndFor
+  \EndProcedure
+ \end{algorithmic}
+ \end{algorithm}
+ Since we have $\binom{k}{p}$ subsets $J$ of $I$ such that $\abs{J} = p$, we should keep the parameter $p$ relatively small compared to $k$.  \textcolor{blue}{what about the binary case}
+
+ When we pick $J \subseteq I$ such that $\abs{J} = p$ and check if $\wt(y' - \sum_{i=1}^p m_ig_{j_{i}}) = t$ for all $m \in (\mathbb{F}_q^{*})^{p}$, we are checking if there is exactly $p$ symbols in $y_I$ which are corrupted. This gives rise to a natural question, mainly: ``Why not simply check the condition for all $m \in \mathbb{F}_q^{p}$, instead of $m \in (\mathbb{F}_q^{*})^{p}$?'' As this would allow for decoding $y$ as long as $y_I$ has $p$ or fewer errors. It is a matter of minimizing the expected work, if we chose $m \in \mathbb{F}_q^{p}$ the inner loop in Algorithm \ref{alg:lee-brickell} would have to perform $q^p$ iterations. On the otherhand picking $m \in (\mathbb{F}_q^{*})^{p}$ the loop only have to perform $(q - 1)^p$ iterations. Additionally as we noted in Remark \ref{rem:information_set_alg}, the overhead of the process of finding an information set, after we have computed the first information set, is very low.
+
+For a given information set $I$ the probability for the algorithm successfully decoding $y$ is:
+\begin{equation*}
+  \mathbb{P}(\abs{I \cap \support(e)} = p) = \binom{n - k}{t - p}\binom{k}{p}\binom{n}{t}^{-1}
+\end{equation*}
+Since we must have $t - p$ errors in the symbols of $y_{\left\{1, \ldots, n\right\} \setminus I}$ and $\binom{n}{t}$ possible error vectors. Additionally the work performed iteration, given that it is unsuccessful is about:
+\begin{equation*}
+  W_I = \alpha k^3 \binom{k}{p} (q - 1)^{p}
+\end{equation*}
+Since we have to compute $G_I^{-1}$, and $G_I^{-1}G$ have to chose $J \subseteq I$ such that $\abs{J} = p$ and for each $J$ we compute $y' - \sum^p_{i = 1} m_i g_{*, j_i}$, with $m \in (\mathbb{F}_q^{*})^{p}$. Combining these facts we get that the expected work factor of Lee-Brickell's algorithm is about:
+\begin{equation*}
+  W = \alpha k^{3} \binom{k}{p} (q - 1)^p\dfrac{\binom{n}{t}}{\binom{n - k}{t - p}\binom{k}{p}} = \alpha k^3 (q - 1)^{p} \dfrac{\binom{n}{t}}{\binom{n - k}{t - p}}
+\end{equation*}
+again, since we are computing the expected value of a geometric distribution.

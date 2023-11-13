@@ -1,0 +1,158 @@
+% Created 2023-09-15 Fri 09:54
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\author{Martin Sig Nørbjerg}
+\date{\today}
+\title{Itinerary}
+\hypersetup{
+ pdfauthor={Martin Sig Nørbjerg},
+ pdftitle={Itinerary},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 27.1 (Org mode 9.7)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+
+\newpage
+\section{1. Meeting}
+\begin{enumerate}
+\item I would like to go over how the definition of Goppa codes in the notes, relate with the classical definition using Riemann Roch spaces.
+\begin{itemize}
+\item Goppa codes  werent actually the codes constructed on AG geometry.
+\item We normally use sub field sub codes.
+\item In addition how i should addapt Patterson's algorithm to use our approach? Alternatively I might use the approach explained in AG codes and some applications. (The PDF i sent to you previusly.)
+\begin{itemize}
+\item Go through the notes.
+\end{itemize}
+\item What is the difference between syndrome decoding algorithms and regular decoding algorithms?
+\begin{itemize}
+\item Syndrome decoding grows in exponential time.
+\end{itemize}
+\end{itemize}
+
+\item Questions about the McEliece cryptosystem:
+\begin{itemize}
+\item Why do we use AG codes instead of say RS codes, I am guessing that it is because the family of codes are larger and hence more secure is this correct or is there other factors at play?
+\begin{itemize}
+\item Nice question: we should be very carefull when choosing our code, we need it to have very little structure.
+\item Sub field sub codes.
+\item The structure can be extracted by looking at the generator matrix.
+\end{itemize}
+
+\item They also mention that any other alternant code might also provide an equivalently good security, should I investigate alternant codes?
+\begin{itemize}
+\item NO! forget it. Maybe have a look at McWiliams Lund.
+\end{itemize}
+
+\item Our public key is given by \(PGS\) where \(G\)  is our generator matrix, \(P \in \mathbb{F}_q^{n \times n}\) is a permutation matrix and \(S \in \mathbb{F}_q^{k \times k}\) is non-singular. But why do we multiply the message by a random non-singular matrix? and how do we know for sure that \(PGS\) isn't simply a generator matrix of another algebraic geometry code?
+\begin{itemize}
+\item We get an equivalent code. (They have the same properties.) This should look more like a random code.
+\end{itemize}
+
+\item Why do we use our error to have weight exactly \(t\) (our error correcting radius), instead of picking some weight \(\leq t\), wouldn't this increase the size of the search space?
+\begin{itemize}
+\item If we take error \(\leq t\) it is easier to decode. There are also algorithms for decoding \(\geq t\), however
+\end{itemize}
+\end{itemize}
+
+\item We will go with sage.
+\end{enumerate}
+
+\newpage
+\section{2. Meeting}
+\label{sec:orga561fc3}
+\begin{enumerate}
+\item Syndrome Decoding:
+\begin{itemize}
+\item Last meeting you mentioned that the syndrome decoding algorithm grows in exponential time, (is this with respect to the number of errors, the dimension or length of the code. Or is it a combination?) also do you have a source that i may reference?
+
+\item What is \textbf{complete} nearest neighbour decoding, i have heard of nearest neighbour decoding, what is the difference between the ``regular'' nn decoding and ``complete'' nn decoding?
+\end{itemize}
+
+\item Information Set Decoding:
+\begin{itemize}
+\item Does my algorithm for computing information sets work (please see the lemma and algorithm below)? Most sources refer to different algorithms, where you for instance simply pick \(k\) columns uniformly and check for their independence, alternatively they also mention an algorithm where check if each new coloumn we add to our set is linearly independent of the previus columns.
+\begin{itemize}
+\item I fear that my algorithm may not produce every single information set.
+\end{itemize}
+\begin{lemma}\label{lem:new_information_sets}
+  Let $G \in \mathbb{F}_q^{k \times n}$ be the generator matrix of code $\mathcal{C}$, and $G'$ be $G$ reduced to row echelon form. Let $I'$ be the tuple consisting of the indicies of the $k$ pivot columns of $G$ sorted with repsect to the canonical order $\leq$ on $\mathbb{N}$, then any set of the form $\left\{i_1, i_2 \ldots, i_{k}\right\}$ with $i_j \in \mathbb{N}$ and $G'_{i_j,j} \neq 0$ such that $I'_j \leq i_j < I'_{j + 1}$ for all $j < k$ and $I'_k \leq i_k \leq n$.
+\end{lemma}
+\begin{proof}
+  Suppose $\left\{i_1, i_2 \ldots, i_{k}\right\}$ is such a set, then there exists a permutation matrix such that $P \in \mathbb{F}_q^{n \times n}$ such that the pivot columns in $GP$ has indicies $i_1, i_2 \ldots, i_{k}$, since $G_{i, j} \neq 0$. Hence the columns $g_{i_1}, g_{i_2} \ldots, g_{i_{k}}$ are $\mathbb{F}_q$-linearly independent and thus $\{i_1, i_2 \ldots, i_{n}\}$ forms an information-set.
+\end{proof}
+
+\begin{algorithm}[H]
+\caption{Construction of information sets}\label{alg:information_set}
+\begin{algorithmic}
+  \Procedure{IS Generator}{$G$: a generator matrix of $[n,k]_q$ code}
+  \State $G' \gets G$ reduced to row echelon form
+  \State $I' \gets$ The tuple consisting of the indicies of the $k$ pivot columns in $G'$
+  \For{$I \in \left\{\left\{i_1, i_2 \ldots, i_{k}\right\} | i_j \in \mathbb{N} : G'_{i_{j},j} \neq 0, I'_{j} \leq i_{j} < I_{j + 1} \text{ for } j < k, I'_{k} \leq i_k \leq n \right\}$}
+    \State \textbf{yield} $I$ \Comment{chosen uniformly and without replacement}
+  \EndFor
+  \EndProcedure
+%  \\
+%  \Procedure{RIS Generator}{$G$: a generator matrix of $[n,k]_q$ code}
+%  \State $G' \gets G$ reduced to row echelon form
+%  \State $I' \gets$ The tuple consisting of the indicies of the $k$ pivot columns in $G'$
+%  \Loop
+%  \State \textbf{yield} a random set, chosen uniformly, of the form:
+%     \begin{equation*}
+%       \left\{\left\{i_1, i_2 \ldots, i_{k}\right\} | i_j \in \mathbb{N} : G'_{i_{j},j} \neq 0, I'_{j} \leq i_{j} < I_{j + 1} \text{ for } j < k, I'_{k} \leq i_k \leq n \right\}
+%     \end{equation*}
+%  \EndLoop
+%  \EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+
+\item In plain ISD we look for a information set \(I\) such that \(wt(y - y_IG_I^{-1}G) \leq t\), where \(y\) is the recived word and \(t\) is the number of allowed errors, why is this less than or equal to \(t\) and not simply equal? (This is regards to p7\_r3 i.e. the phd thesis of Carl Löndahl)
+\end{itemize}
+
+\item General Questions:
+\begin{itemize}
+\item I really want to try decoding of algebraic geometry codes if possible, i can't get it out of my head, hence i have been looking around for proofs of the fact that classical goppa codes are algebraic geometry codes (or atleeast subfield subcodes), in this setting i was wondering about the following question:
+\begin{itemize}
+\item If \(\mathcal{C}\) is a \([n, k, d]_q\) code, with an efficient decoding algorithm \(dec_\mathcal{C}\) and \(\mathcal{C}*\) is a subfield subcode of \(\mathcal{C}\), is there a way to modify \(dec_{\mathcal{C}}\) to work for \(C^{*}\)?
+\end{itemize}
+\end{itemize}
+\end{enumerate}
+
+\newpage
+\section*{3. Meeting}
+\begin{enumerate}
+  \item I'm a little uncertain how the security level (in bits) is computed. My understanding is that it measures the average number of operations needed to crack the encryption by our current best algorithm. However this does not sound very objective. And wouldn't the security level drop over time as we develop new and better algorithms?
+  \item Should I look into list decoding (or only if I have time at the end of the project)
+  \item With regards to information set decoding, I have written sections about plain information set decoding and Lee-Brickell's algorithm and computed the expected work factor of each. I know that there exists a better algorithms (sterns) however I don't really find the topic of information set decoding very interesting compared to the rest of the topics, so I am wondering if I could simply explain the algorithm, and skip computing the expected work factor (perhaps simply reference a source instead.)
+  \item Both the basic and error correcting pairs algorithms require us to have the ability to efficiently compute bases for Riemann-Roch spaces, I found the paper ``Computing Riemann-Roch spaces in Algebraic Function Fields and Related Topics'', by F. Hess. It seems good but VERY technical and takes the approach of algebraic function fields instead of the approach using algebraic geometry which I'm more familiar with. Do you have an alternative source?
+  \begin{itemize}
+  \item I think that it will be sufficient with a way to compute bases for plane projective curves. Please correct me if I'm wrong.
+  \end{itemize}
+  \item With regards to differentials and derivations, why is derivations only required to be $\mathbb{F}$-linear (where $\mathbb{F}$ is our ground field) while differentientials etc. are required to be $\mathbb{F}(\mathcal{X})$ linear.
+  \item Do you know of a proof of the following theorem or do you know of a source which proves it? Found it in ``Codes, Cryptology and Curves with Computer Algebra'' by Ruud Pellikaan and others, but they do not provide a proof / source:
+        \begin{itemize}
+\item Let $t$ be a local parameter at $P \in \mathcal{X}$. Then there exists a unique derivation $D_t: \mathbb{F}(\mathcal{X}) \to \mathbb{F}(\mathcal{X})$ such that $D_t(t) = 1$.
+        \end{itemize}
+  \item On a more personal note, I could use some career advice as I'm unsure if I should try to go into academia or go into industry:
+    \begin{itemize}
+      \item What sorts of jobs can we get in the industry as discrete mathematicians?
+      \item Do you know of any companies in the area, that I could look into to get an idea for the sort of work?
+      \item What could a path into academia look like?
+    \end{itemize}
+\end{enumerate}
+
+\end{document}

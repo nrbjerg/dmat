@@ -1,0 +1,79 @@
+\subsection{Projective Spaces}\label{sec:projective_spaces}
+Next we will define protective spaces, we define these to introduce the notion of points at infinity. To illustrate why such a notion might be usefull consider the two curves, defined by the polynomial equations $XY - 1 = 0$ and $X = 0$ respectively. Then the two curves do not intersect, however they do approach each other asymptotically, it is in this setting that we would like to say that the two curves intersect at infinity.
+\begin{definition}
+  The \textit{$n$-dimensional projective space} over $\K$ written $\mathbb{P}^n$ is the set of equivalence classes on $\mathbb{A}^{n + 1} \setminus \left\{(0, 0, \ldots, 0)\right\}$, corresponding to the equivalence relation
+  \begin{equation*}
+    (a_1, a_2, \ldots, a_{n + 1}) \sim (b_1, b_2, \ldots, b_{n + 1}) \iff \exists \lambda \in \K^{*} \text{ such that } b_i = \lambda a_i
+  \end{equation*}
+  for all $i = 1, 2, \ldots, n + 1$. The elements in $\mathbb{P}^{n}$ are called \textit{projective points} or simply \textit{points}.
+\end{definition}
+Most of the definitions and results which are stated and proved for affine spaces and their subsets have projective counterparts.
+
+One can identify the elements in $\mathbb{P}^{n}$ with the lines in $\mathbb{A}^{n + 1}$, as two points in $\mathbb{A}^{n + 1} \setminus \left\{\left(0, 0, \ldots, 0\right) \right\}$ are equivalent if and only if they lie on the same line, though the origin. If $(x_1, x_2, \ldots, x_{n + 1}) \in \mathbb{A}^{n + 1}$ is a representative of the equivalence class $P \in \mathbb{P}^{n}$ we call $x_1, x_2, \ldots, x_{n + 1}$ \textit{homogeneous coordinates} for $P$ and we write $P = [x_1: x_2 :  \cdots: x_{n + 1}]$.
+
+We let $U = \left\{\left[x_{1} : x_{2} : \cdots : x_{n + 1}\right] \in \mathbb{P}^{n} \mid x_{n + 1} \not= 0\right\}$. The function $\varphi \colon \mathbb{A}^n \to U$, defined as $\varphi(x_1, x_2, \ldots, x_{n}) = \left[x_{1} : x_{2} :  \cdots : x_{n} : 1\right]$, defines a bijection and thus there is a one to one correspondence between the elements in  $\mathbb{A}^{n}$ and $U$. We define the \textit{hyperplane at infinity}
+\begin{equation*}
+  H_{\infty} := \mathbb{P}^n \setminus U = \mathbb{P}^n \setminus \varphi(\mathbb{A}^{n}) = \left\{\left[x_{1} : x_{2} : \cdots : x_{n + 1}\right] \middle| x_{n + 1} = 0\right\}.
+\end{equation*}
+The point $\left[x_{1} : x_{2} : \cdots : x_{n}\right] \in \mathbb{P}^{n - 1}$ corresponds to the point $\left[x_{1} : x_{2} : \cdots : x_{n} : 0\right] \in \mathbb{P}^{n}$ which shows that $\mathbb{P}^{n-1}$ can be identified with $H_{\infty}$. Hence $\mathbb{P}^{n}$ can be thought of as the union between a set corresponding to $\mathbb{A}^{n}$ and a set corresponding to $\mathbb{P}^{n - 1}$.
+
+Given a polynomial $F \in \K[X_1, X_2, \ldots, X_{n + 1}]$, we need to be careful when defining if $F$ has a root at a projecitve point $[x_{1} : x_{2} : \cdots : x_{n + 1}] \in \mathbb{P}^{n}$, as it is not generally the case that $F(x_1, x_2, \ldots, x_{n + 1}) = 0$ implies $F(\lambda x_1, \lambda x_2, \ldots, \lambda x_{n+1}) = 0$ for all $\lambda \in \K^{*}$. Even though $(x_1, x_2, \ldots, x_{n + 1}) \sim (\lambda x_1, \lambda x_2, \ldots, \lambda x_{n})$ for all $\lambda \in \K^{*}$.
+
+One situation where this is the case is when $F$ is a homogeneous polynomial of degree $d$. Then we can write $F = \sum^{k}_{i = 1} c_i G_{i}$, where $c_{1}, c_{2}, \ldots, c_{k} \in \K^{*}$ and $G_{1}, G_{2}, \ldots, G_{k} \in \K[X_1, X_2, \ldots, X_{n + 1}]$ are monomials of degree $d$. If we evaluate $F$ at $(\lambda x_1, \lambda x_2, \ldots, \lambda x_{n + 1})$ we see that:
+\begin{align*}
+  F(\lambda x_1, \lambda x_2, \ldots, \lambda x_{n + 1}) &= \sum^k_{i = 1} c_i G_i(\lambda x_1, \lambda x_2, \ldots, \lambda x_{n + 1}) \\
+                                                         &= \sum^{k}_{i = 1} c_{i} \lambda^{d} G_{i}(x_1, x_2, \ldots, x_{ n+ 1}) = \lambda^{d} \cdot F(x_1, x_2, \ldots, x_{n + 1})
+\end{align*}
+Now since $\K$ is a field, and hence a domain, we see that $F(\lambda x_1, \lambda x_2, \ldots, \lambda x_{n+1}) = 0$ if and only if $F(x_1, x_2, \ldots, x_{n + 1}) = 0$.
+
+\begin{definition}
+  Let $F \in \K[X_1, X_2, \ldots, X_{n + 1}]$. Then $F$ has a \textit{projective root} at $P = [x_{1} : x_{2} : \cdots : x_{n + 1}] \in \mathbb{P}^{n}$ if $F(\lambda x_1, \lambda x_2, \ldots, \lambda x_{n + 1}) = 0$ for all $\lambda \in \K^{*}$. The \textit{projective zero set} of a subset $S \subseteq \K[X_1, X_2, \ldots, X_{n + 1}]$ is defined as
+  \begin{equation*}
+    V_{\mathbb{P}}(S) := \left\{P \in \mathbb{P}^{n} \mid F \text{ has a projective root at } P, \text{ for all } F \in S \right\}
+  \end{equation*}
+  A subset $V \subseteq \mathbb{P}^{n}$ is called \textit{algebraic} if, there exists $S \subseteq \K[X_1, X_2, \ldots, X_{n + 1}]$ such that $V = V_{\mathbb{P}}(S)$
+\end{definition}
+
+\begin{remark}
+  Like the algebraic subsets of $\mathbb{A}^{n}$, the algebraic subsets of $\mathbb{P}^{n}$ form the closed sets of an topology on $\mathbb{P}^{n}$, this topology is also refereed to as the \textit{zariski topology} on $\mathbb{P}^{n}$. We will however not prove this, but the interested reader can have a look at \cite{Fulton}[Section 6.1].
+\end{remark}
+
+\newpage
+We likewise define the ideal of a set of projective points, analogously to the definition given for subsets of an affine space.
+
+\begin{definition}\label{def:projective_ideal}
+  Let $V \subseteq \mathbb{P}^{n}$, then the \textit{vanishing ideal} of $V$ is defined as
+  \begin{equation*}
+    I_{\mathbb{P}}(V) := \left\{F \in \K[X_1, X_2, \ldots, X_{n+1}] \mid F \text{ has a projective root at } P \text{ for all } P \in V \right\}
+  \end{equation*}
+\end{definition}
+
+Finally we introduce a way to transform a polynomial $F \in \K[X_1, X_2, \ldots, X_{n}]$ to a homogeneous polynomial in $\K[X_1, X_2, \ldots, X_{n + 1}]$, and by extension we show how affine algebraic sets correspond to projective ones and vice versa.
+\begin{definition}
+  Let $F \in \K[X_1, X_2, \ldots, X_{n}]$ then the \textit{homogenisation} of $F$ denoted $F^{*} \in \K[X_1, X_2, \ldots, X_{n +1}]$ is then defined as
+  \begin{equation*}
+    F^{*} = X_{n + 1}^{\deg(F)} F(X_{1} / X_{n + 1}, X_{2} / X_{n + 1}, \ldots, X_{n} / X_{n + 1})
+  \end{equation*}
+  Furthermore for an ideal $I \subseteq \K[X_1, X_2, \ldots, X_{n}]$ we define it's \textit{homogenisation} as $I^{*} := \left\{F^* \mid F \in I\right\}$. \\
+  On the contrary suppose $G \in \K[X_1, X_2, \ldots, X_{n + 1}]$, then the \textit{dehomogenisation} of $G$ denoted $G_{*} \in \K[X_1, X_2, \ldots, X_{n}]$ is defined as:
+  \begin{equation*}
+    G_{*}(X_1, X_2, \ldots, X_{n}) := G(X_1, X_2, \ldots, X_{n}, 1)
+  \end{equation*}
+  If $I \subseteq \K[X_1, X_2, \ldots, X_{n + 1}]$ is an ideal, we define it's \textit{dehomogenisation} as $I_{*} := \left\{G_{*} \middle| G \in I\right\}$.
+\end{definition}
+ If $V$ is an affine algebraic set, we let $I := I(V)$ and we define the \textit{projective closure} of $V$ as
+ $V^{*} = V_{\mathbb{P}}(I^{*})$, conversely if $V$ is a projective algebraic set, we let $I := I_{\mathbb{P}}(V)$ and define $V_{*} = V(I_{*})$.
+
+
+%We will investigate the structure of $I_{\mathbb{P}}(V)$ more closely before moving on.
+%\begin{definition}\label{def:homogeneous_ideal}
+%  Let $I \subseteq \K[X_1, X_2, \ldots, X_{n + 1}]$ be an ideal then $I$ is called \textit{homogeneous} if every $F \in I$ can be written as $F = \sum^m_{i = 0} F_{i}$, for some $m \in \mathbb{N}$ and $F_0, F_1, \ldots, F_{m} \in I$ such that $F_i$ is a form of degree $i$.
+%\end{definition}
+%
+%\begin{lemma}\label{lem:vanishing_ideal_is_homogeneous}
+%  Let $V \subseteq \mathbb{P}^{n}$ be an algebraic set, then $I_{\mathbb{P}}(V)$ is a homogeneous ideal.
+%\end{lemma}
+%\begin{proof}
+%  Clearly $I_{\mathbb{P}}(X)$ is an ideal in $\K[X_1, X_2, \ldots, X_{n + 1}]$, hence it is finitely generated by Hilbert's Basis Theorem \ref{thm:hbt}. Suppose $G_1, G_2, \ldots, G_{k}$ generate $I_{\mathbb{P}}(X)$. Each $G_{i}$ can be written uniquely as $G_{i} = \sum_{j = 1}^{m_{i}} H_{i, j}$ for some $m_{i} \in \mathbb{N}$ and forms $H_{i, 1}, H_{i, 2}, \ldots, H_{i, m} \in \K[X_1, X_2, \ldots, X_{n + 1}]$ such that $\deg(H_{i, j}) = j$.
+%  Now as $G_1, G_2, \ldots, G_{k}$ generate $I_{\mathbb{P}}(V)$ then the set of forms $H_{i, j}$ where $i \in \left\{1, 2, \ldots, k\right\}$ and $j \in \left\{1, 2, \ldots, m_{i}\right\}$ also generate $I_{\mathbb{P}}(V)$. Hence each polynomial in $I_{\mathbb{P}}(X)$ may be written as the sum of forms.
+%\end{proof}

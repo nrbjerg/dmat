@@ -1,0 +1,60 @@
+This is BibTeX, Version 0.99d (TeX Live 2022/dev/Debian)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: master.aux
+The style file: abbrvnat.bst
+A level-1 auxiliary file: incl/misc/frontpage.aux
+A level-1 auxiliary file: incl/misc/titlepage.aux
+A level-1 auxiliary file: incl/misc/preface.aux
+A level-1 auxiliary file: incl/misc/contents.aux
+A level-1 auxiliary file: incl/misc/notation.aux
+A level-1 auxiliary file: main/introduction.aux
+A level-1 auxiliary file: main/code_based_crypto/index.aux
+A level-1 auxiliary file: main/AG_codes/index.aux
+A level-1 auxiliary file: main/decoding_of_AG_codes/index.aux
+A level-1 auxiliary file: main/classical_goppa/index.aux
+A level-1 auxiliary file: app/np.aux
+A level-1 auxiliary file: questions.aux
+Database file #1: incl/bib/books.bib
+Database file #2: incl/bib/articles.bib
+Database file #3: incl/bib/software.bib
+You've used 18 entries,
+            2773 wiz_defined-function locations,
+            716 strings with 7375 characters,
+and the built_in function-call counts, 6653 in all, are:
+= -- 602
+> -- 286
+< -- 17
++ -- 103
+- -- 85
+* -- 439
+:= -- 1056
+add.period$ -- 64
+call.type$ -- 18
+change.case$ -- 81
+chr.to.int$ -- 18
+cite$ -- 36
+duplicate$ -- 352
+empty$ -- 604
+format.name$ -- 109
+if$ -- 1406
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 18
+newline$ -- 106
+num.names$ -- 74
+pop$ -- 188
+preamble$ -- 1
+purify$ -- 64
+quote$ -- 0
+skip$ -- 259
+stack$ -- 0
+substring$ -- 144
+swap$ -- 35
+text.length$ -- 2
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 163
+warning$ -- 0
+while$ -- 64
+width$ -- 0
+write$ -- 257

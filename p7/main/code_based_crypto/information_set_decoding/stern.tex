@@ -1,0 +1,52 @@
+\subsubsection{Sterns Algorithm}
+During this subsection we fix a $[n, k]_q$ code $\mathcal{C}$ furthermore for the sake of simplicity we assume that $k$ is even. Let $G$ be a generator matrix of $\mathcal{C}$. The main idea of Stern's algorithm is to split $G$ into two sub matrices each with $p$ rows, and check if the linear combinations of said rows, overlap at certain indices. If we find a match, then we the weight of the remaining (non-overlapping) part. If it has weight $t$ then we have found error vector.
+\begin{algorithm}[H]
+\caption{Stern's algorithm for information set decoding}\label{alg:stern}
+\begin{algorithmic}
+  \Procedure{Stern ISD}{$G$: a generator matrix of $\mathcal{C}$, $\ell$: an integer with $0 \leq \ell \leq n - k$,
+    \newline\phantom{\textbf{procedure} \textsc{Stern ISD}(}$p$ an integer with $0 \leq p \leq t$, $y$: received word with a maximum \newline\phantom{\textbf{procedure} \textsc{Stern ISD}(}of $t$ errors}
+  \Loop
+  \State $I \in \Call{IS Generator}{G, true}$ \Comment{Chosen with replacement}
+  \State $y' \gets y - y_I G_I^{-1}G$
+  \State Choose $X \subseteq I$ uniformly such that $\abs{X} = k / 2$
+  \State $Y \gets I \setminus X$
+  \State Choose $Z \subseteq \left\{1, 2, \ldots, n\right\} \setminus I$ such that $\abs{Z} = \ell$
+  \For{$A = \left\{a_1, a_2, \ldots, a_{p}\right\} \subseteq X$, $B = \left\{b_1, b_2, \ldots, b_{p}\right\} \subseteq Y$ with $ \abs{A} = \abs{B} = p$}
+  \State $(\mathcal{V}_A, \mathcal{V}_{B}) \gets \left(\left\{y - \sum_{i = 1}^p m_i g_{*, a_i} | m \in (\mathbb{F}_q^{*})^p\right\}, \left\{y - \sum_{i = 1}^p m_i g_{*, b_i} | m \in (\mathbb{F}_q^{*})^p\right\}\right)$
+  \For{$a \in \mathcal{V}_A, b \in \mathcal{V}_B$ with $a_i = b_i$ for all $i \in Z$}
+    \State $e \gets a - b$
+    \If {$\wt(e) = t$}
+    \State \Return $y - e$
+    \EndIf
+    \EndFor
+  \EndFor
+  \EndLoop
+  \EndProcedure
+\end{algorithmic}
+\end{algorithm}
+\begin{remark}
+  Contrary to the approach in Algorithms \ref{alg:plain_ISD} and \ref{alg:lee-brickell}. The information sets $I$, in Algorithm \ref{alg:stern}, are chosen with replacement, since $X, Y \subseteq I$ are choosen uniformly, hence we cannot simply iterate through each information set once. (Since we may not pick the ``correct'' sets $X$ and $Y$ for a given iteration)
+\end{remark}
+
+We will not discuss the expected work factor of Sterns algorithm, instead we refer to \cite{information_set_decoding}[Sections 4 and 5].
+
+%\textcolor{red}{\textbf{TODO}} succes prob and expected work
+%
+%Let $I$ be a information set chosen uniformly at random and $e \in \mathbb{F}_q^n$ with $\wt(e) = t$. Then
+%\begin{equation*}
+%  \mathbb{P}(\wt(e_I) = 2p) = \frac{\binom{k}{2p}\binom{n - k}{t - 2p}}{\binom{n}{t}}
+%\end{equation*}
+%Since we will have $2p$ errors in the entries specified by $I$ and $t - 2p$ in the rest. If $X,Y, Z$ are chosen as described in Algorithm \ref{alg:stern}, then
+%\begin{equation*}
+%  \mathbb{P}(\wt(e_X) = \wt(e_Y) = p | \wt(e_I) = 2p) = \frac{\binom{k / 2}{p}^{2}}{\binom{k}{2p}}
+%\end{equation*}
+%Additionally:
+%\begin{equation*}
+%  \mathbb{P}(\wt(e_Z) = 0 | \wt(e_{I^c}) = t - 2p) = \frac{\binom{n - k - (t - 2p)}{\ell}}{\binom{n - k}{\ell}}
+%\end{equation*}
+%That is the conditionally probability of having $t - 2p$ errors outside the infromation set while avoiding the positions indexed by $Z$. Since \textcolor{blue}{bla bla bla}, we see that the succes probability in a single iteration is:
+%\begin{align*}
+%  \mathbb{P}(\textit{succes}) &= \mathbb{P}(\wt(e_I) = 2p) \mathbb{P}(\wt(e_X)=\wt(e_Y) = p | \wt(e_I) = 2p) \mathbb{P}(\wt(E_Z) = 0 | e_{I^c} = t - 2p) \\
+%  &= \frac{\binom{k}{2p}\binom{n - k}{t - 2p}}{\binom{n}{t}} \frac{\binom{k / 2}{p}^{2}}{\binom{k}{2p}} \frac{\binom{n - k - (t - 2p)}{\ell}}{\binom{n - k}{\ell}} \\
+%  &= \frac{\binom{n - k}{t - 2p}\binom{k / 2}{p}^{2}\binom{n - k - (t - 2p)}{\ell}}{\binom{n}{t}\binom{n - k}{\ell}}
+%\end{align*}

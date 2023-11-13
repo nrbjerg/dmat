@@ -1,0 +1,50 @@
+#+title: Todo
+* General Stuff that needs fixing:
++ Point (should be written P and not p).
++ Opdater kilde liste.
++ Form
++ Store og små bukstaver for polynomier / elementer i koordinat ring
++ V i stedet for Z
+
+* Notes from metting
++ Hermitian curve.
+
+* Week 17 [1/4] @Algebraic-Curves
++ [X] Bezöz theorem and its applications. #MON
+  + [X] Definition of intersection multiplicity
+  + [X] Bezöz theorem (strong)
+  + [X] Two projective plane curves of positive degree have a point in common.
+  + [X] Regular plane curve is irr.
++ [ ] Divisors #TUE #WED
+  + [ ] Rational functions.
+  + [ ] intersection divisor.
++ [ ] Differentials on curves #TUE #WED
++ [1/4] Correct chapter 2.2 #THUR
+  + [X] 2.2.0
+  + [ ] 2.2.1
+  + [ ] 2.2.2
+  + [ ] 2.2.3
++ [ ] Add examples for curves #THUR
++ Friday will be a buffer.
+
+* Week 18 [0/6] @Codes-on-Algebraic-Curves
++ [ ] Evalutation code (see 16, lec7-AG-codes)
++ [ ] Goppa codes.
++ [ ] Evaluation maps
++ [ ] Good Algebraic Geometry Codes
+
+** ATPG.
++ [ ] Complex eksempel
++ [ ] $L^1(G)$ til sin egen section.
+
+* Week 19
+
+* Week 20
+
+* Week 21 [0/5]
++ [ ] Chapter 1
++ [ ] Section 2.1
++ [ ] Section 2.2
++ [ ] Section 2.3
++ [ ] Chapter 3
++ [ ] Preface

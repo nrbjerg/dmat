@@ -1,0 +1,20 @@
+\section{Monoids}%
+\label{sec:monoids}
+
+
+A \textit{monoid} is a set $G$ together with a \textit{binary operation} $\cdot : G \times G \to G$ such that there exists $e \in G$ (called the \textit{neutral element}) such that $e \cdot g = g \cdot e = g$ for all $g \in G$ and the operation is \textit{associative} meaning $x \cdot (y \cdot z) = (x \cdot y) \cdot z$ for all $x, y, z \in G$.
+
+The binary operation is said to be \textit{commutative} if $x \cdot y = y \cdot x$ for all $x, y \in G$. If $G$ is a monoid with a commutative binary operation $\cdot$, then $G$ is said to be \textit{abelian}.
+
+\begin{example}
+  $\mathbb{N}$ is an example of an additive monoid (the neutral element ($e$) is $0$), this is also an example of an abelian monoid.
+\end{example}
+
+\begin{proposition}\label{prop:commutative_product}
+  Let $G$ be a abelian monoid, and $x_1, x_2, \ldots, x_{n}$ be elements of $G$, and let $\pi$ be a permutation of $\left\{1, 2, \ldots, n\right\}$, then
+  \begin{equation*}
+    \prod^n_{i = 1}x_{\pi(i)} = \prod^n_{i = 1}x_{i}
+  \end{equation*}
+\end{proposition}
+We will omit the proof, however it can be proved by induction.
+Let $G$ be a monoid under the binary operation $\cdot$, then the subset $H \subseteq G$ is called a \textit{submonoid} if $H$ is closed under $\cdot$.

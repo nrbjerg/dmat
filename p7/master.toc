@@ -1,0 +1,24 @@
+\babel@toc {english}{}\relax 
+\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}%
+\contentsline {chapter}{\numberline {2}Code Based Cryptography}{2}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Syndrome Decoding}{4}{section.2.1}%
+\contentsline {section}{\numberline {2.2}The Niederreiter Public Key Cryptosystem}{7}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}The Equivalence Between the Neiderreiter and the McElice PCKS}{7}{subsection.2.2.1}%
+\contentsline {section}{\numberline {2.3}Advantages and Drawbacks of McElice and Neiderreiter}{8}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Information Sets}{9}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}Algorithms for Computing Information Sets}{10}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}Information Set Decoding}{12}{subsection.2.4.2}%
+\contentsline {subsubsection}{Lee-Brickell's Algorithm}{13}{algorithm.2.34}%
+\contentsline {subsubsection}{Sterns Algorithm}{14}{algorithm.2.35}%
+\contentsline {chapter}{\numberline {3}Algebraic Geometry Codes}{16}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Differentials on Projective Algebraic Curves}{17}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Residue Codes}{19}{subsection.3.1.1}%
+\contentsline {section}{\numberline {3.2}Weirstrass Gaps}{21}{section.3.2}%
+\contentsline {chapter}{\numberline {4}Decoding of AG Codes}{22}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Error Correcting Pairs}{25}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Error Correcting Arrays}{29}{section.4.2}%
+\contentsline {chapter}{\numberline {5}Classical Goppa Codes}{34}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Subfield Subcodes}{37}{section.5.1}%
+\contentsline {part}{Appendices}{40}{section*.10}%
+\contentsline {chapter}{\numberline {A}$\mathbf {NP}$-Complete Problems}{41}{appendix.1.A}%
+\contentsline {chapter}{\numberline {B}Results from Previus Projects.}{42}{appendix.1.B}%

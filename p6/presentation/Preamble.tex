@@ -1,0 +1,117 @@
+%\documentclass[danish,12pt,a4paper]{report}
+\usepackage{wrapfig}
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{commath}
+%\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{bm}
+\usepackage{multicol}
+\usepackage{setspace}
+\usepackage{thmtools}
+\usepackage{kpfonts}
+\usepackage{array}
+\usepackage[makeroom]{cancel}
+\usepackage{times}
+\usepackage{multicol}
+\DeclareMathOperator{\Mul}{\mathrm{Mul}}
+\usepackage{placeins}
+\useinnertheme{default}
+\usepackage{tabularx}
+\beamertemplatenavigationsymbolsempty
+\newcommand{\ny}{\vskip 0.5cm}
+\newcommand{\bo}{\vskip 2mm}
+\newcommand{\lis}{\vskip 3.5mm}
+\newcommand{\booglis}{\vskip 5.5mm}
+\newcommand{\pizza}{\vskip 6.2mm}
+\newcommand{\technodromen}{\-\hspace{0.5mm}}
+\newcommand{\mel}{\-\hspace{5mm}}
+\newcommand{\ahmed}{\bigskip \bigskip \bigskip \bigskip \bigskip}
+\newcommand{\krang}{\vskip 1mm}
+\newcommand{\vitas}{\vskip 0.5mm}
+\newcommand{\Lim}[1]{\raisebox{0.5ex}{\scalebox{0.8}{$\displaystyle \lim_{#1}\;$}}}
+\makeatletter
+\newcommand*\bollet{\mathpalette\bollet@{0.72}}
+\newcommand*\bollet@[2]{\mathbin{\vcenter{\hbox{\scalebox{#2}{$\m@th#1\bullet$}}}}}
+\newcommand{\koege}{\-\hspace{1mm}}
+\newcommand{\creme}{\-\hspace{0.25mm}}
+\newcommand{\hrniels}{\-\hspace{0.1mm}}
+\newcommand{\john}{\koege\technodromen \wedge \koege\technodromen}
+\newcommand{\aal}{\technodromen \wedge \technodromen}
+\newcommand{\bimp}{\koege \Leftrightarrow \koege}
+\newcommand{\storbimp}{\-\hspace{3.5mm} \Leftrightarrow \-\hspace{3.5mm}}
+\newcommand{\medf}{\koege \Rightarrow \koege}
+\newcommand{\stormedf}{\-\hspace{3.5mm} \Rightarrow \-\hspace{3.5mm}}
+\newcommand{\drjan}{\koege | \koege}
+\newcommand{\sortesambo}{\technodromen \left|\frac{}{}\right.}
+\newcommand{\ost}{^{\ast}}
+\newcommand{\worm}{\input{Billeder/Regnorm.tex}}
+\newcommand{\ormekongen}{\input{Billeder/Ormekongen.tex}}
+\newcommand{\kr}{\text{ kr.}}
+\makeatother
+\newcommand{\LL}{\mathcal{L}}
+\newcommand{\ro}[1]{%
+  \xrightarrow{\mathmakebox[\rowidth]{#1}}%
+}
+
+
+% ¤¤ Opsaetning af figur- og tabeltekst ¤¤ %
+\usepackage[font=footnotesize,labelfont={it,bf},format=hang]{caption}
+\usepackage{graphicx,scalerel}
+
+	% Indsaet figurer nemt med \figur{Stoerrelse}{Fil}{Figurtekst}{Label}
+\newcommand{\figur}[4]{
+		\begin{figure}[H] \centering
+			\includegraphics[width=#1\textwidth]{billeder/#2}
+			\caption{#3}
+			\label{#4}
+		\end{figure}
+}
+
+\usepackage{subfig}
+\usepackage{etoolbox}
+
+\usepackage{algpascal}
+\usepackage{algorithm} 
+\usepackage{algpseudocode}
+\usepackage{blkarray}
+
+\newcommand\restr[2]{\ensuremath{\left.#1\right|_{#2}}}
+
+\newcommand{\tdist}{\textnormal{t}}
+\newcommand{\Fdist}{\textnormal{F}}
+\newcommand{\J}{\mathcal{J}}
+\renewcommand{\S}{\bm{S}}
+\newcommand{\I}{\mathcal{I}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\B}{\mathcal{B}}
+\renewcommand{\d}{\mathrm{d}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\E}{\mathcal{E}}
+\newcommand{\tr}{\mathrm{tr }}
+\newcommand{\F}{\mathbb{F}}
+\renewcommand{\L}{\mathcal{L}}
+\renewcommand{\Re}{\mathrm{Re}}
+\renewcommand{\Im}{\mathrm{Im}}
+\newcommand{\spand}{\mathrm{span}}
+\newcommand\isom{\xrightarrow{
+   \,\smash{\raisebox{-0.65ex}{\ensuremath{\scriptstyle\sim}}}\,}}
+\newcommand\sbullet[1][.5]{\mathbin{\ThisStyle{\vcenter{\hbox{%
+  \scalebox{#1}{$\SavedStyle\bullet$}}}}}%
+}
+\newcommand\scalemath[2]{\scalebox{#1}{\mbox{\ensuremath{\displaystyle #2}}}}
+
+\renewcommand{\vec}[1]{\bm{#1}}
+\usepackage{multirow}
+\usepackage[normalem]{ulem}
+\useunder{\uline}{\ul}{}
+\newcommand{\Var}{\textnormal{Var}}
+\newcommand{\unif}{\textnormal{unif}}
+\newcommand{\geom}{\textnormal{geom}}
+\newcommand{\Poi}{\textnormal{Poi}}

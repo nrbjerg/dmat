@@ -1,0 +1,8 @@
+\babel@toc {english}{}\relax 
+\contentsline {section}{\numberline {1}Introduction}{1}{section.1}%
+\contentsline {section}{\numberline {2}Linear Systems}{1}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Augmented matricies}{1}{subsection.2.1}%
+\contentsline {section}{\numberline {3}Vector Spaces}{1}{section.3}%
+\contentsline {section}{\numberline {4}Eigenvalues and Eigenvectors}{1}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Computing Eigenvalues and Eigenvectors}{2}{subsection.4.1}%
+\contentsline {section}{\numberline {5}Factorizations}{2}{section.5}%

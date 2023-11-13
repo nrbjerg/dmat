@@ -1,0 +1,126 @@
+This chapter is based on \cite{huffman}[Chapter 1 and 3] as well as \cite{alg_geom_codes}[Chapter 1]. We will be considering subspaces of the $\mathbb{F}_q$-vector space $\F_{q}^{n}$.
+
+\begin{definition}
+  A $k$-dimensional linear subspace $\mathcal{C}$ of $\mathbb{F}_{q}^{n}$ is called a $[n, k]_q$ \textit{code}, the elements of $\mathcal{C}$ are called \textit{codewords}.
+  The natural numbers $n$ and $k$ are called the \textit{length} and \textit{dimension}
+  of $\mathcal{C}$ respectively and field $\mathbb{F}_{q}$ the \textit{alphabet} of $\mathcal{C}$.
+%  Let $\C \subseteq \F^{n}_{q}$ be a $k$-dimensional linear subspace, then $\mathcal{C}$ is said to be a $[n, k]_{q}$ \textit{code} and elements in $\mathcal{C}$ is called \textit{codewords}
+\end{definition}
+
+What we shall refer to as a $[n, k]_{q}$ code is normally refereed to as a \textit{linear code}, as such we will use the terminology interchangeably.
+Moving on we define a metric on $\F_{q}^{n}$, named after Richard Hamming, one of the founders of coding theory.
+\begin{definition}
+ The \textit{Hamming metric} $\d: \F_{q}^{n} \times \F_{q}^{n} \to \N$ is defined as
+  \begin{equation*}
+    \d(x, y) := \abs{\left\{i \in \{1,2, \ldots, n\}  \middle| x_i \neq y_{i}\right\}}.
+  \end{equation*}
+  Further more let $x \in \mathbb{F}_q^{n}$, then the \textit{weight} of $x$ is defined as $\wt(x) := \d(x, 0)$.
+\end{definition}
+\begin{remark}
+  Clearly $\d(x, y) = \wt(x - y)$ for all $x, y \in \F_{q}^{n}$.
+\end{remark}
+
+It is no accident that we refereed to $\d$ as a metric, we will prove this in the following proposition.
+\begin{proposition}\label{prop:hamming_metric}
+  $(\F_{q}^{n}, \d)$ is a metric space, that is
+  \begin{enumerate}
+    \item $\d(x, y) \geq 0$ and $\d(x, y) = 0$ if and only if $x = y$. \label{prop:hamming_metric_semidefinite}
+    \item $\d$ is symmetric, meaning $\d(x, y) = \d(y, x)$. \label{prop:hamming_metric_symmetry}
+    \item $\d$ complies with the triangle inequality, meaning $\d(x, z) \leq \d(x, y) + \d(y, z)$. \label{prop:hamming_metric_triangle_inequality}
+  \end{enumerate}
+  for all $x, y, z \in \mathbb{F}_{q}^{n}$
+\end{proposition}
+\begin{proof}
+  Assertion \ref{prop:hamming_metric_semidefinite} is trivial, and \ref{prop:hamming_metric_symmetry} follows as $\not =$ is a symmetric binary operation. Finally, \ref{prop:hamming_metric_triangle_inequality} holds since:
+  \begin{align*}
+    \d(x, y) \leq\abs{\{i \in \left\{1,2, \ldots, n\right\} \middle| x_{i} \neq z_{i}\}} + \abs{\{i \in \left\{1,2, \ldots, n\right\} \middle| y_{i} \neq z_{i}\}} = \d(x, z) + \d(z, y)
+  \end{align*}
+  where the inequality follows since $x_{i} \neq y_{i}$ implies that either $x_{i} \neq z_{i}$ or $y_{i} \neq z_{i}$.
+\end{proof}
+\begin{definition}
+  Let $\mathcal{C}$ be a $[n, k]_q$ code, then $d = \min\{\d(c, c') \mid c, c' \in \mathcal{C}, c \neq c'\}$ is called the \textit{minimum distance} of $\mathcal{C}$, and we say that $\mathcal{C}$ is a $[n,k,d]_q$ code.
+\end{definition}
+
+\begin{remark}\label{rem:min_dist_is_the_same_as_min_weight}
+  As $\mathcal{C}$ is a linear subspace we have $d=\min\left\{\wt(c) \middle| c \in \mathcal{C} \setminus \left\{0\right\}\right\}$, since $c_{1} - c_{2} \in \mathcal{C} \backslash \{0\}$, for all $c_{1}, c_{2} \in \mathcal{C}$ such that $c_{1} \neq c_{2}$, and $\d(c_{1}, c_{2}) = \wt(c_{1} - c_{2})$. For this reason the minimum distance of $\mathcal{C}$ is also refereed to as the \textit{minimum weight} of $\mathcal{C}$.
+\end{remark}
+
+The minimum distance has a massive impact on the error correcting properties of a code, as we will see in Section \ref{sec:transmission_and_nearest_neighbour_decoding}.
+
+\begin{example}\label{exmp:repetition_code}
+  Fix $n \in \mathbb{N}$. We will be considering the perhaps simplest, yet useful, code called the \textit{repetition code} of length $n$, taking $x \in \F_{q}$ to $(x, x, \ldots, x) \in \F_{q}^{n}$. Since $\mathcal{C} = \Span_{\F_{q}}\left\{(1,1, \ldots, 1)\right\}$ and hence $\d(c, c') = n$ for all $c, c' \in \mathcal{C}$. We see that the repetition code of length $n$ is a $[n, 1, n]_{q}$ code.
+\end{example}
+Not all linear codes $\mathcal{C}$ are this simple. However as $\mathcal{C}$ is a linear subspace of $\mathbb{F}_q^{n}$, there exists a $\mathbb{F}_q$-basis of $\mathcal{C}$, such that every $c \in \mathcal{C}$ can be written as a $\mathbb{F}_q$-linear combination of the basis vectors, this idea forms the foundation of the following definition.
+
+\begin{definition}
+  Let $\mathcal{C}$ be a $[n, k]_{q}$ code, and suppose $g_{1}, g_{2}, \ldots, g_{k} \in \F_{q}^{n}$ forms a $\F_{q}$-basis of $\mathcal{C}$, then
+  \begin{equation*}
+    G = \begin{bmatrix} g_{1} & g_{2} & \cdots & g_{k} \end{bmatrix}^{T} \in \mathbb{F}^{n \times k}_{q}
+  \end{equation*}
+  is called a \textit{generator matrix} for $\mathcal{C}$.
+\end{definition}
+Often one uses a generator matrix $G$ as a mean of specifying a code. Below we introduce another way of specifying a code, namely as the null space of a matrix.
+\begin{definition}
+  Suppose $\mathcal{C}$ is a $[n, k]_q$ code. Then a matrix $H \in \F_{q}^{(n-k) \times n}$ such that
+  \begin{equation*}
+    \C = \{x \in \F_{q}^{n} \;\vert\; Hx = 0\}
+  \end{equation*}
+  is called a \textit{parity check matrix} of $\mathcal{C}$.
+\end{definition}
+A parity check matrix $H$ gives us a way to check if a vector $x \in \mathbb{F}_q^n$ belongs to the code $\mathcal{C}$. More concretely $x \in \mathcal{C}$ if and only if $Hx = 0$.
+
+\begin{lemma}\label{lem:H_has_rank_n-k}
+  Let $H$ be a parity check matrix of a $[n,k]_{q}$ code, then $\rank(H) = n - k$.
+\end{lemma}
+\begin{proof} % FIXME: Kan det forsimples
+  Follows as $\rank(H) = n - \dim(\Null(H)) = n - \dim(\mathcal{C}) = n - k$.
+\end{proof}
+Since every $[n, k]_{q}$ code is a linear subspace of $\mathbb{F}_{q}^{n}$, it makes sense to consider code given as the orthogonal complement of $\mathcal{C}$, which we shall now define, in more detail:
+
+\begin{definition}
+  Let $\C$ be a $[n, k]_{q}$ code, then we define the \textit{dual code} of $\mathcal{C}$ as:
+  \begin{equation*}
+    \mathcal{C}^{\perp} := \left\{x \in \F_{q}^{n} \middle| \langle x, c \rangle = 0 \text{ for all } c \in \C\right\}
+  \end{equation*}
+  where $\langle \cdot, \cdot \rangle$ denotes the usual canonical inner product on $\mathbb{F}_{q}^{n}$. % Det er bare det normale prik produkt.
+\end{definition}
+
+Dual codes have some nice properties, which allows us to use them to study their non-dual counterparts and vice versa. Some of these properties will be shown in the following lemma, the proof of which is based on the proofs of Lemma 1.8 and Corollary 1.9 in \cite{notes_on_alg_geom_codes}.
+\begin{lemma}\label{lem:properties_of_dual_codes}
+  Suppose $\mathcal{C}$ is a $[n, k]_{q}$ code, with generator matrix $G$ and parity check matrix $H$ then:
+  \begin{enumerate}
+    \item $G$ is a parity check matrix of $\mathcal{C}^{\perp}$ \label{lem:properties_of_dual_codes:parity_check}
+    \item $\dim(\mathcal{C}^{\perp}) = n - k$. \label{lem:properties_of_dual_codes:dimension}
+    \item $H$ is a generator matrix of $\mathcal{C}^{\perp}$. \label{lem:properties_of_dual_codes:generator_matrix}
+    \item $\mathcal{C} = (\mathcal{C}^{\perp})^{\perp}$. \label{lem:properties_of_dual_codes:complement_of_complement}
+  \end{enumerate}
+\end{lemma}
+\begin{proof}
+  % ligheden af G x = indre produkter følger da G x er en lineær kombination af søjlerne i G (og (x, y, z) = [x y z]^T)
+  Let $g_1,g_{2} \ldots, g_{k}$ be the rows of $G$, and let $x \in \mathbb{F}_q^n$ then
+  \begin{equation*}
+  G x = (\gen{x, g_{1}}, \gen{x, g_{2}}, \ldots,  \gen{x, g_{k}}) = 0 \iff x \perp g_{i}
+  \end{equation*}
+  for all $i \in \left\{1, 2, \ldots, k\right\}$.
+  This implies Assertion \ref{lem:properties_of_dual_codes:parity_check} as $g_{1}, g_{2}, \ldots, g_{k}$ forms a $\mathbb{F}_{q}$-basis of $\mathcal{C}$.
+  Assertion \ref{lem:properties_of_dual_codes:dimension} follows from \ref{lem:properties_of_dual_codes:parity_check} as $\mathcal{C}^{\perp}$ is the null space $G$ and $\rank(G) = k$, since the rows of $G$ are $\mathbb{F}_q$-linearly independent, so $\dim(\Null(G)) = n - k$.
+  Continuing with \ref{lem:properties_of_dual_codes:generator_matrix}: Since $H$ is a parity check matrix of the $[n, k]_{q}$ code $\mathcal{C}$, we have that $\rank(H) = n - k$, confer Lemma \ref{lem:H_has_rank_n-k}. This implies that the $n -k$ rows of $H$ are $\mathbb{F}_{q}$-linearly independent. Thus they form a $\mathbb{F}_q$-basis of some $(n-k)$-dimensional linear subspace $V \subseteq \mathbb{F}_q^{n}$, which is orthogonal to $\mathcal{C}$ as $Hc = 0$ for all $c \in \mathcal{C}$. Now since $V$ and $\mathcal{C}^{\perp}$ are both orthogonal to $\mathcal{C}$ both with dimension $n - k$, confer Assertion \ref{lem:properties_of_dual_codes:dimension}, it follows that $V  = \mathcal{C}^{\perp}$.
+  Finally, $\mathcal{C} \subseteq (\mathcal{C}^{\perp})^{\perp}$, as $c \in \mathcal{C}$ implies $c \perp c'$ for all $c' \in \mathcal{C}^{\perp}$ combining this with $\dim(\mathcal{C}) = \dim(\left(\mathcal{C}^{\perp})^{\perp}\right)$ gives \ref{lem:properties_of_dual_codes:complement_of_complement}.
+\end{proof}
+
+%\begin{example}\label{exmp:hamming_code}
+%  The $[7, 4]_{2}$ code with the following generator matrix
+%  \begin{equation*}
+%    G = \begin{bmatrix}
+%      1 & 0 & 0 & 0 & 0 & 1 & 1 \\
+%      0 & 1 & 0 & 0 & 1 & 0 & 1 \\
+%      0 & 0 & 1 & 0 & 1 & 1 & 0 \\
+%      0 & 0 & 0 & 1 & 1 & 1 & 1
+%    \end{bmatrix}
+%  \end{equation*}
+%  is called a Hamming code. Since $G$ is in standard form it is easy to see that the first $4$ columns form a basis of $\mathbb{F}_{2}^{4}$. This means that the first $4$ coordinates forms a information set, while the last $3$ coordinates forms a redundancy set.
+%\end{example}
+
+\begin{remark}
+  Given a $[n, k]_{q}$ code $\mathcal{C}$, we can find a parity check matrix of $\mathcal{C}$ by taking a generator matrix of $\mathcal{C}^{\perp}$. Hence one can always find a parity check matrix of $\mathcal{C}$.
+\end{remark}

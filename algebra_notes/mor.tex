@@ -1,0 +1,25 @@
+\chapter{Number Theory for Mum}
+\begin{theorem}\label{thm:thm}
+  Suppose $n \in \mathbb{Z}$ and that $n'$ is obtained from $n$ by interchanging two digits, that is $n' = n + n_i (10^j - 10^{i}) + n_j(10^i - 10^{j})$ where $n_i$ and $n_j$ are the $i$th and $j$th digits of $n$, with $j > i$. Then $n' - n$ is divisible by $9$.
+\end{theorem}
+\begin{proof}
+  By the definition of $n'$ we have:
+  \begin{align*}
+    n' - n = n_i (10^j - 10^{i}) + n_j(10^i - 10^{j})  &= (n_i - n_j) \cdot (10^j - 10^i) \\
+                                                            &= (n_i - n_j) \cdot 10^i (10^{j - i} - 1)
+  \end{align*}
+  the rest follows as $10^{j - i} - 1 = 99 \ldots 9$ which is clearly divisible by $9$.
+\end{proof}
+
+\begin{corollary}
+  Let $n \in \mathbb{Z}$ and $n_k$ be obtained from $n$ by interchanging $k$ of the digits then $n_{k} - n$ is divisible by $9$.
+\end{corollary}
+\begin{proof}
+  Suppose $n_k$ was obtained by interchanging two digits of $n_{k - 1}$ and so on until $n_1 = n$ is reached.
+  Observe that:
+  \begin{align*}
+    n_k - n &= n_k - n_{k-1} + n_{k-1} - n_{k - 2} + \cdots + n_2 - n \\
+    &= (n_k - n_{k-1}) + (n_{k-1} - n_{k - 2}) + \cdots + (n_2 - n)
+  \end{align*}
+  The rest follows as every term in the sum is divisible by $9$ by Theorem \ref{thm:thm}.
+\end{proof}

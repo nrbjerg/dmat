@@ -1,0 +1,348 @@
+\documentclass[10pt]{beamer}
+
+\newcommand{\K}{\mathbbm{k}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\cF}{\overline{\F}}
+
+\usetheme[
+%%% options passed to the outer theme
+%    hidetitle,           % hide the (short) title in the sidebar
+%    hideauthor,          % hide the (short) author in the sidebar
+%    hideinstitute,       % hide the (short) institute in the bottom of the sidebar
+%    shownavsym,          % show the navigation symbols
+%    width=2cm,           % width of the sidebar (default is 2 cm)
+    hideothersubsections,% hide all subsections but the subsections in the current section
+%    hideallsubsections,  % hide all subsections
+    left               % right of left position of sidebar (default is right)
+%%% options passed to the color theme
+%    lightheaderbg,       % use a light header background
+  ]{AAUsidebar}
+
+% If you want to change the colors of the various elements in the theme, edit and uncomment the following lines
+% Change the bar and sidebar colors:
+%\setbeamercolor{AAUsidebar}{fg=red!20,bg=red}
+%\setbeamercolor{sidebar}{bg=red!20}
+% Change the color of the structural elements:
+%\setbeamercolor{structure}{fg=red}
+% Change the frame title text color:
+%\setbeamercolor{frametitle}{fg=blue}
+% Change the normal text color background:
+%\setbeamercolor{normal text}{bg=gray!10}
+% ... and you can of course change a lot more - see the beamer user manual.
+
+\input{Preamble.tex}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+\usepackage{helvet}
+\usepackage{tikz}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+% colored hyperlinks
+\newcommand{\chref}[2]{%
+  \href{#1}{{\usebeamercolor[bg]{AAUsidebar}#2}}%
+}
+\vspace{1.5cm}
+\title[]% optional, use only with long paper titles
+{\Large Algebraic Geometry Codes\\
+\vspace{0.3cm}}
+
+
+
+
+
+\subtitle{}  % could also be a conference name
+
+\date{\no}
+
+\author[Martin Sig Nørbjerg] % optional, use only with lots of authors
+{Group 5.239A\\
+ Martin Sig Nørbjerg
+}
+% - Give the names in the same order as they appear in the paper.
+% - Use the \inst{?} command only if the authors have different
+%   affiliation. See the beamer manual for an example
+
+\institute[
+%  {\includegraphics[scale=0.2]{aau_segl}}\\ %insert a company, department or university logo
+  Institute of Mathematics\\
+  Aalborg University
+] % optional - is placed in the bottom of the sidebar on every slide
+{% is placed on the title page
+  Institute of Mathematics\\
+  Aalborg University
+  
+  %there must be an empty line above this line - otherwise some unwanted space is added between the university and the country (I do not know why;( )
+}
+
+
+% specify a logo on the titlepage (you can specify additional logos an include them in 
+% institute command below
+\pgfdeclareimage[height=1.5cm]{titlepagelogo}{AAUgraphics/aau_logo_new} % placed on the title page
+%\pgfdeclareimage[height=1.5cm]{titlepagelogo2}{graphics/aau_logo_new} % placed on the title page
+\titlegraphic{% is placed on the bottom of the title page
+  \pgfuseimage{titlepagelogo}
+%  \hspace{1cm}\pgfuseimage{titlepagelogo2}
+}
+
+\usefonttheme{professionalfonts} % using non standard fonts for beamer
+
+
+\makeatletter
+\pretocmd{\section}{\addtocontents{toc}{\protect\addvspace{-5\p@}}}{}{}
+\makeatother
+
+
+\begin{document}
+% the titlepage
+{\aauwavesbg}
+\begin{frame}[plain,noframenumbering]
+    \titlepage
+\end{frame}
+
+\section{Coding Theory}% 2 min
+\label{sec:ct}
+
+\begin{frame}
+  \frametitle{Linear Error Correcting Codes}
+  \textbf{Definition 1.1 \& 1.5.} Let $\mathcal{C} \subseteq \mathbb{F}_q^n$ be a linear subspace of dimension $k$, then $\mathcal{C}$ is called a $[n, k]_q$ code. Furthermore if $\mathcal{C}$ has minimum distance $d$, then $\mathcal{C}$ is called a $[n, k, d]_{q}$ code. \\
+  \begin{itemize}
+    \pause
+    \item If $\mathcal{C}$ has minimum distance $d$, then it can correct $\lfloor\frac{d-1}{2}\rfloor$ errors but detect $d - 1$ errors.
+    %\item Let $\mathcal{C}$ be a $[n, k]_q$ code:
+    %   \begin{itemize}
+    %      \item If $c_1, c_2, \ldots, c_{k} \in \mathcal{C}$ is a basis of $\mathcal{C}$, then:
+    %      \begin{equation*}
+    %        G := \begin{bmatrix}
+    %           g_1 & g_2 & \cdots & c_{k}
+    %             \end{bmatrix}^{T}
+    %      \end{equation*}
+    %            is called a \textit{generator matrix}.
+    %       \item Let $H \in \mathbb{F}_q^{(n - k) \times n}$ such that $\mathcal{C} = \textnormal{null}(H)$, then $H$ is called a \textit{parity check matrix}.
+    %  \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\subsection{Bounds on the Parameters of Codes}
+\begin{frame}
+  \frametitle{Bounds on the Parameters of Codes.}
+  %\textbf{Proposition 1.16.} Let $H$ be a parity check matrix of the $[n, k, d]_q$ code $\mathcal{C}$, then any collection of $d - 1$ columns of $H$ are $\mathbb{F}_q$-linearly independent.\\
+  %\pause
+  %\textit{Proof:}
+  %\begin{itemize}
+  %  \item If $h_{i_{1}}, h_{i_2}, \ldots, h_{i_{d-1}}$ are $\mathbb{F}_q$-linearly dependent, then there exists $c_{i_1}, c_{i_2}, \ldots, c_{i_{d - 1}} \in \mathbb{F}_q$ (not all zero) such that:
+  %  \begin{equation*}
+  %    0 = \sum_{j = 1}^{d-1} c_{i_j} h_{i_j}
+  %  \end{equation*}
+  %  \pause
+  %  \item Letting $c_i = 0$ for $i \not \in \left\{i_1, i_2, \ldots, i_{d-1}\right\}$, we construct a codeword $c \in \mathcal{C}$ such that $wt(c) \leq d -1$.
+  %\end{itemize}
+  %\\
+  %\pause
+  \textbf{Corollary 1.18.} Let $\mathcal{C}$ be a $[n, k, d]_{q}$ code, then $d - 1 \leq n - k$. \\
+  \pause
+  \textit{Proof:} Let $H$ be a parity check matrix of $\mathcal{C}$.
+  \begin{itemize}
+    \pause
+    \item $\dim(\mathcal{C}) = \dim(null(H)) = k \implies rank(H) = n - k$
+    \pause
+    \item $rank(H) \geq d - 1$, by the Proposition 1.16.
+  \end{itemize}
+  %\textbf{Theorem 1.29.} Let $q \in \mathbb{N}$ and $\delta \in [0, \frac{q-1}{q}]$ then:
+  %\begin{equation*}
+  %  \alpha_q^{lin}(\delta) \geq 1 - H_q(\delta)
+  %\end{equation*}
+\end{frame}
+
+%\begin{frame}
+%  \frametitle{Assymptotic Gilbert Varshamov Bound}
+%  We let $R^{*}(n, d)$ be the highest:w
+%  transmissionrate of a code of length $n$ and minimum distance $d$. \\ \pause In addition we define $\alpha_q^{lin}: [0, 1] \to [0, 1]$ as:
+%  \begin{equation*}
+%    \alpha_q^{lin}(\delta) = \underset{n \to \infty}{\lim \sup} \; R^{*}(n, \delta n)
+%  \end{equation*}
+%  \pause
+%\end{frame}
+
+\section{Divisors}% 4 min
+\label{sec:div}
+
+\begin{frame}
+  \frametitle{Divisors}
+  \textbf{Definition 2.81 \& 2.82.} Let $\mathcal{X}$ be an aboslutely irreducible regular projective plane curve, over $\mathbb{F}_q$.
+  \begin{itemize}
+  \pause
+  \item A divisor $D$ on $\mathcal{X}$ is a formal sum:
+  \begin{equation*}
+     D = \sum_{P \in \mathcal{X}} n_P P
+  \end{equation*}
+  where $n_P = 0$ for all but a finite number of points $P \in \mathcal{X}$.
+  \pause
+  \item Let $f \in \cF_{q}(\mathcal{X}) \setminus \left\{0\right\}$, then $(f) := \sum_{P \in \mathcal{X}} v_P(f)P$ is called a principal divisor.
+  \pause
+  \begin{itemize}
+    \item $\forall f \in \cF_q(\mathcal{X}) \setminus \left\{0\right\}$ we have $\deg((f)) = 0$ by Proposition 2.83.
+  \end{itemize}
+  %\pause
+  %\item Let $D \in Div(\mathcal{X})$, then $supp(D) := \left\{P \in \mathcal{X}\vert n_P \neq 0\right\}$.
+  %\pause
+  %\item A $D \in Div(\mathcal{X})$ is called effective if $n_P \geq 0$ for all $P \in \mathcal{X}$.
+  \end{itemize}
+
+
+\end{frame}
+\begin{frame}
+  \frametitle{The vector space $L(D)$}
+  \begin{itemize}
+
+  \end{itemize}
+  \textbf{Definition 2.84.} Let $D \in Div(\mathcal{X})$, then we define the vector space $L(D)$ as:
+  \begin{equation*}
+    L(D) := \left\{f \in \cF_{q}(\mathcal{X}) \setminus \left\{0\right\} \mid (f) + D \text{ is effective}\right\} \cup \left\{0\right\}
+  \end{equation*}
+  and let $\ell(D) := \dim_{\cF_q}(L(D))$. \\ \; \\
+
+  \pause
+  \textbf{Proposition 2.88. (i)} Let $D \in Div(\mathcal{X})$, then $\deg(D) < 0$ implies that $\ell(D) = 0$. \\
+  \pause
+  \textit{Proof:} For all $f \in \cF_q(\mathcal{X}) \setminus \left\{0\right\}$ we have:
+  \begin{equation*}
+    \deg((f) + D) = \deg((f)) + \deg(D) = \deg(D) < 0
+  \end{equation*}
+  since $\deg((f)) = 0$. \pause Meaning $L(D) = \left\{0\right\}$.
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{The Riemann-Roch Theorem}
+  Let $\mathcal{X}$ be a regular projective plane curve of genus $g$. \\
+  \textbf{Theorem 2.91.} Let $D \in Div(\mathcal{X})$, then for all canonical $W \in Div(\mathcal{X})$ we have
+  \begin{equation*}
+    \ell(D) - \ell(W - D) = \deg(D) - g + 1
+  \end{equation*}
+
+  \pause
+  \textbf{Corollary 2.92.} If $\deg(D) > 2g - 2$, then $\ell(D) = \deg(D) - g + 1$.
+  \pause
+  \textit{Proof:}
+  \begin{itemize}
+    \item $\deg(W - D) < 0$.
+  \pause
+    \item $\ell(W - D) = 0$ by Proposition 2.88 (i), combining this with Theorem 2.91 yields the result.
+  \end{itemize}
+\end{frame}
+
+\section{Goppa Codes}% 4 min
+\label{sec:goppa}
+
+\begin{frame}
+  \frametitle{Goppa Codes}
+  \textbf{Definition 3.3.} Let $P_1, P_2, \ldots, P_{n} \in \mathcal{X}$ be $n$ distinct rational points.
+  \begin{itemize}
+  \pause
+    \item Let $D = \sum^n_i P_i$ and $G \in Div(\mathcal{X})$ such that $supp(D) \cap supp(G) = \emptyset$.
+  \pause
+    \item If $\mathcal{P} := \left(P_1, P_2, \ldots, P_{n}\right)$, then $\mathcal{C}_{D, G} := Ev_{\mathcal{P}}(L(G))$ is called a \textit{Goppa Code}.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Parameters of Goppa Codes}
+  \textbf{Theorem 3.5.} If $\mathcal{C}_{D, G}$ is a $[n, k, d]_q$ code. Then:
+  \begin{enumerate}[(i)]
+  \pause
+    \item $k = \ell(G) - \ell(G - D)$.
+  \pause
+    \item $d \geq n - \deg(G)$.
+  \end{enumerate}
+  \pause
+  \textit{Proof:}
+  \begin{enumerate}[(i)]
+    \item Follows from the fact that $Ev_{\mathcal{P}} \restriction_{L(G)}$ is a surjective linear map, from $L(G)$ to $\mathcal{C}_{G, D}$.
+      \pause
+
+    \begin{equation*}
+      k = \dim_{\mathbb{F}_q}(image(Ev_{\mathcal{P}})) = \ell(G) - \dim_{\mathbb{F}_q}(ker(Ev_{\mathcal{P}}))
+    \end{equation*}
+    \pause
+    But $ker(Ev_{\mathcal{P}}) = L(G - D)$ since:
+    \begin{itemize}
+    \pause \item $f \in L(G)$ \& $Ev_{\mathcal{P}}(f) = 0 \implies v_{P_i}(f) \geq 1$ and hence $f \in L(G - D)$. As $(f) + G - D$ is effective.
+    \pause \item $f \in L(G - D) \implies f(P) = 0 \forall P \in supp(D)$ as $supp(G) \cap supp(D) = \emptyset$. Meaning $f \in ker(Ev_{\mathcal{P}})$.
+    \end{itemize}
+  %\pause
+  %   \item Suppose $c = (f(P_1), f(P_2), \ldots, f(P_{n})) \in \mathcal{C}_{G, D}$.
+  %   \begin{itemize}
+  %\pause
+  %      \item If $wt(c) = d$, then there exists $P_{i_1}, P_{i_2}, \ldots, P_{i_{n - d}} \in supp(D)$ such that $f(P_{i_j}) = 0$.
+  %\pause
+  %     \item $f \in L \left(G - \sum_{j = 1}^{n - d} P_{i_j}\right)$ since $v_{P_{i_j}}(f) \geq 1$.
+  %\pause
+  %     \item Since $G - \sum_{j = 1}^{n - d} P_{i_j} + (f)$ is effective we have that:
+  %           \begin{equation*}
+  %             \underbrace{\deg \left(G - \sum_{j = 1}^{n - d} P_{i_j}\right)}_{= \deg(G) - (n - d)} + \deg((f)) \geq 0
+  %           \end{equation*}
+  %       \end{itemize}
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Parameters of Goppa Codes (Continued.)}
+  \textbf{Corollary 3.6 (i).} If $\deg(G) < n$, then $k = \ell(G)$. \\
+  \pause
+  \textit{Proof:} $\deg(G - D) < 0$, the rest follows by Proposition 2.88 (i) and Theorem 3.5 (i). \\ \; \\
+  \pause
+  \textit{Remark 3.7.}
+  \begin{itemize}
+    \item $k = \ell(G) \geq \deg(G) - g + 1$ by the Riemann-Roch Theorem 2.91.
+  \pause
+    \item Combining this with Theorem 3.5 (ii), we see:
+  \end{itemize}
+      \begin{equation}\label{eq:1}
+        d + k \geq \underbrace{(n - \deg(G))}_{\geq d} + \underbrace{(\deg(G) - g + 1)}_{\geq k} = n - g + 1
+      \end{equation}
+  \begin{itemize}
+  \pause
+    \item Combinig this with the Singleton Bound we see that $n + 1 \geq d + k \geq n - g + 1$, and that $g = 0$ implies that $\mathcal{C}_{G, D}$ is an MDS code.
+  \end{itemize}
+\end{frame}
+
+%\begin{frame}
+%  \frametitle{The Tsfasman–Vlăduţ–Zink Bound}
+%  Equation \eqref{eq:1} yields:
+%  \begin{equation*}
+%        R + \delta \geq 1 - \frac{g - 1}{n}
+%  \end{equation*}
+%  \pause
+%  Hence we want to maximize the number of rational points and minimize the genus of the underlying curve.\\ \; \\
+%  \pause
+%  \textbf{Theorem 3.8.} Let $q = p^2$ where $p$ is prime, and $N_q^{*}: \N \to \N$ be the maximum number of $\mathbb{F}_q$-rational points on a absolutely irreducible smooth projective curve over $\mathbb{F}_q$ with genus $\leq g$, then:
+%  \begin{equation*}
+%    \underset{g \to \infty}{\lim \sup} \; \frac{N_{q}*(g)}{g} \leq \sqrt(q) - 1
+%  \end{equation*}
+%\end{frame}
+%
+%
+%\begin{frame}
+%  \frametitle{The Tsfasman–Vlăduţ–Zink Bound}
+%  Combining the previus results we see that, there exists a sequence $\left\{\mathcal{C}_{G_g, D_g}\right\}_{g \in \mathbb{N}}$ such that:
+%  \begin{equation}
+%    \underset{g \to \infty}{\lim \sup} \; R(\mathcal{C}_{G_g, D_g}) + \delta(\mathcal{C}_{G_g, D_g}) \geq 1 - \frac{1}{\sqrt{q} - 1}
+%  \end{equation}
+%  This exceeds the Gilbert-Varshamov Bound.
+%\end{frame}
+
+
+%\setbeamerfont{subsubsection in toc}{size=\tiny}
+%\begin{frame}{Table of Contents}{}
+%\footnotesize{\tableofcontents}
+%\end{frame}
+
+
+\begin{frame}{End}
+    \center{Thank you for listening.}
+\end{frame}
+
+\end{document}

@@ -1,0 +1,57 @@
+This is BibTeX, Version 0.99d (TeX Live 2021/nixos.org)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: master.aux
+The style file: abbrvnat.bst
+A level-1 auxiliary file: incl/misc/frontpage.aux
+A level-1 auxiliary file: incl/misc/titlepage.aux
+A level-1 auxiliary file: incl/misc/preface.aux
+A level-1 auxiliary file: incl/misc/contents.aux
+A level-1 auxiliary file: incl/misc/notation.aux
+A level-1 auxiliary file: incl/misc/introduction.aux
+A level-1 auxiliary file: main/codes/index.aux
+A level-1 auxiliary file: main/algebraic_geometry/index.aux
+A level-1 auxiliary file: main/algebraic_geometry_codes/index.aux
+Database file #1: incl/bib/books.bib
+Database file #2: incl/bib/articles.bib
+Database file #3: incl/bib/software.bib
+You've used 10 entries,
+            2773 wiz_defined-function locations,
+            660 strings with 6040 characters,
+and the built_in function-call counts, 3480 in all, are:
+= -- 291
+> -- 171
+< -- 8
++ -- 61
+- -- 51
+* -- 222
+:= -- 559
+add.period$ -- 35
+call.type$ -- 10
+change.case$ -- 47
+chr.to.int$ -- 10
+cite$ -- 20
+duplicate$ -- 182
+empty$ -- 323
+format.name$ -- 65
+if$ -- 728
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 12
+newline$ -- 63
+num.names$ -- 40
+pop$ -- 122
+preamble$ -- 1
+purify$ -- 37
+quote$ -- 0
+skip$ -- 137
+stack$ -- 0
+substring$ -- 20
+swap$ -- 10
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 80
+warning$ -- 0
+while$ -- 30
+width$ -- 0
+write$ -- 143

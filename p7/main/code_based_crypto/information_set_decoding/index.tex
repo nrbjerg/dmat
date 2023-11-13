@@ -1,0 +1,64 @@
+\section{Information Sets}\label{sec:information_set_decoding}
+The following section will be based on \cite{information_set_decoding}[Sections 3-6], \cite{lee_brickell} and \cite{notes_on_code_based_cryptography}[Chapter 3]. We start by introducing some basic notation. Let $I \subseteq \left\{1, \ldots, n\right\}$ be non-empty. We will let $G_I$ denote the matrix which consists of the columns of $G$ such that the $i$th column is in $G_I$ if and only if $i \in I$ and we will similarly let $y_I$ denote the restriction of $y \in \mathbb{F}_q^n$ to the coordinates indexed by $I$. Following the convention of \cite{notes_on_code_based_cryptography} we let $\support(y) = \left\{i \in \left\{1, \ldots, n\right\} | y_i \neq 0 \right\}$.
+
+\begin{proposition}\label{prop:multiplying_by_information_matrix_generates_the_same_code}
+  Let $G \in \mathbb{F}_q^{k \times n}$ be the generator matrix of some code $\mathcal{C}$, and $A \in GL_k(\mathbb{F}_q)$, then $A^{-1}G$ is a generator matrix of $\mathcal{C}$ as well.
+\end{proposition}
+\begin{proof}
+  Suppose $c \in \mathcal{C}$ then $c = m^TG$ for some $m \in \mathbb{F}_q^{k}$, in addition we may solve the equation $x^TA^{-1} = m^{T}$ for $x \in \mathbb{F}^k_q$. Hence $c = x^TA^{-1}G$. We also note that since $A^{-1}$ is invertible, $\rank(A^{-1}G) = \rank(G) = k$, hence the $k$ rows of $A^{-1}G$ are $\mathbb{F}_q$-linearly independent.
+\end{proof}
+
+\begin{definition}
+  Let $\mathcal{C}$ be a $[n, k]_q$ code with generator matrix $G \in \mathbb{F}_q^{k \times n}$ and $I \subseteq \left\{1, \ldots, n\right\}$ such that $\abs{I} = k$. If $G_I$ is invertible, then the $I$-indexed entries of $mG^{-1}_I G$ is called \textit{information symbols} and $I$ an \textit{information set}.
+\end{definition}
+
+\begin{example}\label{exmp:information_sets_of_hamming}
+  Consider the $[7, 4, 3]_2$ hamming code $\mathcal{H}_{3}$. That is the code with parity check matrix:
+  \begin{equation*}
+    H = \begin{bmatrix}
+          1 & 1 & 1 & 0 & 1 & 0 & 0 \\
+          1 & 1 & 0 & 1 & 0 & 1 & 0 \\
+          1 & 0 & 1 & 1 & 0 & 0 & 1
+        \end{bmatrix}
+  \end{equation*}
+  By Theorem \ref{thm:from_generator_matrix_to_parity_check_matrix}.
+  \begin{equation*}
+    G = \begin{bmatrix}
+1 & 0 & 0 & 0 & 1 & 1 & 1 \\
+0 & 1 & 0 & 0 & 1 & 1 & 0 \\
+0 & 0 & 1 & 0 & 1 & 0 & 1 \\
+0 & 0 & 0 & 1 & 0 & 1 & 1 \\
+        \end{bmatrix}
+  \end{equation*}
+  is a parity check matrix for $\mathcal{H}_{3}$. Then obviously $I = \left\{1, 2, 3, 4\right\}$ is an information set since $G_{I}$ is invertible. A less obvious information set would be $J = \left\{1, 3, 6, 7\right\}$ since:
+  \begin{equation*}
+    G_{J} = \begin{bmatrix}
+                1 & 0 & 1 & 1 \\
+                0 & 0 & 1 & 0 \\
+                0 & 1 & 0 & 1 \\
+                0 & 0 & 1 & 1 \\
+              \end{bmatrix} \sim \begin{bmatrix}
+                                   1 & 0 & 1 & 1 \\
+                                   0 & 1 & 0 & 1 \\
+                                   0 & 0 & 1 & 0 \\
+                                   0 & 0 & 1 & 1
+                                 \end{bmatrix} \sim I_{4 \times 4} \qedhere
+  \end{equation*}
+\end{example}
+
+\begin{remark}
+If $G$ is a generator matrix of $\mathcal{C}$, then so is $G^{-1}G$ and vice versa. This follows as the map $\mathbb{F}_q^{k} \ni x \mapsto x^{T} G_I^{-1} \in \mathbb{F}_q^n$ is bijective as $G_I^{-1} \in GL_n(\mathbb{F}_q)$. In addition $(G_{I}^{-1}G)_{I} = I_{k \times k}$.
+\end{remark}
+
+%\begin{definition}
+%  Let $G \in \mathbb{F}_q^{k \times n}$ be the generator matrix of some code $\mathcal{C}$. The generator matrix $G$ is said to be in \textit{systematic form} if $G = \begin{bmatrix} I_k & Q \end{bmatrix}$, where $Q \in \mathbb{F}_q^{k \times (n - k)}$. Furthermore if $G$ is in systematic form and $m \in \mathbb{F}_q^k$, then the first $k$ symbols of $m^{T}G$ is called \textit{information symbols}.
+%\end{definition}
+The information symbols contains the information captured by $m$, and the $n-k$ symbols are the redundancy used for error correcting.
+
+The basic idea behind information-set decoding (ISD), given a recived vector $y$ is to find an information-set $I$ such that the entries $y_i$ with $i \in I$ are error free. If $y_I$ is error free, we may obtain the we may obtain the original message as $y_IG^{-1}_I$, as $\rank(G_I) = k$. Hence we will need algorithms for computing information sets given a generator matrix $G \in \mathbb{F}_q^{k \times n}$
+\subsection{Algorithms for Computing Information Sets}
+\input{main/code_based_crypto/information_set_decoding/is_algorithms}
+\subsection{Information Set Decoding}
+\input{main/code_based_crypto/information_set_decoding/plain}
+\input{main/code_based_crypto/information_set_decoding/lee_brickell}
+\input{main/code_based_crypto/information_set_decoding/stern}

@@ -1,0 +1,11 @@
+\chapter{Code Based Cryptography}
+
+\input{main/code_based_crypto/McElice}
+\input{main/code_based_crypto/syndrome}
+\input{main/code_based_crypto/Niederreiter}
+\input{main/code_based_crypto/information_set_decoding/index}
+
+%In this chapter we study generic decoding algorithms (meaning they work for arbitrary codes), we study these algorithms as the provide generic attacks on the McElice public key cryptography scheme.
+%We will exclusively be working nearest neighbor decoding, meaning for a received message $y = c + e \in \mathbb{F}_q^{n}$, where $e \in \mathbb{F}_q^n$ is a random error vector and $c$ is a codeword in a $[n, k]_{q}$ code $\mathcal{C}$. We then estimate $c$ as $\hat{c} := \underset{c \in \mathcal{C}}{\arg \min} (d(c, y))$, equivalently we can estimate the error $e$ as $\hat{e} := \underset{e \in \mathbb{F}_q^n \\ y - e \in \mathcal{C}}{\arg \min} \wt(e)$, we will refer to both of these as nearest neighbor estimates.
+
+%If we can find \textcolor{blue}{efficient} algorithm for solving the McElice problem, see Problem \ref{prob:McElice}, then we would have broken the McElice PKCS, hence we will focus on the cases where we know a generator matrix of the code.

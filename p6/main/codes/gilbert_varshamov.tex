@@ -1,0 +1,104 @@
+\subsection{The Assymptotic Gilbert-Varshamov Bound}
+The following subsection is based on \cite{huffman}[Section 2.1, 2.8 and 2.10] and \cite{notes_on_alg_geom_codes}[Chapter 5]. We will start by proving a few technical results before moving onto to the Gilbert bound. Following this we introduce some new notation before reaching the main result of this subsection, namely the asymptotic Gilbert-Varshamov bound.
+
+\begin{lemma}\label{lem:number_of_elements_in_sphere}
+  Let $x \in \mathbb{F}_q^n$, then $\abs{\overline{B_{r}}(x)} = V_{q}(n, r)$ where $V_{q}(n, r) = \sum_{i=0}^r \binom{n}{i} (q - 1)^{i}$.
+\end{lemma}
+\begin{proof}
+  Let $S_i(x) = \left\{x' \in \mathbb{F}_q^n \middle| \d(x, x') = i\right\}$ for $i = 0, 1, \ldots, r$. Then $S_0(x), S_1(x), \ldots, S_{r}(x)$ are all finite and pairwise disjoint and $\overline{B_r}(x) = \bigcup_{i = 0}^r S_i(x)$. Combining these facts we see that:
+  \begin{equation}\label{eq:cardinality_of_disjoint_sets}
+    \abs{\overline{B_r}(x)} = \sum_{i = 0}^r \abs{S_i(x)}.
+  \end{equation}
+  Additionally we have that $\abs{S_i(x)} = \binom{n}{i}(q - 1)^i$, since $x' \in S_{i}$ differ from $x$ in exactly $i$ out of $n$ entries. The result follows immediately by combining this with Equation \eqref{eq:cardinality_of_disjoint_sets}.
+\end{proof}
+
+Moving forward we follow the convention of \cite{huffman} and let $B_q(n, d)$ be the maximum number of codewords in a linear code of length $n$ and minimum distance at least $d$.
+
+% We will now state the following Theorem 2.1.7 from \cite{huffman} without proof.
+
+% TODO: Look up the proof before the exam.
+
+\begin{theorem}\label{thm:covering_radius}
+  If $\mathcal{C}$ is linear code over $\mathbb{F}_{q}$ of length $n$, with minimum distance $d$ and $B_q(n, d)$ codewords then:
+  \begin{equation*}
+    \mathbb{F}_q^n = \bigcup_{c \in \mathcal{C}} \overline{B_{d - 1}}(c)
+  \end{equation*}
+\end{theorem}
+The proof of is due to \cite{covering_distance_of_linear_code}.
+\begin{proof}
+  If there exists an $x \in \mathbb{F}_{q}^{n} \not \in \bigcup_{c \in \mathcal{C}} \overline{B_{d - 1}}(c)$. Then $\mathcal{C}' := \mathcal{C} + \Span\{x\}$ is another linear code, such that $\abs{\mathcal{C}'} > \abs{\mathcal{C}}$. We will show that $\mathcal{C}'$ has minimum distance $d$ which in turn contradicts that $\mathcal{C}$ had $B_{q}(n, d)$ codewords. \\
+  Assume for the sake of contradiction, that $\mathcal{C}'$ has minimum distance less than $d$, then there exists a $c' \in \mathcal{C}'$ such that $\wt(c') \leq d - 1$. Since $c' \in \mathcal{C}'$ we may write $c' = c + ax$ for some $c\in \mathcal{C}$ and $a \in \mathbb{F}_{q}$. Furthermore, we have that $a \not= 0$, as $\wt(c') \leq d - 1$ implies that $c' \not\in \mathcal{C}$. In addition, we have that $\wt(b y) = \wt(y)$ for all $b \in \mathbb{F}_q$ and $y\in \mathbb{F}_q^{n}$, since $\mathbb{F}_q$ is a domain. Combining the earlier observations we get that:
+   \begin{equation*}
+     d - 1 \geq \wt(c') = \wt(-a^{-1}c') = \wt(-a^{-1}c - x) = \d(-a^{-1}c, x).
+   \end{equation*}
+   However this is a contradiction since this means that $x \in \overline{B_{d - 1}}(-a^{-1}c)$ after all.
+ \end{proof}
+
+\newpage
+We are now able to state and prove the Gilbert bound which we will use to prove the asymptotic Gilbert-Varshamov bound.
+\begin{corollary}[Gilbert bound]\label{cor:gilbert_bound}
+  Suppose $V_{q}(n, r)$ is defined as in Lemma \ref{lem:number_of_elements_in_sphere} then:
+  \begin{equation*}
+    B_q(n, d) \geq \frac{q^{n}}{V_{q}(n, d - 1)}
+  \end{equation*}
+\end{corollary}
+
+\begin{proof}
+  Let $\mathcal{C}$ be a linear code of length $n$, with minimum distance $d$ and $B_q(n, d)$ codewords, then $\mathbb{F}_q^n = \bigcup_{c \in \mathcal{C}} \overline{B_{d - 1}}(c)$ by Theorem \ref{thm:covering_radius}, combining this with Lemma \ref{lem:number_of_elements_in_sphere}, we get:
+  \begin{equation*}
+    q^{n} = \abs{\mathbb{F}_q^n} \leq \sum_{c \in \mathcal{C}} \abs{\overline{B_{d-1}}(c)} = B_q(n,d) V_q(n, d - 1). \qedhere
+  \end{equation*}
+\end{proof}
+
+Continuing we define the following function which will be used in the asymptotic Gilbert-Varshamov bound.
+\begin{definition}
+  Let $q \in \mathbb{N}$ such that $q \geq 2$, then the function $H_q: [0, (q - 1)/q] \to \mathbb{R}$ defined as $H_q(0) = 0$ and $H_q(x) = x \log_{q}(q-1) - x \log_{q}(x) - (1-x)\log_q(1 - x)$ otherwise is called the \textit{$q$-ary entropy function}.
+\end{definition}
+We will now state Lemma 2.10.3, from \cite{huffman}, but we will omit its computation heavy proof.
+\begin{lemma}\label{lem:entropy_limit}
+  Let $\delta \in [0, (q - 1) / q]$ where $q \in \mathbb{N}$ such that $q \geq 2$, then:
+  \begin{equation*}
+    \lim_{n \to \infty} \frac{1}{n} \log_q(V_q(n, \floor{\delta n})) = H_q(\delta).
+  \end{equation*}
+\end{lemma}
+
+Moving on we introduce two invariants which can be used to gauge the quality of a code.
+\begin{definition}
+Let $\mathcal{C}$ be a $[n, k, d]_q$ code, then the invariants $R := k / n$ and $\delta := d / n$ is called the \textit{transmission rate} and \textit{relative distance} of $\mathcal{C}$ respectively.
+\end{definition}
+Following the definition a natural question arise, namely why would one consider the invariants $R$ and $\delta$ instead of using $n, k$ and $d$ directly, when gauging the quality of a $[n,k,d]_q$ code?
+To answer this consider the repetition code of length $n$, as seen in Example \ref{exmp:repetition_code}, when $n$ increases then so will the minimum distance $d$ as $d = n$, however $\delta$ will stay constant.
+In addition to this we are still only able to encode a single symbol hence we are sacrificing transmission rate. Hence, $R$ and $\delta$ better reflect the properties of a code, especially for large $n$.
+
+\begin{remark}\label{rem:upper_bound_of_sum}
+  Let $\mathcal{C}$ be a $[n, k, d]_{q}$ code with transmission rate $R$ and relative minimum distance $\delta$, then $d + k \leq n + 1$ by Remark \ref{rem:alternative_formulation_of_singleton_bound}, dividing by $n$ we get that
+  \begin{equation*}
+    \delta + R \leq 1 + \frac{1}{n}.
+  \end{equation*}
+  Thus a long code, with good parameters have $\delta + R$ close to $1$.
+\end{remark}
+
+\newpage
+Remember that $B_q(n, d)$ is the maximum number of codewords of a linear code $\mathcal{C}$, with length $n$ and minimum distance at least $d$. Since $\mathcal{C}$ is a subspace of $\mathbb{F}_q^{n}$, we have that $\dim(\mathcal{C}) = \log_q(B_q(n, d))$. Thus, it makes sense to define what we shall refer to as the \textit{maximal rate}:
+\begin{equation*}
+  R^{*}(n, d) = \frac{\log_{q}(B_{q}(n, d))}{n}.
+\end{equation*}
+We will now investigate the behavior of $R^{*}(n, d)$ as $n \to \infty$, for this we define, the function $\alpha_q^{lin}: [0, 1] \to [0, 1]$ as a function of a relative distance $\delta$, specifically $\delta \mapsto \underset{n \to \infty}{\lim \sup} \;R^{*}(n, \delta n)$. Finally, we can state and prove the asymptotic Gilbert-Varshamov\footnote{The Varshamov bound is another bound for the parameters of linear codes, which can be used to prove the theorem as well.} bound.
+\begin{theorem}[Asymptotic Gilbert-Varshamov bound]\label{thm:gilbert_varshamov}
+  Let $0 \leq \delta \leq (q - 1)/q$, then:
+  \begin{equation*}
+  \alpha_q^{lin}(\delta) \geq 1 - H_q(\delta).
+  \end{equation*}
+\end{theorem}
+\begin{proof}
+  First note that $B_q(n, \delta n) = B_q(n, \ceil{\delta n})$. Since $B_{q}(n, d)$ is the maximum number of codewords of a code of length $n$ with minimum distance at least $d$ and the minimum distance of a linear code is always a natural number.
+  % NOTE: Hvis du undre dig over hvor uligheden kommer fra så test med $\delta n \in \mathbb{Z}$.
+  Thus, we have
+  \begin{align*}
+\alpha_q^{lin}(\delta) = \underset{n \to \infty}{\lim \sup} \; \frac{\log_q(B_q(n, \ceil{\delta n}))}{n} &\geq \underset{n \to \infty}{\lim \sup} \; \frac{\log_{q}\left(\dfrac{q^{n}}{V_{q}(n, \ceil{\delta n} - 1)}\right)}{n}\\ &\geq \underset{n \to \infty}{\lim \sup} \; 1 - \frac{\log_{q}({V_{q}(n, \floor{\delta n})}}{n}
+  \end{align*}
+  where the first inequality follows from the Gilbert bound (Corollary \ref{cor:gilbert_bound}) and the last inequality follows since $\ceil{\delta n} - 1 \leq \floor{\delta n}$ implies $\frac{q^{n}}{V_{q}(n, \ceil{\delta n} - 1)} \geq \frac{q^{n}}{V_{q}(n, \floor{\delta n})}$. The rest follows by applying Lemma \ref{lem:entropy_limit}, as
+  \begin{equation*}
+  \lim_{n \to \infty}\frac{\log_{q}({V_{q}(n, \floor{\delta n})}}{n} = H_q(\delta) \implies \underset{n \to \infty}{\lim \sup} \;\frac{\log_{q}({V_{q}(n, \floor{\delta n})}}{n} = H_q(\delta). \qedhere
+  \end{equation*}
+\end{proof}

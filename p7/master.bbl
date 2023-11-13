@@ -1,0 +1,115 @@
+\begin{thebibliography}{18}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Barker(2020)]{nist_recomendations_for_key_management}
+E.~Barker.
+\newblock Recommendation for key management, 2020.
+\newblock Avalible at \url{https://doi.org/10.6028/NIST.SP.800-57pt1r5}.
+
+\bibitem[Berlekamp et~al.(1978)Berlekamp, McEliece, and van
+  Tilborg]{general_decoding_problem_is_np}
+E.~Berlekamp, R.~McEliece, and H.~van Tilborg.
+\newblock On the inherent intractability of certain coding problems (corresp.).
+\newblock \emph{IEEE Transactions on Information Theory}, 24\penalty0
+  (3):\penalty0 384--386, 1978.
+\newblock \doi{10.1109/TIT.1978.1055873}.
+
+\bibitem[Carlson et~al.(2006)Carlson, Jaffe, and Wiles]{milenium}
+J.~Carlson, A.~Jaffe, and A.~Wiles.
+\newblock \emph{The Millennium Prize Problems}.
+\newblock American Mathematical Society, 1st edition, 2006.
+\newblock ISBN 9781470476014.
+
+\bibitem[Couvreur and Randriambololona(2020)]{AG_codes_and_applications}
+A.~Couvreur and H.~Randriambololona.
+\newblock Algebraic geometry codes and some applications, 2020.
+
+\bibitem[Fulton(2008)]{Fulton}
+W.~Fulton.
+\newblock Algebraic curves: An introduction to algebraic geometry, 2008.
+\newblock Avalible at {\small
+  \url{https://dept.math.lsa.umich.edu/~wfulton/CurveBook.pdf}}.
+
+\bibitem[Huffman and Pless(2003)]{huffman}
+W.~C. Huffman and V.~Pless.
+\newblock \emph{Fundementals of Error-Correcting Codes}.
+\newblock Cambrige University Press, 1st edition, 2003.
+\newblock ISBN 9780521131704.
+
+\bibitem[Koblitz(1994)]{n_t_and_c}
+N.~Koblitz.
+\newblock \emph{A Course in Number Theory and Cryptography}.
+\newblock Springer-Verlag, 2nd edition, 1994.
+\newblock ISBN 0387942939.
+
+\bibitem[Lauritzen(2003)]{alg_lauritzen}
+N.~Lauritzen.
+\newblock \emph{Concrete Abstract Algebra: From Numbers to Gröbner Bases}.
+\newblock Cambridge University Press, 1st edition, 2003.
+\newblock ISBN 9780521534109.
+
+\bibitem[Lee and Brickell(1988)]{lee_brickell}
+P.~J. Lee and E.~F. Brickell.
+\newblock An observation on the security of mceliece's public-key cryptosystem.
+\newblock In \emph{Advances in Cryptology --- EUROCRYPT '88}, pages 275--280,
+  Berlin, Heidelberg, 1988. Springer Berlin Heidelberg.
+\newblock ISBN 978-3-540-45961-3.
+
+\bibitem[Löndahl(2014)]{notes_on_code_based_cryptography}
+C.~Löndahl.
+\newblock \emph{Some Notes on Code-Based Cryptography}.
+\newblock PhD thesis, Lund University, 2014.
+
+\bibitem[Nørbjerg(2023)]{bachellor}
+M.~S. Nørbjerg.
+\newblock Algebraic geometry codes.
+\newblock Bachellor's thesis, Aalborg Univeristy, June 2023.
+
+\bibitem[Panaccione(2021)]{panaccione_phd}
+I.~Panaccione.
+\newblock \emph{On decoding algorithms for algebraic geometry codes beyond half
+  the minimum distance}.
+\newblock PhD thesis, Institut Polytechnique de Paris, 2021.
+
+\bibitem[Pellikaan et~al.(2018)Pellikaan, Wu, Bulygin, and
+  Jurrius]{CCC_with_CA}
+R.~Pellikaan, X.-W. Wu, S.~Bulygin, and R.~Jurrius.
+\newblock \emph{Codes, Cryptology and Curves with Computer Algebra}.
+\newblock Cambrige University Press, 1st edition, 2018.
+\newblock ISBN 9780521520362.
+
+\bibitem[Peters(2010)]{information_set_decoding}
+C.~Peters.
+\newblock Information-set decoding for linear codes over $\mathbb{F}_q$.
+\newblock In N.~Sendrier, editor, \emph{Post-Quantum Cryptography}, pages
+  81--94, Berlin, Heidelberg, 2010. Springer Berlin Heidelberg.
+\newblock ISBN 978-3-642-12929-2.
+
+\bibitem[Sanjeev~Arora(2009)]{complexity}
+B.~B. Sanjeev~Arora.
+\newblock \emph{Computational Complexity A modern Approach}.
+\newblock Cambridge University Press, 1st edition, 2009.
+\newblock ISBN 9780521424264.
+
+\bibitem[Shor(1996)]{shor}
+P.~W. Shor.
+\newblock Polynomial-time algorithms for prime factorization and discrete
+  logarithms on a quantum computer.
+\newblock \emph{{SIAM} Journal on Computing}, 26\penalty0 (5):\penalty0
+  1484--1509, oct 1996.
+
+\bibitem[Singh(2020)]{r6}
+H.~Singh.
+\newblock Code based cryptography: Classic mceliece, 2020.
+
+\bibitem[Stichtenoth(2009)]{aff_and_codes}
+H.~Stichtenoth.
+\newblock \emph{Algebraic Function Fields and Codes}.
+\newblock Springer Berlin, Heidelberg, 2nd edition, 2009.
+\newblock ISBN 9783540768784.
+
+\end{thebibliography}
